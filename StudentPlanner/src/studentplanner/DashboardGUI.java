@@ -1,3 +1,6 @@
+
+import java.awt.CardLayout;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -26,97 +29,89 @@ public class DashboardGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        modulesPanel = new javax.swing.JPanel();
-        deadlinesPanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        addTaskButton = new javax.swing.JButton();
-        addActivityButton = new javax.swing.JButton();
-        addMilestoneButton = new javax.swing.JButton();
+        DashboardGUI = new javax.swing.JPanel();
+        viewModuleButton = new javax.swing.JButton();
+        viewDashboardButton = new javax.swing.JButton();
+        ModuleGUI = new javax.swing.JPanel();
+        moduleLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout modulesPanelLayout = new javax.swing.GroupLayout(modulesPanel);
-        modulesPanel.setLayout(modulesPanelLayout);
-        modulesPanelLayout.setHorizontalGroup(
-            modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 181, Short.MAX_VALUE)
+        DashboardGUI.setLayout(new java.awt.CardLayout());
+
+        viewModuleButton.setText("View Module");
+        viewModuleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewModuleButtonActionPerformed(evt);
+            }
+        });
+        DashboardGUI.add(viewModuleButton, "card2");
+
+        viewDashboardButton.setText("Go to Dashboard");
+        viewDashboardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewDashboardButtonActionPerformed(evt);
+            }
+        });
+
+        moduleLabel.setText("Module");
+
+        javax.swing.GroupLayout ModuleGUILayout = new javax.swing.GroupLayout(ModuleGUI);
+        ModuleGUI.setLayout(ModuleGUILayout);
+        ModuleGUILayout.setHorizontalGroup(
+            ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ModuleGUILayout.createSequentialGroup()
+                .addGap(206, 206, 206)
+                .addComponent(moduleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(254, Short.MAX_VALUE))
         );
-        modulesPanelLayout.setVerticalGroup(
-            modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        ModuleGUILayout.setVerticalGroup(
+            ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ModuleGUILayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(moduleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(297, Short.MAX_VALUE))
         );
-
-        javax.swing.GroupLayout deadlinesPanelLayout = new javax.swing.GroupLayout(deadlinesPanel);
-        deadlinesPanel.setLayout(deadlinesPanelLayout);
-        deadlinesPanelLayout.setHorizontalGroup(
-            deadlinesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 212, Short.MAX_VALUE)
-        );
-        deadlinesPanelLayout.setVerticalGroup(
-            deadlinesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 266, Short.MAX_VALUE)
-        );
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(1);
-        jTextArea1.setText("Dashboard");
-        jTextArea1.setBorder(null);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        addTaskButton.setText("Add Task");
-
-        addActivityButton.setText("Add Activity");
-
-        addMilestoneButton.setText("Add Milestone");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(modulesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(addTaskButton)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(deadlinesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(addActivityButton)
-                        .addGap(76, 76, 76)
-                        .addComponent(addMilestoneButton)
-                        .addContainerGap(93, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DashboardGUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(viewDashboardButton)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(ModuleGUI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addTaskButton)
-                    .addComponent(addActivityButton)
-                    .addComponent(addMilestoneButton))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(deadlinesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(modulesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(61, 61, 61))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(DashboardGUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ModuleGUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewDashboardButton)
+                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void viewDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDashboardButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewDashboardButtonActionPerformed
+
+    private void viewModuleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewModuleButtonActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout)DashboardGUI.getLayout();
+        card.show(DashboardGUI, "ModuleGUI");
+    }//GEN-LAST:event_viewModuleButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,12 +149,10 @@ public class DashboardGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addActivityButton;
-    private javax.swing.JButton addMilestoneButton;
-    private javax.swing.JButton addTaskButton;
-    private javax.swing.JPanel deadlinesPanel;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JPanel modulesPanel;
+    private javax.swing.JPanel DashboardGUI;
+    private javax.swing.JPanel ModuleGUI;
+    private javax.swing.JLabel moduleLabel;
+    private javax.swing.JButton viewDashboardButton;
+    private javax.swing.JButton viewModuleButton;
     // End of variables declaration//GEN-END:variables
 }

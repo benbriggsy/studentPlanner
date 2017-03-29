@@ -33,11 +33,18 @@ public class DashboardGUI extends javax.swing.JFrame {
 
         GUI = new javax.swing.JPanel();
         DashboardGUI = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        dashboardLabel = new javax.swing.JLabel();
         moduleButton = new javax.swing.JButton();
+        milestoneButton = new javax.swing.JButton();
+        gradePlannerButton = new javax.swing.JButton();
+        MilestoneGUI = new javax.swing.JPanel();
+        milestoneLabel = new javax.swing.JLabel();
+        GradePlannerGUI = new javax.swing.JPanel();
+        gradePlannerLabel = new javax.swing.JLabel();
         ModuleGUI = new javax.swing.JPanel();
         assessmentButton = new javax.swing.JButton();
         moduleLabel = new javax.swing.JLabel();
+        gradePlannerButton1 = new javax.swing.JButton();
         AssessmentGUI = new javax.swing.JPanel();
         taskButton = new javax.swing.JButton();
         assessmentLabel = new javax.swing.JLabel();
@@ -47,17 +54,32 @@ public class DashboardGUI extends javax.swing.JFrame {
         ActivityGUI = new javax.swing.JPanel();
         activityLabel = new javax.swing.JLabel();
         viewDashboardButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         GUI.setLayout(new java.awt.CardLayout());
 
-        jLabel1.setText("Dashboard");
+        dashboardLabel.setText("Dashboard");
 
         moduleButton.setText("Module View");
         moduleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moduleButtonActionPerformed(evt);
+            }
+        });
+
+        milestoneButton.setText("Milestone View");
+        milestoneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                milestoneButtonActionPerformed(evt);
+            }
+        });
+
+        gradePlannerButton.setText("Grade Planner View");
+        gradePlannerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gradePlannerButtonActionPerformed(evt);
             }
         });
 
@@ -67,22 +89,70 @@ public class DashboardGUI extends javax.swing.JFrame {
             DashboardGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DashboardGUILayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(DashboardGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(moduleButton))
-                .addContainerGap(509, Short.MAX_VALUE))
+                .addGroup(DashboardGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dashboardLabel)
+                    .addComponent(gradePlannerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(milestoneButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(moduleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(469, Short.MAX_VALUE))
         );
         DashboardGUILayout.setVerticalGroup(
             DashboardGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DashboardGUILayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(dashboardLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(moduleButton)
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(milestoneButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gradePlannerButton)
+                .addContainerGap(278, Short.MAX_VALUE))
         );
 
-        GUI.add(DashboardGUI, "card3");
+        GUI.add(DashboardGUI, "dashboardCard");
+
+        milestoneLabel.setText("Milestone");
+
+        javax.swing.GroupLayout MilestoneGUILayout = new javax.swing.GroupLayout(MilestoneGUI);
+        MilestoneGUI.setLayout(MilestoneGUILayout);
+        MilestoneGUILayout.setHorizontalGroup(
+            MilestoneGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MilestoneGUILayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(milestoneLabel)
+                .addContainerGap(571, Short.MAX_VALUE))
+        );
+        MilestoneGUILayout.setVerticalGroup(
+            MilestoneGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MilestoneGUILayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(milestoneLabel)
+                .addContainerGap(383, Short.MAX_VALUE))
+        );
+
+        GUI.add(MilestoneGUI, "milestoneCard");
+
+        gradePlannerLabel.setText("Grade Planner");
+
+        javax.swing.GroupLayout GradePlannerGUILayout = new javax.swing.GroupLayout(GradePlannerGUI);
+        GradePlannerGUI.setLayout(GradePlannerGUILayout);
+        GradePlannerGUILayout.setHorizontalGroup(
+            GradePlannerGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GradePlannerGUILayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(gradePlannerLabel)
+                .addContainerGap(546, Short.MAX_VALUE))
+        );
+        GradePlannerGUILayout.setVerticalGroup(
+            GradePlannerGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GradePlannerGUILayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(gradePlannerLabel)
+                .addContainerGap(383, Short.MAX_VALUE))
+        );
+
+        GUI.add(GradePlannerGUI, "gradePlannerCard");
 
         assessmentButton.setText("Assessment View");
         assessmentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -93,16 +163,24 @@ public class DashboardGUI extends javax.swing.JFrame {
 
         moduleLabel.setText("Module");
 
+        gradePlannerButton1.setText("Grade Planner View");
+        gradePlannerButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gradePlannerButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ModuleGUILayout = new javax.swing.GroupLayout(ModuleGUI);
         ModuleGUI.setLayout(ModuleGUILayout);
         ModuleGUILayout.setHorizontalGroup(
             ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ModuleGUILayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(moduleLabel)
-                    .addComponent(assessmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(492, Short.MAX_VALUE))
+                    .addComponent(gradePlannerButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assessmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(480, Short.MAX_VALUE))
         );
         ModuleGUILayout.setVerticalGroup(
             ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,10 +189,12 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(moduleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(assessmentButton)
-                .addContainerGap(336, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gradePlannerButton1)
+                .addContainerGap(313, Short.MAX_VALUE))
         );
 
-        GUI.add(ModuleGUI, "card2");
+        GUI.add(ModuleGUI, "moduleCard");
 
         taskButton.setText("Task View");
         taskButton.addActionListener(new java.awt.event.ActionListener() {
@@ -143,10 +223,10 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(assessmentLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(taskButton)
-                .addGap(0, 337, Short.MAX_VALUE))
+                .addGap(0, 348, Short.MAX_VALUE))
         );
 
-        GUI.add(AssessmentGUI, "card4");
+        GUI.add(AssessmentGUI, "assessmentCard");
 
         activityButton.setText("Activity View");
         activityButton.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +246,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(taskLabel)
                     .addComponent(activityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(478, Short.MAX_VALUE))
+                .addContainerGap(505, Short.MAX_VALUE))
         );
         TaskGUILayout.setVerticalGroup(
             TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +258,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addGap(0, 348, Short.MAX_VALUE))
         );
 
-        GUI.add(TaskGUI, "card5");
+        GUI.add(TaskGUI, "taskCard");
 
         activityLabel.setText("Activity");
 
@@ -189,7 +269,7 @@ public class DashboardGUI extends javax.swing.JFrame {
             .addGroup(ActivityGUILayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(activityLabel)
-                .addContainerGap(557, Short.MAX_VALUE))
+                .addContainerGap(584, Short.MAX_VALUE))
         );
         ActivityGUILayout.setVerticalGroup(
             ActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +279,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addContainerGap(383, Short.MAX_VALUE))
         );
 
-        GUI.add(ActivityGUI, "card6");
+        GUI.add(ActivityGUI, "activityCard");
 
         viewDashboardButton.setText("Go to Dashboard");
         viewDashboardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -208,13 +288,22 @@ public class DashboardGUI extends javax.swing.JFrame {
             }
         });
 
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addComponent(viewDashboardButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(backButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(GUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -225,38 +314,69 @@ public class DashboardGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(GUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(viewDashboardButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewDashboardButton)
+                    .addComponent(backButton))
                 .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private String back;
+    
     private void viewDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDashboardButtonActionPerformed
-   
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "card3");
+        card.show(GUI, "dashboardCard");        
+        back = "dashboardCard";
     }//GEN-LAST:event_viewDashboardButtonActionPerformed
 
     private void moduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moduleButtonActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "card2");
+        card.show(GUI, "moduleCard");
+        back = "dashboardCard";
     }//GEN-LAST:event_moduleButtonActionPerformed
 
     private void taskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskButtonActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "card5");
+        card.show(GUI, "taskCard");
+        back = "assessmentCard";
     }//GEN-LAST:event_taskButtonActionPerformed
 
     private void assessmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assessmentButtonActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "card4");
+        card.show(GUI, "assessmentCard");
+        back = "moduleCard";
     }//GEN-LAST:event_assessmentButtonActionPerformed
 
     private void activityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activityButtonActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "card6");
+        card.show(GUI, "activityCard");
+        back = "taskCard";
     }//GEN-LAST:event_activityButtonActionPerformed
+
+    private void milestoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_milestoneButtonActionPerformed
+        CardLayout card = (CardLayout)GUI.getLayout();
+        card.show(GUI, "milestoneCard");
+        back = "dashboardCard";
+    }//GEN-LAST:event_milestoneButtonActionPerformed
+
+    private void gradePlannerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradePlannerButtonActionPerformed
+        CardLayout card = (CardLayout)GUI.getLayout();
+        card.show(GUI, "gradePlannerCard");
+        back = "dashboardCard";
+    }//GEN-LAST:event_gradePlannerButtonActionPerformed
+
+    private void gradePlannerButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradePlannerButton1ActionPerformed
+        CardLayout card = (CardLayout)GUI.getLayout();
+        card.show(GUI, "gradePlannerCard");
+        back = "moduleCard";
+    }//GEN-LAST:event_gradePlannerButton1ActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        CardLayout card = (CardLayout)GUI.getLayout();
+        card.show(GUI, back);
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,13 +418,21 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JPanel AssessmentGUI;
     private javax.swing.JPanel DashboardGUI;
     private javax.swing.JPanel GUI;
+    private javax.swing.JPanel GradePlannerGUI;
+    private javax.swing.JPanel MilestoneGUI;
     private javax.swing.JPanel ModuleGUI;
     private javax.swing.JPanel TaskGUI;
     private javax.swing.JButton activityButton;
     private javax.swing.JLabel activityLabel;
     private javax.swing.JButton assessmentButton;
     private javax.swing.JLabel assessmentLabel;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel dashboardLabel;
+    private javax.swing.JButton gradePlannerButton;
+    private javax.swing.JButton gradePlannerButton1;
+    private javax.swing.JLabel gradePlannerLabel;
+    private javax.swing.JButton milestoneButton;
+    private javax.swing.JLabel milestoneLabel;
     private javax.swing.JButton moduleButton;
     private javax.swing.JLabel moduleLabel;
     private javax.swing.JButton taskButton;

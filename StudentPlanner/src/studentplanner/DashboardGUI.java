@@ -2,22 +2,11 @@ package studentplanner;
 
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author natha
- */
 public class DashboardGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DashboardGUI
-     */
+
     public DashboardGUI() {
         initComponents();
     }
@@ -323,59 +312,72 @@ public class DashboardGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private String back;
+    private int backIndex = -1;
+    ArrayList<String> backList = new ArrayList<>();
     
     private void viewDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDashboardButtonActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
         card.show(GUI, "dashboardCard");        
-        back = "dashboardCard";
+        backList.add("dashboardCard");
+        backIndex++;
     }//GEN-LAST:event_viewDashboardButtonActionPerformed
 
     private void moduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moduleButtonActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "moduleCard");
-        back = "dashboardCard";
+        card.show(GUI, "moduleCard");        
+        backList.add("dashboardCard");
+        backIndex++;
     }//GEN-LAST:event_moduleButtonActionPerformed
 
     private void taskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskButtonActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "taskCard");
-        back = "assessmentCard";
+        card.show(GUI, "taskCard");        
+        backList.add("assessmentCard");
+        backIndex++;
     }//GEN-LAST:event_taskButtonActionPerformed
 
     private void assessmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assessmentButtonActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "assessmentCard");
-        back = "moduleCard";
+        card.show(GUI, "assessmentCard");        
+        backList.add("moduleCard");
+        backIndex++;
     }//GEN-LAST:event_assessmentButtonActionPerformed
 
     private void activityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activityButtonActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "activityCard");
-        back = "taskCard";
+        card.show(GUI, "activityCard");        
+        backList.add("taskCard");
+        backIndex++;
     }//GEN-LAST:event_activityButtonActionPerformed
 
     private void milestoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_milestoneButtonActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "milestoneCard");
-        back = "dashboardCard";
+        card.show(GUI, "milestoneCard");        
+        backList.add("dashboardCard");
+        backIndex++;
     }//GEN-LAST:event_milestoneButtonActionPerformed
 
     private void gradePlannerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradePlannerButtonActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "gradePlannerCard");
-        back = "dashboardCard";
+        card.show(GUI, "gradePlannerCard");        
+        backList.add("dashboardCard");
+        backIndex++;
     }//GEN-LAST:event_gradePlannerButtonActionPerformed
 
     private void gradePlannerButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradePlannerButton1ActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "gradePlannerCard");
-        back = "moduleCard";
+        card.show(GUI, "gradePlannerCard");        
+        backList.add("moduleCard");
+        backIndex++;
     }//GEN-LAST:event_gradePlannerButton1ActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, back);
+        if(backIndex > -1){
+            CardLayout card = (CardLayout)GUI.getLayout();
+            card.show(GUI, backList.get(backIndex));
+            backList.remove(backIndex);
+            backIndex--;
+        }
     }//GEN-LAST:event_backButtonActionPerformed
 
     /**

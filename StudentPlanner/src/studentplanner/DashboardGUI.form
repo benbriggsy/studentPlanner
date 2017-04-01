@@ -311,10 +311,49 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="assessmentLabel" min="-2" pref="96" max="-2" attributes="0"/>
-                          <Component id="taskButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="assessmentLabel" min="-2" pref="96" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="taskButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="140" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="assessmentNameLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="assessmentCodeLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="assessmentDeadlineLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="assessmentWeightingLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="assessmentGradeLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="assessmentProgressLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="assessmentNotesLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="assessmentProgressBar" pref="156" max="32767" attributes="0"/>
+                                      <Component id="assessmentGradeTextField" max="32767" attributes="0"/>
+                                      <Component id="assessmentWeightingTextField" max="32767" attributes="0"/>
+                                      <Component id="assessmentDeadlineTextField" max="32767" attributes="0"/>
+                                      <Component id="assessmentCodeTextField" max="32767" attributes="0"/>
+                                      <Component id="assessmentNameTextField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="assessmentTasksLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="525" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jScrollPane6" min="-2" pref="383" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -323,9 +362,56 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="assessmentLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="taskButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="348" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="taskButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="assessmentNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="assessmentNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="assessmentCodeTextField" min="-2" max="-2" attributes="0"/>
+                          <Component id="assessmentCodeLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="assessmentDeadlineTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="assessmentDeadlineLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="assessmentWeightingTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="assessmentWeightingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="assessmentGradeTextField" min="-2" max="-2" attributes="0"/>
+                          <Component id="assessmentGradeLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="assessmentProgressBar" min="-2" max="-2" attributes="0"/>
+                          <Component id="assessmentProgressLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane5" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="assessmentNotesLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="assessmentTasksLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jScrollPane6" min="-2" pref="99" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="103" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -344,6 +430,118 @@
                 <Property name="text" type="java.lang.String" value="Assessment"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Assessment"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="assessmentNameTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="assessmentNameTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="assessmentNameLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Assessment Name:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="assessmentCodeTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="assessmentCodeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Assessment Code:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="assessmentDeadlineTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="assessmentDeadlineTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="assessmentDeadlineLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Assessment Deadline:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="assessmentWeightingTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="assessmentWeightingLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Assessment Weighting:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="assessmentGradeTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="assessmentGradeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Assessment Grade:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JProgressBar" name="assessmentProgressBar">
+            </Component>
+            <Component class="javax.swing.JLabel" name="assessmentProgressLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Assessment Progress:"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="assessmentNotesTextArea">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="assessmentNotesLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Assessment Notes:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="assessmentTasksLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tasks:"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="assessmentTasksTable">
+                  <Properties>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0"/>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="TaskGUI">
@@ -475,6 +673,9 @@
             <Component class="javax.swing.JProgressBar" name="jProgressBar1">
             </Component>
             <Component class="javax.swing.JTextField" name="taskAssessmentTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="taskAssessmentTextFieldActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="taskWeightTextField">
             </Component>
@@ -565,15 +766,12 @@
                       </Group>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="activityNotesTextField" min="-2" pref="207" max="-2" attributes="0"/>
                           <Component id="activityNameTextField" min="-2" pref="157" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                              <Component id="activityCompletedCheckBox" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Component id="activityWeightingTextField" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
+                          <Component id="activityCompletedCheckBox" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -604,10 +802,10 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="activityNotesTextField" min="-2" pref="117" max="-2" attributes="0"/>
                           <Component id="activityNotesLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" min="-2" pref="121" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="activityCompletedCheckBox" min="-2" max="-2" attributes="0"/>
                           <Component id="activityCompletedLabel" min="-2" max="-2" attributes="0"/>
@@ -638,11 +836,6 @@
                 <Property name="text" type="java.lang.String" value="Activity Name:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="activityNotesTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="activityNotesTextFieldActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="activityNotesLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Activity Notes:"/>
@@ -670,6 +863,21 @@
                 <Property name="text" type="java.lang.String" value="Activity"/>
               </Properties>
             </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="activityNotesTextArea">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>

@@ -555,10 +555,38 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="activityLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="584" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="145" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="activityNameLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="activityNotesLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="activityCompletedLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="activityWeightingLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="activityNotesTextField" min="-2" pref="207" max="-2" attributes="0"/>
+                          <Component id="activityNameTextField" min="-2" pref="157" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                              <Component id="activityCompletedCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="activityWeightingTextField" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="activityLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -567,13 +595,77 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="activityLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="383" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="activityNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="activityNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="activityNotesTextField" min="-2" pref="117" max="-2" attributes="0"/>
+                          <Component id="activityNotesLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="activityCompletedCheckBox" min="-2" max="-2" attributes="0"/>
+                          <Component id="activityCompletedLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="activityWeightingTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="activityWeightingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="121" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="activityLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Activity"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="activityNameTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="activityNameTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="activityNameLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Activity Name:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="activityNotesTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="activityNotesTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="activityNotesLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Activity Notes:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="activityCompletedCheckBox">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="activityCompletedCheckBoxActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="activityCompletedLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Activity Completed:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="activityWeightingTextField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="activityWeightingLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Activity Weighting:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Activity"/>
               </Properties>

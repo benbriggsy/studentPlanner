@@ -19,7 +19,12 @@ public class DashboardGUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         GUI = new javax.swing.JPanel();
         DashboardGUI = new javax.swing.JPanel();
         dashboardLabel = new javax.swing.JLabel();
@@ -51,10 +56,39 @@ public class DashboardGUI extends javax.swing.JFrame {
         taskWeightLabel = new javax.swing.JLabel();
         taskProgressLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        activitiesTable = new javax.swing.JTable();
+        titleLabel1 = new javax.swing.JLabel();
         ActivityGUI = new javax.swing.JPanel();
         activityLabel = new javax.swing.JLabel();
         viewDashboardButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -247,9 +281,18 @@ public class DashboardGUI extends javax.swing.JFrame {
 
         taskProgressLabel.setText("Progress:");
 
-        titleLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel.setText("Task");
+        titleLabel.setText("Activities");
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, TaskGUI, org.jdesktop.beansbinding.ObjectProperty.create(), activitiesTable, org.jdesktop.beansbinding.BeanProperty.create("elements"));
+        bindingGroup.addBinding(binding);
+        binding.bind();
+        jScrollPane4.setViewportView(activitiesTable);
+
+        titleLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        titleLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLabel1.setText("Task");
 
         javax.swing.GroupLayout TaskGUILayout = new javax.swing.GroupLayout(TaskGUI);
         TaskGUI.setLayout(TaskGUILayout);
@@ -262,36 +305,43 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(taskLabel)
                             .addComponent(activityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(113, 113, 113)
-                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TaskGUILayout.createSequentialGroup()
                         .addGap(0, 144, Short.MAX_VALUE)
                         .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(taskNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(taskDescriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(taskWeightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(taskAssessmentLabel)
-                            .addComponent(taskProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42)
-                        .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(taskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(taskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(taskWeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(taskDescriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(109, 109, 109))))
+                            .addGroup(TaskGUILayout.createSequentialGroup()
+                                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(taskNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taskDescriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taskWeightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taskAssessmentLabel)
+                                    .addComponent(taskProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(42, 42, 42)
+                                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(taskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taskDescriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taskWeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(105, 105, 105))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TaskGUILayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(251, 251, 251))
+            .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TaskGUILayout.createSequentialGroup()
+                    .addContainerGap(260, Short.MAX_VALUE)
+                    .addComponent(titleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(254, 254, 254)))
         );
         TaskGUILayout.setVerticalGroup(
             TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TaskGUILayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(TaskGUILayout.createSequentialGroup()
-                        .addComponent(taskLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(activityButton))
-                    .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(taskLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(activityButton)
                 .addGap(18, 18, 18)
                 .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(taskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,7 +354,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(taskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(taskAssessmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(taskWeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(taskWeightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -312,7 +362,16 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(taskProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 92, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
+            .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(TaskGUILayout.createSequentialGroup()
+                    .addGap(21, 21, 21)
+                    .addComponent(titleLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(363, 363, 363)))
         );
 
         GUI.add(TaskGUI, "taskCard");
@@ -376,6 +435,8 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addComponent(backButton))
                 .addGap(19, 19, 19))
         );
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -492,6 +553,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JPanel MilestoneGUI;
     private javax.swing.JPanel ModuleGUI;
     private javax.swing.JPanel TaskGUI;
+    private javax.swing.JTable activitiesTable;
     private javax.swing.JButton activityButton;
     private javax.swing.JLabel activityLabel;
     private javax.swing.JButton assessmentButton;
@@ -502,6 +564,11 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JButton gradePlannerButton1;
     private javax.swing.JLabel gradePlannerLabel;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JButton milestoneButton;
     private javax.swing.JLabel milestoneLabel;
     private javax.swing.JButton moduleButton;
@@ -518,6 +585,8 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel taskWeightLabel;
     private javax.swing.JTextField taskWeightTextField;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JLabel titleLabel1;
     private javax.swing.JButton viewDashboardButton;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

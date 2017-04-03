@@ -93,7 +93,11 @@ public class DashboardGUI extends javax.swing.JFrame {
         dashboardTitleLabel = new javax.swing.JLabel();
         deadlinesPanel = new javax.swing.JPanel();
         modulesPanel = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        modulesTable = new javax.swing.JTable();
         milestonesPanel = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        activitiesTable2 = new javax.swing.JTable();
         viewDashboardButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
 
@@ -593,26 +597,50 @@ public class DashboardGUI extends javax.swing.JFrame {
             .addGap(0, 360, Short.MAX_VALUE)
         );
 
+        jScrollPane8.setViewportView(modulesTable);
+
         javax.swing.GroupLayout modulesPanelLayout = new javax.swing.GroupLayout(modulesPanel);
         modulesPanel.setLayout(modulesPanelLayout);
         modulesPanelLayout.setHorizontalGroup(
             modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 303, Short.MAX_VALUE)
+            .addGroup(modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(modulesPanelLayout.createSequentialGroup()
+                    .addGap(32, 32, 32)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(33, Short.MAX_VALUE)))
         );
         modulesPanelLayout.setVerticalGroup(
             modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 176, Short.MAX_VALUE)
+            .addGap(0, 196, Short.MAX_VALUE)
+            .addGroup(modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(modulesPanelLayout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(36, Short.MAX_VALUE)))
         );
+
+        jScrollPane7.setViewportView(activitiesTable2);
 
         javax.swing.GroupLayout milestonesPanelLayout = new javax.swing.GroupLayout(milestonesPanel);
         milestonesPanel.setLayout(milestonesPanelLayout);
         milestonesPanelLayout.setHorizontalGroup(
             milestonesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 303, Short.MAX_VALUE)
+            .addGroup(milestonesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(milestonesPanelLayout.createSequentialGroup()
+                    .addGap(32, 32, 32)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(33, Short.MAX_VALUE)))
         );
         milestonesPanelLayout.setVerticalGroup(
             milestonesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(milestonesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(milestonesPanelLayout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(36, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout DashboardGUILayout = new javax.swing.GroupLayout(DashboardGUI);
@@ -659,7 +687,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(DashboardGUILayout.createSequentialGroup()
                         .addComponent(deadlinesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(225, Short.MAX_VALUE))))
+                        .addContainerGap(92, Short.MAX_VALUE))))
         );
 
         GUI.add(DashboardGUI, "dashboardCard");
@@ -841,6 +869,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JPanel ModuleGUI;
     private javax.swing.JPanel TaskGUI;
     private javax.swing.JTable activitiesTable;
+    private javax.swing.JTable activitiesTable2;
     private javax.swing.JButton activityButton;
     private javax.swing.JCheckBox activityCompletedCheckBox;
     private javax.swing.JLabel activityCompletedLabel;
@@ -885,6 +914,8 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JButton milestoneButton;
@@ -893,6 +924,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JButton moduleButton;
     private javax.swing.JLabel moduleLabel;
     private javax.swing.JPanel modulesPanel;
+    private javax.swing.JTable modulesTable;
     private javax.swing.JLabel taskAssessmentLabel;
     private javax.swing.JTextField taskAssessmentTextField;
     private javax.swing.JButton taskButton;

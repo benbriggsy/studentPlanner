@@ -9,9 +9,6 @@ package studentplanner;
  *
  * @author natha
  */
-public class Exam {
-    private String examRoom;
-    private int examDuration;
-    public String getExamRoom;
+public class Assessment {
     
 }

@@ -5,13 +5,17 @@
  */
 package studentplanner;
 
+import java.util.ArrayList;
 /**
  *
  * @author natha
  */
-public class Exam {
-    private String examRoom;
-    private int examDuration;
-    public String getExamRoom;
+public class Activity {
     
+    private String activityName;
+    private int activityID;
+    private String notes;
+    private ArrayList<Task> taskList;
+    private boolean completed;
+    private double weighting;
 }

@@ -10,7 +10,7 @@ public class Module {
     private String moduleTitle;
     private ModuleOrganiser moduleOrganiser;
     private ArrayList<Assessments> assessments;
-    private ArrayList<double> assessmentGrades;
+    private ArrayList<Double> assessmentGrades;
     private double currentGrade;
     private boolean moduleCompleted;
     private String notes;
@@ -38,5 +38,23 @@ public class Module {
         return moduleOrganiser;
     }
     
-    public 
+    public ArrayList<Assessmensts> getAssessments(){
+        return assessments;
+    }
+    
+    public ArrayList<Double> getAssessmentGrades(){
+        return assessmentGrades;
+    }
+    
+    public double getCurrentGrade(){
+        return currentGrade;
+    }
+    
+    public boolean getModuleCompleted(){
+        return moduleCompleted;
+    }
+    
+    public String getNotes(){
+        return notes;
+    }
 }

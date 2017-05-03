@@ -8,14 +8,14 @@ import java.util.*;
 public class Module {
     private String moduleCode;
     private String moduleTitle;
-    private ModuleOrganiser moduleOrganiser;
+    private Admin moduleOrganiser;
     private ArrayList<Assessment> assessments;
     private ArrayList<Double> assessmentGrades;
     private double currentGrade;
     private boolean moduleCompleted;
     private String notes;
     
-    public Module(String moduleCode, String moduleTitle, ModuleOrganiser moduleOrganiser){
+    public Module(String moduleCode, String moduleTitle, Admin moduleOrganiser){
         this.moduleCode = moduleCode;
         this.moduleTitle = moduleTitle;
         this.moduleOrganiser = moduleOrganiser;
@@ -34,11 +34,11 @@ public class Module {
         return moduleTitle;
     }
     
-    public ModuleOrganiser getModuleOrganiser(){
+    public Admin getModuleOrganiser(){
         return moduleOrganiser;
     }
     
-    public ArrayList<Assessmensts> getAssessments(){
+    public ArrayList<Assessment> getAssessments(){
         return assessments;
     }
     

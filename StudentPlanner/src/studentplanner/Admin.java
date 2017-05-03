@@ -11,9 +11,21 @@ import java.util.*;
  */
 public class Admin {
     private ArrayList<Module> modules;
+    private String name;
+    private String email;
     
-    public Admin(){
+    public Admin(String name, String email){
+        this.name = name;
+        this.email = email;
         this.modules = new ArrayList<>();
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public String getEmail(){
+        return email;
     }
     
     public ArrayList<Module> getModules(){

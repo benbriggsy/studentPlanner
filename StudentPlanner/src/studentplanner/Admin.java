@@ -31,4 +31,14 @@ public class Admin {
     public ArrayList<Module> getModules(){
         return modules;
     }
+    
+    public void setDeadline(Assessment assessment, Date date, ){
+        assessment.setDate(date);
+    }
+    
+    @Override
+    public String toString(){
+        StringBuilder admin = new StringBuilder();
+        admin.append(name).append("\n").append(email).append("\n");
+        return admin.toString();
 }

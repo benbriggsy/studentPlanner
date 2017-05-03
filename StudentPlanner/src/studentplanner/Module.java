@@ -9,7 +9,7 @@ public class Module {
     private String moduleCode;
     private String moduleTitle;
     private ModuleOrganiser moduleOrganiser;
-    private ArrayList<Assessments> assessments;
+    private ArrayList<Assessment> assessments;
     private ArrayList<Double> assessmentGrades;
     private double currentGrade;
     private boolean moduleCompleted;

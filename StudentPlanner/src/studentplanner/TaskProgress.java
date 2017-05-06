@@ -35,4 +35,8 @@ public class TaskProgress {
         return numberCompleted;
         
     }
+    
+    public double progress(){
+        return (this.getNumberOfCompletedActivities()/activities.size())*100;
+    }
 }

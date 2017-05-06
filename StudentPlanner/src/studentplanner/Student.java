@@ -20,5 +20,38 @@ public class Student {
     private String schoolOfStudy;
     private int yearOfStudy;
     //DASHBOARD CLASS MUST BE IMPLEMENTED FIRST
-    private Dashboard dashboard;
+    //private Dashboard dashboard;
+    
+    public Student(int studentID, String fullName, String emailAddress, 
+            String schoolOfStudy, int yearOfStudy){
+        this.studentID = studentID;
+        this.fullName = fullName;
+        this.emailAddress = emailAddress;
+        this.schoolOfStudy = schoolOfStudy;
+        this.yearOfStudy = yearOfStudy;
+    }
+    
+    public int getStudentID(){
+        return studentID;
+    }
+    
+    public String getFullName(){
+        return fullName;
+    }
+    
+    public String getUserName(){
+        return userName;
+    }
+    
+    public String getEmailAddress(){
+        return emailAddress;
+    }
+    
+    public String getSchoolOfStudy(){
+        return schoolOfStudy;
+    }
+    
+    public int getYearOfStudy(){
+        return yearOfStudy;
+    }
 }

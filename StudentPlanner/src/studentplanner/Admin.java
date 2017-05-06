@@ -32,8 +32,8 @@ public class Admin {
         return modules;
     }
     
-    public void setDeadline(Assessment assessment, Date date, ){
-        assessment.setDate(date);
+    public void setDeadline(Assessment assessment, Deadline deadline){
+        assessment.setDeadline(deadline);
     }
     
     @Override

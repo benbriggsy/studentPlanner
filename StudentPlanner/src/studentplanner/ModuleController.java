@@ -10,6 +10,9 @@ public class ModuleController {
     private DashboardController dashboard;
     private Module module;
     
+    public Module getModule(){
+        return module;
+    }
     //needs improving
     public Assessment viewAssessment(int i){
         return module.getAssessments().get(i);

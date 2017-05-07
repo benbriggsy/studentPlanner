@@ -21,7 +21,7 @@ public class AssessmentProgress {
     public int getNumberOfCompletedTasks(){
         int numberCompleted = 0;
         for(Task task : tasks){
-            if(task.getCompleted()){
+            if(task.isCompleted()){
                 numberCompleted += 1;
             }
         }

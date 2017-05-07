@@ -57,4 +57,13 @@ public class Module {
     public String getNotes(){
         return notes;
     }
+    
+    public void addNote(String note){
+        notes+=note;
+        notes+="\n";
+    }
+    
+    public void setModuleCompleted(boolean c){
+        moduleCompleted = c;
+    }
 }

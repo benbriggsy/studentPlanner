@@ -12,6 +12,13 @@ package studentplanner;
 public class Exam {
     private String examRoom;
     private int examDuration;
-    public String getExamRoom;
     
+    public Exam(String examRoom, int examDuration){
+        this.examRoom = examRoom;
+        this.examDuration = examDuration;
+    }
+    
+    public String getExamRoom(){
+        return examRoom;
+    }
 }

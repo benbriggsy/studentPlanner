@@ -18,10 +18,6 @@ public class AssessmentProgress {
         this.tasks = new ArrayList<>();
     }
     
-    public int getNumberOfTasks(){
-        return tasks.size();
-    }
-    
     public int getNumberOfCompletedTasks(){
         int numberCompleted = 0;
         for(Task task : tasks){
@@ -32,5 +28,9 @@ public class AssessmentProgress {
         
         return numberCompleted;
         
+    }
+    
+    public double progress(){
+        return (this.getNumberOfCompletedTasks()/tasks.size())*100;
     }
 }

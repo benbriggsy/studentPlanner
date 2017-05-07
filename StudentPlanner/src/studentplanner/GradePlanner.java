@@ -10,15 +10,15 @@ import java.util.*;
  * @author phillipperks
  */
 public class GradePlanner {
-    private ArrayList<Assessment> assessments;
+    private ArrayList<Assessment> moduleAssessments;
     
     public GradePlanner(ArrayList<Assessment> assessments){
-        this.assessments=assessments;
+        this.moduleAssessments=assessments;
     }
     
     public double calculateGrade(){
         double currentGrade = 0.0;
-        for(Assessment assessment : assessments){
+        for(Assessment assessment : moduleAssessments){
             currentGrade += assessment.getMark()*assessment.getWeighting();
         }
         

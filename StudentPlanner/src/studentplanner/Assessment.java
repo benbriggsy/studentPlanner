@@ -16,10 +16,11 @@ public class Assessment {
     private String assessmentTitle;
     private double weighting;
     private double grade;
-    //private Deadline deadline;
+    private Deadline deadline;
     private ArrayList<Task> taskList;
     private String notes;
     //private Progress progress;
+    private boolean completed;
     
 //    public Assessment(String assessmentCode, String assessmentTitle, double weighting,
 //        double grade, Deadline deadline, ArrayList<Task> taskList, String notes,
@@ -36,5 +37,37 @@ public class Assessment {
     
     public String getAssessmentCode(){
         return assessmentCode;
+    }
+    
+    public String getAssessmentTitle(){
+        return assessmentTitle;
+    }
+    
+    public double getWeighting(){
+        return weighting;
+    }
+    
+    public double getGrade(){
+        return grade;
+    }
+     
+    public Deadline getDeadline(){
+        return deadline;
+    }
+    
+    public ArrayList<Task> getTasks(){
+        return taskList;
+    }
+    
+    public String getNotes(){
+        return notes;
+    }
+    
+//    public Progress getProgress(){
+//        return progress;
+//    }
+    
+    public void setAsCompleted(){
+        completed = true;
     }
 }

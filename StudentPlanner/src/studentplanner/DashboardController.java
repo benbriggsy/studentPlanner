@@ -11,7 +11,7 @@ import java.time.*;
  * @author phillipperks
  */
 public class DashboardController {
-    private DashBoard dashboard;
+    private Dashboard dashboard;
     
     public ArrayList<Module> viewModules(){
         return dashboard.getModules();

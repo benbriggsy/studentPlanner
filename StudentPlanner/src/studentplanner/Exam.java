@@ -5,15 +5,21 @@
  */
 package studentplanner;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author natha
  */
-public class Exam {
+public class Exam extends Assessment {
     private String examRoom;
     private int examDuration;
     
-    public Exam(String examRoom, int examDuration){
+    public Exam(String examRoom, int examDuration, String assessmentCode, String assessmentTitle, double weighting,
+        double grade, Deadline deadline, ArrayList<Task> taskList, 
+        String notes){
+        super(assessmentCode, assessmentTitle, weighting, grade, deadline, 
+                taskList, notes);
         this.examRoom = examRoom;
         this.examDuration = examDuration;
     }

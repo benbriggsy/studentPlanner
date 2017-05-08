@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author natha
  */
-public class Assessment {
+public abstract class Assessment {
     private String assessmentCode;
     private String assessmentTitle;
     private double weighting;

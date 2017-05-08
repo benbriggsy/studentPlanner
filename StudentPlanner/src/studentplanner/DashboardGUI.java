@@ -9,8 +9,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private DashboardController dc;
     private AssessmentController asc;
     private ActivityController acc;
-
-
+    
     public DashboardGUI() {
         initComponents();
         dc = new DashboardController();
@@ -750,6 +749,9 @@ public class DashboardGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    public Student getStudent(){
+        return student;
+    }
     private int backIndex = -1;
     ArrayList<String> backList = new ArrayList<>();
     

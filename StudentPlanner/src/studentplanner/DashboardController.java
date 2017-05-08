@@ -28,7 +28,7 @@ public class DashboardController {
         
         for(int i=0; i<dashboard.getModules().size(); i++){
            for(int j=0; j<dashboard.getModule(i).getAssessments().size(); j++){
-               if(!dashboard.getModule(i).getAssessmentByIndex(j).isComplete()){
+               if(!dashboard.getModule(i).getAssessmentByIndex(j).isCompleted()){
                    Calendar calendar = Calendar.getInstance();
                     calendar.setTime(dashboard.getModule(i).getAssessmentByIndex(j).getDeadline().getTime());            
                     calendar.add(Calendar.DAY_OF_YEAR, -7);

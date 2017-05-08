@@ -41,4 +41,5 @@ public class Admin {
         StringBuilder admin = new StringBuilder();
         admin.append(name).append("\n").append(email).append("\n");
         return admin.toString();
+    }
 }

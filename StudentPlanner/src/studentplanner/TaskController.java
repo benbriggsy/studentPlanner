@@ -15,11 +15,12 @@ public class TaskController {
     
     private AssessmentController assessment;
     private Task task;
+    private Student student;  
     
-    
-    public TaskController(AssessmentController assessment, Task task){
-        this.assessment = assessment;
-        this.task = task;
+    public TaskController(Student student){
+        //this.assessment = assessment;
+        //this.task = task;
+        this.student = student;
     }
     
     public int getTaskID(){

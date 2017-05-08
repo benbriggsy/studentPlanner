@@ -12,6 +12,13 @@ package studentplanner;
 public class ActivityController {
     private Activity activity;
     private TaskController task;
+    private Student student;  
+    
+    public ActivityController(Student student){
+        //this.assessment = assessment;
+        //this.task = task;
+        this.student = student;
+    }
     
     public String getActivityName(){
         return activity.getActivityName();

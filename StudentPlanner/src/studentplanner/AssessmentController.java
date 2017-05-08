@@ -12,12 +12,14 @@ import java.util.ArrayList;
  * @author natha
  */
 public class AssessmentController {
-    ModuleController module;
-    Assessment assessment;
+    private ModuleController module;
+    private Assessment assessment;
+    private Student student;  
     
-    public AssessmentController(ModuleController module, Assessment assessment){
-        this.module = module;
-        this.assessment = assessment;
+    public AssessmentController(Student student){
+        //this.assessment = assessment;
+        //this.task = task;
+        this.student = student;
     }
         
     public String getAssessmentCode(){

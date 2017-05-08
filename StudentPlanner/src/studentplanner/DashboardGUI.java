@@ -9,6 +9,8 @@ public class DashboardGUI extends javax.swing.JFrame {
     private DashboardController dc;
     private AssessmentController asc;
     private ActivityController acc;
+    private ModuleController mc;
+    private TaskController tc;
     
     public DashboardGUI() {
         initComponents();
@@ -18,7 +20,10 @@ public class DashboardGUI extends javax.swing.JFrame {
     
     public void loadControllers(){
         Student s = dc.getStudent();
-        AssessmentController asc(s);
+        asc = new AssessmentController(s);
+        acc = new ActivityController(s);
+        mc = new ModuleController(s);
+        tc = new TaskController(s);
     }
     
                 

@@ -9,6 +9,11 @@ import java.util.ArrayList;
 public class ModuleController {
     private DashboardController dashboard;
     private Module module;
+    private Student student;
+    
+    private ModuleController(Student student){
+        this.student = student;
+    }
     
     public Module getModule(){
         return module;

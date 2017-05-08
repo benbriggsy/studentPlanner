@@ -28,7 +28,7 @@ public class Dashboard {
             Module newModule = new Module(tokens[0], tokens[1], newAdmin);
             temp = semesterFileReader.readLine();
             if(temp.charAt(0)=='A'){
-                Assignment newAssignment = new Assignment();
+                Assignment newAssignment = new Assignment()
             }
             else if(temp.charAt(0)=='E'){
             

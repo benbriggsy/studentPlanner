@@ -5,10 +5,38 @@
  */
 package studentplanner;
 
+import java.util.*;
+
 /**
  *
- * @author me
+ * @author Michael Meyne
  */
 public class Deadline {
+    
+   
+   private Date dateTime;
+   private Assignment assignment;
+   private boolean isAssessment;
+   
+   public Deadline(Date newTime, Assignment newAssignment){
+       this.dateTime = newTime;
+       this.assignment = newAssignment;
+   }
+   
+   Date getTime(){
+       return dateTime;
+   }
+   
+   Assignment getAssignment(){
+       return assignment;
+   }
+   
+   boolean getIsAssessment(){
+       return isAssessment;
+   }
+   
+   void setDate(Date date){
+       this.dateTime = date;
+   }
     
 }

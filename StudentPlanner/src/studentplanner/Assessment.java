@@ -20,7 +20,7 @@ public class Assessment {
     private ArrayList<Task> taskList;
     private ArrayList<Module> modules;
     private String notes;
-    //private Progress progress;
+    private AssessmentProgress progress;
     private boolean completed;
     
 //    public Assessment(String assessmentCode, String assessmentTitle, double weighting,

@@ -44,7 +44,7 @@ public class Task {
         return assessment;
     }
     
-    public ArrayList<Activity> getAssessments(){
+    public ArrayList<Activity> getActivities(){
         return activityList;
     }
     
@@ -56,7 +56,15 @@ public class Task {
         return notes;
     }
     
+//    public String getProgress(){
+//        return progress;
+//    }
+    
 //    public void updateProgress(Progress progress){
 //        this.progress = progress;
 //    }
+    
+    public void addActivity(Activity a){
+        activityList.add(a);
+    }
 }

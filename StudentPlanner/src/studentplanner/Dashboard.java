@@ -48,15 +48,24 @@ public class Dashboard {
 //            String examRoom, int examDuration, String assessmentCode, String assessmentTitle, double weighting,
 //        double grade, Deadline deadline, ArrayList<Task> taskList, 
 //        String notes
-            
-            
-            
-            
         }
-    
-    
     
     }
     
+    Module getModule(int i){
+        return modules.get(i);
+    }
+    
+    ArrayList<Module> getModules(){
+        return modules;
+    }
+    
+    Milestone getMilestone(int i){
+        return milestones.get(i);
+    }
+    
+    ArrayList<Milestone> getMilestones(){
+        return milestones;
+    }
     
 }

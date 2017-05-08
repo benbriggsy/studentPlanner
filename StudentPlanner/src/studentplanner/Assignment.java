@@ -5,6 +5,8 @@
  */
 package studentplanner;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Michael Meyne
@@ -14,16 +16,15 @@ public class Assignment extends Assessment {
     private String handInProcedure;
     private String assignmentType;
     private boolean isSummative;
-    
-    public Assignment(String handInProcedure, String assignmentType, Double weight, 
-            Deadline deadline, String code, String title, Double grade, String notes, boolean isSummative){
-        
+
+    public Assignment(String handInProcedure, String assignmentType, boolean isSummative, String assessmentCode, String assessmentTitle, double weighting, double grade, Deadline deadline, ArrayList<Task> taskList, String notes) {
+        super(assessmentCode, assessmentTitle, weighting, grade, deadline, taskList, notes);
         this.handInProcedure = handInProcedure;
         this.assignmentType = assignmentType;
-        this.weighting = weight;
-        this.deadline = deadline;
-        this.assessmentCode = code;
-        this.assessmentTitle = title;
-        this.grade = grade;
+        this.isSummative = isSummative;
     }
+
+    
+    
+    
 }

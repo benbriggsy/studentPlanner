@@ -5,6 +5,8 @@
  */
 package studentplanner;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author natha
@@ -19,6 +21,8 @@ public class Student {
     //THIS CAN BE AN ENUM
     private String schoolOfStudy;
     private int yearOfStudy;
+    private ArrayList<Module> modules;
+    private ArrayList<Milestone> milestones;
     //DASHBOARD CLASS MUST BE IMPLEMENTED FIRST
     //private Dashboard dashboard;
     
@@ -54,5 +58,21 @@ public class Student {
     
     public int getYearOfStudy(){
         return yearOfStudy;
+    }
+    
+    Module getModule(int i){
+        return modules.get(i);
+    }
+    
+    ArrayList<Module> getModules(){
+        return modules;
+    }
+    
+    Milestone getMilestone(int i){
+        return milestones.get(i);
+    }
+    
+    ArrayList<Milestone> getMilestones(){
+        return milestones;
     }
 }

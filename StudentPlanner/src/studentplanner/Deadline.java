@@ -15,24 +15,13 @@ public class Deadline {
     
    
    private Date dateTime;
-   private Assignment assignment;
-   private boolean isAssessment;
    
-   public Deadline(Date newTime, Assignment newAssignment){
+   public Deadline(Date newTime){
        this.dateTime = newTime;
-       this.assignment = newAssignment;
    }
    
    Date getTime(){
        return dateTime;
-   }
-   
-   Assignment getAssignment(){
-       return assignment;
-   }
-   
-   boolean getIsAssessment(){
-       return isAssessment;
    }
    
    void setDate(Date date){

@@ -19,7 +19,7 @@ public class Dashboard {
     ArrayList<Module> modules;
     ArrayList<Milestone> milestones;
 
-    void setSemesterFile(File semesterFile) throws FileNotFoundException, IOException, ParseException {
+    static void setSemesterFile(File semesterFile) throws FileNotFoundException, IOException, ParseException {
         InputStream semesterFileStream = new FileInputStream(semesterFile);
         BufferedReader semesterFileReader = new BufferedReader(new InputStreamReader(semesterFileStream));
         String temp = "";
@@ -69,6 +69,14 @@ public class Dashboard {
 
     ArrayList<Milestone> getMilestones() {
         return milestones;
+    }
+    
+    public static void main(String[] args) throws IOException, ParseException{
+        File newFile = new File("semester.txt");
+        setSemesterFile(newFile);
+        
+        
+    
     }
 
 }

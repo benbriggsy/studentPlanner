@@ -22,7 +22,7 @@ public class ModuleController {
     }
     
     public String getModuleTitle(){
-        return module.getModuleTitle();
+        return module.getModuleName();
     }
     
     public Admin getModuleOrganiser(){

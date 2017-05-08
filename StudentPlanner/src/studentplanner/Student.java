@@ -20,7 +20,7 @@ public class Student {
     private String schoolOfStudy;
     private int yearOfStudy;
     //DASHBOARD CLASS MUST BE IMPLEMENTED FIRST
-    //private Dashboard dashboard;
+    private Dashboard dashboard;
     
 //    public Student(int studentID, String fullName, String emailAddress, 
 //            String schoolOfStudy, int yearOfStudy, Dashboard dashboard){
@@ -54,5 +54,9 @@ public class Student {
     
     public int getYearOfStudy(){
         return yearOfStudy;
+    }
+    
+    public Dashboard getDashboard(){
+        return dashboard;
     }
 }

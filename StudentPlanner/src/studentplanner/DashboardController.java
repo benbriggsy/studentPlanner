@@ -37,6 +37,7 @@ public class DashboardController {
                            || today.after(dashboard.getModule(i).getAssessmentByIndex(j).getDeadline()))){
                        upComingAssessments.add(dashboard.getModule(i).getAssessmentByIndex(j));
                     }
+                   
                }
            }
        }

@@ -43,6 +43,27 @@ public class DashboardController {
         
        return upComingAssessments;
     }
+    
+    public ArrayList<Milestone> viewUpComingIncompleteMilestones(){
+        ArrayList<Milestone> upComingMilestones = new ArrayList<>();
+        
+        Date today = new Date();
+        
+        for(int i=0; i<dashboard.getMilestones().size(); i++){
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dashboard.getMilestone(i).getDeadline());            
+            calendar.add(Calendar.DAY_OF_YEAR, -7);
+            Date previousWeek = calendar.getTime();
+            if(!(today.before(previousWeek) 
+                || today.after(dashboard.getMilestone(i).getDeadline()))){
+                upComingMilestones.add(dashboard.getMilestone(i));
+            }
+        }
+           
+       
+        
+       return upComingMilestones;
+    }
 //    public Module viewModule(String moduleName){
 //       for(int i=0; i<dashboard.getModules().size(); i++){
 //           if(dashboard.getModule(i).getModuleName().equals(moduleName)){

@@ -24,7 +24,7 @@ public class Student {
     private ArrayList<Module> modules;
     private ArrayList<Milestone> milestones;
     //DASHBOARD CLASS MUST BE IMPLEMENTED FIRST
-    //private Dashboard dashboard;
+    private Dashboard dashboard;
     
 //    public Student(int studentID, String fullName, String emailAddress, 
 //            String schoolOfStudy, int yearOfStudy, Dashboard dashboard){

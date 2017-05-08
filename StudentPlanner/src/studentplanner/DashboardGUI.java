@@ -6,10 +6,23 @@ import java.util.ArrayList;
 
 public class DashboardGUI extends javax.swing.JFrame {
 
-
+    private DashboardController dc;
+    private AssessmentController asc;
+    private ActivityController acc;
+    
     public DashboardGUI() {
         initComponents();
+        dc = new DashboardController();
+        dc.uploadSemesterFile();
     }
+    
+    public void loadControllers(){
+        Student s = dc.getStudent();
+        AssessmentController asc(s);
+    }
+    
+                
+                
 
     /**
      * This method is called from within the constructor to initialize the form.

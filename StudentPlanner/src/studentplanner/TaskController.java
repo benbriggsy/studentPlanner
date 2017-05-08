@@ -38,7 +38,7 @@ public class TaskController {
         return task.getWeighting();
     }
     
-    public Progress getProgress(){
+    public double getProgress(){
         return task.getProgress();
     }
     
@@ -46,7 +46,7 @@ public class TaskController {
         return task.getAssessment();
     }
     
-    public double getAssessmentController(){
+    public AssessmentController getAssessmentController(){
         return assessment;
     }
     

@@ -67,6 +67,10 @@ public class Assessment {
 //        return progress;
 //    }
     
+    public boolean isCompleted(){
+        return completed;
+    }
+    
     public void setAsCompleted(){
         completed = true;
     }

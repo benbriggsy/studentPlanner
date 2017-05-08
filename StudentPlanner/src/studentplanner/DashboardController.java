@@ -30,11 +30,11 @@ public class DashboardController {
            for(int j=0; j<dashboard.getModule(i).getAssessments().size(); j++){
                if(!dashboard.getModule(i).getAssessmentByIndex(j).isComplete()){
                    Calendar calendar = Calendar.getInstance();
-                    calendar.setTime(dashboard.getModule(i).getAssessmentByIndex(j).getDeadline());            
+                    calendar.setTime(dashboard.getModule(i).getAssessmentByIndex(j).getDeadline().getTime());            
                     calendar.add(Calendar.DAY_OF_YEAR, -7);
                     Date previousWeek = calendar.getTime();
                    if(!(today.before(previousWeek) 
-                           || today.after(dashboard.getModule(i).getAssessmentByIndex(j).getDeadline()))){
+                           || today.after(dashboard.getModule(i).getAssessmentByIndex(j).getDeadline().getTime()))){
                        upComingAssessments.add(dashboard.getModule(i).getAssessmentByIndex(j));
                     }
                    
@@ -52,11 +52,11 @@ public class DashboardController {
         
         for(int i=0; i<dashboard.getMilestones().size(); i++){
             Calendar calendar = Calendar.getInstance();
-            calendar.setTime(dashboard.getMilestone(i).getDeadline());            
+            calendar.setTime(dashboard.getMilestone(i).getDeadline().getTime());            
             calendar.add(Calendar.DAY_OF_YEAR, -7);
             Date previousWeek = calendar.getTime();
             if(!(today.before(previousWeek) 
-                || today.after(dashboard.getMilestone(i).getDeadline()))){
+                || today.after(dashboard.getMilestone(i).getDeadline().getTime()))){
                 upComingMilestones.add(dashboard.getMilestone(i));
             }
         }
@@ -64,6 +64,10 @@ public class DashboardController {
        
         
        return upComingMilestones;
+    }
+    
+    public void uploadSemesterFile(){
+        
     }
 //    public Module viewModule(String moduleName){
 //       for(int i=0; i<dashboard.getModules().size(); i++){

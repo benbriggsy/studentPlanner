@@ -18,13 +18,14 @@ public class Assessment {
     private double grade;
     private Deadline deadline;
     private ArrayList<Task> taskList;
+    private ArrayList<Module> modules;
     private String notes;
     //private Progress progress;
     private boolean completed;
     
 //    public Assessment(String assessmentCode, String assessmentTitle, double weighting,
-//        double grade, Deadline deadline, ArrayList<Task> taskList, String notes,
-//        Progress progress){
+//        double grade, Deadline deadline, ArrayList<Task> taskList, ArrayList<Module> modules, 
+//        String notes, Progress progress){
 //        this.assessmentCode = assessmentCode;
 //        this.assessmentTitle = assessmentTitle;
 //        this.weighting = weighting;
@@ -33,6 +34,7 @@ public class Assessment {
 //        this.taskList = taskList;
 //        this.notes = notes;
 //        this.progress = progress;
+//    this.modules = modules;
 //    }
     
     public String getAssessmentCode(){
@@ -62,7 +64,7 @@ public class Assessment {
     public String getNotes(){
         return notes;
     }
-    
+        
 //    public Progress getProgress(){
 //        return progress;
 //    }

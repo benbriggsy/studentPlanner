@@ -18,6 +18,7 @@ public class DashboardController {
     
     public Student getStudent(){
         return student;
+        
     }
     
     public ArrayList<Module> viewModules(){

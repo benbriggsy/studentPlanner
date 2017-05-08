@@ -48,7 +48,7 @@ public class AssessmentController {
         return assessment.getTasks();
     }
     
-    public AssessmentProgress getAssessmentProgress(){
+    public double getAssessmentProgress(){
         return assessment.getProgress();
     }
     

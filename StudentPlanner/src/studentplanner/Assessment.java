@@ -23,7 +23,7 @@ public class Assessment {
     
     public Assessment(String assessmentCode, String assessmentTitle, double weighting,
         double grade, Deadline deadline, ArrayList<Task> taskList, 
-        String notes, AssessmentProgress progress){
+        String notes){
         this.assessmentCode = assessmentCode;
         this.assessmentTitle = assessmentTitle;
         this.weighting = weighting;
@@ -31,7 +31,6 @@ public class Assessment {
         this.deadline = deadline;
         this.tasks = tasks;
         this.notes = notes;
-        this.progress = progress;
     }
     
     public String getAssessmentCode(){
@@ -78,5 +77,9 @@ public class Assessment {
     
     public void setAsCompleted(){
         completed = true;
+    }
+    
+    public void setDeadline(Deadline deadline){
+        this.deadline = deadline;     
     }
 }

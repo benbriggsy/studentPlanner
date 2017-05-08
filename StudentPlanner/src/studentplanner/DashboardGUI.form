@@ -75,7 +75,7 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <Component id="GUI" max="32767" attributes="0"/>
+              <Component id="GUI" pref="567" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -112,7 +112,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="milestoneLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="571" max="32767" attributes="0"/>
+                      <EmptySpace pref="501" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -147,7 +147,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="gradePlannerLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="546" max="32767" attributes="0"/>
+                      <EmptySpace pref="474" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -186,7 +186,7 @@
                           <Component id="gradePlannerButton1" min="-2" pref="152" max="-2" attributes="0"/>
                           <Component id="assessmentButton" alignment="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="480" max="32767" attributes="0"/>
+                      <EmptySpace pref="403" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -253,7 +253,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="140" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="131" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="assessmentNameLabel" min="-2" max="-2" attributes="0"/>
                                   <Component id="assessmentCodeLabel" min="-2" max="-2" attributes="0"/>
@@ -485,7 +485,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="158" max="32767" attributes="0"/>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="taskNameLabel" min="-2" pref="86" max="-2" attributes="0"/>
                           <Component id="taskDescriptionLabel" min="-2" pref="86" max="-2" attributes="0"/>
@@ -682,7 +682,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="145" max="32767" attributes="0"/>
+                      <EmptySpace pref="143" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="activityNameLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="activityNotesLabel" min="-2" max="-2" attributes="0"/>
@@ -831,7 +831,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="dashboardTitleLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="243" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="162" max="32767" attributes="0"/>
                           </Group>
                           <Component id="deadlinesPanel" max="32767" attributes="0"/>
                       </Group>

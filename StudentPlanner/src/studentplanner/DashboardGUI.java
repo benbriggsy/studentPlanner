@@ -140,7 +140,7 @@ public class DashboardGUI extends javax.swing.JFrame {
             .addGroup(MilestoneGUILayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(milestoneLabel)
-                .addContainerGap(571, Short.MAX_VALUE))
+                .addContainerGap(501, Short.MAX_VALUE))
         );
         MilestoneGUILayout.setVerticalGroup(
             MilestoneGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +161,7 @@ public class DashboardGUI extends javax.swing.JFrame {
             .addGroup(GradePlannerGUILayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(gradePlannerLabel)
-                .addContainerGap(546, Short.MAX_VALUE))
+                .addContainerGap(474, Short.MAX_VALUE))
         );
         GradePlannerGUILayout.setVerticalGroup(
             GradePlannerGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +199,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addComponent(moduleLabel)
                     .addComponent(gradePlannerButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(assessmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(480, Short.MAX_VALUE))
+                .addContainerGap(403, Short.MAX_VALUE))
         );
         ModuleGUILayout.setVerticalGroup(
             ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,7 +284,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                                 .addComponent(jLabel2)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AssessmentGUILayout.createSequentialGroup()
-                        .addGap(0, 140, Short.MAX_VALUE)
+                        .addGap(0, 131, Short.MAX_VALUE)
                         .addGroup(AssessmentGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(assessmentNameLabel)
                             .addComponent(assessmentCodeLabel)
@@ -402,7 +402,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         TaskGUILayout.setHorizontalGroup(
             TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TaskGUILayout.createSequentialGroup()
-                .addContainerGap(158, Short.MAX_VALUE)
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(taskNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(taskDescriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -509,7 +509,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         ActivityGUILayout.setHorizontalGroup(
             ActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActivityGUILayout.createSequentialGroup()
-                .addContainerGap(145, Short.MAX_VALUE)
+                .addContainerGap(143, Short.MAX_VALUE)
                 .addGroup(ActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(activityNameLabel)
                     .addComponent(activityNotesLabel)
@@ -661,7 +661,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addGroup(DashboardGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DashboardGUILayout.createSequentialGroup()
                         .addComponent(dashboardTitleLabel)
-                        .addGap(0, 243, Short.MAX_VALUE))
+                        .addGap(0, 162, Short.MAX_VALUE))
                     .addComponent(deadlinesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -717,7 +717,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(backButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(GUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(GUI, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

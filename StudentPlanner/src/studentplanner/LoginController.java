@@ -34,6 +34,5 @@ public class LoginController {
         catch(IOException e){
             return false;
         }
-    }
-    
+    }  
 }

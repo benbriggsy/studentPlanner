@@ -11,7 +11,7 @@ public class ModuleController {
     private Module module;
     private Student student;
     
-    private ModuleController(Student student){
+    public ModuleController(Student student){
         this.student = student;
     }
     

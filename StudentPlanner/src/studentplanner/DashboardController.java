@@ -75,9 +75,6 @@ public class DashboardController {
         
     }
     
-    public getAssessmentTitle(){
-        
-    }
 //    public Module viewModule(String moduleName){
 //       for(int i=0; i<dashboard.getModules().size(); i++){
 //           if(dashboard.getModule(i).getModuleName().equals(moduleName)){

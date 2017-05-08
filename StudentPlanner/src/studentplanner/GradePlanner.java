@@ -19,7 +19,7 @@ public class GradePlanner {
     public double calculateGrade(){
         double currentGrade = 0.0;
         for(Assessment assessment : moduleAssessments){
-            currentGrade += assessment.getMark()*assessment.getWeighting();
+            currentGrade += assessment.getGrade()*assessment.getWeighting();
         }
         
         return currentGrade;

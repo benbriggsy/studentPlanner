@@ -26,8 +26,8 @@ public class TaskProgress {
     
     public int getNumberOfCompletedActivities(){
         int numberCompleted = 0;
-        for(Activity activitie : activities){
-            if(activities.getCompleted()){
+        for(Activity activity : activities){
+            if(activity.isCompleted()){
                 numberCompleted += 1;
             }
         }

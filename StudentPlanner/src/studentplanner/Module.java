@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class Module {
     private String moduleCode;
-    private String moduleTitle;
+    private String moduleName;
     private Admin moduleOrganiser;
     private ArrayList<Assessment> assessments;
     private ArrayList<Double> assessmentGrades;
@@ -17,7 +17,7 @@ public class Module {
     
     public Module(String moduleCode, String moduleTitle, Admin moduleOrganiser){
         this.moduleCode = moduleCode;
-        this.moduleTitle = moduleTitle;
+        this.moduleName = moduleTitle;
         this.moduleOrganiser = moduleOrganiser;
         this.assessments = new ArrayList<>();
         this.assessmentGrades = new ArrayList<>();
@@ -30,8 +30,8 @@ public class Module {
         return moduleCode;
     }
     
-    public String getModuleTitle(){
-        return moduleTitle;
+    public String getModuleName(){
+        return moduleName;
     }
     
     public Admin getModuleOrganiser(){
@@ -40,6 +40,10 @@ public class Module {
     
     public ArrayList<Assessment> getAssessments(){
         return assessments;
+    }
+    
+    public Assessment getAssessmentByIndex(int i){
+        return assessments.get(i);
     }
     
     public ArrayList<Double> getAssessmentGrades(){

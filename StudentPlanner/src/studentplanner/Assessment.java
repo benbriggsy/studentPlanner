@@ -19,7 +19,6 @@ public class Assessment {
     private Deadline deadline;
     private ArrayList<Task> tasks;
     private String notes;
-    private AssessmentProgress progress;
     private boolean completed;
     
     public Assessment(String assessmentCode, String assessmentTitle, double weighting,
@@ -56,7 +55,7 @@ public class Assessment {
     }
     
     public ArrayList<Task> getTasks(){
-        return taskList;
+        return tasks;
     }
     
     public String getNotes(){

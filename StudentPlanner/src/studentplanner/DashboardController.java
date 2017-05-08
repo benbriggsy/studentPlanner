@@ -12,6 +12,13 @@ import java.time.*;
  */
 public class DashboardController {
     private Dashboard dashboard;
+    private ModuleController moduleController;
+    private Student student;
+    //private MilestoneController milestoneController;
+    
+    public Student getStudent(){
+        return student;
+    }
     
     public ArrayList<Module> viewModules(){
         return dashboard.getModules();
@@ -60,13 +67,14 @@ public class DashboardController {
                 upComingMilestones.add(dashboard.getMilestone(i));
             }
         }
-           
-       
-        
        return upComingMilestones;
     }
     
     public void uploadSemesterFile(){
+        
+    }
+    
+    public getAssessmentTitle(){
         
     }
 //    public Module viewModule(String moduleName){

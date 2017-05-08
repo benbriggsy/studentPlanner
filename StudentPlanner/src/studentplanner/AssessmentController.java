@@ -48,9 +48,9 @@ public class AssessmentController {
         return assessment.getTasks();
     }
     
-//    public Progress getAssessmentProgress(){
-//        return assessment.getProgress();
-//    }
+    public AssessmentProgress getAssessmentProgress(){
+        return assessment.getProgress();
+    }
     
     public ModuleController getModuleController(){
         return module;

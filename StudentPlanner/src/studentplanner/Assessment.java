@@ -17,25 +17,23 @@ public class Assessment {
     private double weighting;
     private double grade;
     private Deadline deadline;
-    private ArrayList<Task> taskList;
-    private ArrayList<Module> modules;
+    private ArrayList<Task> tasks;
     private String notes;
     private AssessmentProgress progress;
     private boolean completed;
     
-//    public Assessment(String assessmentCode, String assessmentTitle, double weighting,
-//        double grade, Deadline deadline, ArrayList<Task> taskList, ArrayList<Module> modules, 
-//        String notes, Progress progress){
-//        this.assessmentCode = assessmentCode;
-//        this.assessmentTitle = assessmentTitle;
-//        this.weighting = weighting;
-//        this.grade = grade;
-//        this.deadline = deadline;
-//        this.taskList = taskList;
-//        this.notes = notes;
-//        this.progress = progress;
-//    this.modules = modules;
-//    }
+    public Assessment(String assessmentCode, String assessmentTitle, double weighting,
+        double grade, Deadline deadline, ArrayList<Task> taskList, 
+        String notes, AssessmentProgress progress){
+        this.assessmentCode = assessmentCode;
+        this.assessmentTitle = assessmentTitle;
+        this.weighting = weighting;
+        this.grade = grade;
+        this.deadline = deadline;
+        this.tasks = tasks;
+        this.notes = notes;
+        this.progress = progress;
+    }
     
     public String getAssessmentCode(){
         return assessmentCode;
@@ -64,10 +62,16 @@ public class Assessment {
     public String getNotes(){
         return notes;
     }
-        
-//    public Progress getProgress(){
-//        return progress;
-//    }
+    
+    public double getProgress(){
+        int numberCompleted = 0;
+        for(Task task : tasks){
+            if(task.isCompleted()){
+                numberCompleted += 1;
+            }
+        }
+        return (numberCompleted/tasks.size())*100;
+    }
     
     public boolean isCompleted(){
         return completed;

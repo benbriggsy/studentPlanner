@@ -16,21 +16,21 @@ public class Task {
     private String taskName;
     private int taskID;
     private String notes;
-    private ArrayList<Activity> activityList;
+    private ArrayList<Activity> activities;
     private Assessment assessment;
     private double weighting;
-    //private Progress progress;
+    private boolean completed;
     
-//    Task(String taskName, int taskID, String notes, ArrayList<Activity> activityList, 
-//            Assessment assessment, double weighting, Progress progress ){
-//        this.taskName = taskName;
-//        this.taskID = taskID;
-//        this.assessment = assessment;
-//        this.notes = notes;
-//        this.weighting = weighting;
-//        this.activityList = activityList;
-//        this.progress = progress;
-//    }
+    Task(String taskName, int taskID, String notes, ArrayList<Activity> activies, 
+            Assessment assessment, double weighting, boolean completed){
+        this.taskName = taskName;
+        this.taskID = taskID;
+        this.assessment = assessment;
+        this.notes = notes;
+        this.weighting = weighting;
+        this.activities = activies;
+        this.completed = completed;
+    }
     
     public int getTaskID(){
         return taskID;
@@ -45,7 +45,7 @@ public class Task {
     }
     
     public ArrayList<Activity> getActivities(){
-        return activityList;
+        return activities;
     }
     
     public double getWeighting(){
@@ -56,15 +56,21 @@ public class Task {
         return notes;
     }
     
-//    public String getProgress(){
-//        return progress;
-//    }
+    public double getProgress(){
+        int numberCompleted = 0;
+        for(Activity activity : activities){
+            if(activity.isCompleted()){
+                numberCompleted += 1;
+            }
+        }
+        return (numberCompleted/activities.size())*100;
+    }
     
-//    public void updateProgress(Progress progress){
-//        this.progress = progress;
-//    }
+    public boolean isCompleted(){
+        return completed;
+    }
     
     public void addActivity(Activity a){
-        activityList.add(a);
+        activities.add(a);
     }
 }

@@ -27,4 +27,13 @@ public class Exam extends Assessment {
     public String getExamRoom(){
         return examRoom;
     }
+    
+    @Override
+    public String toString(){
+        StringBuilder str = new StringBuilder(super.toString());
+        String summative;
+        str.append("Room:\t\t").append(examRoom).append("\n");
+        str.append("Duration:\t").append(examDuration).append(" minutes\n");
+        return str.toString();
+    }
 }

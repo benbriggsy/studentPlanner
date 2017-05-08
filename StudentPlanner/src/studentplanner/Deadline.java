@@ -27,5 +27,11 @@ public class Deadline {
    void setDate(Date date){
        this.dateTime = date;
    }
+   
+   @Override
+    public String toString(){
+        return dateTime.toString();
+    }
+   
     
 }

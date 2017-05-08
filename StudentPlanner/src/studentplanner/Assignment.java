@@ -24,6 +24,20 @@ public class Assignment extends Assessment {
         this.isSummative = isSummative;
     }
 
+    @Override
+    public String toString(){
+        StringBuilder str = new StringBuilder(super.toString());
+        String summative;
+        if(isSummative){
+            summative = "Summative";
+        }
+        else{
+            summative = "Formative";
+        }
+        str.append(summative).append("\n");
+        return str.toString();
+    }
+    
     
     
     

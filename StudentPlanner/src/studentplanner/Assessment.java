@@ -82,4 +82,14 @@ public abstract class Assessment {
     public void setDeadline(Deadline deadline){
         this.deadline = deadline;     
     }
+    
+     @Override
+    public String toString(){
+        StringBuilder str = new StringBuilder();
+        str.append(assessmentTitle).append("\t").append(assessmentCode).append("\n");
+        str.append("Deadline:\t").append(deadline).append("\n");
+        str.append("Weighting:\t").append(weighting).append("\n");
+        str.append("Grade:\t\t").append(grade).append("\n");
+        return str.toString();
+    }
 }

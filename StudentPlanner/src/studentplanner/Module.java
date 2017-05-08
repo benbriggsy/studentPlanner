@@ -70,4 +70,8 @@ public class Module {
     public void setModuleCompleted(boolean c){
         moduleCompleted = c;
     }
+    
+    public void addAssessment(Assessment assessment){
+        assessments.add(assessment);
+    }
 }

@@ -11,20 +11,23 @@ public class DashboardGUI extends javax.swing.JFrame {
     private ActivityController acc;
     private ModuleController mc;
     private TaskController tc;
+    private int backIndex = -1;
+    private ArrayList<String> backList;
     
     public DashboardGUI() {
         initComponents();
-        dc = new DashboardController();
-        dc.getStudent().getModules().add(new Module("CMP 450A", "Software Engineering", new Admin("Joost", "joost@uea.ac.uk")));     
+        //dc = new DashboardController();
+        //dc.getStudent().getModules().add(new Module("CMP 450A", "Software Engineering", new Admin("Joost", "joost@uea.ac.uk")));     
         //dc.uploadSemesterFile();
+        backList = new ArrayList<>();
     }
     
     public void loadControllers(){
-        Student s = dc.getStudent();
-        asc = new AssessmentController(s);
-        acc = new ActivityController(s);
-        mc = new ModuleController(s);
-        tc = new TaskController(s);  
+//        Student s = dc.getStudent();
+//        asc = new AssessmentController(s);
+//        acc = new ActivityController(s);
+//        mc = new ModuleController(s);
+//        tc = new TaskController(s);  
     }
     
                 
@@ -45,6 +48,12 @@ public class DashboardGUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         GUI = new javax.swing.JPanel();
+        LoginGUI = new javax.swing.JPanel();
+        loginPasswordTextField = new javax.swing.JTextField();
+        loginPasswordLabel = new javax.swing.JLabel();
+        loginUsernameLabel1 = new javax.swing.JLabel();
+        loginUsernameTextField = new javax.swing.JTextField();
+        loginLoginButton = new javax.swing.JButton();
         MilestoneGUI = new javax.swing.JPanel();
         milestoneLabel = new javax.swing.JLabel();
         GradePlannerGUI = new javax.swing.JPanel();
@@ -115,6 +124,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         modulesPanel = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         modulesTable = new javax.swing.JTable();
+        dashboardUsernameLabel = new javax.swing.JLabel();
         milestonesPanel = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         activitiesTable2 = new javax.swing.JTable();
@@ -150,6 +160,51 @@ public class DashboardGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         GUI.setLayout(new java.awt.CardLayout());
+
+        loginPasswordLabel.setText("Password:");
+
+        loginUsernameLabel1.setText("Username:");
+
+        loginLoginButton.setText("Login");
+        loginLoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginLoginButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout LoginGUILayout = new javax.swing.GroupLayout(LoginGUI);
+        LoginGUI.setLayout(LoginGUILayout);
+        LoginGUILayout.setHorizontalGroup(
+            LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginGUILayout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(loginPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loginUsernameLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(loginLoginButton)
+                    .addComponent(loginUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(192, Short.MAX_VALUE))
+        );
+        LoginGUILayout.setVerticalGroup(
+            LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginGUILayout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(loginUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginUsernameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(loginPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(loginLoginButton)
+                .addContainerGap(467, Short.MAX_VALUE))
+        );
+
+        GUI.add(LoginGUI, "card9");
 
         milestoneLabel.setText("Milestone");
 
@@ -627,7 +682,10 @@ public class DashboardGUI extends javax.swing.JFrame {
         modulesPanel.setLayout(modulesPanelLayout);
         modulesPanelLayout.setHorizontalGroup(
             modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 303, Short.MAX_VALUE)
+            .addGroup(modulesPanelLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(dashboardUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(125, Short.MAX_VALUE))
             .addGroup(modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(modulesPanelLayout.createSequentialGroup()
                     .addGap(32, 32, 32)
@@ -636,7 +694,9 @@ public class DashboardGUI extends javax.swing.JFrame {
         );
         modulesPanelLayout.setVerticalGroup(
             modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 196, Short.MAX_VALUE)
+            .addGroup(modulesPanelLayout.createSequentialGroup()
+                .addComponent(dashboardUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 173, Short.MAX_VALUE))
             .addGroup(modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(modulesPanelLayout.createSequentialGroup()
                     .addGap(35, 35, 35)
@@ -760,8 +820,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private int backIndex = -1;
-    ArrayList<String> backList = new ArrayList<>();
+   
     
     private void viewDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDashboardButtonActionPerformed
         CardLayout card = (CardLayout)GUI.getLayout();
@@ -849,6 +908,28 @@ public class DashboardGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_assessmentNameTextFieldActionPerformed
 
+    private void loginLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginLoginButtonActionPerformed
+        // TODO add your handling code here:
+        
+        if (LoginController.checkCredentials(loginUsernameTextField.getText(), loginPasswordTextField.getText())){
+            CardLayout card = (CardLayout)GUI.getLayout();
+            card.show(GUI, "dashboardCard");        
+            backList.add("dashboardCard");
+            backIndex++;
+            //dc.getStudent().setSemesterFile();
+            asc = new AssessmentController(dc);
+            acc = new ActivityController(dc);
+            mc = new ModuleController(dc);
+            tc = new TaskController(dc);  
+            dashboardUsernameLabel.setText(dc.getStudent().getFullName());
+        }
+        else{
+            
+        }
+        
+        
+    }//GEN-LAST:event_loginLoginButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -890,6 +971,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JPanel DashboardGUI;
     private javax.swing.JPanel GUI;
     private javax.swing.JPanel GradePlannerGUI;
+    private javax.swing.JPanel LoginGUI;
     private javax.swing.JPanel MilestoneGUI;
     private javax.swing.JPanel ModuleGUI;
     private javax.swing.JPanel TaskGUI;
@@ -926,6 +1008,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JLabel dashboardLabel;
     private javax.swing.JLabel dashboardTitleLabel;
+    private javax.swing.JLabel dashboardUsernameLabel;
     private javax.swing.JPanel deadlinesPanel;
     private javax.swing.JButton gradePlannerButton;
     private javax.swing.JButton gradePlannerButton1;
@@ -943,6 +1026,11 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JButton loginLoginButton;
+    private javax.swing.JLabel loginPasswordLabel;
+    private javax.swing.JTextField loginPasswordTextField;
+    private javax.swing.JLabel loginUsernameLabel1;
+    private javax.swing.JTextField loginUsernameTextField;
     private javax.swing.JButton milestoneButton;
     private javax.swing.JLabel milestoneLabel;
     private javax.swing.JPanel milestonesPanel;

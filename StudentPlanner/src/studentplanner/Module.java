@@ -70,4 +70,18 @@ public class Module {
     public void setModuleCompleted(boolean c){
         moduleCompleted = c;
     }
+    
+    public void addAssessment(Assessment assessment){
+        assessments.add(assessment);
+    }
+    
+    @Override
+    public String toString(){
+        StringBuilder str = new StringBuilder();
+        for(int i=0; i<assessments.size(); i++){
+        str.append(assessments.get(i)).append("\n");
+        
+        }
+        return str.toString();
+    }
 }

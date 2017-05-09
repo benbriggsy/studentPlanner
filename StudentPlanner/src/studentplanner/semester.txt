@@ -1,0 +1,3 @@
+CMP-4015Y,Architectures and Operating Systems,Gavin Cawley,g.cawley@uea.ac.uk
+E001,Exam 1,30.0,2017-01-04 15:00:00,A101,120
+A001,Assignment 1,40.0,2017-01-04 15:00:00,"Paper copy to HUB","Group",0

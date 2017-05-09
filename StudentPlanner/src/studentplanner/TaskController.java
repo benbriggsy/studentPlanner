@@ -23,7 +23,7 @@ public class TaskController {
         this.student = student;
     }
     
-    public int getTaskID(){
+    public String getTaskID(){
         return task.getTaskID();
     }
     

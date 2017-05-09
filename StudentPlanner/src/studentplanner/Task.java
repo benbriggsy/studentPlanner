@@ -14,14 +14,14 @@ import java.util.ArrayList;
 public class Task {
     
     private String taskName;
-    private int taskID;
+    private String taskID;
     private String notes;
     private ArrayList<Activity> activities;
     private Assessment assessment;
     private double weighting;
     private boolean completed;
     
-    Task(String taskName, int taskID, String notes, ArrayList<Activity> activies, 
+    Task(String taskName, String taskID, String notes, ArrayList<Activity> activies, 
             Assessment assessment, double weighting, boolean completed){
         this.taskName = taskName;
         this.taskID = taskID;
@@ -32,7 +32,7 @@ public class Task {
         this.completed = completed;
     }
     
-    public int getTaskID(){
+    public String getTaskID(){
         return taskID;
     }
     

@@ -18,6 +18,12 @@ public class Dashboard {
 
     ArrayList<Module> modules;
     ArrayList<Milestone> milestones;
+    
+    public Dashboard(){
+        modules = new ArrayList();
+        milestones = new ArrayList();
+        
+    }
 
     void setSemesterFile(File semesterFile) throws FileNotFoundException, IOException, ParseException {
         InputStream semesterFileStream = new FileInputStream(semesterFile);

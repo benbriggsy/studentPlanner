@@ -26,16 +26,17 @@ public class Student {
     //DASHBOARD CLASS MUST BE IMPLEMENTED FIRST
     private Dashboard dashboard;
     
-//    public Student(int studentID, String fullName, String emailAddress, 
-//            String schoolOfStudy, int yearOfStudy, Dashboard dashboard){
-//        this.studentID = studentID;
-//        this.fullName = fullName;
-//        this.emailAddress = emailAddress;
-//        this.schoolOfStudy = schoolOfStudy;
-//        this.yearOfStudy = yearOfStudy;
-//        this.dashboard = dashboard;
-//    }
-//    
+    public Student(int studentID, String fullName, String emailAddress, 
+            String schoolOfStudy, int yearOfStudy){
+        this.studentID = studentID;
+        this.fullName = fullName;
+        this.emailAddress = emailAddress;
+        this.schoolOfStudy = schoolOfStudy;
+        this.yearOfStudy = yearOfStudy;
+        modules = new ArrayList();
+        milestones = new ArrayList();
+    }
+    
     public int getStudentID(){
         return studentID;
     }

@@ -15,7 +15,8 @@ public class DashboardGUI extends javax.swing.JFrame {
     public DashboardGUI() {
         initComponents();
         dc = new DashboardController();
-        dc.uploadSemesterFile();
+        dc.getStudent().getModules().add(new Module("CMP 450A", "Software Engineering", new Admin("Joost", "joost@uea.ac.uk")));     
+        //dc.uploadSemesterFile();
     }
     
     public void loadControllers(){
@@ -23,7 +24,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         asc = new AssessmentController(s);
         acc = new ActivityController(s);
         mc = new ModuleController(s);
-        tc = new TaskController(s);
+        tc = new TaskController(s);  
     }
     
                 
@@ -52,6 +53,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         assessmentButton = new javax.swing.JButton();
         moduleLabel = new javax.swing.JLabel();
         gradePlannerButton1 = new javax.swing.JButton();
+        moduleTitle = new javax.swing.JLabel();
         AssessmentGUI = new javax.swing.JPanel();
         taskButton = new javax.swing.JButton();
         assessmentLabel = new javax.swing.JLabel();
@@ -216,8 +218,10 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addGroup(ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(moduleLabel)
                     .addComponent(gradePlannerButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(assessmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(403, Short.MAX_VALUE))
+                    .addComponent(assessmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addGap(104, 104, 104)
+                .addComponent(moduleTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         ModuleGUILayout.setVerticalGroup(
             ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,10 +229,12 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(moduleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(assessmentButton)
+                .addGroup(ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(assessmentButton)
+                    .addComponent(moduleTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gradePlannerButton1)
-                .addContainerGap(313, Short.MAX_VALUE))
+                .addContainerGap(629, Short.MAX_VALUE))
         );
 
         GUI.add(ModuleGUI, "moduleCard");
@@ -735,7 +741,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(backButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(GUI, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
+                .addComponent(GUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -769,6 +775,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         card.show(GUI, "moduleCard");        
         backList.add("dashboardCard");
         backIndex++;
+        moduleTitle.setText(dc.getStudent().getModule(0).getModuleName());
     }//GEN-LAST:event_moduleButtonActionPerformed
 
     private void taskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskButtonActionPerformed
@@ -941,6 +948,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JPanel milestonesPanel;
     private javax.swing.JButton moduleButton;
     private javax.swing.JLabel moduleLabel;
+    private javax.swing.JLabel moduleTitle;
     private javax.swing.JPanel modulesPanel;
     private javax.swing.JTable modulesTable;
     private javax.swing.JLabel taskAssessmentLabel;

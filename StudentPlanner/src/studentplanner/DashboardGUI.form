@@ -117,11 +117,14 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="loginLoginButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="loginUsernameTextField" min="-2" pref="113" max="-2" attributes="0"/>
-                          <Component id="loginPasswordTextField" min="-2" pref="113" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="loginLoginButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="loginUsernameTextField" pref="134" max="32767" attributes="0"/>
+                              <Component id="loginPasswordTextField" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="loginWrongPasswordLabel" min="-2" pref="184" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="192" max="32767" attributes="0"/>
+                      <EmptySpace pref="121" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -138,7 +141,9 @@
                           <Component id="loginPasswordLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="loginPasswordTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="loginWrongPasswordLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="loginLoginButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="467" max="32767" attributes="0"/>
                   </Group>
@@ -167,6 +172,17 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginLoginButtonActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="loginWrongPasswordLabel">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Wrong password, please try again."/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="loginWrongPasswordLabel.setVisible(false);"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

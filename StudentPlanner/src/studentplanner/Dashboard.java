@@ -24,10 +24,15 @@ public class Dashboard {
     public Dashboard(){
         //modules = new ArrayList();
         milestones = new ArrayList();
+//        Admin admin = new Admin("GEOFF", "EMAILHERE");
+//        Module module = new Module("SE 1", "SE1T", admin);
+//        ArrayList<Module> ms = new ArrayList();
+//        ms.add(module);
+//        student = new Student(001, "Phillip J Perks", "phillip@uea.ac.uk", 
+//            "CMP", 2, ms);
     }  
-    
-    
-    static Student setSemesterFile(File semesterFile) throws FileNotFoundException, IOException, ParseException {
+        
+    public void setSemesterFile(File semesterFile) throws FileNotFoundException, IOException, ParseException {
         Scanner fileScan = new Scanner( semesterFile );
         
         ArrayList<Module> modules = new ArrayList<>();
@@ -84,12 +89,12 @@ public class Dashboard {
                             module.getAssessmentByIndex(module.getAssessments().size()-1).getTask(j).setAssessment(assignment);
                         }
                         
-                        for(Task task: module.getAssessmentByIndex(module.getAssessments().size()-1).getTasks()){
-                            System.out.println(task);
-                            for(Activity activity: task.getActivities()){
-                                System.out.println(activity);
-                            }
-                        }
+//                        for(Task task: module.getAssessmentByIndex(module.getAssessments().size()-1).getTasks()){
+//                            System.out.println(task);
+//                            for(Activity activity: task.getActivities()){
+//                                System.out.println(activity);
+//                            }
+//                        }
                         break;
                     case 'E':
                         Date examDate = formatter.parse(details[i+4]);
@@ -130,23 +135,27 @@ public class Dashboard {
                         }
                         
                         
-                        for(Task task: module.getAssessmentByIndex(module.getAssessments().size()-1).getTasks()){
-                            System.out.println(task);
-                            for(Activity activity: task.getActivities()){
-                                System.out.println(activity);
-                            }
-                        }
+//                        for(Task task: module.getAssessmentByIndex(module.getAssessments().size()-1).getTasks()){
+//                            System.out.println(task);
+//                            for(Activity activity: task.getActivities()){
+//                                System.out.println(activity);
+//                            }
+//                        }
                         break;
                 }
             }
             System.out.println(module);
             modules.add(module);
         }  
-        
-         Student student = new Student(001, "Phillip Perks", "phillip@uea.ac.uk", 
+        student = new Student(001, "Phillip Perks", "phillip@uea.ac.uk", 
             "CMP", 2, modules);
-         
-         return student;
+//        Admin admin = new Admin("GEOFF", "EMAILHERE");
+//        Module module = new Module("SE 1", "SE1T", admin);
+//        ArrayList<Module> ms = new ArrayList();
+//        ms.add(module);
+//        student = new Student(001, "Phillip J Perks", "phillip@uea.ac.uk", 
+//            "CMP", 2, ms);
+//         return student;
     }
     
     static File updateFile(File semesterFile){
@@ -169,14 +178,14 @@ public class Dashboard {
         return milestones;
     }
     
-    public static void main(String[] args) throws IOException, ParseException{
-        File semesterFile = new File("semester.txt");
-        Student student = setSemesterFile(semesterFile);
-        System.out.println(student);
-        
-        System.out.println(student.getModule(0).getAssessmentByIndex(1));
-        
-    
-    }
+//    public static void main(String[] args) throws IOException, ParseException{
+//        File semesterFile = new File("semester.txt");
+//        Student student = setSemesterFile(semesterFile);
+//        System.out.println(student);
+//        
+//        System.out.println(student.getModule(0).getAssessmentByIndex(1));
+//        
+//    
+//    }
 
 }

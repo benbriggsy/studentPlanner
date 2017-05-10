@@ -23,7 +23,7 @@ public class Module {
         this.assessmentGrades = new ArrayList<>();
         this.currentGrade = 0.0;
         this.moduleCompleted = false;
-        this.notes = null;
+        this.notes = "";
     }
     
     public String getModuleCode(){

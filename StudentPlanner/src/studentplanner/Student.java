@@ -67,20 +67,24 @@ public class Student {
         return yearOfStudy;
     }
     
-    Module getModule(int i){
+    public Module getModule(int i){
         return modules.get(i);
     }
     
-    ArrayList<Module> getModules(){
+    public ArrayList<Module> getModules(){
         return modules;
     }
     
-    Milestone getMilestone(int i){
+    public Milestone getMilestone(int i){
         return milestones.get(i);
     }
     
-    ArrayList<Milestone> getMilestones(){
+    public ArrayList<Milestone> getMilestones(){
         return milestones;
+    }
+    
+    public void setFullName(String name){
+        fullName = name;
     }
     
     void setSemesterFile(File semesterFile) throws FileNotFoundException, IOException, ParseException {

@@ -2,7 +2,11 @@ package studentplanner;
 
 
 import java.awt.CardLayout;
+import java.io.FileNotFoundException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DashboardGUI extends javax.swing.JFrame {
 
@@ -16,7 +20,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     
     public DashboardGUI() {
         initComponents();
-        //dc = new DashboardController();
+        dc = new DashboardController();
         //dc.getStudent().getModules().add(new Module("CMP 450A", "Software Engineering", new Admin("Joost", "joost@uea.ac.uk")));     
         //dc.uploadSemesterFile();
         backList = new ArrayList<>();
@@ -54,6 +58,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         loginUsernameLabel1 = new javax.swing.JLabel();
         loginUsernameTextField = new javax.swing.JTextField();
         loginLoginButton = new javax.swing.JButton();
+        loginWrongPasswordLabel = new javax.swing.JLabel();
         MilestoneGUI = new javax.swing.JPanel();
         milestoneLabel = new javax.swing.JLabel();
         GradePlannerGUI = new javax.swing.JPanel();
@@ -172,6 +177,9 @@ public class DashboardGUI extends javax.swing.JFrame {
             }
         });
 
+        loginWrongPasswordLabel.setForeground(new java.awt.Color(255, 0, 0));
+        loginWrongPasswordLabel.setText("Wrong password, please try again.");
+
         javax.swing.GroupLayout LoginGUILayout = new javax.swing.GroupLayout(LoginGUI);
         LoginGUI.setLayout(LoginGUILayout);
         LoginGUILayout.setHorizontalGroup(
@@ -183,10 +191,12 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addComponent(loginUsernameLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(loginLoginButton)
-                    .addComponent(loginUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loginPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(192, Short.MAX_VALUE))
+                    .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(loginLoginButton)
+                        .addComponent(loginUsernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                        .addComponent(loginPasswordTextField))
+                    .addComponent(loginWrongPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         LoginGUILayout.setVerticalGroup(
             LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,10 +209,14 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loginPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(loginWrongPasswordLabel)
+                .addGap(12, 12, 12)
                 .addComponent(loginLoginButton)
                 .addContainerGap(467, Short.MAX_VALUE))
         );
+
+        loginWrongPasswordLabel.setVisible(false);
 
         GUI.add(LoginGUI, "card9");
 
@@ -916,15 +930,23 @@ public class DashboardGUI extends javax.swing.JFrame {
             card.show(GUI, "dashboardCard");        
             backList.add("dashboardCard");
             backIndex++;
-            //dc.getStudent().setSemesterFile();
-            asc = new AssessmentController(dc);
-            acc = new ActivityController(dc);
-            mc = new ModuleController(dc);
-            tc = new TaskController(dc);  
-            dashboardUsernameLabel.setText(dc.getStudent().getFullName());
+            try {
+                dc.uploadSemesterFile();
+                asc = new AssessmentController(dc);
+                acc = new ActivityController(dc);
+                mc = new ModuleController(dc);
+                tc = new TaskController(dc);
+                dc.getStudent();
+                dashboardUsernameLabel.setText(dc.getStudent().getFullName());
+            } catch (FileNotFoundException ex) {
+                dashboardUsernameLabel.setText("FileNotFoundException");
+            } catch (ParseException ex) {
+                dashboardUsernameLabel.setText("ParseException");
+            }
+            
         }
         else{
-            
+            loginWrongPasswordLabel.setVisible(true);
         }
         
         
@@ -1031,6 +1053,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JTextField loginPasswordTextField;
     private javax.swing.JLabel loginUsernameLabel1;
     private javax.swing.JTextField loginUsernameTextField;
+    private javax.swing.JLabel loginWrongPasswordLabel;
     private javax.swing.JButton milestoneButton;
     private javax.swing.JLabel milestoneLabel;
     private javax.swing.JPanel milestonesPanel;

@@ -29,7 +29,7 @@ public abstract class Assessment {
         this.weighting = weighting;
         this.grade = grade;
         this.deadline = deadline;
-        this.tasks = tasks;
+        this.tasks = taskList;
         this.notes = notes;
     }
     
@@ -57,6 +57,9 @@ public abstract class Assessment {
         return tasks;
     }
     
+    public Task getTask(int i){
+        return tasks.get(i);
+    }
     public String getNotes(){
         return notes;
     }
@@ -90,6 +93,7 @@ public abstract class Assessment {
         str.append("Deadline:\t").append(deadline).append("\n");
         str.append("Weighting:\t").append(weighting).append("\n");
         str.append("Grade:\t\t").append(grade).append("\n");
+        str.append("Notes: \t\t").append(notes).append("\n");
         return str.toString();
     }
 }

@@ -55,14 +55,14 @@ public class TaskController {
         //NOT SURE WHAT TO IMPLEMENT
     }
     
-    public void addActivity(String activityName, String notes, ArrayList<Task> taskList,
-            boolean completed, double weighting){
-        //CALCULATE NEXT ID HERE
-        int activityID = 0;
-        Activity a = new Activity(activityID, activityName, notes, taskList,
-            completed, weighting);
-        task.addActivity(a);
-    }
+//    public void addActivity(String activityName, String notes, ArrayList<Task> taskList,
+//            boolean completed, double weighting){
+//        //CALCULATE NEXT ID HERE
+//        int activityID = 0;
+//        Activity a = new Activity(activityID, activityName, notes, taskList,
+//            completed, weighting);
+//        task.addActivity(a);
+//    }
     
     public void displayGanttChart(){
         

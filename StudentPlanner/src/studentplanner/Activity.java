@@ -13,23 +13,22 @@ import java.util.ArrayList;
 public class Activity {
     
     private String activityName;
-    private int activityID;
+    private String activityID;
     private String notes;
-    private ArrayList<Task> taskList;
+    //private ArrayList<Task> taskList;
     private boolean completed;
     private double weighting;
     
-    public Activity(int activityID, String activityName, String notes, ArrayList<Task> taskList,
+    public Activity(String activityID, String activityName, String notes,
             boolean completed, double weighting){
         this.activityID = activityID;
         this.activityName = activityName;
         this.notes = notes;
-        this.taskList = taskList;
         this.completed = completed;
         this.weighting = weighting;
     }
     
-    public int getActivityID(){
+    public String getActivityID(){
         return activityID;
     }
     
@@ -37,9 +36,9 @@ public class Activity {
         return activityName;
     }
     
-    public ArrayList<Task> getTasks(){
-        return taskList;
-    }
+//    public ArrayList<Task> getTasks(){
+//        return taskList;
+//    }
     
     public String getNotes(){
         return notes;
@@ -53,11 +52,21 @@ public class Activity {
         return weighting;
     }
     
-    public void addTask(Task task){
-        taskList.add(task);
-    }
+//    public void addTask(Task task){
+//        taskList.add(task);
+//    }
     
     public void setAsCompleted(){
         completed = true;
+    }
+    
+    @Override
+    public String toString(){
+        StringBuilder str = new StringBuilder();
+        str.append(activityName).append("\t").append(activityID).append("\n");
+        str.append("Weighting:\t\t").append(weighting).append("\n");
+        str.append("Completed:\t\t").append(completed).append("\n");
+        str.append("Notes:\t\t").append(notes).append("\n");
+        return str.toString();
     }
 }

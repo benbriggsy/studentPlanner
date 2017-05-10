@@ -70,7 +70,18 @@ public class Task {
         return completed;
     }
     
+    public void setAssessment(Assessment assessment){
+        this.assessment = assessment;
+    }
     public void addActivity(Activity a){
         activities.add(a);
+    }
+    
+    @Override
+    public String toString(){
+        StringBuilder str = new StringBuilder();
+        str.append(taskName).append("\t").append(taskID).append("\n");
+        str.append("Assessment:\t\t").append(assessment.getAssessmentTitle()).append("\n");
+        return str.toString();
     }
 }

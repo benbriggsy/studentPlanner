@@ -23,7 +23,18 @@ public class Assignment extends Assessment {
         this.assignmentType = assignmentType;
         this.isSummative = isSummative;
     }
-
+    
+    public String getHandInProcedure(){
+        return handInProcedure;
+    }
+    
+    public String getAssignmentType(){
+        return assignmentType;
+    }
+    
+    public boolean getIsSummative(){
+        return isSummative;
+    }
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder(super.toString());

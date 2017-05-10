@@ -31,6 +31,7 @@ public abstract class Assessment {
         this.deadline = deadline;
         this.tasks = taskList;
         this.notes = notes;
+        this.completed = false;
     }
     
     public String getAssessmentCode(){
@@ -62,6 +63,10 @@ public abstract class Assessment {
     }
     public String getNotes(){
         return notes;
+    }
+    
+    public void setGrade(double g){
+        grade = g;
     }
     
     public double getProgress(){

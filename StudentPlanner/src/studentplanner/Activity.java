@@ -60,6 +60,21 @@ public class Activity {
         completed = true;
     }
     
+    public String activityToFile(){
+        String activity = "";
+        activity+=activityID;
+        activity+="~";
+        activity+=activityName;
+        activity+="~";
+        activity+=weighting;
+        activity+="~";
+        activity+=completed;
+        activity+="~";
+        activity+=notes;
+        
+        return activity;
+    }
+    
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder();

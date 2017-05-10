@@ -1,6 +1,7 @@
 package studentplanner;
 
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -54,6 +55,7 @@ public class ModuleController {
     public String getNotes(){
         return module.getNotes();
     }
+    
     
     public void addNote(String note){
         module.addNote(note);

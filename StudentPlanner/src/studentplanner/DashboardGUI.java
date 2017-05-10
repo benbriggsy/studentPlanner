@@ -68,6 +68,8 @@ public class DashboardGUI extends javax.swing.JFrame {
         moduleLabel = new javax.swing.JLabel();
         gradePlannerButton1 = new javax.swing.JButton();
         moduleTitle = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        moduleModuleTable = new javax.swing.JTable();
         AssessmentGUI = new javax.swing.JPanel();
         taskButton = new javax.swing.JButton();
         assessmentLabel = new javax.swing.JLabel();
@@ -126,13 +128,15 @@ public class DashboardGUI extends javax.swing.JFrame {
         gradePlannerButton = new javax.swing.JButton();
         dashboardTitleLabel = new javax.swing.JLabel();
         deadlinesPanel = new javax.swing.JPanel();
-        modulesPanel = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        modulesTable = new javax.swing.JTable();
+        missedDeadlinesTable = new javax.swing.JTable();
+        modulesPanel = new javax.swing.JPanel();
         dashboardUsernameLabel = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        upcomingDeadlinesTable = new javax.swing.JTable();
         milestonesPanel = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        activitiesTable2 = new javax.swing.JTable();
+        completedTasksDeadlinesTable = new javax.swing.JTable();
         viewDashboardButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
 
@@ -278,18 +282,25 @@ public class DashboardGUI extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane10.setViewportView(moduleModuleTable);
+
         javax.swing.GroupLayout ModuleGUILayout = new javax.swing.GroupLayout(ModuleGUI);
         ModuleGUI.setLayout(ModuleGUILayout);
         ModuleGUILayout.setHorizontalGroup(
             ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ModuleGUILayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(moduleLabel)
-                    .addComponent(gradePlannerButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(assessmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                .addGap(104, 104, 104)
-                .addComponent(moduleTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ModuleGUILayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(moduleLabel)
+                            .addComponent(gradePlannerButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(assessmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                        .addGap(104, 104, 104)
+                        .addComponent(moduleTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ModuleGUILayout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(197, Short.MAX_VALUE))
         );
         ModuleGUILayout.setVerticalGroup(
@@ -303,7 +314,9 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addComponent(moduleTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gradePlannerButton1)
-                .addContainerGap(629, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(440, Short.MAX_VALUE))
         );
 
         GUI.add(ModuleGUI, "moduleCard");
@@ -679,18 +692,26 @@ public class DashboardGUI extends javax.swing.JFrame {
         dashboardTitleLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         dashboardTitleLabel.setText("Dashboard");
 
+        jScrollPane8.setViewportView(missedDeadlinesTable);
+
         javax.swing.GroupLayout deadlinesPanelLayout = new javax.swing.GroupLayout(deadlinesPanel);
         deadlinesPanel.setLayout(deadlinesPanelLayout);
         deadlinesPanelLayout.setHorizontalGroup(
             deadlinesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, deadlinesPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         deadlinesPanelLayout.setVerticalGroup(
             deadlinesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGroup(deadlinesPanelLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
-        jScrollPane8.setViewportView(modulesTable);
+        jScrollPane9.setViewportView(upcomingDeadlinesTable);
 
         javax.swing.GroupLayout modulesPanelLayout = new javax.swing.GroupLayout(modulesPanel);
         modulesPanel.setLayout(modulesPanelLayout);
@@ -701,10 +722,10 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(dashboardUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(125, Short.MAX_VALUE))
             .addGroup(modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(modulesPanelLayout.createSequentialGroup()
-                    .addGap(32, 32, 32)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(33, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modulesPanelLayout.createSequentialGroup()
+                    .addContainerGap(42, Short.MAX_VALUE)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(23, 23, 23)))
         );
         modulesPanelLayout.setVerticalGroup(
             modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -712,13 +733,13 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(dashboardUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 173, Short.MAX_VALUE))
             .addGroup(modulesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(modulesPanelLayout.createSequentialGroup()
-                    .addGap(35, 35, 35)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(36, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modulesPanelLayout.createSequentialGroup()
+                    .addContainerGap(45, Short.MAX_VALUE)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(26, 26, 26)))
         );
 
-        jScrollPane7.setViewportView(activitiesTable2);
+        jScrollPane7.setViewportView(completedTasksDeadlinesTable);
 
         javax.swing.GroupLayout milestonesPanelLayout = new javax.swing.GroupLayout(milestonesPanel);
         milestonesPanel.setLayout(milestonesPanelLayout);
@@ -759,7 +780,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addGroup(DashboardGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DashboardGUILayout.createSequentialGroup()
                         .addComponent(dashboardTitleLabel)
-                        .addGap(0, 162, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(deadlinesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -849,6 +870,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         backList.add("dashboardCard");
         backIndex++;
         moduleTitle.setText(dc.getStudent().getModule(0).getModuleName());
+        moduleModuleTable.setModel(dc.viewModules());
     }//GEN-LAST:event_moduleButtonActionPerformed
 
     private void taskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskButtonActionPerformed
@@ -998,7 +1020,6 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JPanel ModuleGUI;
     private javax.swing.JPanel TaskGUI;
     private javax.swing.JTable activitiesTable;
-    private javax.swing.JTable activitiesTable2;
     private javax.swing.JButton activityButton;
     private javax.swing.JCheckBox activityCompletedCheckBox;
     private javax.swing.JLabel activityCompletedLabel;
@@ -1028,6 +1049,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel assessmentWeightingLabel;
     private javax.swing.JTextField assessmentWeightingTextField;
     private javax.swing.JButton backButton;
+    private javax.swing.JTable completedTasksDeadlinesTable;
     private javax.swing.JLabel dashboardLabel;
     private javax.swing.JLabel dashboardTitleLabel;
     private javax.swing.JLabel dashboardUsernameLabel;
@@ -1039,6 +1061,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1046,6 +1069,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JButton loginLoginButton;
@@ -1057,11 +1081,12 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JButton milestoneButton;
     private javax.swing.JLabel milestoneLabel;
     private javax.swing.JPanel milestonesPanel;
+    private javax.swing.JTable missedDeadlinesTable;
     private javax.swing.JButton moduleButton;
     private javax.swing.JLabel moduleLabel;
+    private javax.swing.JTable moduleModuleTable;
     private javax.swing.JLabel moduleTitle;
     private javax.swing.JPanel modulesPanel;
-    private javax.swing.JTable modulesTable;
     private javax.swing.JLabel taskAssessmentLabel;
     private javax.swing.JTextField taskAssessmentTextField;
     private javax.swing.JButton taskButton;
@@ -1075,6 +1100,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel taskWeightLabel;
     private javax.swing.JTextField taskWeightTextField;
     private javax.swing.JLabel titleLabel1;
+    private javax.swing.JTable upcomingDeadlinesTable;
     private javax.swing.JButton viewDashboardButton;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables

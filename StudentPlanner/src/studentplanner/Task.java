@@ -77,6 +77,27 @@ public class Task {
         activities.add(a);
     }
     
+    public String taskToFile(){
+        String task = "";
+        task+=taskID;
+        task+="#";
+        task+=taskName;
+        task+="#";
+        task+=weighting;
+        task+="#";
+        task+=completed;
+        task+="#";
+        for(Activity taskActivity: activities){
+            task+=taskActivity.activityToFile();
+            task+="~";
+        }
+        task = task.substring(0,task.length()-1);
+        task+="#";
+        task+=notes;
+        
+        return task;
+    }
+    
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder();

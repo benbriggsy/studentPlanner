@@ -147,19 +147,10 @@ public class Dashboard {
             System.out.println(module);
             modules.add(module);
         }  
+        
         student = new Student(001, "Phillip Perks", "phillip@uea.ac.uk", 
             "CMP", 2, modules);
-//        Admin admin = new Admin("GEOFF", "EMAILHERE");
-//        Module module = new Module("SE 1", "SE1T", admin);
-//        ArrayList<Module> ms = new ArrayList();
-//        ms.add(module);
-//        student = new Student(001, "Phillip J Perks", "phillip@uea.ac.uk", 
-//            "CMP", 2, ms);
-//         return student;
-    }
-    
-    static File updateFile(File semesterFile){
-        return semesterFile;
+         
     }
 
 //    Module getModule(int i) {
@@ -187,5 +178,41 @@ public class Dashboard {
 //        
 //    
 //    }
+    public static void main(String[] args) throws IOException, ParseException{
+//        File semesterFile = new File("semester.txt");
+//        Student student = setSemesterFile(semesterFile);
+//        System.out.println(student);
+//        
+////        Date date = new Date();
+////        Deadline deadline = new Deadline(date);
+////        ArrayList<Task> tasks = new ArrayList<>();
+////        Assignment assignment = new Assignment("Online", "Individual", true, "A002", "Assessment 2", 35.0, 0.0, deadline, tasks, "notes" );
+////        student.getModule(0).addAssessment(assignment);
+////        
+////        System.out.println(student.getModule(0).getAssessmentByIndex(2));
+//    
+//
+//    if(student.getModule(0).getAssessmentByIndex(1) instanceof Assignment){
+//        Assignment assignment = (Assignment)student.getModule(0).getAssessmentByIndex(1);
+//        assignment.setGrade(70.0);
+//    student.updateFileForAssessment(semesterFile,student.getModule(0) , assignment);
+//    }
+//    
+//        Scanner fileScan = new Scanner( student.semesterFile );
+//        String [] module = fileScan.nextLine().split("/");
+//        String moduleString ="";
+//                    moduleString += module[0] + "/";
+//                    moduleString += module[1] + "/";
+//                    moduleString += module[2] + "/";
+//                    moduleString += module[3] + "/";
+//                    
+//                    for(int i=4; i< module.length; i++){
+//                        moduleString += module[i] + "/";
+//                    }
+//                    moduleString = moduleString.substring(0,moduleString.length()-1);
+//                    
+//                    System.out.println(moduleString);
+//
+    }
 
 }

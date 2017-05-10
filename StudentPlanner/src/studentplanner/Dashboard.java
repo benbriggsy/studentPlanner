@@ -19,6 +19,14 @@ public class Dashboard {
     //ArrayList<Module> modules;
     ArrayList<Milestone> milestones;
     Student student;
+
+    
+    public Dashboard(){
+        //modules = new ArrayList();
+        milestones = new ArrayList();
+    }  
+    
+    
     static Student setSemesterFile(File semesterFile) throws FileNotFoundException, IOException, ParseException {
         Scanner fileScan = new Scanner( semesterFile );
         

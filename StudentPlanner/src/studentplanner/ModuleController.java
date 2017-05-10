@@ -7,12 +7,13 @@ import java.util.ArrayList;
  * @author phillipperks
  */
 public class ModuleController {
-    private DashboardController dashboard;
     private Module module;
-    private Student student;
+    private DashboardController dashboard;  
     
-    public ModuleController(Student student){
-        this.student = student;
+    public ModuleController(DashboardController dashboard){
+        //this.assessment = assessment;
+        //this.task = task;
+        this.dashboard = dashboard;
     }
     
     public Module getModule(){

@@ -16,6 +16,10 @@ public class DashboardController {
     private Student student;
     //private MilestoneController milestoneController;
     
+   public DashboardController(){
+       student = new Student(1, "ching", "chong", 
+            "CMP", 2);
+   }
     public Student getStudent(){
         return student;
         

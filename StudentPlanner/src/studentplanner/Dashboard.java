@@ -172,7 +172,9 @@ public class Dashboard {
     public static void main(String[] args) throws IOException, ParseException{
         File semesterFile = new File("semester.txt");
         Student student = setSemesterFile(semesterFile);
+        System.out.println(student);
         
+        System.out.println(student.getModule(0).getAssessmentByIndex(1));
         
     
     }

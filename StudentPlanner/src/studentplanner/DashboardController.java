@@ -23,14 +23,7 @@ public class DashboardController {
     
     public DashboardController() throws FileNotFoundException, IOException, ParseException {
         File semesterFile = new File("semester.txt");
-        //student = new Student(semesterFile);
-        Admin admin = new Admin("GEOFF", "EMAILHERE");
-        Module module = new Module("SE 1", "SE1T", admin);
-        ArrayList<Module> ms = new ArrayList();
-        ms.add(module);
-        ArrayList<Milestone> milestones = new ArrayList();
-        student = new Student(1,"Phillip Perks","phillip@uea.ac.uk","CMP"
-                ,2, ms);
+        student = new Student(semesterFile);       
     }
     
     public Student getStudent(){

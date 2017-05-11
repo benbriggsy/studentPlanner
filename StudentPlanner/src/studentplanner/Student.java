@@ -35,9 +35,8 @@ public class Student {
     private int yearOfStudy;
     private ArrayList<Module> modules;
     private ArrayList<Milestone> milestones;
-    //DASHBOARD CLASS MUST BE IMPLEMENTED FIRST
-    private Dashboard dashboard;
-    public File semesterFile;
+    //private Dashboard dashboard;
+    private File semesterFile;
     
     public Student(int studentID, String fullName, String emailAddress, 
             String schoolOfStudy, int yearOfStudy, ArrayList<Module> modules){
@@ -47,7 +46,6 @@ public class Student {
         this.schoolOfStudy = schoolOfStudy;
         this.yearOfStudy = yearOfStudy;
         this.modules = modules;
-        //this.semesterFile = semesterFile;
     }
     
     public Student(File semesterFile) throws FileNotFoundException, IOException, ParseException{
@@ -158,8 +156,6 @@ public class Student {
         ms.add(module);
         studentID = 1;
         fullName = "Phillip Perks";
-        userName = "bmp14dhs";
-        password =  "mypass";
         emailAddress = "phillip@uea.ac.uk";
         schoolOfStudy = "CMP";
         yearOfStudy = 2;

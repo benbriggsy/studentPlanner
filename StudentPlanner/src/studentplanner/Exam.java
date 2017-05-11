@@ -28,6 +28,10 @@ public class Exam extends Assessment {
         return examRoom;
     }
     
+    public int getExamDuration(){
+        return examDuration;
+    }
+    
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder(super.toString());

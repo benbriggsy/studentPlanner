@@ -30,7 +30,9 @@ public class Student {
     private String userName;
     private String password;
     private String emailAddress;
-    //THIS CAN BE AN ENUM
+//    private enum schoolOfStudy{
+//        AMA, BIO, CHE, CMP, DEV, ECO, EDU, ENV, HIS, HSC, LAW, LDC, MED, MTH, NBS, PHA, PPL, SWK
+//    }
     private String schoolOfStudy;
     private int yearOfStudy;
     private ArrayList<Module> modules;

@@ -32,17 +32,7 @@ public class DashboardController {
     public Student getStudent() {
         return student;
     }
-
-//    private int studentID;
-//    private String fullName;
-//    private String userName;
-//    private String password;
-//    private String emailAddress;
-//    //THIS CAN BE AN ENUM
-//    private String schoolOfStudy;
-//    private int yearOfStudy;
-//    private ArrayList<Module> modules;
-//    private ArrayList<Milestone> milestones;
+    
     public String getStudentFullName() {
         return student.getFullName();
     }
@@ -61,6 +51,14 @@ public class DashboardController {
 
     public int getStudentYearOfStudy() {
         return student.getYearOfStudy();
+    }
+    
+    public Module getStudentModule(int i){
+        return student.getModule(i);
+    }
+    
+    public Milestone getStudentMilestone(int i){
+        return student.getMilestone(i);
     }
     
     public ArrayList<Module> getStudentModuleList(){

@@ -1179,7 +1179,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         card.show(GUI, "card11");        
         backList.add("moduleCard");
         backIndex++;
-        moduleNameTextField.setText(dc.;
+        moduleNameTextField.setText(dc.getStudentModuleList().get(i).getModuleName());
     }//GEN-LAST:event_moduleModuleTableMouseClicked
 
     /**

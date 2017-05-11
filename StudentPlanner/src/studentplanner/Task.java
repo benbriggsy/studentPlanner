@@ -40,6 +40,10 @@ public class Task {
         return taskName;
     }
     
+    public void changeTaskName(String name){
+        taskName = name;
+    }
+    
     public Assessment getAssessment(){
         return assessment;
     }
@@ -48,6 +52,9 @@ public class Task {
         return activities;
     }
     
+    public Activity getActivityByIndex(int i){
+        return activities.get(i);
+    }
     public double getWeighting(){
         return weighting;
     }
@@ -70,6 +77,9 @@ public class Task {
         return completed;
     }
     
+    public void setAsCompleted(){
+        completed = true;
+    }
     public void setAssessment(Assessment assessment){
         this.assessment = assessment;
     }

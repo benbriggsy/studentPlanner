@@ -32,7 +32,7 @@ public class Dashboard {
 //            "CMP", 2, ms);
     }  
         
-    public void setSemesterFile(File semesterFile) throws FileNotFoundException, IOException, ParseException {
+    public static Student setSemesterFile(File semesterFile) throws FileNotFoundException, IOException, ParseException {
         Scanner fileScan = new Scanner( semesterFile );
         
         ArrayList<Module> modules = new ArrayList<>();
@@ -148,8 +148,10 @@ public class Dashboard {
             modules.add(module);
         }  
         
-        student = new Student(001, "Phillip Perks", "phillip@uea.ac.uk", 
+        Student stu = new Student(001, "Phillip Perks", "phillip@uea.ac.uk", 
             "CMP", 2, modules);
+        stu.setFile(semesterFile);
+        return stu;
          
     }
 
@@ -179,26 +181,26 @@ public class Dashboard {
 //    
 //    }
     public static void main(String[] args) throws IOException, ParseException{
-//        File semesterFile = new File("semester.txt");
-//        Student student = setSemesterFile(semesterFile);
-//        System.out.println(student);
+        File semesterFile = new File("semester.txt");
+        Student student = setSemesterFile(semesterFile);
+        System.out.println(student);
+        
+//        Date date = new Date();
+//        Deadline deadline = new Deadline(date);
+//        ArrayList<Task> tasks = new ArrayList<>();
+//        Assignment assignment = new Assignment("Online", "Individual", true, "A002", "Assessment 2", 35.0, 0.0, deadline, tasks, "notes" );
+//        student.getModule(0).addAssessment(assignment);
 //        
-////        Date date = new Date();
-////        Deadline deadline = new Deadline(date);
-////        ArrayList<Task> tasks = new ArrayList<>();
-////        Assignment assignment = new Assignment("Online", "Individual", true, "A002", "Assessment 2", 35.0, 0.0, deadline, tasks, "notes" );
-////        student.getModule(0).addAssessment(assignment);
-////        
-////        System.out.println(student.getModule(0).getAssessmentByIndex(2));
-//    
-//
-//    if(student.getModule(0).getAssessmentByIndex(1) instanceof Assignment){
-//        Assignment assignment = (Assignment)student.getModule(0).getAssessmentByIndex(1);
-//        assignment.setGrade(70.0);
-//    student.updateFileForAssessment(semesterFile,student.getModule(0) , assignment);
-//    }
-//    
-//        Scanner fileScan = new Scanner( student.semesterFile );
+//        System.out.println(student.getModule(0).getAssessmentByIndex(2));
+    
+
+    if(student.getModule(0).getAssessmentByIndex(1) instanceof Assignment){
+        Assignment assignment = (Assignment)student.getModule(0).getAssessmentByIndex(1);
+        assignment.setGrade(70.0);
+    student.updateFileForAssignment(student.getModule(0) , assignment);
+    }
+    
+//        Scanner fileScan = new Scanner( semesterFile );
 //        String [] module = fileScan.nextLine().split("/");
 //        String moduleString ="";
 //                    moduleString += module[0] + "/";
@@ -212,7 +214,27 @@ public class Dashboard {
 //                    moduleString = moduleString.substring(0,moduleString.length()-1);
 //                    
 //                    System.out.println(moduleString);
-//
+                    
+                    
+       if(student.getModule(0).getAssessmentByIndex(0) instanceof Exam){
+        Exam exam = (Exam)student.getModule(0).getAssessmentByIndex(0);
+        exam.setGrade(80.0);
+    student.updateFileForExam(student.getModule(0) , exam);
+    }
+       
+       student.getModule(0).getAssessmentByIndex(0).getTask(0).setAsCompleted();
+       student.updateFileForTask(student.getModule(0) , student.getModule(0).getAssessmentByIndex(0).getTask(0));
+       
+       student.getModule(0).getAssessmentByIndex(1).getTask(0).setAsCompleted();
+       student.updateFileForTask(student.getModule(0) , student.getModule(0).getAssessmentByIndex(1).getTask(0));
+//       
+       student.getModule(0).getAssessmentByIndex(0).getTask(0).getActivityByIndex(0).setAsCompleted();
+       student.updateFileForActivity(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(0).getTask(0), student.getModule(0).getAssessmentByIndex(0).getTask(0).getActivityByIndex(0));
+    
+       student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0).setAsCompleted();
+       student.updateFileForActivity(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0), student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
+    
+       student.printSemesterFile();
     }
 
 }

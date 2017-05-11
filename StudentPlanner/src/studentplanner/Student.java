@@ -90,6 +90,22 @@ public class Student {
         return milestones;
     }
     
+    public File getSemesterFile(){
+        return semesterFile;
+    }
+    
+    public void setFile(File f){
+        semesterFile = f;
+    }
+    
+    public void printSemesterFile() throws FileNotFoundException{
+        Scanner fileScan = new Scanner( semesterFile );
+        while(fileScan.hasNextLine()){
+            String line = fileScan.nextLine();
+            System.out.println(line);
+        }
+    }
+    
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder();
@@ -137,12 +153,14 @@ public class Student {
         }  
     }
     
-    public void updateFileForAssessment(File semesterFile, Module mod,  Assignment assignment) throws IOException{
+ 
+    
+    public void updateFileForAssignment(Module mod,  Assignment assignment) throws IOException{
         
         
         Scanner fileScan = new Scanner( semesterFile );
         Format formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
-        
+        String updatedModuleString ="";
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");
                 
@@ -171,8 +189,6 @@ public class Student {
                         i+=9;
                         }
                         else if(module[i].equals(assignment.getAssessmentCode())){
-                            System.out.println("here");
-                                
                                 updatedModule[i+1] = assignment.getAssessmentTitle();
                                 updatedModule[i+2] = Double.toString(assignment.getWeighting());
                                 updatedModule[i+3] = Double.toString(assignment.getGrade());
@@ -187,17 +203,14 @@ public class Student {
                                 }
                                 updatedModule[i+8] = updatedModule[i+8].substring(0,updatedModule[i+8].length()-1);
                                 updatedModule[i+9] = assignment.getNotes();
-                                
-//                                if(i+10 < module.length){
-//                                    updatedModule[i+9] +=  "/";
-//                                }
+                              
                                 
                          i+=10;    
                         }
                         
                     }
                     
-                    String updatedModuleString ="";
+                    
                     updatedModuleString += updatedModule[0] + "/";
                     updatedModuleString += updatedModule[1] + "/";
                     updatedModuleString += updatedModule[2] + "/";
@@ -207,18 +220,365 @@ public class Student {
                         updatedModuleString += updatedModule[i] + "/";
                     }
                     updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-                    
-                    System.out.println(moduleString);
-                       System.out.println(updatedModuleString);
-                       System.out.println("\n\n\n");
-                    
-                    
-                    FileOutputStream fileOut = new FileOutputStream("semster.txt");
+                    updatedModuleString += "\n";
+//                    System.out.println(moduleString);
+//                       System.out.println(updatedModuleString);
+//                       System.out.println("\n\n\n");
+                }
+                else{
+                    for(int i=0; i<module.length; i++){
+                        updatedModuleString += module[i]+ "/";
+                    }
+                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                    updatedModuleString += "\n";
+                }
+                
+            }
+            updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            FileOutputStream fileOut = new FileOutputStream("semester.txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
+                    File file = new File("semester.txt");
+                    this.semesterFile = file;
+            
+    }
+    
+    
+    public void updateFileForExam(Module mod,  Exam exam) throws IOException{
+        Scanner fileScan = new Scanner( semesterFile );
+        Format formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+        String updatedModuleString ="";
+            while(fileScan.hasNextLine()){
+                String [] module = fileScan.nextLine().split("/");
+                
+                if(module[0].equals(mod.getModuleCode())){
                     
+                    String moduleString ="";
+                    moduleString += module[0] + "/";
+                    moduleString += module[1] + "/";
+                    moduleString += module[2] + "/";
+                    moduleString += module[3] + "/";
+                    
+                    for(int i=4; i< module.length; i++){
+                        moduleString += module[i] + "/";
+                    }
+                    moduleString = moduleString.substring(0,moduleString.length()-1);
+                    
+                    String [] updatedModule = module;
+                    updatedModule[0] = mod.getModuleCode();
+                    updatedModule[1] = mod.getModuleName();
+                    updatedModule[2] = mod.getModuleOrganiser().getName();
+                    updatedModule[3] = mod.getModuleOrganiser().getEmail();
+                            
+                    for(int i=4; i<module.length;){
+                        
+                        if(module[i].charAt(0) == 'A'){
+                        i+=10;
+                        }
+                        else if(module[i].equals(exam.getAssessmentCode())){
+                                updatedModule[i+1] = exam.getAssessmentTitle();
+                                updatedModule[i+2] = Double.toString(exam.getWeighting());
+                                updatedModule[i+3] = Double.toString(exam.getGrade());
+                                updatedModule[i+4] = formatter.format(exam.getDeadline().getTime());
+                                updatedModule[i+5] = Integer.toString(exam.getExamDuration());
+                                updatedModule[i+6] = exam.getExamRoom();
+                                updatedModule[i+7] = "";
+                                for(Task task: exam.getTasks()){
+                                    updatedModule[i+7] += task.taskToFile();
+                                    updatedModule[i+7] += "#";
+                                }
+                                updatedModule[i+7] = updatedModule[i+7].substring(0,updatedModule[i+7].length()-1);
+                                updatedModule[i+8] = exam.getNotes(); 
+                         i+=9;    
+                        }
+                    }
+                    
+                    updatedModuleString += updatedModule[0] + "/";
+                    updatedModuleString += updatedModule[1] + "/";
+                    updatedModuleString += updatedModule[2] + "/";
+                    updatedModuleString += updatedModule[3] + "/";
+                    
+                    for(int i=4; i< module.length; i++){
+                        updatedModuleString += updatedModule[i] + "/";
+                    }
+                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                    updatedModuleString += "\n";
+//                    System.out.println(moduleString);
+//                       System.out.println(updatedModuleString);
+//                       System.out.println("\n\n\n");
                 }
+                else{
+                    for(int i=0; i<module.length; i++){
+                        updatedModuleString += module[i]+ "/";
+                    }
+                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                    updatedModuleString += "\n";
+                }
+                
+            }
+            updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+                    fileOut.write(updatedModuleString.getBytes());
+                    fileOut.close();
+                    File file = new File("semester.txt");
+                    this.semesterFile = file;
+                
             }
             
+    
+
+    
+    public void updateFileForTask(Module mod,  Task task) throws IOException{
+        Scanner fileScan = new Scanner( semesterFile );
+        String updatedModuleString ="";
+            while(fileScan.hasNextLine()){
+                String [] module = fileScan.nextLine().split("/");
+                
+                if(module[0].equals(mod.getModuleCode())){
+                    
+                    String moduleString ="";
+                    moduleString += module[0] + "/";
+                    moduleString += module[1] + "/";
+                    moduleString += module[2] + "/";
+                    moduleString += module[3] + "/";
+                    
+                    for(int i=4; i< module.length; i++){
+                        moduleString += module[i] + "/";
+                    }
+                    moduleString = moduleString.substring(0,moduleString.length()-1);
+                    
+                    String [] updatedModule = module;
+                    updatedModule[0] = mod.getModuleCode();
+                    updatedModule[1] = mod.getModuleName();
+                    updatedModule[2] = mod.getModuleOrganiser().getName();
+                    updatedModule[3] = mod.getModuleOrganiser().getEmail();
+                            
+                    for(int i=4; i<module.length;){
+                        if(module[i].charAt(0) == 'A' && task.getTaskID().charAt(0) == 'a'){
+                            String [] tasks = module[i+8].split("#");
+                            for(int j=0; j<tasks.length; j+=6){
+                                if(tasks[j].equals(task.getTaskID())){
+                                    tasks[j] = task.getTaskID();
+                                    tasks[j+1] = task.getTaskName();
+                                    tasks[j+2] = Double.toString(task.getWeighting());
+                                    tasks[j+3] = String.valueOf(task.isCompleted());
+                                    tasks[j+4] = "";
+                                    for(Activity activity: task.getActivities()){
+                                        tasks[j+4] += activity.activityToFile();
+                                        tasks[j+4] += "~";
+                                    }   
+                                    tasks[j+4] = tasks[j+4].substring(0,tasks[j+4].length()-1);
+                                    tasks[j+5] = task.getNotes();
+                                }
+                            }
+                                String updatedTasks = "";
+                                for(int j=0; j<tasks.length; j++){
+                                    updatedTasks += tasks[j] + "#";
+                                }
+                                updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                                updatedModule[i+8] = updatedTasks;
+                             
+                        i+=10;
+                        }
+                        else if(module[i].charAt(0) == 'E' && task.getTaskID().charAt(0) == 'e'){
+                                String [] tasks = module[i+7].split("#");
+                            for(int j=0; j<tasks.length; j+=6){
+                                if(tasks[j].equals(task.getTaskID())){
+                                    tasks[j] = task.getTaskID();
+                                    tasks[j+1] = task.getTaskName();
+                                    tasks[j+2] = Double.toString(task.getWeighting());
+                                    tasks[j+3] = String.valueOf(task.isCompleted());
+                                    tasks[j+4] = "";
+                                    for(Activity activity: task.getActivities()){
+                                        tasks[j+4] += activity.activityToFile();
+                                        tasks[j+4] += "~";
+                                    }   
+                                    tasks[j+4] = tasks[j+4].substring(0,tasks[j+4].length()-1);
+                                    tasks[j+5] = task.getNotes();
+                                }
+                            }
+                            
+                            
+                                String updatedTasks = "";
+                                for(int j=0; j<tasks.length; j++){
+                                    updatedTasks += tasks[j] + "#";
+                                }
+                                updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                                updatedModule[i+7] = updatedTasks;
+                            
+                         i+=9;    
+                        }
+                        else if(module[i].charAt(0) == 'A'){
+                            i+=10;
+                        }
+                        else if(module[i].charAt(0) == 'E'){
+                            i+=9;
+                        }
+                    }
+                    updatedModuleString += updatedModule[0] + "/";
+                    updatedModuleString += updatedModule[1] + "/";
+                    updatedModuleString += updatedModule[2] + "/";
+                    updatedModuleString += updatedModule[3] + "/";
+                    
+                    for(int i=4; i< module.length; i++){
+                        updatedModuleString += updatedModule[i] + "/";
+                    }
+                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                    updatedModuleString += "\n";
+//                    System.out.println(moduleString);
+//                       System.out.println(updatedModuleString);
+//                       System.out.println("\n\n\n");
+                }
+                else{
+                    for(int i=0; i<module.length; i++){
+                        updatedModuleString += module[i]+ "/";
+                    }
+                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                    updatedModuleString += "\n";
+                }
+                
+            }
+            updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+                    fileOut.write(updatedModuleString.getBytes());
+                    fileOut.close();
+                    File file = new File("semester.txt");
+                    this.semesterFile = file;
+    }
+    
+    public void updateFileForActivity(Module mod, Task t,  Activity activity) throws IOException{
+        Scanner fileScan = new Scanner( semesterFile );
+        String updatedModuleString ="";
+            while(fileScan.hasNextLine()){
+                String [] module = fileScan.nextLine().split("/");
+                
+                if(module[0].equals(mod.getModuleCode())){
+                    
+                    String moduleString ="";
+                    moduleString += module[0] + "/";
+                    moduleString += module[1] + "/";
+                    moduleString += module[2] + "/";
+                    moduleString += module[3] + "/";
+                    
+                    for(int i=4; i< module.length; i++){
+                        moduleString += module[i] + "/";
+                    }
+                    moduleString = moduleString.substring(0,moduleString.length()-1);
+                    
+                    String [] updatedModule = module;
+                    updatedModule[0] = mod.getModuleCode();
+                    updatedModule[1] = mod.getModuleName();
+                    updatedModule[2] = mod.getModuleOrganiser().getName();
+                    updatedModule[3] = mod.getModuleOrganiser().getEmail();
+                            
+                    for(int i=4; i<module.length;){
+                        if(module[i].charAt(0) == 'A' && activity.getActivityID().charAt(0) == 'a' && activity.getActivityID().charAt(1) == 'a'){
+                            String [] tasks = module[i+8].split("#");
+                            
+                            for(int j=4; j<tasks.length; j+=6){
+                                if(t.getTaskID().equals(tasks[j-4])){
+                                    
+                                
+                                String [] activities =tasks[j].split("~");
+                                for(int k=0; k<activities.length; k+=5){
+                                    if(activities[k].equals(activity.getActivityID())){
+                                        activities[k] = activity.getActivityID();
+                                        activities[k+1] = activity.getActivityName();
+                                        activities[k+2] = Double.toString(activity.getWeighting());
+                                        activities[k+3] = String.valueOf(activity.isCompleted());
+                                        activities[k+4] = activity.getNotes();
+                                    }
+                                }
+                                String updatedActivities = "";
+                                for(int k=0; k<activities.length; k++){
+                                    updatedActivities += activities[k] + "~";
+                                }
+                                updatedActivities = updatedActivities.substring(0,updatedActivities.length()-1);
+                                tasks[j] = updatedActivities;
+                                String updatedTasks = "";
+                                for(int k=0; k<tasks.length; k++){
+                                    updatedTasks += tasks[k] + "#";
+                                }
+                                updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                                updatedModule[i+8] = updatedTasks;
+                                }  
+                            }
+                                
+                             
+                        i+=10;
+                        }
+                        else if(module[i].charAt(0) == 'E' && activity.getActivityID().charAt(0) == 'e' && activity.getActivityID().charAt(1) == 'a'){
+                            
+                            String [] tasks = module[i+7].split("#");
+                            
+                            for(int j=4; j<tasks.length; j+=6){
+                                if(t.getTaskID().equals(tasks[j-4])){
+                                String [] activities =tasks[j].split("~");
+                                for(int k=0; k<activities.length; k+=5){
+                                    if(activities[k].equals(activity.getActivityID())){;
+                                        activities[k] = activity.getActivityID();
+                                        activities[k+1] = activity.getActivityName();
+                                        activities[k+2] = Double.toString(activity.getWeighting());
+                                        activities[k+3] = String.valueOf(activity.isCompleted());
+                                        activities[k+4] = activity.getNotes();
+                                    }
+                                }
+                                String updatedActivities = "";
+                                for(int k=0; k<activities.length; k++){
+                                    updatedActivities += activities[k] + "~";
+                                }
+                                updatedActivities = updatedActivities.substring(0,updatedActivities.length()-1);
+                                tasks[j] = updatedActivities;
+                                String updatedTasks = "";
+                                for(int k=0; k<tasks.length; k++){
+                                    updatedTasks += tasks[k] + "#";
+                                }
+                                updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                                updatedModule[i+7] = updatedTasks;
+                                }
+                            }
+                         i+=9;    
+                        }
+                        else if(module[i].charAt(0) == 'A'){
+                            //System.out.println("Assignment and Exam activity" + module[i]);
+                            i+=10;
+                        }
+                        else if(module[i].charAt(0) == 'E'){
+                            //System.out.println("Exam and assignment activity" + module[i]);
+                            i+=9;
+                        }
+                    }
+                    
+                    updatedModuleString += updatedModule[0] + "/";
+                    updatedModuleString += updatedModule[1] + "/";
+                    updatedModuleString += updatedModule[2] + "/";
+                    updatedModuleString += updatedModule[3] + "/";
+                    
+                    for(int i=4; i< module.length; i++){
+                        updatedModuleString += updatedModule[i] + "/";
+                    }
+                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                    updatedModuleString +="\n";
+//                    System.out.println(moduleString);
+//                       System.out.println(updatedModuleString);
+//                       System.out.println("\n\n\n");
+                    
+                }
+                else{
+                    for(int i=0; i<module.length; i++){
+                        updatedModuleString += module[i]+ "/";
+                    }
+                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                    updatedModuleString += "\n";
+                }
+                
+                
+            }
+            updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+                    fileOut.write(updatedModuleString.getBytes());
+                    fileOut.close();
+                    File file = new File("semester.txt");
+                    this.semesterFile = file;
     }
 }

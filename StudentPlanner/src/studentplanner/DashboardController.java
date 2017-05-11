@@ -33,7 +33,7 @@ public class DashboardController {
    
     
     public DefaultTableModel viewModules(){
-        String[] cols = {"Module Cod", "Module Title", "Module Organiser"};
+        String[] cols = {"Module Code", "Module Title", "Module Organiser"};
         DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
 
         for (int i = 0; i < student.getModules().size(); i++){

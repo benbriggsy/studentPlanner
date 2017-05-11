@@ -263,6 +263,11 @@ public class DashboardGUI extends javax.swing.JFrame {
             }
         });
 
+        moduleModuleTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                moduleModuleTableMouseClicked(evt);
+            }
+        });
         jScrollPane10.setViewportView(moduleModuleTable);
 
         javax.swing.GroupLayout ModuleGUILayout = new javax.swing.GroupLayout(ModuleGUI);
@@ -1165,6 +1170,17 @@ public class DashboardGUI extends javax.swing.JFrame {
         backList.add("dashboardCard");
         backIndex++;
     }//GEN-LAST:event_taskButton2ActionPerformed
+
+    private void moduleModuleTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moduleModuleTableMouseClicked
+        // TODO add your handling code here:
+        int i = moduleModuleTable.getSelectedRow();
+        dc.viewModules().getValueAt(i, 0);
+        CardLayout card = (CardLayout)GUI.getLayout();
+        card.show(GUI, "card11");        
+        backList.add("moduleCard");
+        backIndex++;
+        moduleNameTextField.setText(dc.;
+    }//GEN-LAST:event_moduleModuleTableMouseClicked
 
     /**
      * @param args the command line arguments

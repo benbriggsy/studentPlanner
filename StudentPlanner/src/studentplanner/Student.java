@@ -47,7 +47,6 @@ public class Student {
         this.schoolOfStudy = schoolOfStudy;
         this.yearOfStudy = yearOfStudy;
         this.modules = modules;
-        //this.semesterFile = semesterFile;
     }
     
     public Student(File semesterFile) throws FileNotFoundException, IOException, ParseException{
@@ -66,7 +65,6 @@ public class Student {
                 Admin admin = new Admin(details[2], details[3]);
                 Module module = new Module(details[0],details[1], admin);
                 SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
-
 
                 for(int i = 4; i<details.length;){
                     switch(details[i].charAt(0)){

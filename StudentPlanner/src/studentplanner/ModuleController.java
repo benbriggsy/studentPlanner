@@ -17,6 +17,22 @@ public class ModuleController {
         this.dashboard = dashboard;
     }
     
+    public DefaultTableModel viewModules() {
+        String[] cols = {"Module Code", "Module Title", "Module Organiser"};
+        DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
+
+        for (int i = 0; i < dashboard.getStudent().getModules().size(); i++) {
+            String moduleCode = dashboard.getStudent().getModules().get(i).getModuleCode();
+            String moduleName = dashboard.getStudent().getModules().get(i).getModuleName();
+            String moduleOrganiser = dashboard.getStudent().getModules().get(i).getModuleOrganiser().getName();
+
+            Object[] data = {moduleCode, moduleName, moduleOrganiser};
+
+            tableModel.addRow(data);
+        }
+        return tableModel;
+    }
+    
     public Module getModule(){
         return module;
     }
@@ -55,7 +71,6 @@ public class ModuleController {
     public String getNotes(){
         return module.getNotes();
     }
-    
     
     public void addNote(String note){
         module.addNote(note);

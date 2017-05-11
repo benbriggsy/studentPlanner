@@ -68,24 +68,11 @@ public class DashboardController {
     public ArrayList<Milestone> getStudentMilestoneList(){
         return student.getMilestones();
     }
-
-    public DefaultTableModel viewModules() {
-        String[] cols = {"Module Cod", "Module Title", "Module Organiser"};
-        DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
-
-        for (int i = 0; i < student.getModules().size(); i++) {
-            String moduleCode = student.getModules().get(i).getModuleCode();
-            String moduleName = student.getModules().get(i).getModuleName();
-            String moduleOrganiser = student.getModules().get(i).getModuleOrganiser().getName();
-
-            Object[] data = {moduleCode, moduleName, moduleOrganiser};
-
-            tableModel.addRow(data);
-
-        }
-
-        return tableModel;
+    
+    public ModuleController getModuleController(){
+        return moduleController;
     }
+    
 //    public ArrayList<Module> viewModules(){
 //        return dashboard.getModules();
 //    }

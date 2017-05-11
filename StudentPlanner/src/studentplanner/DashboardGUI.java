@@ -1050,7 +1050,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         backList.add("dashboardCard");
         backIndex++;
         moduleTitle.setText(dc.getStudent().getModule(0).getModuleName());
-        moduleModuleTable.setModel(dc.viewModules());
+        moduleModuleTable.setModel(mc.viewModules());
     }//GEN-LAST:event_moduleButtonActionPerformed
 
     private void taskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskButtonActionPerformed
@@ -1174,7 +1174,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private void moduleModuleTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moduleModuleTableMouseClicked
         // TODO add your handling code here:
         int i = moduleModuleTable.getSelectedRow();
-        dc.viewModules().getValueAt(i, 0);
+        dc.getModuleController().viewModules().getValueAt(i, 0);
         CardLayout card = (CardLayout)GUI.getLayout();
         card.show(GUI, "card11");        
         backList.add("moduleCard");

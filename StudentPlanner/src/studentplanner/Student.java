@@ -150,9 +150,9 @@ public class Student {
                             }
                             break;
                     }
-            modulesFromFile.add(module);
-            }
             
+            }
+            modulesFromFile.add(module);
         }
         this.modules = modulesFromFile;
         milestones = new ArrayList();
@@ -710,6 +710,9 @@ public class Student {
        student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0).setAsCompleted();
        student.updateFileForActivity(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0), student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
     
+       for(int i=0; i<student.getModules().size();i++){
+         System.out.println(student.getModule(i));
+                 }
        student.printSemesterFile();
     }
 }

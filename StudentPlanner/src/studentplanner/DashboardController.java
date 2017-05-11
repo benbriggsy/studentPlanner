@@ -16,27 +16,37 @@ import javax.swing.table.DefaultTableModel;
  * @author phillipperks
  */
 public class DashboardController {
-    private Dashboard dashboard;
+    private Student student;
     private ModuleController moduleController;
     //private Student student;
     //private MilestoneController milestoneController;
     
-    public DashboardController(){
-        dashboard = new Dashboard();
+    public DashboardController() throws FileNotFoundException, IOException, ParseException {
+        File semesterFile = new File("semester.txt");
+        //student = new Student(semesterFile);
+        Admin admin = new Admin("GEOFF", "EMAILHERE");
+        Module module = new Module("SE 1", "SE1T", admin);
+        ArrayList<Module> ms = new ArrayList();
+        ms.add(module);
+        ArrayList<Milestone> milestones = new ArrayList();
+        student = new Student(1,"Phillip Perks","phillip@uea.ac.uk","CMP"
+                ,2, ms);
     }
     
     public Student getStudent(){
-        return dashboard.student;      
+        return student;      
     }
+    
+   
     
     public DefaultTableModel viewModules(){
         String[] cols = {"Module Cod", "Module Title", "Module Organiser"};
         DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
 
-        for (int i = 0; i < dashboard.student.getModules().size(); i++){
-            String moduleCode = dashboard.student.getModules().get(i).getModuleCode();
-            String moduleName = dashboard.student.getModules().get(i).getModuleName();
-            String moduleOrganiser = dashboard.student.getModules().get(i).getModuleOrganiser().getName();
+        for (int i = 0; i < student.getModules().size(); i++){
+            String moduleCode = student.getModules().get(i).getModuleCode();
+            String moduleName = student.getModules().get(i).getModuleName();
+            String moduleOrganiser = student.getModules().get(i).getModuleOrganiser().getName();
             
 
             Object[] data = {moduleCode, moduleName, moduleOrganiser};
@@ -52,7 +62,7 @@ public class DashboardController {
 //    }
     
     public ArrayList<Milestone> viewMilestones(){
-        return dashboard.getMilestones();
+        return student.getMilestones();
     }
     
     
@@ -61,32 +71,32 @@ public class DashboardController {
         
         Date today = new Date();
         
-        for(int i=0; i<dashboard.getMilestones().size(); i++){
+        for(int i=0; i<student.getMilestones().size(); i++){
             Calendar calendar = Calendar.getInstance();
-            calendar.setTime(dashboard.getMilestone(i).getDeadline().getTime());            
+            calendar.setTime(student.getMilestone(i).getDeadline().getTime());            
             calendar.add(Calendar.DAY_OF_YEAR, -7);
             Date previousWeek = calendar.getTime();
             if(!(today.before(previousWeek) 
-                || today.after(dashboard.getMilestone(i).getDeadline().getTime()))){
-                upComingMilestones.add(dashboard.getMilestone(i));
+                || today.after(student.getMilestone(i).getDeadline().getTime()))){
+                upComingMilestones.add(student.getMilestone(i));
             }
         }
        return upComingMilestones;
     }
     
-    public void uploadSemesterFile() throws FileNotFoundException, ParseException{
-        File semesterFile = new File("semester.txt");
-        try{
-            dashboard.setSemesterFile(semesterFile);
-        }
-        catch(IOException ioEx){
-            
-        }
-        catch(ParseException peEx){
-            
-        }
-        
-    }
+//    public void uploadSemesterFile() throws FileNotFoundException, ParseException{
+//        File semesterFile = new File("semester.txt");
+//        try{
+//            dashboard.setSemesterFile(semesterFile);
+//        }
+//        catch(IOException ioEx){
+//            
+//        }
+//        catch(ParseException peEx){
+//            
+//        }
+//        
+//    }
     
 //    public Module viewModule(String moduleName){
 //       for(int i=0; i<dashboard.getModules().size(); i++){
@@ -101,16 +111,16 @@ public class DashboardController {
         
         Date today = new Date();
         
-        for(int i=0; i<dashboard.student.getModules().size(); i++){
-           for(int j=0; j<dashboard.student.getModule(i).getAssessments().size(); j++){
-               if(!dashboard.student.getModule(i).getAssessmentByIndex(j).isCompleted()){
+        for(int i=0; i<student.getModules().size(); i++){
+           for(int j=0; j<student.getModule(i).getAssessments().size(); j++){
+               if(!student.getModule(i).getAssessmentByIndex(j).isCompleted()){
                    Calendar calendar = Calendar.getInstance();
-                    calendar.setTime(dashboard.student.getModule(i).getAssessmentByIndex(j).getDeadline().getTime());            
+                    calendar.setTime(student.getModule(i).getAssessmentByIndex(j).getDeadline().getTime());            
                     calendar.add(Calendar.DAY_OF_YEAR, -7);
                     Date previousWeek = calendar.getTime();
                    if(!(today.before(previousWeek) 
-                           || today.after(dashboard.student.getModule(i).getAssessmentByIndex(j).getDeadline().getTime()))){
-                       upComingAssessments.add(dashboard.student.getModule(i).getAssessmentByIndex(j));
+                           || today.after(student.getModule(i).getAssessmentByIndex(j).getDeadline().getTime()))){
+                       upComingAssessments.add(student.getModule(i).getAssessmentByIndex(j));
                     }                
                }
            }

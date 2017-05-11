@@ -3,6 +3,7 @@ package studentplanner;
 
 import java.awt.CardLayout;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -20,7 +21,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     
     public DashboardGUI() {
         initComponents();
-        dc = new DashboardController();
+        //dc = new DashboardController();
         //dc.getStudent().getModules().add(new Module("CMP 450A", "Software Engineering", new Admin("Joost", "joost@uea.ac.uk")));     
         //dc.uploadSemesterFile();
         backList = new ArrayList<>();
@@ -1127,7 +1128,7 @@ public class DashboardGUI extends javax.swing.JFrame {
             backList.add("dashboardCard");
             backIndex++;
             try {
-                dc.uploadSemesterFile();
+                dc = new DashboardController();
                 asc = new AssessmentController(dc);
                 acc = new ActivityController(dc);
                 mc = new ModuleController(dc);
@@ -1138,6 +1139,8 @@ public class DashboardGUI extends javax.swing.JFrame {
                 dashboardUsernameLabel.setText("FileNotFoundException");
             } catch (ParseException ex) {
                 dashboardUsernameLabel.setText("ParseException");
+            } catch (IOException ex) {
+                dashboardUsernameLabel.setText("IOException");
             }           
         }
         else{

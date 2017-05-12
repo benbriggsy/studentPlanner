@@ -826,7 +826,6 @@ public class Student {
                         }
                         updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
                         module[i+8] = updatedTasks;
-                        System.out.println(updatedTasks);
                         i+=10;
                     }
                     else if(module[i].charAt(0) == 'E' && activity.getActivityID().charAt(0) == 'e' && activity.getActivityID().charAt(1) == 'a'){

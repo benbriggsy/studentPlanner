@@ -107,7 +107,7 @@ public class Student {
                             }
                             Assignment assignment = new Assignment(details[i+5], details[i+6],
                             summative, details[i], details[i+1], Double.parseDouble(details[i+2]),Double.parseDouble(details[i+3]),
-                            assessmentDeadline,assignmentTaskList, details[i+9]);
+                            assessmentDeadline,assignmentTaskList, details[i+9], "Assignment");
                             i+=10;
                             module.addAssessment(assignment);
 
@@ -145,7 +145,7 @@ public class Student {
                                 }
                             }
                             Exam exam = new Exam(details[i+6], Integer.parseInt(details[i+5]), details[i], details[i+1], 
-                                    Double.parseDouble(details[i+2]), Double.parseDouble(details[i+3]), examDeadline, examTaskList, details[i+8] );
+                                    Double.parseDouble(details[i+2]), Double.parseDouble(details[i+3]), examDeadline, examTaskList, details[i+8], "Exam" );
                             i+=9;
                             module.addAssessment(exam);
                             //System.out.println(exam);

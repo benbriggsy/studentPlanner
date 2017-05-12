@@ -19,8 +19,8 @@ public class Assignment extends Assessment {
     private String assignmentType;
     private boolean isSummative;
 
-    public Assignment(String handInProcedure, String assignmentType, boolean isSummative, String assessmentCode, String assessmentTitle, double weighting, double grade, Deadline deadline, ArrayList<Task> taskList, String notes) {
-        super(assessmentCode, assessmentTitle, weighting, grade, deadline, taskList, notes);
+    public Assignment(String handInProcedure, String assignmentType, boolean isSummative, String assessmentCode, String assessmentTitle, double weighting, double grade, Deadline deadline, ArrayList<Task> taskList, String notes, String ass) {
+        super(assessmentCode, assessmentTitle, weighting, grade, deadline, taskList, notes, ass);
         this.handInProcedure = handInProcedure;
         this.assignmentType = assignmentType;
         this.isSummative = isSummative;

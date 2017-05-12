@@ -16,14 +16,12 @@ public class ModuleController {
         //this.task = task;
         this.dashboard = dashboard;
     }
-    
-    public Module getModule(){
-        return module;
-    }
+
     //needs improving
     public Assessment viewAssessment(int i){
         return module.getAssessments().get(i);
     }
+    
     public String getModuleCode(){
        return module.getModuleCode();
     }
@@ -40,9 +38,9 @@ public class ModuleController {
         return module.getAssessments();
     }
     
-    public ArrayList<Double> getAssessmentGrades(){
-        return module.getAssessmentGrades();
-    }
+//    public ArrayList<Double> getAssessmentGrades(){
+//        return module.getAssessmentGrades();
+//    }
     
     public double getCurrentGrade(){
         return module.getCurrentGrade();

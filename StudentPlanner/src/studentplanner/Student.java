@@ -28,7 +28,7 @@ public class Student {
     private int studentID;
     private String fullName;
     private String userName;
-    private String password;
+    //private String password;
     private String emailAddress;
 //    private enum schoolOfStudy{
 //        AMA, BIO, CHE, CMP, DEV, ECO, EDU, ENV, HIS, HSC, LAW, LDC, MED, MTH, NBS, PHA, PPL, SWK

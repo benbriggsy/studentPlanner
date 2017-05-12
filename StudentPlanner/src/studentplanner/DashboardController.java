@@ -7,7 +7,13 @@ package studentplanner;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.io.IOException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.ParseException;
 import java.util.*;
 import java.time.*;
@@ -151,8 +157,29 @@ public class DashboardController {
                 }
             }
         }
-
         return upComingAssessments;
+    }
+    
+    public boolean findSemesterFile(String username){
+        String filename = username + ".txt";
+        File dir = new File(".");
+        FilenameFilter condition = (File dir1, String name) -> name.equals(filename); 
+        String[] files = dir.list(condition);
+        System.out.println(filename);
+        return (files != null && dir.list(condition).length > 0);
+    }
+    
+    public boolean uploadFile(String username, String source) throws IOException{
+        //check file is valid here. method will return false if not valid.
+        String fileName = username + ".txt";
+        Path FROM = Paths.get(source);
+        Path TO = Paths.get(".\\" + fileName);
+        CopyOption[] options = new CopyOption[]{
+            StandardCopyOption.REPLACE_EXISTING,
+            StandardCopyOption.COPY_ATTRIBUTES
+          };
+        Files.copy(FROM, TO, options);
+        return true;
     }
 
 //    public ArrayList<Assessment> viewUpComingIncompleteAssessments(){

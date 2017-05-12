@@ -10,7 +10,7 @@ public class Module {
     private String moduleName;
     private Admin moduleOrganiser;
     private ArrayList<Assessment> assessments;
-    private ArrayList<Double> assessmentGrades;
+    //private ArrayList<Double> assessmentGrades;
     private double currentGrade;
     private boolean moduleCompleted;
     private String notes;
@@ -20,7 +20,7 @@ public class Module {
         this.moduleName = moduleTitle;
         this.moduleOrganiser = moduleOrganiser;
         this.assessments = new ArrayList<>();
-        this.assessmentGrades = new ArrayList<>();
+        //this.assessmentGrades = new ArrayList<>();
         this.currentGrade = 0.0;
         this.moduleCompleted = false;
         this.notes = "";
@@ -46,9 +46,9 @@ public class Module {
         return assessments.get(i);
     }
     
-    public ArrayList<Double> getAssessmentGrades(){
-        return assessmentGrades;
-    }
+//    public ArrayList<Double> getAssessmentGrades(){
+//        return assessmentGrades;
+//    }
     
     public double getCurrentGrade(){
         return currentGrade;

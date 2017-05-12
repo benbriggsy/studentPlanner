@@ -32,17 +32,7 @@ public class DashboardController {
     public Student getStudent() {
         return student;
     }
-
-//    private int studentID;
-//    private String fullName;
-//    private String userName;
-//    private String password;
-//    private String emailAddress;
-//    //THIS CAN BE AN ENUM
-//    private String schoolOfStudy;
-//    private int yearOfStudy;
-//    private ArrayList<Module> modules;
-//    private ArrayList<Milestone> milestones;
+    
     public String getStudentFullName() {
         return student.getFullName();
     }
@@ -63,6 +53,14 @@ public class DashboardController {
         return student.getYearOfStudy();
     }
     
+    public Module getStudentModule(int i){
+        return student.getModule(i);
+    }
+    
+    public Milestone getStudentMilestone(int i){
+        return student.getMilestone(i);
+    }
+    
     public ArrayList<Module> getStudentModuleList(){
         return student.getModules();
     }
@@ -70,24 +68,11 @@ public class DashboardController {
     public ArrayList<Milestone> getStudentMilestoneList(){
         return student.getMilestones();
     }
-
-    public DefaultTableModel viewModules() {
-        String[] cols = {"Module Cod", "Module Title", "Module Organiser"};
-        DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
-
-        for (int i = 0; i < student.getModules().size(); i++) {
-            String moduleCode = student.getModules().get(i).getModuleCode();
-            String moduleName = student.getModules().get(i).getModuleName();
-            String moduleOrganiser = student.getModules().get(i).getModuleOrganiser().getName();
-
-            Object[] data = {moduleCode, moduleName, moduleOrganiser};
-
-            tableModel.addRow(data);
-
-        }
-
-        return tableModel;
+    
+    public ModuleController getModuleController(){
+        return moduleController;
     }
+    
 //    public ArrayList<Module> viewModules(){
 //        return dashboard.getModules();
 //    }

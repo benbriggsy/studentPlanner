@@ -16,6 +16,7 @@ import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -63,10 +64,11 @@ public class Student {
         while(fileScan.hasNextLine()){
                 String [] details = fileScan.nextLine().split("/");
                 Admin admin = new Admin(details[2], details[3]);
-                Module module = new Module(details[0],details[1], admin);
+                boolean moduleCompleted = Boolean.parseBoolean(details[5]);
+                Module module = new Module(details[0],details[1], admin,Double.parseDouble(details[4]),moduleCompleted,details[6] );
                 SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
 
-                for(int i = 4; i<details.length;){
+                for(int i = 7; i<details.length;){
                     switch(details[i].charAt(0)){
                         case 'A':
                             boolean summative = Boolean.parseBoolean(details[i+7]);
@@ -226,6 +228,58 @@ public class Student {
         return str.toString();
     }
     
+    public void updateFileForModule(Module mod) throws FileNotFoundException, IOException{
+        Scanner fileScan = new Scanner( semesterFile );
+        String updatedModuleString ="";
+        
+        while(fileScan.hasNextLine()){
+            String [] module = fileScan.nextLine().split("/");
+                
+            if(module[0].equals(mod.getModuleCode())){
+                updatedModuleString += mod.getModuleCode() + "/";
+                updatedModuleString += mod.getModuleName()+ "/";
+                updatedModuleString += mod.getModuleOrganiser().getName()+ "/";
+                updatedModuleString += mod.getModuleOrganiser().getEmail()+ "/";
+                updatedModuleString += Double.toString(mod.getCurrentGrade())+ "/";
+                updatedModuleString += Boolean.toString(mod.getModuleCompleted()) + "/";
+                updatedModuleString += mod.getNotes()+ "/";
+                
+                int assessmentIndex = 0;
+                for(int i=7; i<module.length;){
+                    
+                    if(module[i].charAt(0) == 'A'){
+                        Assignment assignment = (Assignment)mod.getAssessmentByIndex(assessmentIndex);
+                        updatedModuleString += assignment.assignmentToFile()+ "/";
+                        i+=10;
+                    }
+                    else if(module[i].charAt(0) == 'E'){
+                        Exam exam = (Exam)mod.getAssessmentByIndex(assessmentIndex);
+                        updatedModuleString += exam.examToFile()+ "/";
+                        i+=9;
+                    }
+                    assessmentIndex++;
+                }
+                updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                updatedModuleString += "\n";
+                
+                
+            }
+            else{
+                for(int i=0; i<module.length; i++){
+                    updatedModuleString += module[i]+ "/";
+                }
+                updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                updatedModuleString += "\n";
+            }
+        }
+        
+        updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+                    fileOut.write(updatedModuleString.getBytes());
+                    fileOut.close();
+                    File file = new File("semester.txt");
+                    this.semesterFile = file;
+    }
  
     
     public void updateFileForAssignment(Module mod,  Assignment assignment) throws IOException{
@@ -244,8 +298,10 @@ public class Student {
                     moduleString += module[1] + "/";
                     moduleString += module[2] + "/";
                     moduleString += module[3] + "/";
-                    
-                    for(int i=4; i< module.length; i++){
+                    moduleString += module[4] + "/";
+                    moduleString += module[5] + "/";
+                    moduleString += module[6] + "/";
+                    for(int i=7; i< module.length; i++){
                         moduleString += module[i] + "/";
                     }
                     moduleString = moduleString.substring(0,moduleString.length()-1);
@@ -255,8 +311,11 @@ public class Student {
                     updatedModule[1] = mod.getModuleName();
                     updatedModule[2] = mod.getModuleOrganiser().getName();
                     updatedModule[3] = mod.getModuleOrganiser().getEmail();
+                    updatedModule[4] = Double.toString(mod.getCurrentGrade());
+                    updatedModule[5] = Boolean.toString(mod.getModuleCompleted());
+                    updatedModule[6] = mod.getNotes();
                             
-                    for(int i=4; i<module.length;){
+                    for(int i=7; i<module.length;){
                         
                         if(module[i].charAt(0) == 'E'){
                         i+=9;
@@ -288,8 +347,10 @@ public class Student {
                     updatedModuleString += updatedModule[1] + "/";
                     updatedModuleString += updatedModule[2] + "/";
                     updatedModuleString += updatedModule[3] + "/";
-                    
-                    for(int i=4; i< module.length; i++){
+                    updatedModuleString += updatedModule[4] + "/";
+                    updatedModuleString += updatedModule[5] + "/";
+                    updatedModuleString += updatedModule[6] + "/";
+                    for(int i=7; i< module.length; i++){
                         updatedModuleString += updatedModule[i] + "/";
                     }
                     updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
@@ -331,8 +392,10 @@ public class Student {
                     moduleString += module[1] + "/";
                     moduleString += module[2] + "/";
                     moduleString += module[3] + "/";
-                    
-                    for(int i=4; i< module.length; i++){
+                    moduleString += module[4] + "/";
+                    moduleString += module[5] + "/";
+                    moduleString += module[6] + "/";
+                    for(int i=7; i< module.length; i++){
                         moduleString += module[i] + "/";
                     }
                     moduleString = moduleString.substring(0,moduleString.length()-1);
@@ -342,8 +405,11 @@ public class Student {
                     updatedModule[1] = mod.getModuleName();
                     updatedModule[2] = mod.getModuleOrganiser().getName();
                     updatedModule[3] = mod.getModuleOrganiser().getEmail();
-                            
-                    for(int i=4; i<module.length;){
+                    updatedModule[4] = Double.toString(mod.getCurrentGrade());
+                    updatedModule[5] = Boolean.toString(mod.getModuleCompleted());
+                    updatedModule[6] = mod.getNotes();
+                    
+                    for(int i=7; i<module.length;){
                         
                         if(module[i].charAt(0) == 'A'){
                         i+=10;
@@ -370,8 +436,10 @@ public class Student {
                     updatedModuleString += updatedModule[1] + "/";
                     updatedModuleString += updatedModule[2] + "/";
                     updatedModuleString += updatedModule[3] + "/";
-                    
-                    for(int i=4; i< module.length; i++){
+                    updatedModuleString += updatedModule[4] + "/";
+                    updatedModuleString += updatedModule[5] + "/";
+                    updatedModuleString += updatedModule[6] + "/";
+                    for(int i=7; i< module.length; i++){
                         updatedModuleString += updatedModule[i] + "/";
                     }
                     updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
@@ -414,8 +482,11 @@ public class Student {
                     moduleString += module[1] + "/";
                     moduleString += module[2] + "/";
                     moduleString += module[3] + "/";
+                    moduleString += module[4] + "/";
+                    moduleString += module[5] + "/";
+                    moduleString += module[6] + "/";
                     
-                    for(int i=4; i< module.length; i++){
+                    for(int i=7; i< module.length; i++){
                         moduleString += module[i] + "/";
                     }
                     moduleString = moduleString.substring(0,moduleString.length()-1);
@@ -425,8 +496,11 @@ public class Student {
                     updatedModule[1] = mod.getModuleName();
                     updatedModule[2] = mod.getModuleOrganiser().getName();
                     updatedModule[3] = mod.getModuleOrganiser().getEmail();
-                            
-                    for(int i=4; i<module.length;){
+                    updatedModule[4] = Double.toString(mod.getCurrentGrade());
+                    updatedModule[5] = Boolean.toString(mod.getModuleCompleted());
+                    updatedModule[6] = mod.getNotes();
+                    
+                    for(int i=7; i<module.length;){
                         if(module[i].charAt(0) == 'A' && task.getTaskID().charAt(0) == 'a'){
                             String [] tasks = module[i+8].split("#");
                             for(int j=0; j<tasks.length; j+=6){
@@ -492,8 +566,10 @@ public class Student {
                     updatedModuleString += updatedModule[1] + "/";
                     updatedModuleString += updatedModule[2] + "/";
                     updatedModuleString += updatedModule[3] + "/";
-                    
-                    for(int i=4; i< module.length; i++){
+                    updatedModuleString += updatedModule[4] + "/";
+                    updatedModuleString += updatedModule[5] + "/";
+                    updatedModuleString += updatedModule[6] + "/";
+                    for(int i=7; i< module.length; i++){
                         updatedModuleString += updatedModule[i] + "/";
                     }
                     updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
@@ -519,7 +595,73 @@ public class Student {
                     this.semesterFile = file;
     }
     
-    public void updateFileForActivity(Module mod, Task t,  Activity activity) throws IOException{
+    public void addTaskToFile(Module mod, Task task) throws FileNotFoundException, IOException{
+        Scanner fileScan = new Scanner( semesterFile );
+        String updatedModuleString ="";
+            while(fileScan.hasNextLine()){
+                String [] module = fileScan.nextLine().split("/");
+                if(module[0].equals(mod.getModuleCode())){
+                    for(int i=7; i<module.length;){
+                        if(module[i].charAt(0) == 'A' && task.getTaskID().charAt(0) == 'a'){
+                            if(!"".equals(module[i+8])){
+                            module[i+8] = module[i+8].substring(0,module[i+8].length()-1);
+                            }
+                            module[i+8] += "#" + task.getTaskID() + "#";
+                            module[i+8] += task.getTaskName() + "#";
+                            module[i+8] += Double.toString(task.getWeighting()) + "#";
+                            module[i+8] += String.valueOf(task.isCompleted()) + "#";
+//                            for(Activity activity: task.getActivities()){
+//                                module[i+8] += activity.activityToFile();
+//                                module[i+8] += "~";
+//                            } 
+//                            module[i+8] = module[i+8].substring(0,module[i+8].length()-1);
+                            module[i+8] += "#" + task.getNotes();
+                           
+                            i+=10; 
+                        }
+                        else if(module[i].charAt(0) == 'E' && task.getTaskID().charAt(0) == 'e'){
+                            if(!"".equals(module[i+7])){
+                            module[i+7] = module[i+7].substring(0,module[i+7].length()-1);
+                            }
+                            module[i+7] += "#" + task.getTaskID() + "#";
+                            module[i+7] += task.getTaskName() + "#";
+                            module[i+7] += Double.toString(task.getWeighting()) + "#";
+                            module[i+7] += String.valueOf(task.isCompleted()) + "#";
+//                            for(Activity activity: task.getActivities()){
+//                                module[i+7] += activity.activityToFile();
+//                                module[i+7] += "~";
+//                            } 
+//                            module[i+7] = module[i+7].substring(0,module[i+7].length()-1);
+                            module[i+7] += "#" + task.getNotes();
+                            i+=9;
+                        }
+                        else if(module[i].charAt(0) == 'A'){
+                            i+=10;
+                        }
+                        else if(module[i].charAt(0) == 'E'){
+                            i+=9;
+                        }
+                        
+                        
+                    }
+                }
+                for(int i=0; i<module.length; i++){
+                    updatedModuleString += module[i]+ "/";
+                }
+                updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                updatedModuleString += "\n";
+            }
+            
+            updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+                    fileOut.write(updatedModuleString.getBytes());
+                    fileOut.close();
+                    File file = new File("semester.txt");
+                    this.semesterFile = file;
+            
+    }
+    
+    public void updateFileForActivity(Module mod, Activity activity) throws IOException{
         Scanner fileScan = new Scanner( semesterFile );
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
@@ -532,8 +674,10 @@ public class Student {
                     moduleString += module[1] + "/";
                     moduleString += module[2] + "/";
                     moduleString += module[3] + "/";
-                    
-                    for(int i=4; i< module.length; i++){
+                    moduleString += module[4] + "/";
+                    moduleString += module[5] + "/";
+                    moduleString += module[6] + "/";
+                    for(int i=7; i< module.length; i++){
                         moduleString += module[i] + "/";
                     }
                     moduleString = moduleString.substring(0,moduleString.length()-1);
@@ -543,15 +687,14 @@ public class Student {
                     updatedModule[1] = mod.getModuleName();
                     updatedModule[2] = mod.getModuleOrganiser().getName();
                     updatedModule[3] = mod.getModuleOrganiser().getEmail();
-                            
-                    for(int i=4; i<module.length;){
+                    updatedModule[4] = Double.toString(mod.getCurrentGrade());
+                    updatedModule[5] = Boolean.toString(mod.getModuleCompleted());
+                    updatedModule[6] = mod.getNotes();      
+                    for(int i=7; i<module.length;){
                         if(module[i].charAt(0) == 'A' && activity.getActivityID().charAt(0) == 'a' && activity.getActivityID().charAt(1) == 'a'){
                             String [] tasks = module[i+8].split("#");
                             
                             for(int j=4; j<tasks.length; j+=6){
-                                if(t.getTaskID().equals(tasks[j-4])){
-                                    
-                                
                                 String [] activities =tasks[j].split("~");
                                 for(int k=0; k<activities.length; k+=5){
                                     if(activities[k].equals(activity.getActivityID())){
@@ -561,7 +704,7 @@ public class Student {
                                         activities[k+3] = String.valueOf(activity.isCompleted());
                                         activities[k+4] = activity.getNotes();
                                     }
-                                }
+                               }
                                 String updatedActivities = "";
                                 for(int k=0; k<activities.length; k++){
                                     updatedActivities += activities[k] + "~";
@@ -574,7 +717,6 @@ public class Student {
                                 }
                                 updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
                                 updatedModule[i+8] = updatedTasks;
-                                }  
                             }
                                 
                              
@@ -585,7 +727,6 @@ public class Student {
                             String [] tasks = module[i+7].split("#");
                             
                             for(int j=4; j<tasks.length; j+=6){
-                                if(t.getTaskID().equals(tasks[j-4])){
                                 String [] activities =tasks[j].split("~");
                                 for(int k=0; k<activities.length; k+=5){
                                     if(activities[k].equals(activity.getActivityID())){;
@@ -608,7 +749,6 @@ public class Student {
                                 }
                                 updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
                                 updatedModule[i+7] = updatedTasks;
-                                }
                             }
                          i+=9;    
                         }
@@ -626,8 +766,10 @@ public class Student {
                     updatedModuleString += updatedModule[1] + "/";
                     updatedModuleString += updatedModule[2] + "/";
                     updatedModuleString += updatedModule[3] + "/";
-                    
-                    for(int i=4; i< module.length; i++){
+                    updatedModuleString += updatedModule[4] + "/";
+                    updatedModuleString += updatedModule[5] + "/";
+                    updatedModuleString += updatedModule[6] + "/";
+                    for(int i=7; i< module.length; i++){
                         updatedModuleString += updatedModule[i] + "/";
                     }
                     updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
@@ -655,11 +797,714 @@ public class Student {
                     this.semesterFile = file;
     }
     
+    public void addActivityToFile(Module mod, Task task, Activity activity) throws FileNotFoundException, IOException{
+        Scanner fileScan = new Scanner( semesterFile );
+        String updatedModuleString ="";
+        while(fileScan.hasNextLine()){
+            String [] module = fileScan.nextLine().split("/");
+            if(module[0].equals(mod.getModuleCode())){
+                for(int i=7; i<module.length;){
+                    if(module[i].charAt(0) == 'A' && activity.getActivityID().charAt(0) == 'a' && activity.getActivityID().charAt(1) == 'a'){
+                        String [] tasks = module[i+8].split("#");
+                        for(int j=4; j<tasks.length; j+=6){
+                            if(task.getTaskID().equals(tasks[j-4])){
+                                if(!"".equals(tasks[j])){
+                                    tasks[j] = tasks[j].substring(0,tasks[j].length()-1);
+                                }
+                                tasks[j] += "~" + activity.getActivityID() + "~";
+                                tasks[j] += activity.getActivityName() + "~";
+                                tasks[j] += Double.toString(activity.getWeighting()) + "~";
+                                tasks[j] += String.valueOf(activity.isCompleted()) + "~";
+                                tasks[j] += activity.getNotes() + "#";
+                             } 
+                        }
+                        String updatedTasks = "";
+                        for(int j=0; j<tasks.length; j++){
+                            updatedTasks += tasks[j] + "#";
+                        }
+                        updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                        module[i+8] = updatedTasks;
+                        System.out.println(updatedTasks);
+                        i+=10;
+                    }
+                    else if(module[i].charAt(0) == 'E' && activity.getActivityID().charAt(0) == 'e' && activity.getActivityID().charAt(1) == 'a'){
+                        String [] tasks = module[i+7].split("#");
+                        for(int j=4; j<tasks.length; j+=6){
+                            if(task.getTaskID().equals(tasks[j-4])){
+                                if(!"".equals(tasks[j])){
+                                    tasks[j] = tasks[j].substring(0,tasks[j].length()-1);
+                                }
+                                tasks[j] += "~" + activity.getActivityID() + "~";
+                                tasks[j] += activity.getActivityName() + "~";
+                                tasks[j] += Double.toString(activity.getWeighting()) + "~";
+                                tasks[j] += String.valueOf(activity.isCompleted()) + "~";
+                                tasks[j] += activity.getNotes();
+                             } 
+                        }
+                        String updatedTasks = "";
+                        for(int j=0; j<tasks.length; j++){
+                            updatedTasks += tasks[j] + "#";
+                        }
+                        updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                        module[i+7] = updatedTasks;
+                        //System.out.println(updatedTasks);
+                        i+=9;
+                    }
+                    else if(module[i].charAt(0) == 'A'){
+                        i+=10;
+                    }
+                    else if(module[i].charAt(0) == 'E'){
+                        i+=9;
+                    }
+                    
+                }
+                for(int i=0; i<module.length; i++){
+                    updatedModuleString += module[i] + "/";
+                }
+                updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                updatedModuleString +="\n";
+                
+            }
+            else{
+                    for(int i=0; i<module.length; i++){
+                        updatedModuleString += module[i]+ "/";
+                    }
+                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                    updatedModuleString += "\n";
+                }
+        }
+        updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+                    fileOut.write(updatedModuleString.getBytes());
+                    fileOut.close();
+                    File file = new File("semester.txt");
+                    this.semesterFile = file;
+    }
+    
+     public static boolean checkFile(File semesterFile) throws FileNotFoundException, ParseException{
+        boolean acceptable = true;
+        String regExp = "[\\x00-\\x20]*[+-]?(((((\\p{Digit}+)(\\.)?((\\p{Digit}+)?)([eE][+-]?"
+        + "(\\p{Digit}+))?)|(\\.((\\p{Digit}+))([eE][+-]?(\\p{Digit}+))?)|(((0[xX](\\p"
+        + "{XDigit}+)(\\.)?)|(0[xX](\\p{XDigit}+)?(\\.)(\\p{XDigit}+)))[pP][+-]?(\\p{Digit}+)))"
+        + "[fFdD]?))[\\x00-\\x20]*";
+        Scanner fileScan = new Scanner( semesterFile );
+        
+        String [] stu = fileScan.nextLine().split("/");
+                for(int i=0; i<stu[0].length(); i++){
+                    if(!Character.isDigit(stu[0].charAt(i))){
+                        System.out.println("Error on line 1: studentID must only"
+                                + " consist of numbers");
+                        acceptable = false;
+                    }     
+                }
+                for(int i=0; i<stu[1].length(); i++){
+                    if(!Character.isLetter(stu[1].charAt(i)) && stu[1].charAt(i)!=' ' &&
+                            stu[1].charAt(i) != '-'){
+                        System.out.println("Error on line 1: A name can only "
+                                + "contain letters, spaces and dashes");
+                        acceptable = false;
+                    }     
+                }
+                if(stu[2].length()!=8){
+                    System.out.println("Error on line 1: A username must have"
+                            + " 8 characers");
+                    acceptable = false;
+                }
+                for(int i=0; i<stu[2].length(); i++){
+                    if(i<3){  
+                        if(!Character.isLetter(stu[2].charAt(i))){
+                        System.out.println("Error on line 1: The first 3 characters"
+                                + " of a username must be letters");
+                        acceptable = false;
+                        } 
+                    }
+                    else if(i<5){
+                        if(!Character.isDigit(stu[2].charAt(i))){
+                        System.out.println("Error on line 1: Characters 4 and 5 "
+                                + "of a username bust be numbers");
+                        acceptable = false;
+                        } 
+                    }
+                    else{
+                        if(!Character.isLetter(stu[2].charAt(i))){
+                        System.out.println("Error on line 1: The last 3 characters"
+                                + " of a username must be letters");
+                        acceptable = false;
+                        }
+                    }
+                }
+                if(stu[3].contains("@")){
+                    int pos = stu[3].indexOf("@");
+                    if(pos+1 != stu[3].lastIndexOf("uea.ac.uk") ){
+                        System.out.println("Error on line 1: and email must finish with"
+                                + " \"@uea.ac.uk\"");
+                        acceptable = false;
+                    }
+                }
+                else{
+                     System.out.println("Error on line 1: and email must finish with"
+                                + " \"@uea.ac.uk\"");
+                     acceptable = false;
+                }
+                
+//                this.schoolOfStudy = stu[4];
+//                this.yearOfStudy = Integer.parseInt(stu[5]);
+        int line = 2;
+        while(fileScan.hasNextLine()){
+                String [] details = fileScan.nextLine().split("/");
+                if(details[0].length()!=9){
+                    System.out.println("Error on line " + line + ": A module code must have"
+                            + " 9 characers");
+                    acceptable = false;
+                }
+                for(int i=0; i<details[0].length(); i++){
+                    if(i<3){  
+                        if(!Character.isLetter(details[0].charAt(i))){
+                        System.out.println("Error on line " + line + ": The first 3 characters"
+                                + " of a module code must be letters");
+                        acceptable = false;
+                        } 
+                    }
+                    else if(i==3){
+                        if(details[0].charAt(i)!='-'){
+                        System.out.println("Error on line " + line + ": Character 4 "
+                                + "of a module code must be a '-'");
+                        acceptable = false;
+                        } 
+                    }
+                    else if(i<8){
+                        if(!Character.isDigit(details[0].charAt(i))){
+                        System.out.println("Error on line " + line + ": Characters"
+                                + " 5-8 of a module code must be numbers");
+                        acceptable = false;
+                        }
+                    }
+                    else{
+                        if(!Character.isLetter(details[0].charAt(i))){
+                        System.out.println("Error on line " + line + ": The last character"
+                                + " of a module code must be a letter");
+                        acceptable = false;
+                        } 
+                    }
+                }
+                
+                for(int i=0; i<details[1].length(); i++){
+                    if(!Character.isLetter(details[1].charAt(i)) && details[1].charAt(i)!=' ' &&
+                            details[1].charAt(i) != '-' && !Character.isDigit(details[1].charAt(i))){
+                        System.out.println("Error on line " + line + ": A module name can only contain "
+                                + "characters, spaces, dashes and digits");
+                        acceptable = false;
+                    }
+                }
+                
+                for(int i=0; i<details[2].length(); i++){
+                    if(!Character.isLetter(details[2].charAt(i)) && details[2].charAt(i)!=' ' &&
+                            details[2].charAt(i) != '-'){
+                        System.out.println("Error on line " + line + ": An Andmin name can only "
+                                + "contain letters, spaces and dashes");
+                        acceptable = false;
+                    }     
+                }
+                  if(details[3].contains("@")){
+                    int pos = details[3].indexOf("@");
+                    if(pos+1 != details[3].lastIndexOf("uea.ac.uk") ){
+                        System.out.println("Error on line " + line + ": and email must finish with"
+                                + " \"@uea.ac.uk\"");
+                        acceptable = false;
+                    }
+                }
+                else{
+                     System.out.println("Error on line " + line + ": and email must finish with"
+                                + " \"@uea.ac.uk\"");
+                     acceptable = false;
+                }
+                if(!details[4].matches(regExp)){
+                    System.out.println("Error on line " + line + ": The weighting for an"
+                    + " assignment task must be a double");
+                    acceptable = false;
+                }
+                if(!details[5].equals("true") && !details[5].equals("false")){
+                    System.out.println("Error on line " + line + ": \""
+                    + details[5] + "\" must be a boolean value");
+                    acceptable = false;
+                }
+                  
+                for(int i = 7; i<details.length;){
+                    switch(details[i].charAt(0)){
+                        case 'A':
+                            if(!details[i+7].equals("true") && !details[i+7].equals("false")){
+                                System.out.println("Error on line " + line + ": \""
+                                + details[i+7] + "\" must be a boolean value");
+                                acceptable = false;
+                            }
+                            
+                            if(details[i+4].length()!= 19){
+                                System.out.println("Error on line " + line + ": A deadline"
+                                        + " must have 19 characters");
+                                acceptable = false;
+                            }
+                            for(int j=0; j<details[i+4].length(); j++){
+                                if(j == 4 || j==7){
+                                    if(details[i+4].charAt(j) != '-'){
+                                        System.out.println("Error on line " + line + ": The year, month and day"
+                                                + " must be seperated with a '-'");
+                                    acceptable = false;
+                                    }
+                                }
+                                else if(j== 13|| j== 16){
+                                    if(details[i+4].charAt(j) != ':'){
+                                    System.out.println("Error on line " + line + ": The hours, minuts and"
+                                                + " seconds must be seperated with a ':'");
+                                    acceptable = false;
+                                    }
+                                }
+                                else if(j==10){
+                                    if(details[i+4].charAt(j)!= ' '){
+                                        System.out.println("Error on line " + line + ": The date"
+                                                + " and time must be seperated by a space");
+                                    }
+                                }
+                                else{
+                                    if(!Character.isDigit(details[i+4].charAt(j))){
+                                        
+                                        System.out.println("Error on line " + line + ": The year, "
+                                                + "month, day, hours, minutes and seconds must be "
+                                                + "represented as numbers");
+                                        System.out.println(details[i+4].charAt(j));
+                                    acceptable = false;
+                                    }
+                                    }
+                                }
+                            
+                            Date date=new Date();
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.setTime(date);
+                            int year = calendar.get(Calendar.YEAR);
+                            int nextYear = year + 1;
+                            String y = details[i+4].substring(0, Math.min(details[i+4].length(), 4));
+                            if(!y.equals(Integer.toString(year)) && !y.equals(Integer.toString(nextYear))){
+                                System.out.println("Error on line " + line + ": The year for a deadline "
+                                        + "must be this year or next year");
+                                acceptable = false;
+                            }
+                            int month = Integer.parseInt(details[i+4].substring(5, Math.min(details[i+4].length(), 7)));
+                            int day = Integer.parseInt(details[i+4].substring(8, Math.min(details[i+4].length(), 10)));
+                            
+                            if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
+                                if(day > 31){
+                                    System.out.println("Error on line " + line + ": There can't be "
+                                    + day + "s in the " + month + " month (max 31 days)");
+                                    acceptable = false;
+                                }
+                            }
+                            else if(month == 4 || month == 6 || month == 9 || month == 11){
+                                if(day > 30){
+                                    System.out.println("Error on line " + line + ": There can't be "
+                                    + day + "s in the " + month + " month (max 30 days)");
+                                    acceptable = false;
+                                }
+                            }
+                            else{
+                                if(Integer.parseInt(y)%4 == 0){
+                                    if(day > 29){
+                                        System.out.println("Error on line " + line + ": There can't be "
+                                        + day + "s in the " + month + " month in a leap year(max 29 days)");
+                                        acceptable = false;
+                                    }
+                                }
+                                else{
+                                    if(day>28){
+                                        System.out.println("Error on line " + line + ": There can't be "
+                                        + day + "s in the " + month + " month(max 28 days)");
+                                        acceptable = false;
+                                    }
+                                }
+                            }
+
+                            if(!"".equals(details[i+8])){
+                                //System.out.println(details[i+8]);
+                                String [] assignmentTasks = details[i+8].split("#");
+                                for(int j=0; j<assignmentTasks.length;){
+                                    if(!"".equals(assignmentTasks[j+4])){
+                                        String [] activityTaskActivities = assignmentTasks[j+4].split("~");
+                                        for(int k=0; k<activityTaskActivities.length;k+=5){
+                                            
+                                            if(!activityTaskActivities[k+3].equals("true") && 
+                                                    !activityTaskActivities[k+3].equals("false")){
+                                                System.out.println("Error on line " + line + ": \""
+                                                + activityTaskActivities[k+3] + "\" must be a boolean value");
+                                                acceptable = false;
+                                            }
+                                            
+                                            if(activityTaskActivities[k].length()!= 5){
+                                                System.out.println("Error on line " + line + ": The ID for an"
+                                                        + " assignment activity must be 5 characters long");
+                                                acceptable = false;
+                                            }
+                                                
+                                            String activityID1 = activityTaskActivities[k].substring(0, Math.min(activityTaskActivities[k].length(), 2));
+                                            if(!activityID1.equals("aa")){
+                                                System.out.println("Error on line " + line + ": The ID for an"
+                                                        + " assignment activity must start with \"aa\"");
+                                                acceptable = false;
+                                            }
+                                            
+                                            String activityID2 = activityTaskActivities[k].substring(2, Math.min(activityTaskActivities[k].length(), 25));
+                                            for(int h=0; h<activityID2.length(); h++){
+                                               if(!Character.isDigit(activityID2.charAt(h))){
+                                                   System.out.println("Error on line " + line + ": The ID for an"
+                                                        + " assignment activity must end in 3 digits");
+                                                acceptable = false;
+                                               }
+                                            }
+                                            
+                                            if(!activityTaskActivities[k+2].matches(regExp)){
+                                                System.out.println("Error on line " + line + ": The weighting for an"
+                                                        + " assignment activity must be a double");
+                                                acceptable = false;
+                                            }
+
+                                        }
+
+                                    }
+                                    if(!assignmentTasks[j+3].equals("true") && 
+                                            !assignmentTasks[j+3].equals("false")){
+                                        System.out.println("Error on line " + line + ": \""
+                                        + assignmentTasks[j+3] + "\" must be a boolean value");
+                                        acceptable = false;
+                                    }
+                                    
+                                    if(assignmentTasks[j].length()!= 5){
+                                                System.out.println("Error on line " + line + ": The ID for an"
+                                                        + " assignment activity must be 5 characters long");
+                                                acceptable = false;
+                                    }
+                                                
+                                    String taskID1 = assignmentTasks[j].substring(0, Math.min(assignmentTasks[j].length(), 2));
+                                    if(!taskID1.equals("aT")){
+                                        System.out.println("Error on line " + line + ": The ID for an"
+                                            + " assignment activity must start with \"aT\"");
+                                        acceptable = false;
+                                    }
+                                            
+                                    String taskID2 = assignmentTasks[j].substring(2, Math.min(assignmentTasks[j].length(), 25));
+                                    for(int h=0; h<taskID2.length(); h++){
+                                        if(!Character.isDigit(taskID2.charAt(h))){
+                                            System.out.println("Error on line " + line + ": The ID for an"
+                                                + " assignment activity must end in 3 digits");
+                                                acceptable = false;
+                                        }
+                                    }
+                                    
+                                    if(!assignmentTasks[j+2].matches(regExp)){
+                                        System.out.println("Error on line " + line + ": The weighting for an"
+                                        + " assignment task must be a double");
+                                        acceptable = false;
+                                    }
+                                    j+=6;
+                                }
+
+                            }
+                            
+                            for(int j=0; j<details[i+5].length(); j++){
+                                if(!Character.isLetter(details[i+5].charAt(j)) &&
+                                        details[i+5].charAt(j) != ' '){
+                                    System.out.println("Error on line " + line + ": The hand in procedure "
+                                            + "for an assignment can only contain letters and spaces");
+                                        acceptable = false;
+                                }
+                            }
+                            
+                            for(int j=0; j<details[i+6].length(); j++){
+                                if(!Character.isLetter(details[i+6].charAt(j)) &&
+                                        details[i+6].charAt(j) != ' '){
+                                    System.out.println("Error on line " + line + ": The assignment type "
+                                            + "can only contain letters and spaces");
+                                        acceptable = false;
+                                }
+                            }
+                            
+                            if(details[i].length()!= 4){
+                            System.out.println("Error on line " + line + ": The assignment ID"
+                                    + " must be 4 characters long");
+                                        acceptable = false;
+                            }
+                            
+                            if(details[i].charAt(0)!='A'){
+                                System.out.println("Error on line " + line + ": The first character "
+                                        + "for an assignment ID must be an 'A'");
+                                        acceptable = false;
+                            }
+                            
+                            for(int j=1; j<details[i].length(); j++){
+                                if(!Character.isDigit(details[i].charAt(j))){
+                                    System.out.println("Error on line " + line + ": The last 3 characters "
+                                        + "for an assignment ID must be digits");
+                                        acceptable = false;
+                                }
+                            }
+                            
+                            for(int j=0; j<details[i+1].length(); j++){
+                                if(!Character.isLetter(details[i+1].charAt(j)) &&
+                                        details[i+1].charAt(j) != ' ' && !Character.isDigit(details[i+1].charAt(j))
+                                        && details[i+1].charAt(j) != '-'){
+                                    System.out.println("Error on line " + line + ": The assignment name "
+                                            + "can only contain letters, spaces, numbers and dashes");
+                                        acceptable = false;
+                                }
+                            }
+                            
+                            if(!details[i+2].matches(regExp)){
+                                        System.out.println("Error on line " + line + ": The weighting for an"
+                                        + " assignment must be a double");
+                                        acceptable = false;
+                            }
+                            
+                            if(!details[i+3].matches(regExp)){
+                                        System.out.println("Error on line " + line + ": The grade for an"
+                                        + " assignment must be a double");
+                                        acceptable = false;
+                            }
+                            i+=10;
+                            break;
+                        case 'E':
+                            if(details[i+4].length()!= 19){
+                                System.out.println("Error on line " + line + ": A deadline"
+                                        + " must have 19 characters");
+                                acceptable = false;
+                            }
+                            for(int j=0; j<details[i+4].length(); j++){
+                                if(j == 4 || j==7){
+                                    if(details[i+4].charAt(j) != '-'){
+                                        System.out.println("Error on line " + line + ": The year, month and day"
+                                                + " must be seperated with a '-'");
+                                    acceptable = false;
+                                    }
+                                }
+                                else if(j== 13|| j== 16){
+                                    if(details[i+4].charAt(j) != ':'){
+                                    System.out.println("Error on line " + line + ": The hours, minuts and"
+                                                + " seconds must be seperated with a ':'");
+                                    acceptable = false;
+                                    }
+                                }
+                                
+                                else if(j==10){
+                                    if(details[i+4].charAt(j)!= ' '){
+                                        System.out.println("Error on line " + line + ": The date"
+                                                + " and time must be seperated by a space");
+                                    }
+                                }
+                                else{
+                                    if(!Character.isDigit(details[i+4].charAt(j))){
+                                        System.out.println("Error on line " + line + ": The year, "
+                                                + "month, day, hours, minuts and seconds must be "
+                                                + "represented as numbers");
+                                    acceptable = false;
+                                    }
+                                }
+                            }
+                            
+                            Date examDate=new Date();
+                            Calendar examCalendar = Calendar.getInstance();
+                            examCalendar.setTime(examDate);
+                            int examYear = examCalendar.get(Calendar.YEAR);
+                            int nextExamYear = examYear + 1;
+                            String examY = details[i+4].substring(0, Math.min(details[i+4].length(), 4));
+                            if(!examY.equals(Integer.toString(examYear)) && !examY.equals(Integer.toString(nextExamYear))){
+                                System.out.println("Error on line " + line + ": The year for a deadline "
+                                        + "must be this year or next year");
+                                acceptable = false;
+                            }
+                            int examMonth = Integer.parseInt(details[i+4].substring(5, Math.min(details[i+4].length(), 7)));
+                            int examDay = Integer.parseInt(details[i+4].substring(8, Math.min(details[i+4].length(), 10)));
+                            
+                            if(examMonth == 1 || examMonth == 3 || examMonth == 5 || examMonth == 7 || examMonth == 8 || examMonth == 10 || examMonth == 12){
+                                if(examDay > 31){
+                                    System.out.println("Error on line " + line + ": There can't be "
+                                    + examDay + "s in the " + examMonth + " month (max 31 days)");
+                                    acceptable = false;
+                                }
+                            }
+                            else if(examMonth == 4 || examMonth == 6 || examMonth == 9 || examMonth == 11){
+                                if(examDay > 30){
+                                    System.out.println("Error on line " + line + ": There can't be "
+                                    + examDay + "s in the " + examMonth + " month (max 30 days)");
+                                    acceptable = false;
+                                }
+                            }
+                            else{
+                                if(Integer.parseInt(examY)%4 == 0){
+                                    if(examDay > 29){
+                                        System.out.println("Error on line " + line + ": There can't be "
+                                        + examDay + "s in the " + examMonth + " month in a leap year(max 29 days)");
+                                        acceptable = false;
+                                    }
+                                }
+                                else{
+                                    if(examDay>28){
+                                        System.out.println("Error on line " + line + ": There can't be "
+                                        + examDay + "s in the " + examMonth + " month(max 28 days)");
+                                        acceptable = false;
+                                    }
+                                }
+                            }
+                            if(!"".equals(details[i+7])){
+                                String [] examTasks = details[i+7].split("#");
+                                for(int j=0; j<examTasks.length;){
+                                    ArrayList<Activity> examTaskActivityList = new ArrayList<>();
+                                    if(!"".equals(examTasks[j+4])){
+                                        String [] examTaskActivities = examTasks[j+4].split("~");
+                                        for(int k=0; k<examTaskActivities.length;k+=5){
+                                            if(!examTaskActivities[k+3].equals("true") && 
+                                                    !examTaskActivities[k+3].equals("false")){
+                                                System.out.println("Error on line " + line + ": \""
+                                                + examTaskActivities[k+3] + "\" must be a boolean value");
+                                                acceptable = false;
+                                            }
+                                            
+                                            if(examTaskActivities[k].length()!= 5){
+                                                System.out.println("Error on line " + line + ": The ID for an"
+                                                        + " exam activity must be 5 characters long");
+                                                System.out.println(examTaskActivities[k]);
+                                                acceptable = false;
+                                            }
+                                                
+                                            String activityID1 = examTaskActivities[k].substring(0, Math.min(examTaskActivities[k].length(), 2));
+                                            if(!activityID1.equals("ea")){
+                                                System.out.println("Error on line " + line + ": The ID for an"
+                                                        + " exam activity must start with \"ea\"");
+                                                acceptable = false;
+                                            }
+                                            
+                                            String activityID2 = examTaskActivities[k].substring(2, Math.min(examTaskActivities[k].length(), 25));
+                                            for(int h=0; h<activityID2.length(); h++){
+                                               if(!Character.isDigit(activityID2.charAt(h))){
+                                                   System.out.println("Error on line " + line + ": The ID for an"
+                                                        + "exam activity must end in 3 digits");
+                                                acceptable = false;
+                                               }
+                                            }
+                                            
+                                            if(!examTaskActivities[k+2].matches(regExp)){
+                                                System.out.println("Error on line " + line + ": The weighting for an"
+                                                        + " exam activity must be a double");
+                                                acceptable = false;
+                                            }
+
+                                        }
+
+                                    }
+                                    if(!examTasks[j+3].equals("true") && 
+                                            !examTasks[j+3].equals("false")){
+                                        System.out.println("Error on line " + line + ": \""
+                                        + examTasks[j+3] + "\" must be a boolean value");
+                                        acceptable = false;
+                                    }
+                                    
+                                    if(examTasks[j].length()!= 5){
+                                                System.out.println("Error on line " + line + ": The ID for an"
+                                                        + " exam task must be 5 characters long");
+                                                System.out.println(examTasks[j]);
+                                                acceptable = false;
+                                    }
+                                                
+                                    String taskID1 = examTasks[j].substring(0, Math.min(examTasks[j].length(), 2));
+                                    if(!taskID1.equals("eT")){
+                                        System.out.println("Error on line " + line + ": The ID for an"
+                                            + " exam activity must start with \"eT\"");
+                                        System.out.println(examTasks[j]);
+                                        acceptable = false;
+                                    }
+                                            
+                                    String taskID2 = examTasks[j].substring(2, Math.min(examTasks[j].length(), 25));
+                                    for(int h=0; h<taskID2.length(); h++){
+                                        if(!Character.isDigit(taskID2.charAt(h))){
+                                            System.out.println("Error on line " + line + ": The ID for an"
+                                                + " exam activity must end in 3 digits");
+                                                acceptable = false;
+                                        }
+                                    }
+                                    
+                                    if(!examTasks[j+2].matches(regExp)){
+                                        System.out.println("Error on line " + line + ": The weighting for an"
+                                        + " exam task must be a double");
+                                        acceptable = false;
+                                    }
+                                    j+=6;
+                                }
+                            }
+                            for(int j=0; j<details[i+5].length(); j++){
+                                if(!Character.isDigit(details[i+5].charAt(j))){
+                                    System.out.println("Error on line " + line + ": The duration for an"
+                                        + " exam task must be an integer");
+                                        acceptable = false;
+                                }
+                            }
+                            
+                             if(details[i].length()!= 4){
+                            System.out.println("Error on line " + line + ": The exam ID"
+                                    + " must be 4 characters long");
+                                        acceptable = false;
+                            }
+                            
+                            if(details[i].charAt(0)!='E'){
+                                System.out.println("Error on line " + line + ": The first character "
+                                        + "for an exam ID must be an 'E'");
+                                        acceptable = false;
+                            }
+                            
+                            for(int j=1; j<details[i].length(); j++){
+                                if(!Character.isDigit(details[i].charAt(j))){
+                                    System.out.println("Error on line " + line + ": The last 3 characters "
+                                        + "for an exam ID must be digits");
+                                        acceptable = false;
+                                }
+                            }
+                            
+                             for(int j=0; j<details[i+1].length(); j++){
+                                if(!Character.isLetter(details[i+1].charAt(j)) &&
+                                        details[i+1].charAt(j) != ' ' && !Character.isDigit(details[i+1].charAt(j))
+                                        && details[i+1].charAt(j) != '-'){
+                                    System.out.println("Error on line " + line + ": The exam name "
+                                            + "can only contain letters, spaces, numbers and dashes");
+                                        acceptable = false;
+                                }
+                            }
+                            
+                            if(!details[i+2].matches(regExp)){
+                                        System.out.println("Error on line " + line + ": The weighting for an"
+                                        + " exam must be a double");
+                                        acceptable = false;
+                            }
+                            
+                            if(!details[i+3].matches(regExp)){
+                                        System.out.println("Error on line " + line + ": The grade for an"
+                                        + " exam must be a double");
+                                        acceptable = false;
+                            }
+                            i+=9;
+                            break;
+                    }
+            
+            }
+            line++;
+        }
+        return acceptable;
+     }
+
+    
     
      public static void main(String[] args) throws IOException, ParseException{
         File semesterFile = new File("semester.txt");
+        boolean read = checkFile(semesterFile);
+        System.out.println(read);
+        
+        if(read){
         Student student = new Student(semesterFile);
         System.out.println(student);
+        
+        
         
 //        Date date = new Date();
 //        Deadline deadline = new Deadline(date);
@@ -698,6 +1543,9 @@ public class Student {
     student.updateFileForExam(student.getModule(0) , exam);
     }
        
+       student.getModule(0).setModuleCompleted(true);
+       student.updateFileForModule(student.getModule(0));
+       
        student.getModule(0).getAssessmentByIndex(0).getTask(0).setAsCompleted();
        student.updateFileForTask(student.getModule(0) , student.getModule(0).getAssessmentByIndex(0).getTask(0));
        
@@ -705,14 +1553,32 @@ public class Student {
        student.updateFileForTask(student.getModule(0) , student.getModule(0).getAssessmentByIndex(1).getTask(0));
 //       
        student.getModule(0).getAssessmentByIndex(0).getTask(0).getActivityByIndex(0).setAsCompleted();
-       student.updateFileForActivity(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(0).getTask(0), student.getModule(0).getAssessmentByIndex(0).getTask(0).getActivityByIndex(0));
+       student.updateFileForActivity(student.getModule(0) , student.getModule(0).getAssessmentByIndex(0).getTask(0).getActivityByIndex(0));
     
        student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0).setAsCompleted();
-       student.updateFileForActivity(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0), student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
+       student.updateFileForActivity(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
     
        for(int i=0; i<student.getModules().size();i++){
          System.out.println(student.getModule(i));
                  }
        student.printSemesterFile();
+       
+       System.out.println("\nADD TASK \n");
+       ArrayList<Activity> taskActivities = new ArrayList<>();
+       Task task = new Task("I'VE JUST ADDED THIS TASK DOES IT WORK","aT303", "this is a note", taskActivities, student.getModule(3).getAssessmentByIndex(1)
+       ,23.0,false);
+       student.getModule(3).getAssessmentByIndex(1).addTask(task);
+       student.addTaskToFile(student.getModule(3) , task);
+       student.printSemesterFile();
+       
+       System.out.println("ADD ACTIVITY \n");
+       Activity act = new Activity("aa303", "WILL THIS WORK WHO KNOWS", "this is a note", false, 10.0);
+       student.getModule(3).getAssessmentByIndex(1).getTask(0).addActivity(act);
+       student.addActivityToFile(student.getModule(3) ,student.getModule(3).getAssessmentByIndex(1).getTask(1), act);
+       student.printSemesterFile();
+       
+       
+
+        }
     }
 }

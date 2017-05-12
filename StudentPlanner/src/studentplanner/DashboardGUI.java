@@ -25,6 +25,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         //dc.getStudent().getModules().add(new Module("CMP 450A", "Software Engineering", new Admin("Joost", "joost@uea.ac.uk")));     
         //dc.uploadSemesterFile();
         backList = new ArrayList<>();
+        
     }
     
     public void loadControllers(){
@@ -1091,7 +1092,6 @@ public class DashboardGUI extends javax.swing.JFrame {
         card.show(GUI, "moduleCard");        
         backList.add("dashboardCard");
         backIndex++;
-        moduleTitle.setText(dc.getStudent().getModule(0).getModuleName());
         moduleModuleTable.setModel(mc.viewModules());
     }//GEN-LAST:event_moduleButtonActionPerformed
 
@@ -1223,12 +1223,13 @@ public class DashboardGUI extends javax.swing.JFrame {
     private void moduleModuleTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moduleModuleTableMouseClicked
         // TODO add your handling code here:
         int i = moduleModuleTable.getSelectedRow();
-        dc.getModuleController().viewModules().getValueAt(i, 0);
+        //dc.getModuleController().viewModules().getValueAt(i, 0);
         CardLayout card = (CardLayout)GUI.getLayout();
         card.show(GUI, "card11");        
         backList.add("moduleCard");
         backIndex++;
-        moduleNameTextField.setText(dc.getStudentModuleList().get(i).getModuleName());
+        
+        moduleNameTextField.setText(mc.getModuleTitle(i));
     }//GEN-LAST:event_moduleModuleTableMouseClicked
 
     private void uploadProfileFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadProfileFileChooserActionPerformed

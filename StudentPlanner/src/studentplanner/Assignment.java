@@ -5,6 +5,8 @@
  */
 package studentplanner;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -49,6 +51,25 @@ public class Assignment extends Assessment {
         return str.toString();
     }
     
+    public String assignmentToFile(){
+        Format formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+        String assignment="";
+        assignment += super.getAssessmentCode() + "/";
+        assignment += super.getAssessmentTitle()+ "/";
+        assignment += super.getWeighting()+ "/";
+        assignment += super.getGrade() + "/";
+        assignment += formatter.format(super.getDeadline().getTime()) + "/";
+        assignment += handInProcedure + "/";
+        assignment += assignmentType + "/";
+        assignment += isSummative + "/";
+        for(Task task: super.getTasks()){
+            assignment += task.taskToFile() + "#";
+        }
+        assignment = assignment.substring(0,assignment.length()-1);
+        assignment+="/";
+        assignment += super.getNotes();
+        return assignment;
+    }
     
     
     

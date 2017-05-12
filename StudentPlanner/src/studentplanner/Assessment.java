@@ -61,6 +61,10 @@ public abstract class Assessment {
     public Task getTask(int i){
         return tasks.get(i);
     }
+    
+    public void addTask(Task t){
+        tasks.add(t);
+    }
     public String getNotes(){
         return notes;
     }

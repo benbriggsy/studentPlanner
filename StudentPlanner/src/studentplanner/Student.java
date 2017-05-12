@@ -605,8 +605,8 @@ public class Student {
                 if(module[0].equals(mod.getModuleCode())){
                     for(int i=7; i<module.length;){
                         if(module[i].charAt(0) == 'A' && task.getTaskID().charAt(0) == 'a'){
-                            if(!"".equals(module[i+8])){
-                            module[i+8] = module[i+8].substring(0,module[i+8].length()-1);
+                           if(!"".equals(module[i+8])){
+                            //module[i+8] = module[i+8].substring(0,module[i+8].length()-1);
                             module[i+8] += "#";
                             }
                             module[i+8] += task.getTaskID() + "#";
@@ -624,7 +624,7 @@ public class Student {
                         }
                         else if(module[i].charAt(0) == 'E' && task.getTaskID().charAt(0) == 'e'){
                             if(!"".equals(module[i+7])){
-                            module[i+7] = module[i+7].substring(0,module[i+7].length()-1);
+                            //module[i+7] = module[i+7].substring(0,module[i+7].length()-1);
                             module[i+7] += "#";
                             }
                             module[i+7] += task.getTaskID() + "#";

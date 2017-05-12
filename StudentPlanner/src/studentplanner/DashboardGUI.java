@@ -160,6 +160,10 @@ public class DashboardGUI extends javax.swing.JFrame {
         jScrollPane14 = new javax.swing.JScrollPane();
         moduleAssessmentsTable = new javax.swing.JTable();
         moduleAssessmentsLabel = new javax.swing.JLabel();
+        UploadProfileGUI = new javax.swing.JPanel();
+        uploadProfileFileChooser = new javax.swing.JFileChooser();
+        uploadProfileLabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         viewDashboardButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
 
@@ -223,7 +227,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addComponent(loginUsernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                         .addComponent(loginPasswordTextField))
                     .addComponent(loginWrongPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         LoginGUILayout.setVerticalGroup(
             LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,7 +291,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addGroup(ModuleGUILayout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
         ModuleGUILayout.setVerticalGroup(
             ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,7 +320,7 @@ public class DashboardGUI extends javax.swing.JFrame {
             .addGroup(MilestoneGUILayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(milestoneLabel)
-                .addContainerGap(501, Short.MAX_VALUE))
+                .addContainerGap(547, Short.MAX_VALUE))
         );
         MilestoneGUILayout.setVerticalGroup(
             MilestoneGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,7 +341,7 @@ public class DashboardGUI extends javax.swing.JFrame {
             .addGroup(GradePlannerGUILayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(gradePlannerLabel)
-                .addContainerGap(474, Short.MAX_VALUE))
+                .addContainerGap(524, Short.MAX_VALUE))
         );
         GradePlannerGUILayout.setVerticalGroup(
             GradePlannerGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,7 +422,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                                 .addComponent(jLabel2)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AssessmentGUILayout.createSequentialGroup()
-                        .addGap(0, 131, Short.MAX_VALUE)
+                        .addGap(0, 190, Short.MAX_VALUE)
                         .addGroup(AssessmentGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(assessmentNameLabel)
                             .addComponent(assessmentCodeLabel)
@@ -536,7 +540,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         TaskGUILayout.setHorizontalGroup(
             TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TaskGUILayout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
+                .addContainerGap(118, Short.MAX_VALUE)
                 .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(taskNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(taskDescriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -643,7 +647,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         ActivityGUILayout.setHorizontalGroup(
             ActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActivityGUILayout.createSequentialGroup()
-                .addContainerGap(143, Short.MAX_VALUE)
+                .addContainerGap(194, Short.MAX_VALUE)
                 .addGroup(ActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(activityNameLabel)
                     .addComponent(activityNotesLabel)
@@ -967,10 +971,10 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addComponent(moduleGradeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(moduleGradeLabel))
                 .addGap(18, 18, 18)
-                .addGroup(ChosenModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(moduleProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(moduleProgressLabel))
-                .addGap(18, 18, 18)
+                .addGroup(ChosenModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(moduleProgressLabel)
+                    .addComponent(moduleProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ChosenModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(moduleNotesLabel))
@@ -982,6 +986,44 @@ public class DashboardGUI extends javax.swing.JFrame {
         );
 
         GUI.add(ChosenModuleGUI, "card11");
+
+        uploadProfileFileChooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadProfileFileChooserActionPerformed(evt);
+            }
+        });
+
+        uploadProfileLabel.setText("Please select your semester profile file and then press Open");
+
+        jLabel3.setText("Upload Semester Profile");
+
+        javax.swing.GroupLayout UploadProfileGUILayout = new javax.swing.GroupLayout(UploadProfileGUI);
+        UploadProfileGUI.setLayout(UploadProfileGUILayout);
+        UploadProfileGUILayout.setHorizontalGroup(
+            UploadProfileGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UploadProfileGUILayout.createSequentialGroup()
+                .addComponent(uploadProfileFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
+            .addGroup(UploadProfileGUILayout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addGroup(UploadProfileGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(uploadProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        UploadProfileGUILayout.setVerticalGroup(
+            UploadProfileGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UploadProfileGUILayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel3)
+                .addGap(60, 60, 60)
+                .addComponent(uploadProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(uploadProfileFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(162, Short.MAX_VALUE))
+        );
+
+        GUI.add(UploadProfileGUI, "card11");
 
         viewDashboardButton.setText("Go to Dashboard");
         viewDashboardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1128,10 +1170,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if (LoginController.checkCredentials(loginUsernameTextField.getText(), loginPasswordTextField.getText())){
-            CardLayout card = (CardLayout)GUI.getLayout();
-            card.show(GUI, "dashboardCard");        
-            backList.add("dashboardCard");
-            backIndex++;
+            
             try {
                 dc = new DashboardController();
                 asc = new AssessmentController(dc);
@@ -1146,13 +1185,23 @@ public class DashboardGUI extends javax.swing.JFrame {
                 dashboardUsernameLabel.setText("ParseException");
             } catch (IOException ex) {
                 dashboardUsernameLabel.setText("IOException");
-            }           
+            }   
+            if (dc.findSemesterFile(loginUsernameTextField.getText())){
+                CardLayout card = (CardLayout)GUI.getLayout();
+                card.show(GUI, "dashboardCard");        
+                backList.add("dashboardCard");
+                backIndex++;
+            }
+            else{
+                CardLayout card = (CardLayout)GUI.getLayout();
+                card.show(GUI, "card11");        
+                backList.add("card9");
+                backIndex++;
+            }
         }
         else{
             loginWrongPasswordLabel.setVisible(true);
-        }
-        
-        
+        }       
     }//GEN-LAST:event_loginLoginButtonActionPerformed
 
     private void moduleNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moduleNameTextFieldActionPerformed
@@ -1181,6 +1230,26 @@ public class DashboardGUI extends javax.swing.JFrame {
         backIndex++;
         moduleNameTextField.setText(dc.getStudentModuleList().get(i).getModuleName());
     }//GEN-LAST:event_moduleModuleTableMouseClicked
+
+    private void uploadProfileFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadProfileFileChooserActionPerformed
+        try {
+            // TODO add your handling code here:
+            String filePath = uploadProfileFileChooser.getSelectedFile().getAbsolutePath();
+            uploadProfileLabel.setText(filePath);
+            if(dc.uploadFile(loginUsernameTextField.getText(), filePath)){
+                CardLayout card = (CardLayout)GUI.getLayout();
+                card.show(GUI, "dashboardCard");        
+                backList.add("dashboardCard");
+                backIndex++;
+            }
+            else{
+                uploadProfileLabel.setText("File does not fit the valid format");
+            }
+            
+        } catch (IOException ex) {
+            uploadProfileLabel.setText("File not found");
+        }
+    }//GEN-LAST:event_uploadProfileFileChooserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1229,6 +1298,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JPanel ModuleGUI;
     private javax.swing.JLabel ModuleNameLabel;
     private javax.swing.JPanel TaskGUI;
+    private javax.swing.JPanel UploadProfileGUI;
     private javax.swing.JTable activitiesTable;
     private javax.swing.JButton activityButton;
     private javax.swing.JCheckBox activityCompletedCheckBox;
@@ -1270,6 +1340,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel gradePlannerLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -1331,6 +1402,8 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JTextField taskWeightTextField;
     private javax.swing.JLabel titleLabel1;
     private javax.swing.JTable upcomingDeadlinesTable;
+    private javax.swing.JFileChooser uploadProfileFileChooser;
+    private javax.swing.JLabel uploadProfileLabel;
     private javax.swing.JButton viewDashboardButton;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables

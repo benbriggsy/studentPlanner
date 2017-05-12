@@ -40,6 +40,7 @@ public class ModuleController {
     public Assessment viewAssessment(int i){
         return module.getAssessments().get(i);
     }
+    
     public String getModuleCode(){
        return module.getModuleCode();
     }

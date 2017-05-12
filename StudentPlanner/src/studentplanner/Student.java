@@ -607,8 +607,9 @@ public class Student {
                         if(module[i].charAt(0) == 'A' && task.getTaskID().charAt(0) == 'a'){
                             if(!"".equals(module[i+8])){
                             module[i+8] = module[i+8].substring(0,module[i+8].length()-1);
+                            module[i+8] += "#";
                             }
-                            module[i+8] += "#" + task.getTaskID() + "#";
+                            module[i+8] += task.getTaskID() + "#";
                             module[i+8] += task.getTaskName() + "#";
                             module[i+8] += Double.toString(task.getWeighting()) + "#";
                             module[i+8] += String.valueOf(task.isCompleted()) + "#";
@@ -624,8 +625,9 @@ public class Student {
                         else if(module[i].charAt(0) == 'E' && task.getTaskID().charAt(0) == 'e'){
                             if(!"".equals(module[i+7])){
                             module[i+7] = module[i+7].substring(0,module[i+7].length()-1);
+                            module[i+7] += "#";
                             }
-                            module[i+7] += "#" + task.getTaskID() + "#";
+                            module[i+7] += task.getTaskID() + "#";
                             module[i+7] += task.getTaskName() + "#";
                             module[i+7] += Double.toString(task.getWeighting()) + "#";
                             module[i+7] += String.valueOf(task.isCompleted()) + "#";
@@ -812,12 +814,13 @@ public class Student {
                             if(task.getTaskID().equals(tasks[j-4])){
                                 if(!"".equals(tasks[j])){
                                     tasks[j] = tasks[j].substring(0,tasks[j].length()-1);
+                                    tasks[j] += "~";
                                 }
-                                tasks[j] += "~" + activity.getActivityID() + "~";
+                                tasks[j] += activity.getActivityID() + "~";
                                 tasks[j] += activity.getActivityName() + "~";
                                 tasks[j] += Double.toString(activity.getWeighting()) + "~";
                                 tasks[j] += String.valueOf(activity.isCompleted()) + "~";
-                                tasks[j] += activity.getNotes() + "#";
+                                tasks[j] += activity.getNotes();
                              } 
                         }
                         String updatedTasks = "";
@@ -826,6 +829,7 @@ public class Student {
                         }
                         updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
                         module[i+8] = updatedTasks;
+                        //System.out.println(updatedTasks);
                         i+=10;
                     }
                     else if(module[i].charAt(0) == 'E' && activity.getActivityID().charAt(0) == 'e' && activity.getActivityID().charAt(1) == 'a'){
@@ -834,8 +838,9 @@ public class Student {
                             if(task.getTaskID().equals(tasks[j-4])){
                                 if(!"".equals(tasks[j])){
                                     tasks[j] = tasks[j].substring(0,tasks[j].length()-1);
+                                    tasks[j] += "~";
                                 }
-                                tasks[j] += "~" + activity.getActivityID() + "~";
+                                tasks[j] += activity.getActivityID() + "~";
                                 tasks[j] += activity.getActivityName() + "~";
                                 tasks[j] += Double.toString(activity.getWeighting()) + "~";
                                 tasks[j] += String.valueOf(activity.isCompleted()) + "~";

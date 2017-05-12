@@ -10,20 +10,18 @@ public class Module {
     private String moduleName;
     private Admin moduleOrganiser;
     private ArrayList<Assessment> assessments;
-    //private ArrayList<Double> assessmentGrades;
     private double currentGrade;
     private boolean moduleCompleted;
     private String notes;
     
-    public Module(String moduleCode, String moduleTitle, Admin moduleOrganiser){
+    public Module(String moduleCode, String moduleTitle, Admin moduleOrganiser, Double grade, boolean completed, String notes){
         this.moduleCode = moduleCode;
         this.moduleName = moduleTitle;
         this.moduleOrganiser = moduleOrganiser;
         this.assessments = new ArrayList<>();
-        //this.assessmentGrades = new ArrayList<>();
-        this.currentGrade = 0.0;
-        this.moduleCompleted = false;
-        this.notes = "";
+        this.currentGrade = grade;
+        this.moduleCompleted = completed;
+        this.notes = notes;
     }
     
     public String getModuleCode(){

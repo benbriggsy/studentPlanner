@@ -986,7 +986,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        GUI.add(ChosenModuleGUI, "card11");
+        GUI.add(ChosenModuleGUI, "chosenModuleCard");
 
         uploadProfileFileChooser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1225,10 +1225,9 @@ public class DashboardGUI extends javax.swing.JFrame {
         int i = moduleModuleTable.getSelectedRow();
         //dc.getModuleController().viewModules().getValueAt(i, 0);
         CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "card11");        
+        card.show(GUI, "chosenModuleCard");        
         backList.add("moduleCard");
-        backIndex++;
-        
+        backIndex++;        
         moduleNameTextField.setText(mc.getModuleTitle(i));
     }//GEN-LAST:event_moduleModuleTableMouseClicked
 

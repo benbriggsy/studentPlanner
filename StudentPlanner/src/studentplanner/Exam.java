@@ -19,9 +19,9 @@ public class Exam extends Assessment {
     
     public Exam(String examRoom, int examDuration, String assessmentCode, String assessmentTitle, double weighting,
         double grade, Deadline deadline, ArrayList<Task> taskList, 
-        String notes){
+        String notes, String ex){
         super(assessmentCode, assessmentTitle, weighting, grade, deadline, 
-                taskList, notes);
+                taskList, notes, ex);
         this.examRoom = examRoom;
         this.examDuration = examDuration;
     }

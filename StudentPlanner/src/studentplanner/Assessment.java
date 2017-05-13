@@ -20,10 +20,11 @@ public abstract class Assessment {
     private ArrayList<Task> tasks;
     private String notes;
     private boolean completed;
+    private String assessmentType;
     
     public Assessment(String assessmentCode, String assessmentTitle, double weighting,
         double grade, Deadline deadline, ArrayList<Task> taskList, 
-        String notes){
+        String notes, String assessmentType){
         this.assessmentCode = assessmentCode;
         this.assessmentTitle = assessmentTitle;
         this.weighting = weighting;
@@ -32,6 +33,7 @@ public abstract class Assessment {
         this.tasks = taskList;
         this.notes = notes;
         this.completed = false;
+        this.assessmentType = assessmentType;
     }
     
     public String getAssessmentCode(){

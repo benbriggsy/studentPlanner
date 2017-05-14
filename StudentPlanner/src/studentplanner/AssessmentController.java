@@ -22,36 +22,36 @@ public class AssessmentController {
         this.dashboard = dashboard;
     }
         
-    public String getAssessmentCode(){
-        return assessment.getAssessmentCode();
+    public String getAssessmentCode(String moduleCode, int i){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getAssessmentCode();
     }
     
-    public String getAssessmentTitle(){
-        return assessment.getAssessmentTitle();
+    public String getAssessmentTitle(String moduleCode, int i){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getAssessmentTitle();
     }
     
-    public double getGrade(){
-        return assessment.getGrade();
+    public double getGrade(String moduleCode, int i){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getGrade();
     }
     
-    public double getWeighting(){
-        return assessment.getWeighting();
+    public double getWeighting(String moduleCode, int i){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getWeighting();
     }
     
-    public Deadline getDeadline(){
-        return assessment.getDeadline();
+    public Deadline getDeadline(String moduleCode, int i){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getDeadline();
     }
     
-    public String getNotes(){
-        return assessment.getNotes();
+    public String getNotes(String moduleCode, int i){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getNotes();
     }
     
-    public ArrayList<Task> getTasks(){
-        return assessment.getTasks();
+    public ArrayList<Task> getTasks(String moduleCode, int i){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTasks();
     }
     
-    public double getAssessmentProgress(){
-        return assessment.getProgress();
+    public double getAssessmentProgress(String moduleCode, int i){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getProgress();
     }
     
     public ModuleController getModuleController(){
@@ -59,7 +59,7 @@ public class AssessmentController {
     }
     
     public void ViewTask(Task task){
-        //NOT SURE WHAT TO DO HERE
+        //NOT SURE WHAT TO DO HEREz
     }
     
     public void createTask(){

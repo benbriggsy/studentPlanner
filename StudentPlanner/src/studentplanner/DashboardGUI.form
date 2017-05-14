@@ -306,7 +306,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="milestoneLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="383" max="32767" attributes="0"/>
+                      <EmptySpace pref="687" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -341,7 +341,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="gradePlannerLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="383" max="32767" attributes="0"/>
+                      <EmptySpace pref="687" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -866,7 +866,7 @@
                           <Component id="activityWeightingTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="activityWeightingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="121" max="32767" attributes="0"/>
+                      <EmptySpace pref="398" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -989,7 +989,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="deadlinesPanel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="92" max="32767" attributes="0"/>
+                              <EmptySpace pref="225" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1487,6 +1487,318 @@
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Upload Semester Profile"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="AddTaskGUI">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card12"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="addTaskLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="activityButton1" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                              <Component id="titleLabel2" min="-2" pref="128" max="-2" attributes="0"/>
+                              <EmptySpace pref="140" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="108" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="addTaskNameLabel" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <Component id="addTaskDescriptionLabel" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <Component id="addTaskAssessmentLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="addTaskWeightingLabel" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="addTaskButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="addTaskNameTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                                  <Component id="addTaskAssessmentTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                                  <Component id="addTaskDescriptionTextField" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
+                                  <Component id="addTaskWeightingTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="66" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="addTaskLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="activityButton1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Component id="titleLabel2" pref="34" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="addTaskNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="addTaskNameLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="addTaskDescriptionLabel" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="addTaskDescriptionTextField" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="addTaskAssessmentTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="addTaskAssessmentLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="addTaskWeightingTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="addTaskWeightingLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="addTaskButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="385" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="activityButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Activity View"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="activityButton1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="addTaskLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Task"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="addTaskNameTextField">
+            </Component>
+            <Component class="javax.swing.JTextField" name="addTaskDescriptionTextField">
+            </Component>
+            <Component class="javax.swing.JTextField" name="addTaskAssessmentTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addTaskAssessmentTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="addTaskWeightingTextField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="addTaskNameLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Task Name:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="addTaskDescriptionLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Description:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="addTaskAssessmentLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Parent Assessment:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="addTaskWeightingLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Weighting:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="titleLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Add Task"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="addTaskButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Task"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="AddActivityGUI">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card13"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
+                      <Component id="addActivityTasksLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="addActivityTasksComboBox" min="-2" max="-2" attributes="0"/>
+                          <Component id="addActivityButton" min="-2" pref="119" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="150" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="activityNameLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="activityNotesLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="activityWeightingLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="addActivityWeightingTextArea" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane11" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="addActivityNameTextField" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
+                                  <Component id="addActivityLabel" min="-2" pref="77" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="addActivityLabel1" min="-2" pref="60" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="104" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="337" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="addActivityTasksLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="addActivityTasksComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="addActivityButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="293" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="addActivityLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="addActivityLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="addActivityNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="activityNameLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="activityNotesLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane11" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="53" pref="53" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="addActivityWeightingTextArea" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="activityWeightingLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="addActivityLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Activity"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="addActivityWeightingTextArea">
+            </Component>
+            <Component class="javax.swing.JLabel" name="activityWeightingLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Activity Weighting:"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane11">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="addActivityNotesTextArea">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="activityNotesLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Activity Notes:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="activityNameLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Activity Name:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="addActivityNameTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addActivityNameTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="addActivityLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Activity"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="addActivityTasksLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tasks it is part of:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="addActivityTasksComboBox">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="addActivityButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Create Activity"/>
               </Properties>
             </Component>
           </SubComponents>

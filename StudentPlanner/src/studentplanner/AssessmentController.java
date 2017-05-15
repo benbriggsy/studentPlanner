@@ -7,6 +7,7 @@ package studentplanner;
 
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -64,8 +65,7 @@ public class AssessmentController {
         String[] cols = {"Task Name", "Task Weighting", "Completed?"};
         DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
 
-        for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessments().size(); j++){
-                
+        for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessments().size(); j++){            
             String taskName = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getTaskName();
             Double weighting = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getWeighting();
             boolean completed = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).isCompleted();
@@ -73,6 +73,16 @@ public class AssessmentController {
             tableModel.addRow(data);
         }
         return tableModel;
+    }
+    
+    public DefaultListModel  viewAssessmentTasksTitles(String moduleCode, int i) {
+        DefaultListModel listModel = new DefaultListModel();
+        for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessments().size(); j++){            
+            String taskName = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getTaskName();
+            Object[] data = {taskName};
+            listModel.addElement(taskName);
+        }
+        return listModel;
     }
     
     public void ViewTask(Task task){
@@ -94,14 +104,14 @@ public class AssessmentController {
             taskID+="eT";
         }
         taskID+=assessment.getAssessmentCode().charAt(1);
-        if(assessment.getTasks().size()<10){
+        if(assessment.getTasks().size() < 10){
             taskID += "0";
         }
         taskID+=assessment.getTasks().size();
         
-        //Assessment assessment = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
-        //Task t = new Task(taskName, taskID, notes, assessment, weighting, false);
-        //assessment.addTask(t);
+        Assessment assessment = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
+        Task t = new Task(taskName, taskID, notes, assessment, weighting, false);
+        assessment.addTask(t);
         //dashboard.getStudent().getModuleByCode(moduleCode)..getAssessmentByCode(assessmentCode).addTask(t);
     }
     

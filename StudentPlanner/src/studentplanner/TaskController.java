@@ -104,4 +104,15 @@ public class TaskController {
             //t.addActivity(activity);
         }            
     }
+    
+    public void viewAllTasks(){
+        ArrayList<Task> tasks = new ArrayList();
+        for (int i = 0; i < dashboard.getStudent().getModules().size(); i++){
+            for (int j = 0; j < dashboard.getStudent().getModule(i).getAssessments().size(); i ++){
+                for (int k = 0;k < dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getTasks().size(); i++){
+                    tasks.add(dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getTask(k));
+                }
+            }
+        }
+    }
 }

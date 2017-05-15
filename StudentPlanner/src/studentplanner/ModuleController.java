@@ -2,6 +2,7 @@ package studentplanner;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -66,7 +67,7 @@ public class ModuleController {
     public DefaultTableModel viewModuleAssessments(int i) {
         String[] cols = {"Assessment Code", "Assessment Title", "Assessment Grade", "Assessment Deadline"};
         DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
-
+        
         for (int j = 0; j < dashboard.getStudent().getModule(i).getAssessments().size(); j++) {
             String assessmentCode = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getAssessmentCode();
             String assessmentName = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getAssessmentTitle();
@@ -76,5 +77,26 @@ public class ModuleController {
             tableModel.addRow(data);
         }
         return tableModel;
+    }
+    
+    public DefaultTableModel viewModulesTitles() {
+        String[] cols = {"Module Title"};
+        DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
+
+        for (int i = 0; i < dashboard.getStudent().getModules().size(); i++) {
+            String moduleName = dashboard.getStudent().getModules().get(i).getModuleName();
+            Object[] data = {moduleName};
+            tableModel.addRow(data);
+        }
+        return tableModel;
+    }
+    
+    public DefaultListModel viewModuleAssessmentsTitles(int i) {
+        DefaultListModel listModel = new DefaultListModel();
+        for (int j = 0; j < dashboard.getStudent().getModule(i).getAssessments().size(); j++) {
+            String assessmentName = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getAssessmentTitle();
+            listModel.addElement(assessmentName);
+        }
+        return listModel;
     }
 }

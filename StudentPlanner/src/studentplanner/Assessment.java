@@ -67,6 +67,10 @@ public abstract class Assessment {
     public void addTask(Task t){
         tasks.add(t);
     }
+    
+    public void removeTask(Task t){
+        tasks.remove(t);
+    }
     public String getNotes(){
         return notes;
     }

@@ -98,6 +98,10 @@ public class Task {
         activities.add(a);
     }
     
+    public void removeActivity(Activity a){
+        activities.remove(a);
+    }
+    
     public String taskToFile(){
         String task = "";
         task+=taskID;

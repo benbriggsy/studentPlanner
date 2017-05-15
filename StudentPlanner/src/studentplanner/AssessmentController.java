@@ -60,16 +60,16 @@ public class AssessmentController {
         return module;
     }
     
-    public DefaultTableModel viewModuleAssessmentTasks(int i) {
-        String[] cols = {"Task ID", "Task Title", "Weighting", "Status"};
+    public DefaultTableModel viewAssessmentTasks(String moduleCode, int i) {
+        String[] cols = {"Task Name", "Task Weighting", "Completed?"};
         DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
 
-        for (int j = 0; j < dashboard.getStudent().getModule(i).getAssessments().size(); j++) {
-            String assessmentCode = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getAssessmentCode();
-            String assessmentName = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getAssessmentTitle();
-            double assessmentGrade = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getGrade();
-            String assessmentDeadline = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getDeadline().getTime().toString();
-            Object[] data = {assessmentCode, assessmentName, assessmentGrade, assessmentDeadline};
+        for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessments().size(); j++){
+                
+            String taskName = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getTaskName();
+            Double weighting = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getWeighting();
+            boolean completed = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).isCompleted();
+            Object[] data = {taskName, weighting, completed};
             tableModel.addRow(data);
         }
         return tableModel;
@@ -83,8 +83,26 @@ public class AssessmentController {
         
     }
     
-    public void AddTask(){
+    public void addTask(String moduleCode, String assessmentCode, String taskName,
+            String notes, double weighting){
+        String taskID = "";
         
+        if(assessmentCode.charAt(0)=='A'){
+            taskID+="aT";
+        }
+        else if(assessmentCode.charAt(0)=='E'){
+            taskID+="eT";
+        }
+        taskID+=assessment.getAssessmentCode().charAt(1);
+        if(assessment.getTasks().size()<10){
+            taskID += "0";
+        }
+        taskID+=assessment.getTasks().size();
+        
+        //Assessment assessment = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
+        //Task t = new Task(taskName, taskID, notes, assessment, weighting, false);
+        //assessment.addTask(t);
+        //dashboard.getStudent().getModuleByCode(moduleCode)..getAssessmentByCode(assessmentCode).addTask(t);
     }
     
     public void CreateActivity(){

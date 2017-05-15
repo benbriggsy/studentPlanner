@@ -109,6 +109,8 @@ public class DashboardGUI extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         activitiesTable = new javax.swing.JTable();
         titleLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        taskIDTextField = new javax.swing.JTextField();
         ActivityGUI = new javax.swing.JPanel();
         activityLabel = new javax.swing.JLabel();
         activityNameTextField = new javax.swing.JTextField();
@@ -245,7 +247,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(loginWrongPasswordLabel)
                 .addGap(12, 12, 12)
                 .addComponent(loginLoginButton)
-                .addContainerGap(467, Short.MAX_VALUE))
+                .addContainerGap(486, Short.MAX_VALUE))
         );
 
         loginWrongPasswordLabel.setVisible(false);
@@ -307,7 +309,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(gradePlannerButton1)
                 .addGap(64, 64, 64)
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(440, Short.MAX_VALUE))
+                .addContainerGap(457, Short.MAX_VALUE))
         );
 
         GUI.add(ModuleGUI, "moduleCard");
@@ -328,7 +330,7 @@ public class DashboardGUI extends javax.swing.JFrame {
             .addGroup(MilestoneGUILayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(milestoneLabel)
-                .addContainerGap(687, Short.MAX_VALUE))
+                .addContainerGap(710, Short.MAX_VALUE))
         );
 
         GUI.add(MilestoneGUI, "milestoneCard");
@@ -349,7 +351,7 @@ public class DashboardGUI extends javax.swing.JFrame {
             .addGroup(GradePlannerGUILayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(gradePlannerLabel)
-                .addContainerGap(687, Short.MAX_VALUE))
+                .addContainerGap(710, Short.MAX_VALUE))
         );
 
         GUI.add(GradePlannerGUI, "gradePlannerCard");
@@ -503,7 +505,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(assessmentTasksLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 103, Short.MAX_VALUE))
+                .addGap(0, 110, Short.MAX_VALUE))
         );
 
         GUI.add(AssessmentGUI, "assessmentCard");
@@ -540,49 +542,57 @@ public class DashboardGUI extends javax.swing.JFrame {
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, TaskGUI, org.jdesktop.beansbinding.ObjectProperty.create(), activitiesTable, org.jdesktop.beansbinding.BeanProperty.create("elements"));
         bindingGroup.addBinding(binding);
         binding.bind();
+        activitiesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                activitiesTableMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(activitiesTable);
 
         titleLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         titleLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel1.setText("Task");
 
+        jLabel4.setText("Task ID:");
+
         javax.swing.GroupLayout TaskGUILayout = new javax.swing.GroupLayout(TaskGUI);
         TaskGUI.setLayout(TaskGUILayout);
         TaskGUILayout.setHorizontalGroup(
             TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TaskGUILayout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
-                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(taskNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskDescriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskAssessmentLabel)
-                    .addComponent(taskProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskWeightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(taskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskDescriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskWeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(105, 105, 105))
-            .addGroup(TaskGUILayout.createSequentialGroup()
-                .addGap(263, 263, 263)
-                .addComponent(taskTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(TaskGUILayout.createSequentialGroup()
                 .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TaskGUILayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(taskLabel)
-                            .addComponent(activityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(92, 92, 92)
-                        .addComponent(titleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(taskTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(TaskGUILayout.createSequentialGroup()
+                                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(taskLabel)
+                                    .addComponent(activityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(92, 92, 92)
+                                .addComponent(titleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(TaskGUILayout.createSequentialGroup()
                         .addGap(199, 199, 199)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(taskProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(taskWeightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(taskAssessmentLabel)
+                            .addComponent(taskDescriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(taskNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(287, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TaskGUILayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(taskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(taskDescriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(taskWeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(taskIDTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(taskNameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)))
+                .addGap(105, 105, 105))
         );
         TaskGUILayout.setVerticalGroup(
             TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -595,32 +605,39 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addComponent(activityButton))
                     .addGroup(TaskGUILayout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(titleLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)))
+                        .addComponent(titleLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(taskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(taskNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(taskDescriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskDescriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(taskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskAssessmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(TaskGUILayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(taskIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addComponent(taskDescriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)
+                        .addComponent(taskAssessmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(TaskGUILayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(taskDescriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(taskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(taskWeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(taskWeightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(taskProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
                 .addComponent(taskTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(218, 218, 218))
+                .addGap(170, 170, 170))
         );
 
         GUI.add(TaskGUI, "taskCard");
@@ -704,7 +721,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addGroup(ActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(activityWeightingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(activityWeightingLabel))
-                .addContainerGap(398, Short.MAX_VALUE))
+                .addContainerGap(409, Short.MAX_VALUE))
         );
 
         GUI.add(ActivityGUI, "activityCard");
@@ -849,7 +866,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(DashboardGUILayout.createSequentialGroup()
                         .addComponent(deadlinesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(225, Short.MAX_VALUE))))
+                        .addContainerGap(240, Short.MAX_VALUE))))
         );
 
         GUI.add(DashboardGUI, "dashboardCard");
@@ -973,7 +990,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(moduleAssessmentsLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 106, Short.MAX_VALUE))
+                .addGap(0, 117, Short.MAX_VALUE))
         );
 
         GUI.add(ChosenModuleGUI, "chosenModuleCard");
@@ -1011,7 +1028,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(uploadProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(uploadProfileFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         GUI.add(UploadProfileGUI, "uploadProfileCard");
@@ -1108,7 +1125,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addComponent(activityButton1))
                     .addGroup(AddTaskGUILayout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(titleLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(titleLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addTaskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1519,8 +1536,20 @@ public class DashboardGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addTaskAssessmentTextFieldActionPerformed
 
     private void assessmentTasksTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assessmentTasksTableMouseClicked
-        // TODO add your handling code here:
-        
+        int i = assessmentTasksTable.getSelectedRow();
+        CardLayout card = (CardLayout)GUI.getLayout();
+        card.show(GUI, "taskCard");
+        backList.add("assessmentCard");
+        backIndex++;
+        taskNameTextField.setText(tc.getTaskName(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), i));
+        taskIDTextField.setText(tc.getTaskID(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), i));
+        taskDescriptionTextField.setText(tc.getNotes(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), i));
+        taskAssessmentTextField.setText(assessmentCodeTextField.getText());
+        taskWeightTextField.setText(Double.toString(tc.getWeighting(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), i)));
+        Double newDouble = tc.getProgress(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), i);
+        newDouble.intValue();
+        jProgressBar1.setValue(newDouble.intValue());
+        activitiesTable.setModel(tc.viewTaskActivities(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), taskIDTextField.getText(), i));
     }//GEN-LAST:event_assessmentTasksTableMouseClicked
 
     private void moduleAssessmentsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moduleAssessmentsTableMouseClicked
@@ -1537,7 +1566,22 @@ public class DashboardGUI extends javax.swing.JFrame {
         assessmentWeightingTextField.setText(asc.getAssessmentTitle(moduleCodeTextField.getText(), i));
         assessmentProgressBar.setValue((int)asc.getAssessmentProgress(moduleCodeTextField.getText(), i));
         assessmentNotesTextArea.setText(asc.getAssessmentTitle(moduleCodeTextField.getText(), i));
+        assessmentTasksTable.setModel(asc.viewAssessmentTasks(moduleCodeTextField.getText(), i));
+        
     }//GEN-LAST:event_moduleAssessmentsTableMouseClicked
+
+    private void activitiesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_activitiesTableMouseClicked
+        int i = activitiesTable.getSelectedRow();
+        CardLayout card = (CardLayout)GUI.getLayout();
+        card.show(GUI, "activityCard");        
+        backList.add("taskCard");
+        backIndex++;
+        activityNameTextField.setText(acc.getActivityName(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), i, taskIDTextField.getText()));
+        activityNotesTextArea.setText(acc.getNotes(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), i, taskIDTextField.getText()));
+        activityCompletedCheckBox.setSelected(acc.getIsCompleted(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), i, taskIDTextField.getText()));
+        Double newDouble = acc.getWeighting(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), i, taskIDTextField.getText());
+        activityWeightingTextField.setText(newDouble.toString());
+    }//GEN-LAST:event_activitiesTableMouseClicked
 
     private void assessmentNotesTextAreaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assessmentNotesTextAreaMouseClicked
         // TODO add your handling code here:
@@ -1690,6 +1734,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
@@ -1737,6 +1782,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JButton taskButton2;
     private javax.swing.JLabel taskDescriptionLabel;
     private javax.swing.JTextField taskDescriptionTextField;
+    private javax.swing.JTextField taskIDTextField;
     private javax.swing.JLabel taskLabel;
     private javax.swing.JLabel taskNameLabel;
     private javax.swing.JTextField taskNameTextField;

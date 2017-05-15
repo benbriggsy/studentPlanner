@@ -66,7 +66,7 @@ public abstract class Assessment {
     
     public Task getTaskByID(String taskID){
         for(Task currentTask: tasks){
-            if(currentTask.getTaskID() == taskID){
+            if(currentTask.getTaskID().equals(taskID)){
                 return currentTask;
             }
         }

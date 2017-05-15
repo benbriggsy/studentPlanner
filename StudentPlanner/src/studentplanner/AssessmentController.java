@@ -75,7 +75,7 @@ public class AssessmentController {
         return tableModel;
     }
     
-    public DefaultListModel  viewAssessmentTasksTitles(String moduleCode, int i) {
+    public DefaultListModel viewAssessmentTasksTitles(String moduleCode, int i) {
         DefaultListModel listModel = new DefaultListModel();
         for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessments().size(); j++){            
             String taskName = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getTaskName();

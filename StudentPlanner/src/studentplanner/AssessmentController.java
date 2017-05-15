@@ -6,6 +6,7 @@
 package studentplanner;
 
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -56,6 +57,29 @@ public class AssessmentController {
     
     public ModuleController getModuleController(){
         return module;
+    }
+    
+//    private String taskName;
+//    private String taskID;
+//    private String notes;
+//    private ArrayList<Activity> activities;
+//    private Assessment assessment;
+//    private double weighting;
+//    private boolean completed;
+    
+    public DefaultTableModel viewAssessmentTasks(String moduleCode, int i) {
+        String[] cols = {"Task Name", "Task Weighting", "Completed?"};
+        DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
+
+        for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessments().size(); j++){
+                
+            String taskName = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getTaskName();
+            Double weighting = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getWeighting();
+            boolean completed = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).isCompleted();
+            Object[] data = {taskName, weighting, completed};
+            tableModel.addRow(data);
+        }
+        return tableModel;
     }
     
     public void ViewTask(Task task){

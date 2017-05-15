@@ -33,9 +33,9 @@ public class DashboardController {
     //private Student student;
     //private MilestoneController milestoneController;
 
-    public DashboardController() throws FileNotFoundException, IOException, ParseException {
+    public DashboardController(String fileName) throws FileNotFoundException, IOException, ParseException {
         File semesterFile = new File(
-               "asp14dbu.txt");
+               fileName + ".txt");
         student = new Student(semesterFile);
     }
 
@@ -216,7 +216,7 @@ public class DashboardController {
         return tableModel;
     }
     
-    public boolean findSemesterFile(String username){
+    public static boolean findSemesterFile(String username){
         String filename = username + ".txt";
         File dir = new File(".");
         FilenameFilter condition = (File dir1, String name) -> name.equals(filename); 
@@ -225,7 +225,7 @@ public class DashboardController {
         return (files != null && dir.list(condition).length > 0);
     }
     
-    public boolean uploadFile(String username, String source) throws IOException{
+    public static boolean uploadFile(String username, String source) throws IOException{
         //check file is valid here. method will return false if not valid.
         String fileName = username + ".txt";
         Path FROM = Paths.get(source);

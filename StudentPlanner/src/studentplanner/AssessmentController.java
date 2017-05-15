@@ -6,6 +6,7 @@
 package studentplanner;
 
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -39,8 +40,8 @@ public class AssessmentController {
         return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getWeighting();
     }
     
-    public Deadline getDeadline(String moduleCode, int i){
-        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getDeadline();
+    public Date getDeadline(String moduleCode, int i){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getDeadline().getTime();
     }
     
     public String getNotes(String moduleCode, int i){

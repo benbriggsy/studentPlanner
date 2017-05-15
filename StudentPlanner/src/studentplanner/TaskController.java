@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -74,5 +74,14 @@ public class TaskController {
     
     public void updateProgress(){
         
+    }
+    
+    public void addTask(String moduleCode, String assessmentCode, String taskName,
+            String notes, double weighting){
+        String taskID = "0";
+        //Assessment assessment = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
+        //Task t = new Task(taskName, taskID, notes, assessment, weighting, false);
+        //assessment.addTask(t);
+        //dashboard.getStudent().getModuleByCode(moduleCode)..getAssessmentByCode(assessmentCode).addTask(t);
     }
 }

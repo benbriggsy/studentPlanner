@@ -674,6 +674,116 @@ public class Student {
             
     }
     
+    public void removeTaskFromFile(Module mod, Task task) throws FileNotFoundException, IOException{
+        Scanner fileScan = new Scanner( semesterFile );
+        String updatedModuleString ="";
+        boolean found = false;
+        int taskPosition = 0;
+            while(fileScan.hasNextLine()){
+                String [] module = fileScan.nextLine().split("/");
+                
+                if(module[0].equals(mod.getModuleCode())){
+                    String [] updatedModule = module;
+                    updatedModule[0] = mod.getModuleCode();
+                    updatedModule[1] = mod.getModuleName();
+                    updatedModule[2] = mod.getModuleOrganiser().getName();
+                    updatedModule[3] = mod.getModuleOrganiser().getEmail();
+                    updatedModule[4] = Double.toString(mod.getCurrentGrade());
+                    updatedModule[5] = Boolean.toString(mod.getModuleCompleted());
+                    updatedModule[6] = mod.getNotes();
+                    for(int i=7; i<module.length;){
+                        if(module[i].charAt(0) == 'A' && task.getTaskID().charAt(0) == 'a'){
+                            String [] tasks = module[i+8].split("#");
+                            for(int j=0; j<tasks.length; j+=6){
+                                if(tasks[j].equals(task.getTaskID())){
+                                    taskPosition = j;
+                                    found = true;
+                                }
+                            }
+                            if(found){
+                                for(int j=taskPosition; j<tasks.length-6; j+=6){
+                                    tasks[j]=tasks[j+6];
+                                    tasks[j+1]=tasks[j+7];
+                                    tasks[j+2]=tasks[j+8];
+                                    tasks[j+3]=tasks[j+9];
+                                    tasks[j+4]=tasks[j+10];
+                                    tasks[j+5]=tasks[j+11];
+                                }
+                            }
+                            String updatedTasks = "";
+                                for(int j=0; j<tasks.length-6; j++){
+                                    updatedTasks += tasks[j] + "#";
+                                }
+                                if(!updatedTasks.equals("")){
+                                    updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                                }
+                            updatedModule[i+8] = updatedTasks;
+                            i+=10; 
+                        }
+                        else if(module[i].charAt(0) == 'E' && task.getTaskID().charAt(0) == 'e'){
+                            String [] tasks = module[i+8].split("#");
+                            for(int j=0; j<tasks.length; j+=6){
+                                if(tasks[j].equals(task.getTaskID())){
+                                    taskPosition = j;
+                                    found = true;
+                                }
+                            }
+                            if(found){
+                                for(int j=taskPosition; j<tasks.length-6; j+=6){
+                                    tasks[j]=tasks[j+6];
+                                    tasks[j+1]=tasks[j+7];
+                                    tasks[j+2]=tasks[j+8];
+                                    tasks[j+3]=tasks[j+9];
+                                    tasks[j+4]=tasks[j+10];
+                                    tasks[j+6]=tasks[j+11];
+                                }
+                            }
+                            String updatedTasks = "";
+                                for(int j=0; j<tasks.length-6; j++){
+                                    updatedTasks += tasks[j] + "#";
+                                }
+                            if(!updatedTasks.equals("")){
+                            updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                                }
+                            updatedModule[i+7] = updatedTasks;
+                            i+=9; 
+                        }
+                        else if(module[i].charAt(0) == 'A'){
+                            i+=10;
+                        }
+                        else if(module[i].charAt(0) == 'E'){
+                            i+=9;
+                        }
+                    }
+                    updatedModuleString += updatedModule[0] + "/";
+                    updatedModuleString += updatedModule[1] + "/";
+                    updatedModuleString += updatedModule[2] + "/";
+                    updatedModuleString += updatedModule[3] + "/";
+                    updatedModuleString += updatedModule[4] + "/";
+                    updatedModuleString += updatedModule[5] + "/";
+                    updatedModuleString += updatedModule[6] + "/";
+                    for(int i=7; i< module.length; i++){
+                        updatedModuleString += updatedModule[i] + "/";
+                    }
+                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                    updatedModuleString += "\n";
+                }
+                else{
+                    for(int i=0; i<module.length; i++){
+                        updatedModuleString += module[i]+ "/";
+                    }
+                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                    updatedModuleString += "\n";
+                }
+            }
+            updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+                    fileOut.write(updatedModuleString.getBytes());
+                    fileOut.close();
+                    File file = new File("semester.txt");
+                    this.semesterFile = file;
+    }
+    
     public void updateFileForActivity(Module mod, Activity activity) throws IOException{
         Scanner fileScan = new Scanner( semesterFile );
         String updatedModuleString ="";
@@ -1518,8 +1628,11 @@ public class Student {
         if(read){
         Student student = new Student(semesterFile);
         System.out.println(student);
-        
-        
+            System.out.println(student.getModules().size());
+            System.out.println(student.getModule(0).getAssessments().size());
+            System.out.println(student.getModule(0).getAssessmentByIndex(1).getTasks().size());
+       
+            
         
 //        Date date = new Date();
 //        Deadline deadline = new Deadline(date);
@@ -1530,11 +1643,11 @@ public class Student {
 //        System.out.println(student.getModule(0).getAssessmentByIndex(2));
     
 
-    if(student.getModule(0).getAssessmentByIndex(1) instanceof Assignment){
-        Assignment assignment = (Assignment)student.getModule(0).getAssessmentByIndex(1);
-        assignment.setGrade(70.0);
-    student.updateFileForAssignment(student.getModule(0) , assignment);
-    }
+//    if(student.getModule(0).getAssessmentByIndex(1) instanceof Assignment){
+//        Assignment assignment = (Assignment)student.getModule(0).getAssessmentByIndex(1);
+//        assignment.setGrade(70.0);
+//    student.updateFileForAssignment(student.getModule(0) , assignment);
+//    }
     
 //        Scanner fileScan = new Scanner( semesterFile );
 //        String [] module = fileScan.nextLine().split("/");
@@ -1552,45 +1665,49 @@ public class Student {
 //                    System.out.println(moduleString);
                     
                     
-       if(student.getModule(0).getAssessmentByIndex(0) instanceof Exam){
-        Exam exam = (Exam)student.getModule(0).getAssessmentByIndex(0);
-        exam.setGrade(80.0);
-    student.updateFileForExam(student.getModule(0) , exam);
-    }
-       
-       student.getModule(0).setModuleCompleted(true);
-       student.updateFileForModule(student.getModule(0));
-       
-       student.getModule(0).getAssessmentByIndex(0).getTask(0).setAsCompleted();
-       student.updateFileForTask(student.getModule(0) , student.getModule(0).getAssessmentByIndex(0).getTask(0));
-       
-       student.getModule(0).getAssessmentByIndex(1).getTask(0).setAsCompleted();
-       student.updateFileForTask(student.getModule(0) , student.getModule(0).getAssessmentByIndex(1).getTask(0));
+//       if(student.getModule(0).getAssessmentByIndex(0) instanceof Exam){
+//        Exam exam = (Exam)student.getModule(0).getAssessmentByIndex(0);
+//        exam.setGrade(80.0);
+//    student.updateFileForExam(student.getModule(0) , exam);
+//    }
 //       
-       student.getModule(0).getAssessmentByIndex(0).getTask(0).getActivityByIndex(0).setAsCompleted();
-       student.updateFileForActivity(student.getModule(0) , student.getModule(0).getAssessmentByIndex(0).getTask(0).getActivityByIndex(0));
-    
-       student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0).setAsCompleted();
-       student.updateFileForActivity(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
-    
-       for(int i=0; i<student.getModules().size();i++){
-         System.out.println(student.getModule(i));
-                 }
-       student.printSemesterFile();
-       
-       System.out.println("\nADD TASK \n");
+//       student.getModule(0).setModuleCompleted(true);
+//       student.updateFileForModule(student.getModule(0));
+//       
+//       student.getModule(0).getAssessmentByIndex(0).getTask(0).setAsCompleted();
+//       student.updateFileForTask(student.getModule(0) , student.getModule(0).getAssessmentByIndex(0).getTask(0));
+//       
+//       student.getModule(0).getAssessmentByIndex(1).getTask(0).setAsCompleted();
+//       student.updateFileForTask(student.getModule(0) , student.getModule(0).getAssessmentByIndex(1).getTask(0));
+////       
+//       student.getModule(0).getAssessmentByIndex(0).getTask(0).getActivityByIndex(0).setAsCompleted();
+//       student.updateFileForActivity(student.getModule(0) , student.getModule(0).getAssessmentByIndex(0).getTask(0).getActivityByIndex(0));
+//    
+//       student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0).setAsCompleted();
+//       student.updateFileForActivity(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
+//    
+//       for(int i=0; i<student.getModules().size();i++){
+//         System.out.println(student.getModule(i));
+//                 }
+//       student.printSemesterFile();
+//       
+//       System.out.println("\nADD TASK \n");
        ArrayList<Activity> taskActivities = new ArrayList<>();
-       Task task = new Task("I'VE JUST ADDED THIS TASK DOES IT WORK","aT303", "this is a note", taskActivities, student.getModule(3).getAssessmentByIndex(1)
+       Task task = new Task("I'VE JUST ADDED THIS TASK DOES IT WORK","aT303", "this is a note", taskActivities, student.getModule(0).getAssessmentByIndex(1)
        ,23.0,false);
-       student.getModule(3).getAssessmentByIndex(1).addTask(task);
-       student.addTaskToFile(student.getModule(3) , task);
-       student.printSemesterFile();
-       
-       System.out.println("ADD ACTIVITY \n");
-       Activity act = new Activity("aa303", "WILL THIS WORK WHO KNOWS", "this is a note", false, 10.0);
-       student.getModule(3).getAssessmentByIndex(1).getTask(0).addActivity(act);
-       student.addActivityToFile(student.getModule(3) ,student.getModule(3).getAssessmentByIndex(1).getTask(1), act);
-       student.printSemesterFile();
+//       student.getModule(0).getAssessmentByIndex(1).addTask(task);
+//       student.addTaskToFile(student.getModule(0) , task);
+//       student.printSemesterFile();
+//       
+student.printSemesterFile();
+student.removeTaskFromFile(student.getModule(0), student.getModule(0).getAssessmentByIndex(1).getTask(0));
+         student.getModule(0).getAssessmentByIndex(1).removeTask(student.getModule(0).getAssessmentByIndex(1).getTask(0));
+         student.printSemesterFile();
+//       System.out.println("ADD ACTIVITY \n");
+//       Activity act = new Activity("aa303", "WILL THIS WORK WHO KNOWS", "this is a note", false, 10.0);
+//       student.getModule(0).getAssessmentByIndex(1).getTask(0).addActivity(act);
+//       student.addActivityToFile(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0), act);
+//       student.printSemesterFile();
        
        
 

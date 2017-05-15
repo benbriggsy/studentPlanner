@@ -30,7 +30,7 @@ public class ModuleController {
     public double getModuleGrade(int i){
         return dashboard.getStudent().getModule(i).getCurrentGrade();
     }
-    
+
     public boolean getModuleStatus(int i){
         return dashboard.getStudent().getModule(i).getModuleCompleted();
     }
@@ -67,7 +67,7 @@ public class ModuleController {
         String[] cols = {"Assessment Code", "Assessment Title", "Assessment Grade", "Assessment Deadline"};
         DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
 
-        for (int j = 0; j < dashboard.getStudent().getModules().size(); j++) {
+        for (int j = 0; j < dashboard.getStudent().getModule(i).getAssessments().size(); j++) {
             String assessmentCode = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getAssessmentCode();
             String assessmentName = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getAssessmentTitle();
             double assessmentGrade = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getGrade();

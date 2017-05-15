@@ -22,20 +22,20 @@ public class ActivityController {
         this.dashboard = dashboard;
     }
     
-    public String getActivityName(String moduleCode, int assessmentIndex, int activityIndex, int taskIndex){
-        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getActivityByIndex(activityIndex).getActivityName();
+    public String getActivityName(String moduleCode, int assessmentIndex, int activityIndex, String taskID){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTaskByID(taskID).getActivityByIndex(activityIndex).getActivityName();
     }
     
-    public String getNotes(String moduleCode, int assessmentIndex, int activityIndex, int taskIndex){
-        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getActivityByIndex(activityIndex).getNotes();
+    public String getNotes(String moduleCode, int assessmentIndex, int activityIndex, String taskID){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTaskByID(taskID).getActivityByIndex(activityIndex).getNotes();
     }
     
-    public double getWeighting(String moduleCode, int assessmentIndex, int activityIndex, int taskIndex){
-        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getActivityByIndex(activityIndex).getWeighting();
+    public double getWeighting(String moduleCode, int assessmentIndex, int activityIndex, String taskID){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTaskByID(taskID).getActivityByIndex(activityIndex).getWeighting();
     }
     
-    public boolean getIsCompleted(String moduleCode, int assessmentIndex, int activityIndex, int taskIndex){
-        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getActivityByIndex(activityIndex).isCompleted();
+    public boolean getIsCompleted(String moduleCode, int assessmentIndex, int activityIndex, String taskID){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTaskByID(taskID).getActivityByIndex(activityIndex).isCompleted();
     }
     
     public TaskController getTaskController(){

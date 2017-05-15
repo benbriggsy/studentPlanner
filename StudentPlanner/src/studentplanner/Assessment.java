@@ -64,6 +64,16 @@ public abstract class Assessment {
         return tasks.get(i);
     }
     
+    public Task getTaskByID(String taskID){
+        for(Task currentTask: tasks){
+            if(currentTask.getTaskID() == taskID){
+                return currentTask;
+            }
+        }
+        return null;
+    }
+    
+    
     public void addTask(Task t){
         tasks.add(t);
     }

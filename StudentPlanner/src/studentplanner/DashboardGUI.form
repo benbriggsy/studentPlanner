@@ -102,7 +102,7 @@
         <Container class="javax.swing.JPanel" name="LoginGUI">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card9"/>
+              <CardConstraints cardName="loginCard"/>
             </Constraint>
           </Constraints>
 
@@ -595,6 +595,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="assessmentTasksTableMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1192,7 +1195,7 @@
         <Container class="javax.swing.JPanel" name="ChosenModuleGUI">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card11"/>
+              <CardConstraints cardName="chosenModuleCard"/>
             </Constraint>
           </Constraints>
 
@@ -1218,20 +1221,16 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="ModuleNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="moduleCodeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="moduleDeadlineLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="moduleWeightingLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="moduleGradeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="moduleProgressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="moduleNotesLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane13" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="moduleProgressBar" alignment="0" pref="156" max="32767" attributes="0"/>
                                       <Component id="moduleGradeTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="moduleWeightingTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="moduleDeadlineTextField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="moduleCodeTextField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="moduleNameTextField" alignment="0" max="32767" attributes="0"/>
                                   </Group>
@@ -1242,7 +1241,7 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="98" max="32767" attributes="0"/>
                       <Component id="jScrollPane14" min="-2" pref="383" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                   </Group>
@@ -1273,17 +1272,7 @@
                           <Component id="moduleCodeTextField" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="moduleCodeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="moduleDeadlineTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="moduleDeadlineLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="moduleWeightingTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="moduleWeightingLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="moduleGradeTextField" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="moduleGradeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1302,7 +1291,7 @@
                       <Component id="moduleAssessmentsLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane14" min="-2" pref="99" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="106" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1356,29 +1345,6 @@
                 <Property name="text" type="java.lang.String" value="Module Notes:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="moduleDeadlineTextField">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moduleDeadlineTextFieldActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="moduleDeadlineLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Module Deadline:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="moduleWeightingTextField">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="moduleWeightingLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Module Weighting:"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="moduleGradeTextField">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
@@ -1425,6 +1391,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="moduleAssessmentsTableMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1438,7 +1407,7 @@
         <Container class="javax.swing.JPanel" name="UploadProfileGUI">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card11"/>
+              <CardConstraints cardName="uploadProfileCard"/>
             </Constraint>
           </Constraints>
 
@@ -1494,7 +1463,7 @@
         <Container class="javax.swing.JPanel" name="AddTaskGUI">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card12"/>
+              <CardConstraints cardName="addTaskCard"/>
             </Constraint>
           </Constraints>
 
@@ -1641,7 +1610,7 @@
         <Container class="javax.swing.JPanel" name="AddActivityGUI">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card13"/>
+              <CardConstraints cardName="addActivityCard"/>
             </Constraint>
           </Constraints>
 

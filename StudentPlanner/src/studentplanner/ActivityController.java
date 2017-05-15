@@ -5,6 +5,8 @@
  */
 package studentplanner;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author natha
@@ -40,9 +42,19 @@ public class ActivityController {
         return task;
     }
     
-    public void setAsCompleted(){
-        activity.setAsCompleted();
+    public void setAsCompleted(String moduleCode, String assessmentCode, int taskID, String activityID){
+        
     }
     
+    public void addActivity(String moduleCode, String assessmentCode, ArrayList<String> taskIDs, String activityName,
+            String notes, double weighting){
+        String activityID = "0";
+        Activity a = new Activity(activityID, activityName, notes,
+            false, weighting);
+        for (int i = 0; i < taskIDs.size(); i++){
+            //Task t = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskById(taskIDs.get(i));
+            //t.addActivity(activity);
+        }            
+    }
     
 }

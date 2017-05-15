@@ -6,6 +6,8 @@
 package studentplanner;
 
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -38,8 +40,8 @@ public class AssessmentController {
         return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getWeighting();
     }
     
-    public Deadline getDeadline(String moduleCode, int i){
-        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getDeadline();
+    public Date getDeadline(String moduleCode, int i){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getDeadline().getTime();
     }
     
     public String getNotes(String moduleCode, int i){
@@ -56,6 +58,21 @@ public class AssessmentController {
     
     public ModuleController getModuleController(){
         return module;
+    }
+    
+    public DefaultTableModel viewModuleAssessmentTasks(int i) {
+        String[] cols = {"Task ID", "Task Title", "Assessment Grade", "Status"};
+        DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
+
+        for (int j = 0; j < dashboard.getStudent().getModule(i).getAssessments().size(); j++) {
+            String assessmentCode = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getAssessmentCode();
+            String assessmentName = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getAssessmentTitle();
+            double assessmentGrade = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getGrade();
+            String assessmentDeadline = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getDeadline().getTime().toString();
+            Object[] data = {assessmentCode, assessmentName, assessmentGrade, assessmentDeadline};
+            tableModel.addRow(data);
+        }
+        return tableModel;
     }
     
     public void ViewTask(Task task){

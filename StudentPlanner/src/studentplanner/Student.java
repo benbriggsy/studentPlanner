@@ -197,7 +197,7 @@ public class Student {
     
     public Module getModuleByCode(String moduleCode){
         for(Module currentModule: modules){
-            if(currentModule.getModuleCode() == moduleCode){
+            if(currentModule.getModuleCode().equals(moduleCode)){
                 return currentModule;
             }
         }

@@ -1443,26 +1443,25 @@ public class DashboardGUI extends javax.swing.JFrame {
         
         if (LoginController.checkCredentials(loginUsernameTextField.getText(), loginPasswordTextField.getText())){
             
-            try {
-                dc = new DashboardController();
-                asc = new AssessmentController(dc);
-                acc = new ActivityController(dc);
-                mc = new ModuleController(dc);
-                tc = new TaskController(dc);
-                dc.getStudent();
-                dashboardUsernameLabel.setText(dc.getStudent().getFullName());
-            } catch (FileNotFoundException ex) {
-                dashboardUsernameLabel.setText("FileNotFoundException");
-            } catch (ParseException ex) {
-                dashboardUsernameLabel.setText("ParseException");
-            } catch (IOException ex) {
-                dashboardUsernameLabel.setText("IOException");
-            }   
-            if (dc.findSemesterFile(loginUsernameTextField.getText())){
+            if (DashboardController.findSemesterFile(loginUsernameTextField.getText())){
                 CardLayout card = (CardLayout)GUI.getLayout();
                 card.show(GUI, "dashboardCard");        
                 backList.add("dashboardCard");
                 backIndex++;
+                try {
+                dc = new DashboardController(loginUsernameTextField.getText());
+                asc = new AssessmentController(dc);
+                acc = new ActivityController(dc);
+                mc = new ModuleController(dc);
+                tc = new TaskController(dc);
+                dashboardUsernameLabel.setText(dc.getStudent().getFullName());
+                } catch (FileNotFoundException ex) {
+                    dashboardUsernameLabel.setText("FileNotFoundException");
+                } catch (ParseException ex) {
+                    dashboardUsernameLabel.setText("ParseException");
+                } catch (IOException ex) {
+                    dashboardUsernameLabel.setText("IOException");
+                }
             }
             else{
                 CardLayout card = (CardLayout)GUI.getLayout();
@@ -1508,7 +1507,14 @@ public class DashboardGUI extends javax.swing.JFrame {
             // TODO add your handling code here:
             String filePath = uploadProfileFileChooser.getSelectedFile().getAbsolutePath();
             uploadProfileLabel.setText(filePath);
-            if(dc.uploadFile(loginUsernameTextField.getText(), filePath)){
+            if(DashboardController.uploadFile(loginUsernameTextField.getText(), filePath)){
+                try {
+                    dc = new DashboardController(loginUsernameTextField.getText());
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(DashboardGUI.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(DashboardGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 CardLayout card = (CardLayout)GUI.getLayout();
                 card.show(GUI, "dashboardCard");        
                 backList.add("dashboardCard");

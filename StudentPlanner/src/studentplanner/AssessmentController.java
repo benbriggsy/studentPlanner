@@ -61,7 +61,7 @@ public class AssessmentController {
     }
     
     public DefaultTableModel viewModuleAssessmentTasks(int i) {
-        String[] cols = {"Task ID", "Task Title", "Assessment Grade", "Status"};
+        String[] cols = {"Task ID", "Task Title", "Weighting", "Status"};
         DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
 
         for (int j = 0; j < dashboard.getStudent().getModule(i).getAssessments().size(); j++) {

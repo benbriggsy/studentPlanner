@@ -566,6 +566,9 @@
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="assessmentNotesTextAreaMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1480,23 +1483,38 @@
                               </Group>
                               <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                               <Component id="titleLabel2" min="-2" pref="128" max="-2" attributes="0"/>
-                              <EmptySpace pref="140" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="108" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="addTaskNameLabel" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                                  <Component id="addTaskDescriptionLabel" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                                  <Component id="addTaskAssessmentLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="addTaskWeightingLabel" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="addTaskNotesLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="addTaskAssessmentLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="addTaskModuleLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+                                              <Component id="addTaskNameLabel" min="-2" pref="66" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="addTaskWeightingLabel" min="-2" pref="86" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="addTaskButton" min="-2" max="-2" attributes="0"/>
                                   <Component id="addTaskNameTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
                                   <Component id="addTaskAssessmentTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
-                                  <Component id="addTaskDescriptionTextField" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
+                                  <Component id="addTaskNotesTextField" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
                                   <Component id="addTaskWeightingTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                                  <Component id="addTaskModuleTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -1516,7 +1534,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              <Component id="titleLabel2" pref="34" max="32767" attributes="0"/>
+                              <Component id="titleLabel2" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1526,22 +1544,32 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="addTaskDescriptionLabel" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="addTaskDescriptionTextField" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
+                          <Component id="addTaskNotesLabel" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="addTaskNotesTextField" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="addTaskAssessmentTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="addTaskAssessmentLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="addTaskAssessmentLabel" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="addTaskModuleTextField" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="addTaskModuleLabel" min="-2" pref="20" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="addTaskWeightingTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="addTaskWeightingLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="addTaskButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="385" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="360" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1562,7 +1590,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="addTaskNameTextField">
             </Component>
-            <Component class="javax.swing.JTextField" name="addTaskDescriptionTextField">
+            <Component class="javax.swing.JTextField" name="addTaskNotesTextField">
             </Component>
             <Component class="javax.swing.JTextField" name="addTaskAssessmentTextField">
               <Events>
@@ -1576,14 +1604,14 @@
                 <Property name="text" type="java.lang.String" value="Task Name:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="addTaskDescriptionLabel">
+            <Component class="javax.swing.JLabel" name="addTaskNotesLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Description:"/>
+                <Property name="text" type="java.lang.String" value="Notes:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="addTaskAssessmentLabel">
+            <Component class="javax.swing.JLabel" name="addTaskModuleLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Parent Assessment:"/>
+                <Property name="text" type="java.lang.String" value="Parent Module:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="addTaskWeightingLabel">
@@ -1603,6 +1631,19 @@
             <Component class="javax.swing.JButton" name="addTaskButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add Task"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addTaskButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="addTaskModuleTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addTaskModuleTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="addTaskAssessmentLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Parent Assessment:"/>
               </Properties>
             </Component>
           </SubComponents>

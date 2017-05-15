@@ -40,7 +40,8 @@ public class Student {
     private ArrayList<Milestone> milestones;
     //DASHBOARD CLASS MUST BE IMPLEMENTED FIRST
     //private Dashboard dashboard;
-    public File semesterFile;
+    private File semesterFile;
+    
     
     public Student(int studentID, String fullName, String emailAddress, 
             String schoolOfStudy, int yearOfStudy, ArrayList<Module> modules){
@@ -83,6 +84,7 @@ public class Student {
                                 String [] assignmentTasks = details[i+8].split("#");
                                 for(int j=0; j<assignmentTasks.length;){
                                     ArrayList<Activity> assignmentTaskActivityList = new ArrayList<>();
+                                    
                                     if(!"".equals(assignmentTasks[j+4])){
                                         String [] activityTaskActivities = assignmentTasks[j+4].split("~");
                                         for(int k=0; k<activityTaskActivities.length;k+=5){
@@ -255,6 +257,7 @@ public class Student {
                 updatedModuleString += Boolean.toString(mod.getModuleCompleted()) + "/";
                 updatedModuleString += mod.getNotes()+ "/";
                 
+                
                 int assessmentIndex = 0;
                 for(int i=7; i<module.length;){
                     
@@ -292,7 +295,6 @@ public class Student {
                     this.semesterFile = file;
     }
  
-    
     public void updateFileForAssignment(Module mod,  Assignment assignment) throws IOException{
         
         
@@ -387,8 +389,7 @@ public class Student {
                     this.semesterFile = file;
             
     }
-    
-    
+  
     public void updateFileForExam(Module mod,  Exam exam) throws IOException{
         Scanner fileScan = new Scanner( semesterFile );
         Format formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
@@ -477,9 +478,6 @@ public class Student {
                 
             }
             
-    
-
-    
     public void updateFileForTask(Module mod,  Task task) throws IOException{
         Scanner fileScan = new Scanner( semesterFile );
         String updatedModuleString ="";
@@ -1758,9 +1756,6 @@ public class Student {
         if(read){
         Student student = new Student(semesterFile);
         System.out.println(student);
-            System.out.println(student.getModules().size());
-            System.out.println(student.getModule(0).getAssessments().size());
-            System.out.println(student.getModule(0).getAssessmentByIndex(1).getTasks().size());
        
             
         
@@ -1822,29 +1817,32 @@ public class Student {
 //       student.printSemesterFile();
 //       
 //       System.out.println("\nADD TASK \n");
-       ArrayList<Activity> taskActivities = new ArrayList<>();
-       Task task = new Task("I'VE JUST ADDED THIS TASK DOES IT WORK","aT303", "this is a note", taskActivities, student.getModule(0).getAssessmentByIndex(1)
-       ,23.0,false);
+//       ArrayList<Activity> taskActivities = new ArrayList<>();
+//       Task task = new Task("TASK 1","aT303", "this is a task note", taskActivities, student.getModule(0).getAssessmentByIndex(1)
+//       ,23.0,false);
 //       student.getModule(0).getAssessmentByIndex(1).addTask(task);
 //       student.addTaskToFile(student.getModule(0) , task);
 //       student.printSemesterFile();
 //       
-
+//
 //       System.out.println("ADD ACTIVITY \n");
 //       Activity act = new Activity("aa303", "WILL THIS WORK WHO KNOWS", "this is a note", false, 10.0);
 //       student.getModule(0).getAssessmentByIndex(1).getTask(0).addActivity(act);
 //       student.addActivityToFile(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0), act);
 //       student.printSemesterFile();
        
-//         student.printSemesterFile();
-//         student.removeTaskFromFile(student.getModule(0), student.getModule(0).getAssessmentByIndex(1).getTask(0));
-//         student.getModule(0).getAssessmentByIndex(1).removeTask(student.getModule(0).getAssessmentByIndex(1).getTask(0));
-//         student.printSemesterFile();
+         student.printSemesterFile();
+         student.removeTaskFromFile(student.getModule(0), student.getModule(0).getAssessmentByIndex(1).getTask(0));
+         student.getModule(0).getAssessmentByIndex(1).removeTask(student.getModule(0).getAssessmentByIndex(1).getTask(0));
+         student.printSemesterFile();
 
+            
+         
             student.removeActivityFromFile(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0),
                     student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
             student.getModule(0).getAssessmentByIndex(1).getTask(0).removeActivity(student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
             
+           
 
         }
     }

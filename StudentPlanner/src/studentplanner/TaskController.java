@@ -15,14 +15,12 @@ public class TaskController {
     
     private AssessmentController assessment;
     private Task task;
-    private DashboardController dashboard;  
-    private int activitiesAdded; 
+    private DashboardController dashboard;
     
     public TaskController(DashboardController dashboard){
         //this.assessment = assessment;
         //this.task = task;
-        this.dashboard = dashboard;
-        activitiesAdded = 0; 
+        this.dashboard = dashboard; 
     }
     
     public String getTaskID(String moduleCode, int assessmentIndex, int taskIndex){

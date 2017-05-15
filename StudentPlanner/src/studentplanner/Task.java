@@ -76,12 +76,15 @@ public class Task {
     
     public double getProgress(){
         int numberCompleted = 0;
+        if(activities.size()!=0){
         for(Activity activity : activities){
             if(activity.isCompleted()){
                 numberCompleted += 1;
             }
         }
         return (numberCompleted/activities.size())*100;
+        }
+        else return 0;
     }
     
     public boolean isCompleted(){

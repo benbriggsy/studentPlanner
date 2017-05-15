@@ -91,12 +91,17 @@ public abstract class Assessment {
     
     public double getProgress(){
         int numberCompleted = 0;
-        for(Task task : tasks){
-            if(task.isCompleted()){
-                numberCompleted += 1;
+        if(tasks.size()!= 0){
+            for(Task task : tasks){
+                if(task.isCompleted()){
+                    numberCompleted += 1;
+                }
             }
-        }
         return (numberCompleted/tasks.size())*100;
+        }
+        else{
+            return 0;
+        }
     }
     
     public boolean isCompleted(){

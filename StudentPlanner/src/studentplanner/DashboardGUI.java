@@ -1510,6 +1510,7 @@ public class DashboardGUI extends javax.swing.JFrame {
             if(DashboardController.uploadFile(loginUsernameTextField.getText(), filePath)){
                 try {
                     dc = new DashboardController(loginUsernameTextField.getText());
+                    dashboardUsernameLabel.setText(dc.getStudent().getFullName());
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(DashboardGUI.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ParseException ex) {

@@ -1516,11 +1516,8 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-<<<<<<< HEAD
                               <Component id="titleLabel2" pref="52" max="32767" attributes="0"/>
-=======
                               <Component id="titleLabel2" max="32767" attributes="0"/>
->>>>>>> origin/master
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1713,11 +1710,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="addActivityButton" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
                       <EmptySpace pref="183" max="32767" attributes="0"/>
-=======
                       <EmptySpace pref="316" max="32767" attributes="0"/>
->>>>>>> origin/master
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">

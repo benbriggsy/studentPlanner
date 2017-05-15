@@ -21,6 +21,17 @@ public class Task {
     private double weighting;
     private boolean completed;
     
+    Task(String taskName, String taskID, String notes, 
+            Assessment assessment, double weighting, boolean completed){
+        this.taskName = taskName;
+        this.taskID = taskID;
+        this.assessment = assessment;
+        this.notes = notes;
+        this.weighting = weighting;
+        this.activities = new ArrayList();
+        this.completed = completed;
+    }
+    
     Task(String taskName, String taskID, String notes, ArrayList<Activity> activies, 
             Assessment assessment, double weighting, boolean completed){
         this.taskName = taskName;

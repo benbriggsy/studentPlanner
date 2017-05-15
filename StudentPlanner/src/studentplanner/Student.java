@@ -195,6 +195,15 @@ public class Student {
         return modules;
     }
     
+    public Module getModuleByCode(String moduleCode){
+        for(Module currentModule: modules){
+            if(currentModule.getModuleCode().equals(moduleCode)){
+                return currentModule;
+            }
+        }
+        return null;
+    }
+    
     public Milestone getMilestone(int i){
         return milestones.get(i);
     }

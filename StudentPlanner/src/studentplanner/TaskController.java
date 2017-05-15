@@ -23,28 +23,28 @@ public class TaskController {
         this.dashboard = dashboard;
     }
     
-    public String getTaskID(){
-        return task.getTaskID();
+    public String getTaskID(String moduleCode, int assessmentIndex, int taskIndex){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getTaskID();
     }
     
-    public String getTaskName(){
-        return task.getTaskName();
+    public String getTaskName(String moduleCode, int assessmentIndex, int taskIndex){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getTaskName();
     }
     
-    public String getNotes(){
-        return task.getNotes();
+    public String getNotes(String moduleCode, int assessmentIndex, int taskIndex){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getNotes();
     }
     
-    public double getWeighting(){
-        return task.getWeighting();
+    public double getWeighting(String moduleCode, int assessmentIndex, int taskIndex){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getWeighting();
     }
     
-    public double getProgress(){
-        return task.getProgress();
+    public double getProgress(String moduleCode, int assessmentIndex, int taskIndex){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getProgress();
     }
     
-    public Assessment getAssessment(){
-        return task.getAssessment();
+    public Assessment getAssessment(String moduleCode, int assessmentIndex, int taskIndex){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getAssessment();
     }
     
     public AssessmentController getAssessmentController(){

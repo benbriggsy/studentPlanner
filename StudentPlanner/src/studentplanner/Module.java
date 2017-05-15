@@ -44,6 +44,15 @@ public class Module {
         return assessments.get(i);
     }
     
+    public Assessment getAssessmentByCode(String assessmentCode){
+        for(Assessment currentAssessment: assessments){
+            if(currentAssessment.getAssessmentCode().equals(assessmentCode)){
+                return currentAssessment;
+            }
+        }
+        return null;
+    }
+    
 //    public ArrayList<Double> getAssessmentGrades(){
 //        return assessmentGrades;
 //    }

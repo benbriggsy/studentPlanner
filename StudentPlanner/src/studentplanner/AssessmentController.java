@@ -65,7 +65,6 @@ public class AssessmentController {
         DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
 
         for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessments().size(); j++){
-                
             String taskName = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getTaskName();
             Double weighting = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getWeighting();
             boolean completed = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).isCompleted();

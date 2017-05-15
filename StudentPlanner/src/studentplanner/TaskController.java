@@ -6,6 +6,7 @@
 package studentplanner;
 
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,28 +24,28 @@ public class TaskController {
         this.dashboard = dashboard;
     }
     
-    public String getTaskID(String moduleCode, int assessmentIndex, int taskIndex){
-        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getTaskID();
+    public String getTaskID(String moduleCode, String assessmentCode, int taskIndex){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTask(taskIndex).getTaskID();
     }
     
-    public String getTaskName(String moduleCode, int assessmentIndex, int taskIndex){
-        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getTaskName();
+    public String getTaskName(String moduleCode, String assessmentCode, int taskIndex){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTask(taskIndex).getTaskName();
     }
     
-    public String getNotes(String moduleCode, int assessmentIndex, int taskIndex){
-        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getNotes();
+    public String getNotes(String moduleCode, String assessmentCode, int taskIndex){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTask(taskIndex).getNotes();
     }
     
-    public double getWeighting(String moduleCode, int assessmentIndex, int taskIndex){
-        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getWeighting();
+    public double getWeighting(String moduleCode, String assessmentCode, int taskIndex){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTask(taskIndex).getWeighting();
     }
     
-    public double getProgress(String moduleCode, int assessmentIndex, int taskIndex){
-        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getProgress();
+    public double getProgress(String moduleCode, String assessmentCode, int taskIndex){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTask(taskIndex).getProgress();
     }
     
-    public Assessment getAssessment(String moduleCode, int assessmentIndex, int taskIndex){
-        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(assessmentIndex).getTask(taskIndex).getAssessment();
+    public Assessment getAssessment(String moduleCode, String assessmentCode, int taskIndex){
+        return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTask(taskIndex).getAssessment();
     }
     
     public AssessmentController getAssessmentController(){
@@ -74,6 +75,21 @@ public class TaskController {
     
     public void updateProgress(){
         
+    }
+    
+    public DefaultTableModel viewTaskActivities(String moduleCode, String assessmentCode, String taskID, int i){
+        
+        String[] cols = {"Activity Name", "Completed?", "Activity Weighting"};
+        DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
+        dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskID);
+        for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskID).getActivities().size(); j++) {
+            String activityName = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskID).getActivityByIndex(j).getActivityName();
+            boolean activityComplete = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskID).getActivityByIndex(j).isCompleted();
+            double activity = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskID).getActivityByIndex(j).getWeighting();
+            Object[] data = {activityName, activityComplete, activity};
+            tableModel.addRow(data);
+        }
+        return tableModel;
     }
     
     public void addTask(String moduleCode, String assessmentCode, String taskName,

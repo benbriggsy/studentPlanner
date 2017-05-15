@@ -48,6 +48,7 @@ public class Student {
         this.fullName = fullName;
         this.emailAddress = emailAddress;
         this.schoolOfStudy = schoolOfStudy;
+        
         this.yearOfStudy = yearOfStudy;
         this.modules = modules;
     }

@@ -1007,6 +1007,136 @@ public class Student {
                     this.semesterFile = file;
     }
     
+    public void removeActivityFromFile(Module mod, Task task, Activity activity) throws FileNotFoundException, IOException{
+        Scanner fileScan = new Scanner( semesterFile );
+        boolean found = false;
+        int activityPosition = 0;
+        String updatedModuleString ="";
+        while(fileScan.hasNextLine()){
+            String [] module = fileScan.nextLine().split("/");
+            if(module[0].equals(mod.getModuleCode())){
+                String [] updatedModule = module;
+                updatedModule[0] = mod.getModuleCode();
+                updatedModule[1] = mod.getModuleName();
+                updatedModule[2] = mod.getModuleOrganiser().getName();
+                updatedModule[3] = mod.getModuleOrganiser().getEmail();
+                updatedModule[4] = Double.toString(mod.getCurrentGrade());
+                updatedModule[5] = Boolean.toString(mod.getModuleCompleted());
+                updatedModule[6] = mod.getNotes();
+                for(int i=7; i<module.length;){
+                    if(module[i].charAt(0) == 'A' && activity.getActivityID().charAt(0) == 'a' && activity.getActivityID().charAt(1) == 'a'){
+                      String [] tasks = module[i+8].split("#");
+                        for(int j=4; j<tasks.length; j+=6){
+                            if(task.getTaskID().equals(tasks[j-4])){
+                                String [] act = tasks[j].split("~");
+                                for(int k=0; k<act.length; k+=5){
+                                    if(act[k].equals(activity.getActivityID())){
+                                       found = true;
+                                       activityPosition = k;
+                                    }
+                                }
+                                if(found){
+                                    for(int k=activityPosition; k<act.length-5; k+=5){
+                                        act[k]=act[k+5];
+                                        act[k+1]=act[k+5];
+                                        act[k+2]=act[k+7];
+                                        act[k+3]=act[k+8];
+                                        act[k+4]=act[k+9];
+                                    }
+                                }
+                                String updatedActivities = "";
+                                for(int k=0; k<act.length-5; k++){
+                                    updatedActivities += act[k] + "~";
+                                }
+                            if(!updatedActivities.equals("")){
+                            updatedActivities = updatedActivities.substring(0,updatedActivities.length()-1);
+                                }
+                            tasks[j] = updatedActivities;
+                            String updatedTasks = "";
+                                for(int k=0; k<tasks.length; k++){
+                                    updatedTasks += tasks[k] + "#";
+                                }
+                                updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                                updatedModule[i+8] = updatedTasks;   
+                           }
+                          
+                        } 
+                        i+=10;
+                    }
+                    else if(module[i].charAt(0) == 'E' && activity.getActivityID().charAt(0) == 'e' && activity.getActivityID().charAt(1) == 'a'){
+                        String [] tasks = module[i+7].split("#");
+                        for(int j=4; j<tasks.length; j+=6){
+                            if(task.getTaskID().equals(tasks[j-4])){
+                                String [] act = tasks[j].split("~");
+                                for(int k=0; k<act.length; k+=5){
+                                    if(act[k].equals(activity.getActivityID())){
+                                       found = true;
+                                       activityPosition = k;
+                                    }
+                                }
+                                if(found){
+                                    for(int k=activityPosition; k<act.length-5; k+=5){
+                                        act[k]=act[k+5];
+                                        act[k+1]=act[k+5];
+                                        act[k+2]=act[k+7];
+                                        act[k+3]=act[k+8];
+                                        act[k+4]=act[k+9];
+                                    }
+                                }
+                                String updatedActivities = "";
+                                for(int k=0; k<act.length-5; k++){
+                                    updatedActivities += act[k] + "~";
+                                }
+                            if(!updatedActivities.equals("")){
+                            updatedActivities = updatedActivities.substring(0,updatedActivities.length()-1);
+                                }
+                            tasks[j] = updatedActivities;
+                            String updatedTasks = "";
+                                for(int k=0; k<tasks.length; k++){
+                                    updatedTasks += tasks[k] + "#";
+                                }
+                                updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                                updatedModule[i+7] = updatedTasks;
+                            } 
+                        }
+                        i+=9;
+                    }
+                    else if(module[i].charAt(0) == 'A'){
+                        i+=10;
+                    }
+                    else if(module[i].charAt(0) == 'E'){
+                        i+=9;
+                    }
+                }
+                updatedModuleString += updatedModule[0] + "/";
+                    updatedModuleString += updatedModule[1] + "/";
+                    updatedModuleString += updatedModule[2] + "/";
+                    updatedModuleString += updatedModule[3] + "/";
+                    updatedModuleString += updatedModule[4] + "/";
+                    updatedModuleString += updatedModule[5] + "/";
+                    updatedModuleString += updatedModule[6] + "/";
+                    for(int i=7; i< module.length; i++){
+                        updatedModuleString += updatedModule[i] + "/";
+                    }
+                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                    updatedModuleString +="\n";
+            }
+            else{
+                    for(int i=0; i<module.length; i++){
+                        updatedModuleString += module[i]+ "/";
+                    }
+                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+                    updatedModuleString += "\n";
+                }
+        }
+        updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+                    fileOut.write(updatedModuleString.getBytes());
+                    fileOut.close();
+                    File file = new File("semester.txt");
+                    this.semesterFile = file;
+    }
+    
      public static boolean checkFile(File semesterFile) throws FileNotFoundException, ParseException{
         boolean acceptable = true;
         String regExp = "[\\x00-\\x20]*[+-]?(((((\\p{Digit}+)(\\.)?((\\p{Digit}+)?)([eE][+-]?"
@@ -1700,17 +1830,22 @@ public class Student {
 //       student.addTaskToFile(student.getModule(0) , task);
 //       student.printSemesterFile();
 //       
-student.printSemesterFile();
-student.removeTaskFromFile(student.getModule(0), student.getModule(0).getAssessmentByIndex(1).getTask(0));
-         student.getModule(0).getAssessmentByIndex(1).removeTask(student.getModule(0).getAssessmentByIndex(1).getTask(0));
-         student.printSemesterFile();
+
 //       System.out.println("ADD ACTIVITY \n");
 //       Activity act = new Activity("aa303", "WILL THIS WORK WHO KNOWS", "this is a note", false, 10.0);
 //       student.getModule(0).getAssessmentByIndex(1).getTask(0).addActivity(act);
 //       student.addActivityToFile(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0), act);
 //       student.printSemesterFile();
        
-       
+//         student.printSemesterFile();
+//         student.removeTaskFromFile(student.getModule(0), student.getModule(0).getAssessmentByIndex(1).getTask(0));
+//         student.getModule(0).getAssessmentByIndex(1).removeTask(student.getModule(0).getAssessmentByIndex(1).getTask(0));
+//         student.printSemesterFile();
+
+            student.removeActivityFromFile(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0),
+                    student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
+            student.getModule(0).getAssessmentByIndex(1).getTask(0).removeActivity(student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
+            
 
         }
     }

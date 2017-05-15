@@ -82,8 +82,26 @@ public class AssessmentController {
         
     }
     
-    public void AddTask(){
+    public void addTask(String moduleCode, String assessmentCode, String taskName,
+            String notes, double weighting){
+        String taskID = "";
         
+        if(assessmentCode.charAt(0)=='A'){
+            taskID+="aT";
+        }
+        else if(assessmentCode.charAt(0)=='E'){
+            taskID+="eT";
+        }
+        taskID+=assessment.getAssessmentCode().charAt(1);
+        if(assessment.getTasks().size()<10){
+            taskID += "0";
+        }
+        taskID+=assessment.getTasks().size();
+        
+        //Assessment assessment = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
+        //Task t = new Task(taskName, taskID, notes, assessment, weighting, false);
+        //assessment.addTask(t);
+        //dashboard.getStudent().getModuleByCode(moduleCode)..getAssessmentByCode(assessmentCode).addTask(t);
     }
     
     public void CreateActivity(){

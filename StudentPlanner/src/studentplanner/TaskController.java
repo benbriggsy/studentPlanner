@@ -16,12 +16,14 @@ public class TaskController {
     
     private AssessmentController assessment;
     private Task task;
-     private DashboardController dashboard;  
+    private DashboardController dashboard;  
+    private int activitiesAdded; 
     
     public TaskController(DashboardController dashboard){
         //this.assessment = assessment;
         //this.task = task;
         this.dashboard = dashboard;
+        activitiesAdded = 0; 
     }
     
     public String getTaskID(String moduleCode, String assessmentCode, int taskIndex){
@@ -99,5 +101,23 @@ public class TaskController {
         //Task t = new Task(taskName, taskID, notes, assessment, weighting, false);
         //assessment.addTask(t);
         //dashboard.getStudent().getModuleByCode(moduleCode)..getAssessmentByCode(assessmentCode).addTask(t);
+    }
+    
+    public void addActivity(String moduleCode, String assessmentCode, ArrayList<String> taskIDs, String activityName,
+            String notes, double weighting){
+        String activityID = "";
+        if(assessmentCode.charAt(0) == 'A'){
+            activityID += "aa";
+        }
+        else if(assessmentCode.charAt(0) == 'E'){
+            activityID += "ea";
+        }
+        
+        Activity a = new Activity(activityID, activityName, notes,
+            false, weighting);
+        for (int i = 0; i < taskIDs.size(); i++){
+            //Task t = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskById(taskIDs.get(i));
+            //t.addActivity(activity);
+        }            
     }
 }

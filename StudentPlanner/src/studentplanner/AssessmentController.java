@@ -62,10 +62,10 @@ public class AssessmentController {
     }
     
     public DefaultTableModel viewAssessmentTasks(String moduleCode, int i) {
-        String[] cols = {"Task Name", "Task Weighting", "Completed?"};
+        String[] cols = {"Task Name", "Task Weighting", "Completed"};
         DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
 
-        for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessments().size(); j++){            
+        for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTasks().size(); j++){            
             String taskName = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getTaskName();
             Double weighting = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getWeighting();
             boolean completed = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).isCompleted();
@@ -77,7 +77,7 @@ public class AssessmentController {
     
     public DefaultListModel viewAssessmentTasksTitles(String moduleCode, int i) {
         DefaultListModel listModel = new DefaultListModel();
-        for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessments().size(); j++){            
+        for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTasks().size(); j++){            
             String taskName = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getTaskName();
             Object[] data = {taskName};
             listModel.addElement(taskName);

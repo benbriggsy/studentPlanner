@@ -1711,8 +1711,12 @@ public class DashboardGUI extends javax.swing.JFrame {
     private void addActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActivityButtonActionPerformed
        
         if (!tasksAddedLabel.getText().equals("")){
-            tc.addActivity(addActivityModuleIndex, addActivityAssessmentIndex, addActivityTaskIndex, 
-                    addActivityNameTextField.getText(), addActivityNotesTextArea.getText(), Double.parseDouble(addActivityWeightingTextField.getText()));
+            try {
+                tc.addActivity(addActivityModuleIndex, addActivityAssessmentIndex, addActivityTaskIndex,
+                        addActivityNameTextField.getText(), addActivityNotesTextArea.getText(), Double.parseDouble(addActivityWeightingTextField.getText()));
+            } catch (IOException ex) {
+                Logger.getLogger(DashboardGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
             addActivityModuleIndex.clear(); 
             addActivityAssessmentIndex.clear();
             addActivityTaskIndex.clear();

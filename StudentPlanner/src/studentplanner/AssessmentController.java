@@ -101,7 +101,6 @@ public class AssessmentController {
         taskID += assessmentCode.substring(1, Math.min(assessmentCode.length(), 4));
         dashboard.getStudent().incrementNumberOfTasks();
         taskID += dashboard.getStudent().getNumberOfTasks();
-        System.out.println(taskID);
         
         Task t = new Task(taskName, taskID, notes, assessment, weighting, false);
         assessment.addTask(t);

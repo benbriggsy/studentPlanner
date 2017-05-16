@@ -77,8 +77,6 @@ public class TaskController {
         dashboard.getStudent().incrementNumberOfActivities();
         activityID += dashboard.getStudent().getNumberOfActivities();
         
-        System.out.println(activityID);
-        
         Activity a = new Activity(activityID, activityName, notes,
             false, weighting);
         for (int i = 0; i < taskIndexes.size(); i++){

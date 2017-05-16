@@ -25,7 +25,7 @@ public class Activity {
     private long timeSpent;
     
     public Activity(String activityID, String activityName, String notes,
-            boolean completed, double weighting/*, Date startDate, Date finishDate*/){
+            boolean completed, double weighting, Date startDate, Date finishDate){
         this.activityID = activityID;
         this.activityName = activityName;
         this.notes = notes;
@@ -38,18 +38,29 @@ public class Activity {
         else{
             this.startDate = startDate;
         }
-//        if(finishDate==null){
-//            this.finishDate = new Date();
-//            this.timeSpent = this.finishDate.getTime() - this.startDate.getTime();
-//            TimeUnit.HOURS.convert(this.timeSpent,TimeUnit.MILLISECONDS);
-//        }
-//        else{
-//            this.finishDate = finishDate;
-//            this.timeSpent = this.finishDate.getTime() - this.startDate.getTime();
-//            TimeUnit.HOURS.convert(this.timeSpent,TimeUnit.MILLISECONDS);
-//        }
+        if(finishDate==null){
+            this.finishDate = new Date();
+            this.timeSpent = this.finishDate.getTime() - this.startDate.getTime();
+            TimeUnit.HOURS.convert(this.timeSpent,TimeUnit.MILLISECONDS);
+        }
+        else{
+            this.finishDate = finishDate;
+            this.timeSpent = this.finishDate.getTime() - this.startDate.getTime();
+            TimeUnit.HOURS.convert(this.timeSpent,TimeUnit.MILLISECONDS);
+        }
         
     }
+    
+    public Date getStartDate(){
+        return startDate;
+    }
+    public Date getEndDate(){
+        return finishDate;
+    }
+    public long getTimeSpent(){
+        return timeSpent;
+    }
+    
     
     public String getActivityID(){
         return activityID;
@@ -73,10 +84,6 @@ public class Activity {
     
     public double getWeighting(){
         return weighting;
-    }
-    
-    public long getTimeSpent(){
-        return timeSpent;
     }
     
 //    public void addTask(Task task){

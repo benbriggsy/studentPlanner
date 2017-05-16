@@ -78,7 +78,7 @@ public class TaskController {
         activityID += dashboard.getStudent().getNumberOfActivities();
         
         Activity a = new Activity(activityID, activityName, notes,
-            false, weighting);
+            false, weighting,null,null);
         for (int i = 0; i < taskIndexes.size(); i++){
             Task t = dashboard.getStudent().getModule(moduleIndexes.get(i)).getAssessmentByIndex(assessmentIndexes.get(i)).getTask(taskIndexes.get(i));
             t.addActivity(a);

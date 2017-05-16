@@ -75,7 +75,7 @@ public class ActivityController {
             String notes, double weighting){
         String activityID = "0";
         Activity a = new Activity(activityID, activityName, notes,
-            false, weighting);
+            false, weighting, null,null);
         for (int i = 0; i < taskIDs.size(); i++){
             //Task t = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskById(taskIDs.get(i));
             //t.addActivity(activity);

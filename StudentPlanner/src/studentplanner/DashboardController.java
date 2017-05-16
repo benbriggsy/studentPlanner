@@ -298,7 +298,7 @@ public class DashboardController {
         
         
         Scanner fileScan = new Scanner( student.getSemesterFile() );
-        Format formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");
@@ -392,7 +392,7 @@ public class DashboardController {
     
     public void updateFileForExam(Module mod,  Exam exam) throws IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
-        Format formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");
@@ -780,6 +780,7 @@ public class DashboardController {
     
     public void updateFileForActivity(Activity activity) throws IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String updatedModuleString ="";
         String [] stu = fileScan.nextLine().split("/");
         for(int i=0; i<stu.length; i++){
@@ -821,13 +822,15 @@ public class DashboardController {
                                     
                                         String [] activities =tasks[j].split("~");
                                         //if(tasks[j-4].equals(task.getTaskID())){
-                                        for(int k=0; k<activities.length; k+=5){
+                                        for(int k=0; k<activities.length; k+=7){
                                             if(activities[k].equals(activity.getActivityID())){
                                                 activities[k] = activity.getActivityID();
                                                 activities[k+1] = activity.getActivityName();
                                                 activities[k+2] = Double.toString(activity.getWeighting());
                                                 activities[k+3] = String.valueOf(activity.isCompleted());
-                                                activities[k+4] = activity.getNotes();
+                                                activities[k+4] = formatter.format(activity.getStartDate().getTime());
+                                                activities[k+5] = formatter.format(activity.getEndDate().getTime());
+                                                activities[k+6] = activity.getNotes();
                                             }
                                         }
                                     //}
@@ -856,13 +859,15 @@ public class DashboardController {
                                 
                                     String [] activities =tasks[j].split("~");
                                     //if(tasks[j-4].equals(task.getTaskID())){
-                                    for(int k=0; k<activities.length; k+=5){
+                                    for(int k=0; k<activities.length; k+=7){
                                         if(activities[k].equals(activity.getActivityID())){;
                                             activities[k] = activity.getActivityID();
                                             activities[k+1] = activity.getActivityName();
                                             activities[k+2] = Double.toString(activity.getWeighting());
                                             activities[k+3] = String.valueOf(activity.isCompleted());
-                                            activities[k+4] = activity.getNotes();
+                                            activities[k+4] = formatter.format(activity.getStartDate().getTime());
+                                            activities[k+5] = formatter.format(activity.getEndDate().getTime());
+                                            activities[k+6] = activity.getNotes();
                                         }
                                     }
                                 //}
@@ -1038,23 +1043,25 @@ public class DashboardController {
                         for(int j=4; j<tasks.length; j+=6){
                             if(task.getTaskID().equals(tasks[j-4])){
                                 String [] act = tasks[j].split("~");
-                                for(int k=0; k<act.length; k+=5){
+                                for(int k=0; k<act.length; k+=7){
                                     if(act[k].equals(activity.getActivityID())){
                                        found = true;
                                        activityPosition = k;
                                     }
                                 }
                                 if(found){
-                                    for(int k=activityPosition; k<act.length-5; k+=5){
-                                        act[k]=act[k+5];
-                                        act[k+1]=act[k+5];
-                                        act[k+2]=act[k+7];
-                                        act[k+3]=act[k+8];
-                                        act[k+4]=act[k+9];
+                                    for(int k=activityPosition; k<act.length-7; k+=7){
+                                        act[k]=act[k+7];
+                                        act[k+1]=act[k+8];
+                                        act[k+2]=act[k+9];
+                                        act[k+3]=act[k+10];
+                                        act[k+4]=act[k+11];
+                                        act[k+5]=act[k+12];
+                                        act[k+6]=act[k+13];
                                     }
                                 }
                                 String updatedActivities = "";
-                                for(int k=0; k<act.length-5; k++){
+                                for(int k=0; k<act.length-7; k++){
                                     updatedActivities += act[k] + "~";
                                 }
                             if(!updatedActivities.equals("")){
@@ -1077,23 +1084,25 @@ public class DashboardController {
                         for(int j=4; j<tasks.length; j+=6){
                             if(task.getTaskID().equals(tasks[j-4])){
                                 String [] act = tasks[j].split("~");
-                                for(int k=0; k<act.length; k+=5){
+                                for(int k=0; k<act.length; k+=7){
                                     if(act[k].equals(activity.getActivityID())){
                                        found = true;
                                        activityPosition = k;
                                     }
                                 }
                                 if(found){
-                                    for(int k=activityPosition; k<act.length-5; k+=5){
-                                        act[k]=act[k+5];
-                                        act[k+1]=act[k+5];
-                                        act[k+2]=act[k+7];
-                                        act[k+3]=act[k+8];
-                                        act[k+4]=act[k+9];
+                                    for(int k=activityPosition; k<act.length-7; k+=7){
+                                        act[k]=act[k+7];
+                                        act[k+1]=act[k+8];
+                                        act[k+2]=act[k+9];
+                                        act[k+3]=act[k+10];
+                                        act[k+4]=act[k+11];
+                                        act[k+5]=act[k+12];
+                                        act[k+6]=act[k+13];
                                     }
                                 }
                                 String updatedActivities = "";
-                                for(int k=0; k<act.length-5; k++){
+                                for(int k=0; k<act.length-7; k++){
                                     updatedActivities += act[k] + "~";
                                 }
                             if(!updatedActivities.equals("")){
@@ -1394,7 +1403,7 @@ public class DashboardController {
                                 for(int j=0; j<assignmentTasks.length;){
                                     if(!"".equals(assignmentTasks[j+4])){
                                         String [] activityTaskActivities = assignmentTasks[j+4].split("~");
-                                        for(int k=0; k<activityTaskActivities.length;k+=5){
+                                        for(int k=0; k<activityTaskActivities.length;k+=7){
                                             if(!activityTaskActivities[k+3].equals("true") && 
                                                     !activityTaskActivities[k+3].equals("false")){
                                                 System.out.println("Error on line " + line + ": \""
@@ -1622,7 +1631,7 @@ public class DashboardController {
                                 for(int j=0; j<examTasks.length;){
                                     if(!"".equals(examTasks[j+4])){
                                         String [] examTaskActivities = examTasks[j+4].split("~");
-                                        for(int k=0; k<examTaskActivities.length;k+=5){
+                                        for(int k=0; k<examTaskActivities.length;k+=7){
                                             if(!examTaskActivities[k+3].equals("true") && 
                                                     !examTaskActivities[k+3].equals("false")){
                                                 System.out.println("Error on line " + line + ": \""

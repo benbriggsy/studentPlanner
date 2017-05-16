@@ -58,7 +58,7 @@ public class Student {
     
     public Student(File semesterFile) throws FileNotFoundException, IOException, ParseException{
         Scanner fileScan = new Scanner( semesterFile );
-        
+        ArrayList<Activity>activitiesList = new ArrayList<>();
         ArrayList<Module> modulesFromFile = new ArrayList<>();
         String [] stu = fileScan.nextLine().split("/");
                 this.studentID = Integer.parseInt(stu[0]);
@@ -74,7 +74,7 @@ public class Student {
                 Admin admin = new Admin(details[2], details[3]);
                 boolean moduleCompleted = Boolean.parseBoolean(details[5]);
                 Module module = new Module(details[0],details[1], admin,Double.parseDouble(details[4]),moduleCompleted,details[6] );
-                SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
                 for(int i = 7; i<details.length;){
                     switch(details[i].charAt(0)){
@@ -92,13 +92,41 @@ public class Student {
                                     
                                     if(!"".equals(assignmentTasks[j+4])){
                                         String [] activityTaskActivities = assignmentTasks[j+4].split("~");
-                                        for(int k=0; k<activityTaskActivities.length;k+=5){
-                                            boolean activityComplete = Boolean.parseBoolean(activityTaskActivities[k+3]);
-
-                                            Activity activity = new Activity(activityTaskActivities[k], activityTaskActivities[k+1],
-                                            activityTaskActivities[k+4], activityComplete, Double.parseDouble(activityTaskActivities[k+2]));
-                                            numberOfActivities++;
-                                            assignmentTaskActivityList.add(activity);
+                                        for(int k=0; k<activityTaskActivities.length;k+=7){
+                                            boolean found = false;
+                                            Activity a = null;
+                                            for(int h=0; h<activitiesList.size(); h++){
+                                                if(activityTaskActivities[k].equals(activitiesList.get(h).getActivityID())){
+                                                    found = true;
+                                                    a = activitiesList.get(h);
+                                                }
+                                            }
+                                            if(found){
+                                                assignmentTaskActivityList.add(a);
+                                            }
+                                            else{
+                                                Date startDate;
+                                                if(activityTaskActivities[k+4].equals("")){
+                                                    startDate = null;
+                                                }
+                                                else{
+                                                    startDate = formatter.parse(activityTaskActivities[k+4]);
+                                                }
+                                                
+                                                Date endDate;
+                                                if(activityTaskActivities[k+5].equals("")){
+                                                    endDate = null;
+                                                }
+                                                else{
+                                                    endDate = formatter.parse(activityTaskActivities[k+5]);
+                                                }
+                                                boolean activityComplete = Boolean.parseBoolean(activityTaskActivities[k+3]);
+                                                Activity activity = new Activity(activityTaskActivities[k], activityTaskActivities[k+1],
+                                                activityTaskActivities[k+6], activityComplete, Double.parseDouble(activityTaskActivities[k+2]),startDate,endDate);
+                                                numberOfActivities++;
+                                                assignmentTaskActivityList.add(activity);
+                                                activitiesList.add(activity);
+                                            }
 
                                         }
 
@@ -133,13 +161,41 @@ public class Student {
                                     ArrayList<Activity> examTaskActivityList = new ArrayList<>();
                                     if(!"".equals(examTasks[j+4])){
                                         String [] examTaskActivities = examTasks[j+4].split("~");
-                                        for(int k=0; k<examTaskActivities.length;k+=5){
-                                            boolean activityComplete = Boolean.parseBoolean(examTaskActivities[k+3]);
-
-                                            Activity activity = new Activity(examTaskActivities[k], examTaskActivities[k+1],
-                                            examTaskActivities[k+4], activityComplete, Double.parseDouble(examTaskActivities[k+2]));
-                                            numberOfActivities++;
-                                            examTaskActivityList.add(activity);
+                                        for(int k=0; k<examTaskActivities.length;k+=7){
+                                            boolean found = false;
+                                            Activity a = null;
+                                            for(int h=0; h<activitiesList.size(); h++){
+                                                if(examTaskActivities[k].equals(activitiesList.get(h).getActivityID())){
+                                                    found = true;
+                                                    a = activitiesList.get(h);
+                                                }
+                                            }
+                                            if(found){
+                                                examTaskActivityList.add(a);
+                                            }
+                                            else{
+                                                Date startDate;
+                                                if(examTaskActivities[k+4].equals("")){
+                                                    startDate = null;
+                                                }
+                                                else{
+                                                    startDate = formatter.parse(examTaskActivities[k+4]);
+                                                }
+                                                
+                                                Date endDate;
+                                                if(examTaskActivities[k+5].equals("")){
+                                                    endDate = null;
+                                                }
+                                                else{
+                                                    endDate = formatter.parse(examTaskActivities[k+5]);
+                                                }
+                                                boolean activityComplete = Boolean.parseBoolean(examTaskActivities[k+3]);
+                                                Activity activity = new Activity(examTaskActivities[k], examTaskActivities[k+1],
+                                                examTaskActivities[k+4], activityComplete, Double.parseDouble(examTaskActivities[k+2]),startDate,endDate);
+                                                numberOfActivities++;
+                                                examTaskActivityList.add(activity);
+                                                activitiesList.add(activity);
+                                            }
 
                                         }
 
@@ -265,7 +321,7 @@ public class Student {
         str.append("Year: \t\t").append(yearOfStudy).append("\n");
         return str.toString();
     }
-    
+    /*
     public void updateFileForModule(Module mod) throws FileNotFoundException, IOException{
         Scanner fileScan = new Scanner( semesterFile );
         String updatedModuleString ="";
@@ -1166,7 +1222,7 @@ public class Student {
                     File file = new File("semester.txt");
                     this.semesterFile = file;
     }
-    
+    */
      public static boolean checkFile(File semesterFile) throws FileNotFoundException, ParseException{
         boolean acceptable = true;
         String regExp = "[\\x00-\\x20]*[+-]?(((((\\p{Digit}+)(\\.)?((\\p{Digit}+)?)([eE][+-]?"
@@ -1852,20 +1908,20 @@ public class Student {
 //                 }
 //       student.printSemesterFile();
 //       
-       System.out.println("\nADD TASK \n");
-       ArrayList<Activity> taskActivities = new ArrayList<>();
-       Task task = new Task("ADDED TASK","a00200", "this is a task note", taskActivities, student.getModule(0).getAssessmentByIndex(2)
-       ,23.0,false);
-       student.getModule(0).getAssessmentByIndex(2).addTask(task);
-       student.addTaskToFile(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(2),  task);
-       student.printSemesterFile();
-       
-
-       System.out.println("ADD ACTIVITY \n");
-       Activity act = new Activity("a0020001", "ADDED ACTIVITY", "this is a note", false, 10.0);
-       student.getModule(0).getAssessmentByIndex(2).getTask(0).addActivity(act);
-       student.addActivityToFile(student.getModule(0) ,task, act);
-       student.printSemesterFile();
+//       System.out.println("\nADD TASK \n");
+//       ArrayList<Activity> taskActivities = new ArrayList<>();
+//       Task task = new Task("ADDED TASK","a00200", "this is a task note", taskActivities, student.getModule(0).getAssessmentByIndex(2)
+//       ,23.0,false);
+//       student.getModule(0).getAssessmentByIndex(2).addTask(task);
+//       student.addTaskToFile(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(2),  task);
+//       student.printSemesterFile();
+//       
+//
+//       System.out.println("ADD ACTIVITY \n");
+//       Activity act = new Activity("a0020001", "ADDED ACTIVITY", "this is a note", false, 10.0);
+//       student.getModule(0).getAssessmentByIndex(2).getTask(0).addActivity(act);
+//       student.addActivityToFile(student.getModule(0) ,task, act);
+//       student.printSemesterFile();
 //       
 //         student.printSemesterFile();
 //         student.removeTaskFromFile(student.getModule(0), student.getModule(0).getAssessmentByIndex(1).getTask(0));

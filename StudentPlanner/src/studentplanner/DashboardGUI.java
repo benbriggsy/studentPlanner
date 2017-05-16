@@ -131,14 +131,14 @@ public class DashboardGUI extends javax.swing.JFrame {
         dashboardTitleLabel = new javax.swing.JLabel();
         deadlinesPanel = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        missedDeadlinesTable = new javax.swing.JTable();
+        dashboardMissedDeadlinesTable = new javax.swing.JTable();
         modulesPanel = new javax.swing.JPanel();
         dashboardUsernameLabel = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        upcomingDeadlinesTable = new javax.swing.JTable();
+        dashboardUpcomingCompleteDeadlinesTable = new javax.swing.JTable();
         milestonesPanel = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        completedTasksDeadlinesTable = new javax.swing.JTable();
+        dashboardUpcomingIncompleteDeadlinesTable = new javax.swing.JTable();
         ChosenModuleGUI = new javax.swing.JPanel();
         moduleNameTextField = new javax.swing.JTextField();
         moduleProgressLabel = new javax.swing.JLabel();
@@ -219,27 +219,30 @@ public class DashboardGUI extends javax.swing.JFrame {
         LoginGUILayout.setHorizontalGroup(
             LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginGUILayout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loginPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loginUsernameLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
                 .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(loginLoginButton)
-                        .addComponent(loginUsernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                        .addComponent(loginPasswordTextField))
-                    .addComponent(loginWrongPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(156, Short.MAX_VALUE))
+                    .addGroup(LoginGUILayout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(loginPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(loginUsernameLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(loginLoginButton)
+                            .addComponent(loginUsernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                            .addComponent(loginPasswordTextField)))
+                    .addGroup(LoginGUILayout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addComponent(loginWrongPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
         LoginGUILayout.setVerticalGroup(
             LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginGUILayout.createSequentialGroup()
                 .addGap(127, 127, 127)
-                .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginUsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loginUsernameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(loginUsernameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginUsernameTextField))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loginPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -247,7 +250,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(loginWrongPasswordLabel)
                 .addGap(12, 12, 12)
                 .addComponent(loginLoginButton)
-                .addContainerGap(486, Short.MAX_VALUE))
+                .addContainerGap(784, Short.MAX_VALUE))
         );
 
         loginWrongPasswordLabel.setVisible(false);
@@ -752,7 +755,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         dashboardTitleLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         dashboardTitleLabel.setText("Dashboard");
 
-        jScrollPane8.setViewportView(missedDeadlinesTable);
+        jScrollPane8.setViewportView(dashboardMissedDeadlinesTable);
 
         javax.swing.GroupLayout deadlinesPanelLayout = new javax.swing.GroupLayout(deadlinesPanel);
         deadlinesPanel.setLayout(deadlinesPanelLayout);
@@ -771,7 +774,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addContainerGap(190, Short.MAX_VALUE))
         );
 
-        jScrollPane9.setViewportView(upcomingDeadlinesTable);
+        jScrollPane9.setViewportView(dashboardUpcomingCompleteDeadlinesTable);
 
         javax.swing.GroupLayout modulesPanelLayout = new javax.swing.GroupLayout(modulesPanel);
         modulesPanel.setLayout(modulesPanelLayout);
@@ -799,7 +802,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addGap(26, 26, 26)))
         );
 
-        jScrollPane7.setViewportView(completedTasksDeadlinesTable);
+        jScrollPane7.setViewportView(dashboardUpcomingIncompleteDeadlinesTable);
 
         javax.swing.GroupLayout milestonesPanelLayout = new javax.swing.GroupLayout(milestonesPanel);
         milestonesPanel.setLayout(milestonesPanelLayout);
@@ -1135,9 +1138,9 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addComponent(addTaskNotesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addTaskNotesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addTaskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addTaskAssessmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addTaskAssessmentLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addTaskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddTaskGUILayout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -1271,7 +1274,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addComponent(activityWeightingLabel2))
                 .addGap(32, 32, 32)
                 .addComponent(addActivityButton)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(499, Short.MAX_VALUE))
             .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(AddActivityGUILayout.createSequentialGroup()
                     .addContainerGap()
@@ -1454,6 +1457,9 @@ public class DashboardGUI extends javax.swing.JFrame {
                 acc = new ActivityController(dc);
                 mc = new ModuleController(dc);
                 tc = new TaskController(dc);
+                dashboardUpcomingCompleteDeadlinesTable.setModel(dc.viewUpComingCompleteAssessments());
+                dashboardUpcomingIncompleteDeadlinesTable.setModel(dc.viewUpComingIncompleteAssessments());
+                dashboardMissedDeadlinesTable.setModel(dc.viewMissedAssessments());
                 dashboardUsernameLabel.setText(dc.getStudent().getFullName());
                 } catch (FileNotFoundException ex) {
                     dashboardUsernameLabel.setText("FileNotFoundException");
@@ -1730,9 +1736,11 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JTextField assessmentWeightingTextField;
     private javax.swing.JButton backButton;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JTable completedTasksDeadlinesTable;
     private javax.swing.JLabel dashboardLabel;
+    private javax.swing.JTable dashboardMissedDeadlinesTable;
     private javax.swing.JLabel dashboardTitleLabel;
+    private javax.swing.JTable dashboardUpcomingCompleteDeadlinesTable;
+    private javax.swing.JTable dashboardUpcomingIncompleteDeadlinesTable;
     private javax.swing.JLabel dashboardUsernameLabel;
     private javax.swing.JPanel deadlinesPanel;
     private javax.swing.JButton gradePlannerButton;
@@ -1765,7 +1773,6 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JButton milestoneButton;
     private javax.swing.JLabel milestoneLabel;
     private javax.swing.JPanel milestonesPanel;
-    private javax.swing.JTable missedDeadlinesTable;
     private javax.swing.JLabel moduleAssessmentsLabel;
     private javax.swing.JTable moduleAssessmentsTable;
     private javax.swing.JButton moduleButton;
@@ -1799,7 +1806,6 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JTextField taskWeightTextField;
     private javax.swing.JLabel titleLabel1;
     private javax.swing.JLabel titleLabel2;
-    private javax.swing.JTable upcomingDeadlinesTable;
     private javax.swing.JFileChooser uploadProfileFileChooser;
     private javax.swing.JLabel uploadProfileLabel;
     private javax.swing.JButton viewDashboardButton;

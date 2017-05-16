@@ -95,6 +95,8 @@ public class TaskController {
     public void addTask(String moduleCode, String assessmentCode, String taskName,
             String notes, double weighting){
         String taskID = "0";
+        
+        
         //Assessment assessment = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
         //Task t = new Task(taskName, taskID, notes, assessment, weighting, false);
         //assessment.addTask(t);
@@ -117,6 +119,8 @@ public class TaskController {
             //Task t = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskById(taskIDs.get(i));
             //t.addActivity(activity);
         }            
+        
+        //NEED TO ADD TO FILE
     }
     
     public void viewAllTasks(){

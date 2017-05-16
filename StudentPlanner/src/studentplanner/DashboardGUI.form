@@ -69,22 +69,27 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="loginPasswordLabel" max="32767" attributes="0"/>
-                          <Component id="loginUsernameLabel1" pref="68" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="loginLoginButton" min="-2" max="-2" attributes="0"/>
-                              <Component id="loginUsernameTextField" pref="134" max="32767" attributes="0"/>
-                              <Component id="loginPasswordTextField" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="loginPasswordLabel" max="32767" attributes="0"/>
+                                  <Component id="loginUsernameLabel1" pref="68" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="loginLoginButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="loginUsernameTextField" pref="134" max="32767" attributes="0"/>
+                                  <Component id="loginPasswordTextField" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="loginWrongPasswordLabel" min="-2" pref="184" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
+                              <Component id="loginWrongPasswordLabel" min="-2" pref="230" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="156" max="32767" attributes="0"/>
+                      <EmptySpace pref="278" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -92,11 +97,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="loginUsernameTextField" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="loginUsernameLabel1" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="loginUsernameLabel1" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="loginUsernameTextField" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="loginPasswordLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="loginPasswordTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -105,7 +110,7 @@
                       <Component id="loginWrongPasswordLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="loginLoginButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="486" max="32767" attributes="0"/>
+                      <EmptySpace pref="784" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1052,7 +1057,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="missedDeadlinesTable">
+                    <Component class="javax.swing.JTable" name="dashboardMissedDeadlinesTable">
                       <Properties>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0"/>
@@ -1111,7 +1116,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="upcomingDeadlinesTable">
+                    <Component class="javax.swing.JTable" name="dashboardUpcomingCompleteDeadlinesTable">
                       <Properties>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0"/>
@@ -1161,7 +1166,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="completedTasksDeadlinesTable">
+                    <Component class="javax.swing.JTable" name="dashboardUpcomingIncompleteDeadlinesTable">
                       <Properties>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0"/>
@@ -1517,7 +1522,6 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               <Component id="titleLabel2" pref="52" max="32767" attributes="0"/>
-                              <Component id="titleLabel2" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1531,9 +1535,9 @@
                           <Component id="addTaskNotesTextField" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="addTaskAssessmentTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="addTaskAssessmentLabel" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="addTaskAssessmentTextField" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -1710,8 +1714,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="addActivityButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="183" max="32767" attributes="0"/>
-                      <EmptySpace pref="316" max="32767" attributes="0"/>
+                      <EmptySpace pref="499" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">

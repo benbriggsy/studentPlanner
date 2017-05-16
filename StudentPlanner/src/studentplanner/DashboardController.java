@@ -602,7 +602,7 @@ public class DashboardController {
                     student.setFile(file);
     }
     
-    public void addTaskToFile(Module mod, Task task) throws FileNotFoundException, IOException{
+    public void addTaskToFile(Module mod, Assessment assessment, Task task) throws FileNotFoundException, IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
@@ -610,38 +610,29 @@ public class DashboardController {
                 if(module[0].equals(mod.getModuleCode())){
                     for(int i=7; i<module.length;){
                         if(module[i].charAt(0) == 'A' && task.getTaskID().charAt(0) == 'a'){
-                           if(!"".equals(module[i+8])){
-                            //module[i+8] = module[i+8].substring(0,module[i+8].length()-1);
-                            module[i+8] += "#";
+                            if(module[i].equals(assessment.getAssessmentCode())){
+                                if(!"".equals(module[i+8])){
+                                    module[i+8] += "#";
+                                }
+                                module[i+8] += task.getTaskID() + "#";
+                                module[i+8] += task.getTaskName() + "#";
+                                module[i+8] += Double.toString(task.getWeighting()) + "#";
+                                module[i+8] += String.valueOf(task.isCompleted()) + "#";
+                                module[i+8] += "#" + task.getNotes();
                             }
-                            module[i+8] += task.getTaskID() + "#";
-                            module[i+8] += task.getTaskName() + "#";
-                            module[i+8] += Double.toString(task.getWeighting()) + "#";
-                            module[i+8] += String.valueOf(task.isCompleted()) + "#";
-//                            for(Activity activity: task.getActivities()){
-//                                module[i+8] += activity.activityToFile();
-//                                module[i+8] += "~";
-//                            } 
-//                            module[i+8] = module[i+8].substring(0,module[i+8].length()-1);
-                            module[i+8] += "#" + task.getNotes();
-                           
                             i+=10; 
                         }
                         else if(module[i].charAt(0) == 'E' && task.getTaskID().charAt(0) == 'e'){
-                            if(!"".equals(module[i+7])){
-                            //module[i+7] = module[i+7].substring(0,module[i+7].length()-1);
-                            module[i+7] += "#";
+                            if(module[i].equals(assessment.getAssessmentCode())){
+                                if(!"".equals(module[i+7])){
+                                    module[i+7] += "#";
+                                }
+                                module[i+7] += task.getTaskID() + "#";
+                                module[i+7] += task.getTaskName() + "#";
+                                module[i+7] += Double.toString(task.getWeighting()) + "#";
+                                module[i+7] += String.valueOf(task.isCompleted()) + "#";
+                                module[i+7] += "#" + task.getNotes();
                             }
-                            module[i+7] += task.getTaskID() + "#";
-                            module[i+7] += task.getTaskName() + "#";
-                            module[i+7] += Double.toString(task.getWeighting()) + "#";
-                            module[i+7] += String.valueOf(task.isCompleted()) + "#";
-//                            for(Activity activity: task.getActivities()){
-//                                module[i+7] += activity.activityToFile();
-//                                module[i+7] += "~";
-//                            } 
-//                            module[i+7] = module[i+7].substring(0,module[i+7].length()-1);
-                            module[i+7] += "#" + task.getNotes();
                             i+=9;
                         }
                         else if(module[i].charAt(0) == 'A'){

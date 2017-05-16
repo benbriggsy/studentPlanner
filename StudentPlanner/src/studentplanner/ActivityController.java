@@ -5,6 +5,7 @@
  */
 package studentplanner;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -12,8 +13,6 @@ import java.util.ArrayList;
  * @author natha
  */
 public class ActivityController {
-    private Activity activity;
-    private TaskController task;
     private DashboardController dashboard;  
     
     public ActivityController(DashboardController dashboard){
@@ -38,15 +37,12 @@ public class ActivityController {
         return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskID).getActivityByIndex(activityIndex).isCompleted();
     }
     
-    public TaskController getTaskController(){
-        return task;
-    }
     
     public void setAsCompleted(String moduleCode, String assessmentCode, int taskID, String activityID){
         
     }
     
-    public void updateActivity(String moduleCode, String assessmentCode, String taskCode, int i, String name, String notes, boolean completed){
+    public void updateActivity(String moduleCode, String assessmentCode, String taskCode, int i, String name, String notes, boolean completed) throws IOException{
         Activity a = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskCode).getActivityByIndex(i);
         a.setName(name);
         a.setNotes(notes);
@@ -72,7 +68,7 @@ public class ActivityController {
         }
         if (assessmentCompleted)
             assessment.setAsCompleted();
-        //dashboard.updateFileForActivity(t, a);
+        dashboard.updateFileForActivity(a);
     }
     
     public void addActivity(String moduleCode, String assessmentCode, ArrayList<String> taskIDs, String activityName,

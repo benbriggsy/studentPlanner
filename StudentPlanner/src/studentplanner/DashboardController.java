@@ -776,13 +776,20 @@ public class DashboardController {
                     student.setFile(file);
     }
     
-    public void updateFileForActivity(Module mod, Task task, Activity activity) throws IOException{
+    public void updateFileForActivity(Activity activity) throws IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
         String updatedModuleString ="";
+        String [] stu = fileScan.nextLine().split("/");
+        for(int i=0; i<stu.length; i++){
+            updatedModuleString += stu[i]+ "/";
+        }
+        updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+        updatedModuleString += "\n";
+        
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");
                 
-                if(module[0].equals(mod.getModuleCode())){
+                //if(module[0].equals(mod.getModuleCode())){
                     
                     String moduleString ="";
                     moduleString += module[0] + "/";
@@ -798,20 +805,20 @@ public class DashboardController {
                     moduleString = moduleString.substring(0,moduleString.length()-1);
                     
                     String [] updatedModule = module;
-                    updatedModule[0] = mod.getModuleCode();
-                    updatedModule[1] = mod.getModuleName();
-                    updatedModule[2] = mod.getModuleOrganiser().getName();
-                    updatedModule[3] = mod.getModuleOrganiser().getEmail();
-                    updatedModule[4] = Double.toString(mod.getCurrentGrade());
-                    updatedModule[5] = Boolean.toString(mod.getModuleCompleted());
-                    updatedModule[6] = mod.getNotes();      
+                    updatedModule[0] = module[0];
+                    updatedModule[1] = module[1];
+                    updatedModule[2] = module[2];
+                    updatedModule[3] = module[3];
+                    updatedModule[4] = module[4];
+                    updatedModule[5] = module[5];
+                    updatedModule[6] = module[6];      
                     for(int i=7; i<module.length;){
                         if(module[i].charAt(0) == 'A'){
                             String [] tasks = module[i+8].split("#");
                                 for(int j=4; j<tasks.length; j+=6){
                                     
                                         String [] activities =tasks[j].split("~");
-                                        if(tasks[j-4].equals(task.getTaskID())){
+                                        //if(tasks[j-4].equals(task.getTaskID())){
                                         for(int k=0; k<activities.length; k+=5){
                                             if(activities[k].equals(activity.getActivityID())){
                                                 activities[k] = activity.getActivityID();
@@ -821,7 +828,7 @@ public class DashboardController {
                                                 activities[k+4] = activity.getNotes();
                                             }
                                         }
-                                    }
+                                    //}
                                         String updatedActivities = "";
                                         for(int k=0; k<activities.length; k++){
                                             updatedActivities += activities[k] + "~";
@@ -846,7 +853,7 @@ public class DashboardController {
                             for(int j=4; j<tasks.length; j+=6){
                                 
                                     String [] activities =tasks[j].split("~");
-                                    if(tasks[j-4].equals(task.getTaskID())){
+                                    //if(tasks[j-4].equals(task.getTaskID())){
                                     for(int k=0; k<activities.length; k+=5){
                                         if(activities[k].equals(activity.getActivityID())){;
                                             activities[k] = activity.getActivityID();
@@ -856,7 +863,7 @@ public class DashboardController {
                                             activities[k+4] = activity.getNotes();
                                         }
                                     }
-                                }
+                                //}
                                     String updatedActivities = "";
                                     for(int k=0; k<activities.length; k++){
                                         updatedActivities += activities[k] + "~";
@@ -900,14 +907,14 @@ public class DashboardController {
 //                       System.out.println(updatedModuleString);
 //                       System.out.println("\n\n\n");
                     
-                }
-                else{
-                    for(int i=0; i<module.length; i++){
-                        updatedModuleString += module[i]+ "/";
-                    }
-                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-                    updatedModuleString += "\n";
-                }
+//                }
+//                else{
+//                    for(int i=0; i<module.length; i++){
+//                        updatedModuleString += module[i]+ "/";
+//                    }
+//                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+//                    updatedModuleString += "\n";
+//                }
                 
                 
             }

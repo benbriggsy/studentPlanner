@@ -1739,9 +1739,13 @@ public class DashboardGUI extends javax.swing.JFrame {
 
     private void activityUpdateActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activityUpdateActivityButtonActionPerformed
         int i = taskActivitiesTable.getSelectedRow();
-        acc.updateActivity(moduleCodeTextField.getText(), taskAssessmentTextField.getText(),
-                taskIDTextField.getText(), i, activityNameTextField.getText(), 
-                activityNotesTextArea.getText(), activityCompletedCheckBox.isSelected());
+        try {
+            acc.updateActivity(moduleCodeTextField.getText(), taskAssessmentTextField.getText(),
+                    taskIDTextField.getText(), i, activityNameTextField.getText(),
+                    activityNotesTextArea.getText(), activityCompletedCheckBox.isSelected());
+        } catch (IOException ex) {
+            Logger.getLogger(DashboardGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         int j = assessmentTasksTable.getSelectedRow();
         taskActivitiesTable.setModel(tc.viewTaskActivities(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), taskIDTextField.getText(), j));
     }//GEN-LAST:event_activityUpdateActivityButtonActionPerformed

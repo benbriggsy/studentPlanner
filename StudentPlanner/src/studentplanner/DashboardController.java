@@ -285,10 +285,10 @@ public class DashboardController {
         }
         
         updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
-                    File file = new File("semester.txt");
+                    File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
     }
     
@@ -379,10 +379,10 @@ public class DashboardController {
                 
             }
             updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
-                    File file = new File("semester.txt");
+                    File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
             
     }
@@ -468,10 +468,10 @@ public class DashboardController {
                 
             }
             updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
-                    File file = new File("semester.txt");
+                    File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
                 
             }
@@ -595,10 +595,10 @@ public class DashboardController {
                 
             }
             updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
-                    File file = new File("semester.txt");
+                    File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
     }
     
@@ -764,10 +764,10 @@ public class DashboardController {
                 }
             }
             updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
-                    File file = new File("semester.txt");
+                    File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
     }
     
@@ -900,10 +900,10 @@ public class DashboardController {
                 
             }
             updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
-                    File file = new File("semester.txt");
+                    File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
     }
     
@@ -986,10 +986,10 @@ public class DashboardController {
                 }
         }
         updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
-                    File file = new File("semester.txt");
+                    File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
     }
     
@@ -1116,10 +1116,10 @@ public class DashboardController {
                 }
         }
         updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
-                    File file = new File("semester.txt");
+                    File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
     }
     

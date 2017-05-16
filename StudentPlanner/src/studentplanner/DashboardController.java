@@ -919,7 +919,7 @@ public class DashboardController {
                 
             }
             updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
@@ -1006,11 +1006,12 @@ public class DashboardController {
                 }
         }
         updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
+                    
     }
     
     public void removeActivityFromFile(Module mod, Task task, Activity activity) throws FileNotFoundException, IOException{
@@ -1136,7 +1137,7 @@ public class DashboardController {
                 }
         }
         updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");

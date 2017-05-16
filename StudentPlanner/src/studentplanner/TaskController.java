@@ -69,21 +69,22 @@ public class TaskController {
     }
     
     public void addActivity(ArrayList<Integer> moduleIndexes, ArrayList<Integer> assessmentIndexes, ArrayList<Integer> taskIndexes, String activityName,
-            String notes, double weighting){
-        String activityID = "";
-        Assessment assessment = dashboard.getStudent().getModule(moduleIndexes.get(0)).getAssessmentByIndex(assessmentIndexes.get(0));
-        if(assessment.getAssessmentCode().charAt(0) == 'A'){
-            activityID += "aa";
-        }
-        else if(assessment.getAssessmentCode().charAt(0) == 'E'){
-            activityID += "ea";
-        }
+            String notes, double weighting) throws IOException{
+        String activityID = "a";
+        Task task = dashboard.getStudent().getModule(moduleIndexes.get(0)).getAssessmentByIndex(assessmentIndexes.get(0)).getTask(taskIndexes.get(0));
+        
+        activityID += task.getTaskID().substring(2, Math.min(task.getTaskID().length(), 7));
+        dashboard.getStudent().incrementNumberOfActivities();
+        activityID += dashboard.getStudent().getNumberOfActivities();
+        
+        System.out.println(activityID);
         
         Activity a = new Activity(activityID, activityName, notes,
             false, weighting);
         for (int i = 0; i < taskIndexes.size(); i++){
             Task t = dashboard.getStudent().getModule(moduleIndexes.get(i)).getAssessmentByIndex(assessmentIndexes.get(i)).getTask(taskIndexes.get(i));
             t.addActivity(a);
+            dashboard.addActivityToFile(dashboard.getStudent().getModule(moduleIndexes.get(i)), t, a);
         }            
         
         //NEED TO ADD TO FILE

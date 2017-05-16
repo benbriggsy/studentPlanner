@@ -92,7 +92,7 @@ public class Student {
                                     
                                     if(!"".equals(assignmentTasks[j+4])){
                                         String [] activityTaskActivities = assignmentTasks[j+4].split("~");
-                                        for(int k=0; k<activityTaskActivities.length;k+=5){
+                                        for(int k=0; k<activityTaskActivities.length;k+=7){
                                             boolean found = false;
                                             Activity a = null;
                                             for(int h=0; h<activitiesList.size(); h++){
@@ -105,12 +105,27 @@ public class Student {
                                                 assignmentTaskActivityList.add(a);
                                             }
                                             else{
-                                            boolean activityComplete = Boolean.parseBoolean(activityTaskActivities[k+3]);
-                                            Activity activity = new Activity(activityTaskActivities[k], activityTaskActivities[k+1],
-                                            activityTaskActivities[k+4], activityComplete, Double.parseDouble(activityTaskActivities[k+2]));
-                                            numberOfActivities++;
-                                            assignmentTaskActivityList.add(activity);
-                                            activitiesList.add(activity);
+                                                Date startDate;
+                                                if(activityTaskActivities[k+4].equals("")){
+                                                    startDate = null;
+                                                }
+                                                else{
+                                                    startDate = formatter.parse(activityTaskActivities[k+4]);
+                                                }
+                                                
+                                                Date endDate;
+                                                if(activityTaskActivities[k+5].equals("")){
+                                                    endDate = null;
+                                                }
+                                                else{
+                                                    endDate = formatter.parse(activityTaskActivities[k+5]);
+                                                }
+                                                boolean activityComplete = Boolean.parseBoolean(activityTaskActivities[k+3]);
+                                                Activity activity = new Activity(activityTaskActivities[k], activityTaskActivities[k+1],
+                                                activityTaskActivities[k+6], activityComplete, Double.parseDouble(activityTaskActivities[k+2]),startDate,endDate);
+                                                numberOfActivities++;
+                                                assignmentTaskActivityList.add(activity);
+                                                activitiesList.add(activity);
                                             }
 
                                         }
@@ -126,8 +141,6 @@ public class Student {
                                 }
 
                             }
-                            System.out.println(details[i+4]);
-                            System.out.println(assessmentDeadline);
                             Assignment assignment = new Assignment(details[i+5], details[i+6],
                             summative, details[i], details[i+1], Double.parseDouble(details[i+2]),Double.parseDouble(details[i+3]),
                             assessmentDeadline,assignmentTaskList, details[i+9], "Assignment");
@@ -148,7 +161,7 @@ public class Student {
                                     ArrayList<Activity> examTaskActivityList = new ArrayList<>();
                                     if(!"".equals(examTasks[j+4])){
                                         String [] examTaskActivities = examTasks[j+4].split("~");
-                                        for(int k=0; k<examTaskActivities.length;k+=5){
+                                        for(int k=0; k<examTaskActivities.length;k+=7){
                                             boolean found = false;
                                             Activity a = null;
                                             for(int h=0; h<activitiesList.size(); h++){
@@ -161,12 +174,27 @@ public class Student {
                                                 examTaskActivityList.add(a);
                                             }
                                             else{
-                                            boolean activityComplete = Boolean.parseBoolean(examTaskActivities[k+3]);
-                                            Activity activity = new Activity(examTaskActivities[k], examTaskActivities[k+1],
-                                            examTaskActivities[k+4], activityComplete, Double.parseDouble(examTaskActivities[k+2]));
-                                            numberOfActivities++;
-                                            examTaskActivityList.add(activity);
-                                            activitiesList.add(activity);
+                                                Date startDate;
+                                                if(examTaskActivities[k+4].equals("")){
+                                                    startDate = null;
+                                                }
+                                                else{
+                                                    startDate = formatter.parse(examTaskActivities[k+4]);
+                                                }
+                                                
+                                                Date endDate;
+                                                if(examTaskActivities[k+5].equals("")){
+                                                    endDate = null;
+                                                }
+                                                else{
+                                                    endDate = formatter.parse(examTaskActivities[k+5]);
+                                                }
+                                                boolean activityComplete = Boolean.parseBoolean(examTaskActivities[k+3]);
+                                                Activity activity = new Activity(examTaskActivities[k], examTaskActivities[k+1],
+                                                examTaskActivities[k+4], activityComplete, Double.parseDouble(examTaskActivities[k+2]),startDate,endDate);
+                                                numberOfActivities++;
+                                                examTaskActivityList.add(activity);
+                                                activitiesList.add(activity);
                                             }
 
                                         }
@@ -181,8 +209,6 @@ public class Student {
                                     j+=6;
                                 }
                             }
-                            System.out.println(details[i+4]);
-                            System.out.println(examDeadline);
                             Exam exam = new Exam(details[i+6], Integer.parseInt(details[i+5]), details[i], details[i+1], 
                                     Double.parseDouble(details[i+2]), Double.parseDouble(details[i+3]), examDeadline, examTaskList, details[i+8], "Exam" );
                             i+=9;

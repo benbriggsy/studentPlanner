@@ -1792,8 +1792,12 @@ public class DashboardGUI extends javax.swing.JFrame {
 
     private void taskUpdateTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskUpdateTaskButtonActionPerformed
         int i = assessmentTasksTable.getSelectedRow();
-        tc.updateTask(moduleCodeTextField.getText(), taskAssessmentTextField.getText(),
-                i, taskNameTextField.getText(), taskDescriptionTextArea.getText());
+        try {
+            tc.updateTask(moduleCodeTextField.getText(), taskAssessmentTextField.getText(),
+                    i, taskNameTextField.getText(), taskDescriptionTextArea.getText());
+        } catch (IOException ex) {
+            Logger.getLogger(DashboardGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         int j = moduleAssessmentsTable.getSelectedRow();
         assessmentTasksTable.setModel(asc.viewAssessmentTasks(moduleCodeTextField.getText(), j));
     }//GEN-LAST:event_taskUpdateTaskButtonActionPerformed

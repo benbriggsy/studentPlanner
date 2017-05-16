@@ -70,10 +70,10 @@ public class AssessmentController {
         return tableModel;
     }
     
-    public DefaultListModel viewAssessmentTasksTitles(String moduleCode, int i) {
+    public DefaultListModel viewAssessmentTasksTitles(int i, int j) {
         DefaultListModel listModel = new DefaultListModel();
-        for (int j = 0; j < dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTasks().size(); j++){            
-            String taskName = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getTask(j).getTaskName();
+        for (int k = 0; k < dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getTasks().size(); k++){            
+            String taskName = dashboard.getStudent().getModule(i).getAssessmentByIndex(j).getTask(k).getTaskName();
             Object[] data = {taskName};
             listModel.addElement(taskName);
         }
@@ -98,11 +98,9 @@ public class AssessmentController {
         else if(assessmentCode.charAt(0)=='E'){
             taskID+="eT";
         }
-        taskID+=assessmentCode.charAt(1);
-        if(assessment.getTasks().size() < 10){
-            taskID += "0";
-        }
-        taskID+=assessment.getTasks().size();
+        taskID += assessmentCode.substring(1, Math.min(assessmentCode.length(), 3));
+        dashboard.getStudent().incrementNumberOfTasks();
+        taskID += dashboard.getStudent().getNumberOfTasks();
         
         
         Task t = new Task(taskName, taskID, notes, assessment, weighting, false);
@@ -110,7 +108,6 @@ public class AssessmentController {
         Module mod = dashboard.getStudent().getModuleByCode(moduleCode);
         dashboard.addTaskToFile(mod, assessment, t);
         //NEED TO ADD TO FILE
-        //dashboard.getStudent().getModuleByCode(moduleCode)..getAssessmentByCode(assessmentCode).addTask(t);
     }
     
     public void CreateActivity(){

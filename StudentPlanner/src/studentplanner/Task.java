@@ -91,9 +91,18 @@ public class Task {
         return completed;
     }
     
+    public void setTaskName(String name){
+        taskName = name;
+    }
+    
+    public void setTaskNotes(String notes){
+        this.notes = notes;
+    }
+     
     public void setAsCompleted(){
         completed = true;
     }
+    
     public void setAssessment(Assessment assessment){
         this.assessment = assessment;
     }

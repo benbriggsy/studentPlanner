@@ -41,6 +41,8 @@ public class Student {
     //DASHBOARD CLASS MUST BE IMPLEMENTED FIRST
     //private Dashboard dashboard;
     private File semesterFile;
+    private int numberOfTasks;
+    private int numberOfActivities;
     
     
     public Student(int studentID, String fullName, String emailAddress, 
@@ -65,6 +67,8 @@ public class Student {
                 this.emailAddress = stu[3];
                 this.schoolOfStudy = stu[4];
                 this.yearOfStudy = Integer.parseInt(stu[5]);
+                numberOfTasks = 0;
+                numberOfActivities = 0;
         while(fileScan.hasNextLine()){
                 String [] details = fileScan.nextLine().split("/");
                 Admin admin = new Admin(details[2], details[3]);
@@ -93,6 +97,7 @@ public class Student {
 
                                             Activity activity = new Activity(activityTaskActivities[k], activityTaskActivities[k+1],
                                             activityTaskActivities[k+4], activityComplete, Double.parseDouble(activityTaskActivities[k+2]));
+                                            numberOfActivities++;
                                             assignmentTaskActivityList.add(activity);
 
                                         }
@@ -102,7 +107,7 @@ public class Student {
                                     Task task = new Task(assignmentTasks[j+1], assignmentTasks[j],
                                     assignmentTasks[j+5],assignmentTaskActivityList, null, Double.parseDouble(assignmentTasks[j+2]),
                                     taskComplete);
-
+                                    numberOfTasks++;
                                     assignmentTaskList.add(task);
                                     j+=6;
                                 }
@@ -133,6 +138,7 @@ public class Student {
 
                                             Activity activity = new Activity(examTaskActivities[k], examTaskActivities[k+1],
                                             examTaskActivities[k+4], activityComplete, Double.parseDouble(examTaskActivities[k+2]));
+                                            numberOfActivities++;
                                             examTaskActivityList.add(activity);
 
                                         }
@@ -142,7 +148,7 @@ public class Student {
                                     Task task = new Task(examTasks[j+1], examTasks[j],
                                     examTasks[j+5],examTaskActivityList, null, Double.parseDouble(examTasks[j+2]),
                                     taskComplete);
-
+                                    numberOfTasks++;
                                     examTaskList.add(task);
                                     j+=6;
                                 }
@@ -231,6 +237,24 @@ public class Student {
         }
     }
     
+    public int getNumberOfTasks(){
+        return numberOfTasks;
+    }
+    
+    public void incrementNumberOfTasks(){
+        numberOfTasks++;
+    }
+    
+    public int getNumberOfActivities(){
+        return numberOfActivities;
+    }
+    
+    public void incrementNumberOfActivities(){
+        numberOfActivities++;
+    }
+    
+    
+    
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder();
@@ -307,18 +331,18 @@ public class Student {
                 
                 if(module[0].equals(mod.getModuleCode())){
                     
-                    String moduleString ="";
-                    moduleString += module[0] + "/";
-                    moduleString += module[1] + "/";
-                    moduleString += module[2] + "/";
-                    moduleString += module[3] + "/";
-                    moduleString += module[4] + "/";
-                    moduleString += module[5] + "/";
-                    moduleString += module[6] + "/";
-                    for(int i=7; i< module.length; i++){
-                        moduleString += module[i] + "/";
-                    }
-                    moduleString = moduleString.substring(0,moduleString.length()-1);
+//                    String moduleString ="";
+//                    moduleString += module[0] + "/";
+//                    moduleString += module[1] + "/";
+//                    moduleString += module[2] + "/";
+//                    moduleString += module[3] + "/";
+//                    moduleString += module[4] + "/";
+//                    moduleString += module[5] + "/";
+//                    moduleString += module[6] + "/";
+//                    for(int i=7; i< module.length; i++){
+//                        moduleString += module[i] + "/";
+//                    }
+//                    moduleString = moduleString.substring(0,moduleString.length()-1);
                     
                     String [] updatedModule = module;
                     updatedModule[0] = mod.getModuleCode();
@@ -479,7 +503,7 @@ public class Student {
                 
             }
             
-    public void updateFileForTask(Module mod,  Task task) throws IOException{
+    public void updateFileForTask(Module mod, Task task) throws IOException{
         Scanner fileScan = new Scanner( semesterFile );
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
@@ -605,14 +629,14 @@ public class Student {
                     this.semesterFile = file;
     }
     
-    public void addTaskToFile(Module mod, Task task) throws FileNotFoundException, IOException{
+    public void addTaskToFile(Module mod, Assessment assessment, Task task) throws FileNotFoundException, IOException{
         Scanner fileScan = new Scanner( semesterFile );
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");
                 if(module[0].equals(mod.getModuleCode())){
                     for(int i=7; i<module.length;){
-                        if(module[i].charAt(0) == 'A' && task.getTaskID().charAt(0) == 'a'){
+                        if(module[i].equals(assessment.getAssessmentCode())){
                            if(!"".equals(module[i+8])){
                             //module[i+8] = module[i+8].substring(0,module[i+8].length()-1);
                             module[i+8] += "#";
@@ -630,7 +654,7 @@ public class Student {
                            
                             i+=10; 
                         }
-                        else if(module[i].charAt(0) == 'E' && task.getTaskID().charAt(0) == 'e'){
+                        else if(module[i].equals(assessment.getAssessmentCode())){
                             if(!"".equals(module[i+7])){
                             //module[i+7] = module[i+7].substring(0,module[i+7].length()-1);
                             module[i+7] += "#";
@@ -783,7 +807,7 @@ public class Student {
                     this.semesterFile = file;
     }
     
-    public void updateFileForActivity(Module mod, Activity activity) throws IOException{
+    public void updateFileForActivity(Module mod, Task task, Activity activity) throws IOException{
         Scanner fileScan = new Scanner( semesterFile );
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
@@ -813,65 +837,72 @@ public class Student {
                     updatedModule[5] = Boolean.toString(mod.getModuleCompleted());
                     updatedModule[6] = mod.getNotes();      
                     for(int i=7; i<module.length;){
-                        if(module[i].charAt(0) == 'A' && activity.getActivityID().charAt(0) == 'a' && activity.getActivityID().charAt(1) == 'a'){
+                        if(module[i].charAt(0) == 'A'){
                             String [] tasks = module[i+8].split("#");
-                            
-                            for(int j=4; j<tasks.length; j+=6){
-                                String [] activities =tasks[j].split("~");
-                                for(int k=0; k<activities.length; k+=5){
-                                    if(activities[k].equals(activity.getActivityID())){
-                                        activities[k] = activity.getActivityID();
-                                        activities[k+1] = activity.getActivityName();
-                                        activities[k+2] = Double.toString(activity.getWeighting());
-                                        activities[k+3] = String.valueOf(activity.isCompleted());
-                                        activities[k+4] = activity.getNotes();
+                                for(int j=4; j<tasks.length; j+=6){
+                                    
+                                        String [] activities =tasks[j].split("~");
+                                        if(tasks[j-4].equals(task.getTaskID())){
+                                        for(int k=0; k<activities.length; k+=5){
+                                            if(activities[k].equals(activity.getActivityID())){
+                                                activities[k] = activity.getActivityID();
+                                                activities[k+1] = activity.getActivityName();
+                                                activities[k+2] = Double.toString(activity.getWeighting());
+                                                activities[k+3] = String.valueOf(activity.isCompleted());
+                                                activities[k+4] = activity.getNotes();
+                                            }
+                                        }
                                     }
-                               }
-                                String updatedActivities = "";
-                                for(int k=0; k<activities.length; k++){
-                                    updatedActivities += activities[k] + "~";
-                                }
-                                updatedActivities = updatedActivities.substring(0,updatedActivities.length()-1);
-                                tasks[j] = updatedActivities;
-                                String updatedTasks = "";
-                                for(int k=0; k<tasks.length; k++){
-                                    updatedTasks += tasks[k] + "#";
-                                }
-                                updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
-                                updatedModule[i+8] = updatedTasks;
-                            }
+                                        String updatedActivities = "";
+                                        for(int k=0; k<activities.length; k++){
+                                            updatedActivities += activities[k] + "~";
+                                        }
+                                        updatedActivities = updatedActivities.substring(0,updatedActivities.length()-1);
+                                        tasks[j] = updatedActivities;
+                                        String updatedTasks = "";
+                                        for(int k=0; k<tasks.length; k++){
+                                        updatedTasks += tasks[k] + "#";
+                                    }
+                                    updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                                    updatedModule[i+8] = updatedTasks;
                                 
+                            }
+                             
                              
                         i+=10;
                         }
-                        else if(module[i].charAt(0) == 'E' && activity.getActivityID().charAt(0) == 'e' && activity.getActivityID().charAt(1) == 'a'){
+                        else if(module[i].charAt(0) == 'E'){
                             
                             String [] tasks = module[i+7].split("#");
-                            
                             for(int j=4; j<tasks.length; j+=6){
-                                String [] activities =tasks[j].split("~");
-                                for(int k=0; k<activities.length; k+=5){
-                                    if(activities[k].equals(activity.getActivityID())){;
-                                        activities[k] = activity.getActivityID();
-                                        activities[k+1] = activity.getActivityName();
-                                        activities[k+2] = Double.toString(activity.getWeighting());
-                                        activities[k+3] = String.valueOf(activity.isCompleted());
-                                        activities[k+4] = activity.getNotes();
+                                
+                                    String [] activities =tasks[j].split("~");
+                                    if(tasks[j-4].equals(task.getTaskID())){
+                                    for(int k=0; k<activities.length; k+=5){
+                                        if(activities[k].equals(activity.getActivityID())){;
+                                            activities[k] = activity.getActivityID();
+                                            activities[k+1] = activity.getActivityName();
+                                            activities[k+2] = Double.toString(activity.getWeighting());
+                                            activities[k+3] = String.valueOf(activity.isCompleted());
+                                            activities[k+4] = activity.getNotes();
+                                        }
                                     }
                                 }
-                                String updatedActivities = "";
-                                for(int k=0; k<activities.length; k++){
-                                    updatedActivities += activities[k] + "~";
-                                }
-                                updatedActivities = updatedActivities.substring(0,updatedActivities.length()-1);
-                                tasks[j] = updatedActivities;
-                                String updatedTasks = "";
-                                for(int k=0; k<tasks.length; k++){
-                                    updatedTasks += tasks[k] + "#";
-                                }
-                                updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
-                                updatedModule[i+7] = updatedTasks;
+                                    String updatedActivities = "";
+                                    for(int k=0; k<activities.length; k++){
+                                        updatedActivities += activities[k] + "~";
+                                    }
+                                    updatedActivities = updatedActivities.substring(0,updatedActivities.length()-1);
+                                    tasks[j] = updatedActivities;
+                                    String updatedTasks = "";
+                                    for(int k=0; k<tasks.length; k++){
+                                        updatedTasks += tasks[k] + "#";
+                                    }
+                                    updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                                    updatedModule[i+7] = updatedTasks;
+                                
                             }
+                            
                          i+=9;    
                         }
                         else if(module[i].charAt(0) == 'A'){
@@ -926,8 +957,9 @@ public class Student {
             String [] module = fileScan.nextLine().split("/");
             if(module[0].equals(mod.getModuleCode())){
                 for(int i=7; i<module.length;){
-                    if(module[i].charAt(0) == 'A' && activity.getActivityID().charAt(0) == 'a' && activity.getActivityID().charAt(1) == 'a'){
+                    if(module[i].charAt(0) == 'A'){
                         String [] tasks = module[i+8].split("#");
+                        
                         for(int j=4; j<tasks.length; j+=6){
                             if(task.getTaskID().equals(tasks[j-4])){
                                 if(!"".equals(tasks[j])){
@@ -1022,7 +1054,7 @@ public class Student {
                 updatedModule[5] = Boolean.toString(mod.getModuleCompleted());
                 updatedModule[6] = mod.getNotes();
                 for(int i=7; i<module.length;){
-                    if(module[i].charAt(0) == 'A' && activity.getActivityID().charAt(0) == 'a' && activity.getActivityID().charAt(1) == 'a'){
+                    if(module[i].charAt(0) == 'A'){
                       String [] tasks = module[i+8].split("#");
                         for(int j=4; j<tasks.length; j+=6){
                             if(task.getTaskID().equals(tasks[j-4])){
@@ -1061,7 +1093,7 @@ public class Student {
                         } 
                         i+=10;
                     }
-                    else if(module[i].charAt(0) == 'E' && activity.getActivityID().charAt(0) == 'e' && activity.getActivityID().charAt(1) == 'a'){
+                    else if(module[i].charAt(0) == 'E'){
                         String [] tasks = module[i+7].split("#");
                         for(int j=4; j<tasks.length; j+=6){
                             if(task.getTaskID().equals(tasks[j-4])){
@@ -1335,10 +1367,12 @@ public class Student {
                             calendar.setTime(date);
                             int year = calendar.get(Calendar.YEAR);
                             int nextYear = year + 1;
+                            int previousYear = year -1;
                             String y = details[i+4].substring(0, Math.min(details[i+4].length(), 4));
-                            if(!y.equals(Integer.toString(year)) && !y.equals(Integer.toString(nextYear))){
+                            if(!y.equals(Integer.toString(year)) && !y.equals(Integer.toString(nextYear))
+                                    && !y.equals(Integer.toString(previousYear))){
                                 System.out.println("Error on line " + line + ": The year for a deadline "
-                                        + "must be this year or next year");
+                                        + "must be this year, the previous year or the next year");
                                 acceptable = false;
                             }
                             int month = Integer.parseInt(details[i+4].substring(5, Math.min(details[i+4].length(), 7)));
@@ -1382,7 +1416,8 @@ public class Student {
                                     if(!"".equals(assignmentTasks[j+4])){
                                         String [] activityTaskActivities = assignmentTasks[j+4].split("~");
                                         for(int k=0; k<activityTaskActivities.length;k+=5){
-                                            
+                                            System.out.println(activityTaskActivities[k]);
+                                            System.out.println(activityTaskActivities[k+1]);
                                             if(!activityTaskActivities[k+3].equals("true") && 
                                                     !activityTaskActivities[k+3].equals("false")){
                                                 System.out.println("Error on line " + line + ": \""
@@ -1390,24 +1425,24 @@ public class Student {
                                                 acceptable = false;
                                             }
                                             
-                                            if(activityTaskActivities[k].length()!= 5){
+                                            if(activityTaskActivities[k].length()!= 8){
                                                 System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " assignment activity must be 5 characters long");
+                                                        + " assignment activity must be 8 characters long");
                                                 acceptable = false;
                                             }
                                                 
-                                            String activityID1 = activityTaskActivities[k].substring(0, Math.min(activityTaskActivities[k].length(), 2));
-                                            if(!activityID1.equals("aa")){
+                                            
+                                            if(activityTaskActivities[k].charAt(0)!='a'){
                                                 System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " assignment activity must start with \"aa\"");
+                                                        + " activity must start with 'a'");
                                                 acceptable = false;
                                             }
                                             
-                                            String activityID2 = activityTaskActivities[k].substring(2, Math.min(activityTaskActivities[k].length(), 25));
+                                            String activityID2 = activityTaskActivities[k].substring(2, Math.min(activityTaskActivities[k].length(), 8));
                                             for(int h=0; h<activityID2.length(); h++){
                                                if(!Character.isDigit(activityID2.charAt(h))){
                                                    System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " assignment activity must end in 3 digits");
+                                                        + " activity must end in 7 digits");
                                                 acceptable = false;
                                                }
                                             }
@@ -1428,9 +1463,9 @@ public class Student {
                                         acceptable = false;
                                     }
                                     
-                                    if(assignmentTasks[j].length()!= 5){
+                                    if(assignmentTasks[j].length()!= 7){
                                                 System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " assignment activity must be 5 characters long");
+                                                        + " assignment task must be 7 characters long");
                                                 acceptable = false;
                                     }
                                                 
@@ -1441,11 +1476,11 @@ public class Student {
                                         acceptable = false;
                                     }
                                             
-                                    String taskID2 = assignmentTasks[j].substring(2, Math.min(assignmentTasks[j].length(), 25));
+                                    String taskID2 = assignmentTasks[j].substring(2, Math.min(assignmentTasks[j].length(), 7));
                                     for(int h=0; h<taskID2.length(); h++){
                                         if(!Character.isDigit(taskID2.charAt(h))){
                                             System.out.println("Error on line " + line + ": The ID for an"
-                                                + " assignment activity must end in 3 digits");
+                                                + " assignment activity must end in 5 digits");
                                                 acceptable = false;
                                         }
                                     }
@@ -1564,10 +1599,12 @@ public class Student {
                             examCalendar.setTime(examDate);
                             int examYear = examCalendar.get(Calendar.YEAR);
                             int nextExamYear = examYear + 1;
+                            int previousExamYear = examYear -1;
                             String examY = details[i+4].substring(0, Math.min(details[i+4].length(), 4));
-                            if(!examY.equals(Integer.toString(examYear)) && !examY.equals(Integer.toString(nextExamYear))){
+                            if(!examY.equals(Integer.toString(examYear)) && !examY.equals(Integer.toString(nextExamYear))
+                                    &&!examY.equals(Integer.toString(previousExamYear))){
                                 System.out.println("Error on line " + line + ": The year for a deadline "
-                                        + "must be this year or next year");
+                                        + "must be this year, the previous year or the next year");
                                 acceptable = false;
                             }
                             int examMonth = Integer.parseInt(details[i+4].substring(5, Math.min(details[i+4].length(), 7)));
@@ -1606,7 +1643,6 @@ public class Student {
                             if(!"".equals(details[i+7])){
                                 String [] examTasks = details[i+7].split("#");
                                 for(int j=0; j<examTasks.length;){
-                                    ArrayList<Activity> examTaskActivityList = new ArrayList<>();
                                     if(!"".equals(examTasks[j+4])){
                                         String [] examTaskActivities = examTasks[j+4].split("~");
                                         for(int k=0; k<examTaskActivities.length;k+=5){
@@ -1617,25 +1653,24 @@ public class Student {
                                                 acceptable = false;
                                             }
                                             
-                                            if(examTaskActivities[k].length()!= 5){
+                                            if(examTaskActivities[k].length()!= 8){
                                                 System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " exam activity must be 5 characters long");
+                                                        + "  activity must be 8 characters long");
                                                 System.out.println(examTaskActivities[k]);
                                                 acceptable = false;
                                             }
                                                 
-                                            String activityID1 = examTaskActivities[k].substring(0, Math.min(examTaskActivities[k].length(), 2));
-                                            if(!activityID1.equals("ea")){
+                                            if(examTaskActivities[k].charAt(0)!='a'){
                                                 System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " exam activity must start with \"ea\"");
+                                                        + " exam activity must start with an 'a'");
                                                 acceptable = false;
                                             }
                                             
-                                            String activityID2 = examTaskActivities[k].substring(2, Math.min(examTaskActivities[k].length(), 25));
+                                            String activityID2 = examTaskActivities[k].substring(2, Math.min(examTaskActivities[k].length(), 8));
                                             for(int h=0; h<activityID2.length(); h++){
                                                if(!Character.isDigit(activityID2.charAt(h))){
                                                    System.out.println("Error on line " + line + ": The ID for an"
-                                                        + "exam activity must end in 3 digits");
+                                                        + " activity must end in 7 digits");
                                                 acceptable = false;
                                                }
                                             }
@@ -1656,9 +1691,9 @@ public class Student {
                                         acceptable = false;
                                     }
                                     
-                                    if(examTasks[j].length()!= 5){
+                                    if(examTasks[j].length()!= 7){
                                                 System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " exam task must be 5 characters long");
+                                                        + " exam task must be 7 characters long");
                                                 System.out.println(examTasks[j]);
                                                 acceptable = false;
                                     }
@@ -1666,16 +1701,16 @@ public class Student {
                                     String taskID1 = examTasks[j].substring(0, Math.min(examTasks[j].length(), 2));
                                     if(!taskID1.equals("eT")){
                                         System.out.println("Error on line " + line + ": The ID for an"
-                                            + " exam activity must start with \"eT\"");
+                                            + " exam task must start with \"eT\"");
                                         System.out.println(examTasks[j]);
                                         acceptable = false;
                                     }
                                             
-                                    String taskID2 = examTasks[j].substring(2, Math.min(examTasks[j].length(), 25));
+                                    String taskID2 = examTasks[j].substring(2, Math.min(examTasks[j].length(), 7));
                                     for(int h=0; h<taskID2.length(); h++){
                                         if(!Character.isDigit(taskID2.charAt(h))){
                                             System.out.println("Error on line " + line + ": The ID for an"
-                                                + " exam activity must end in 3 digits");
+                                                + " activity must end in 5 digits");
                                                 acceptable = false;
                                         }
                                     }
@@ -1817,33 +1852,33 @@ public class Student {
 //                 }
 //       student.printSemesterFile();
 //       
-//       System.out.println("\nADD TASK \n");
-//       ArrayList<Activity> taskActivities = new ArrayList<>();
-//       Task task = new Task("TASK 1","aT303", "this is a task note", taskActivities, student.getModule(0).getAssessmentByIndex(1)
-//       ,23.0,false);
-//       student.getModule(0).getAssessmentByIndex(1).addTask(task);
-//       student.addTaskToFile(student.getModule(0) , task);
-//       student.printSemesterFile();
-//       
-//
-//       System.out.println("ADD ACTIVITY \n");
-//       Activity act = new Activity("aa303", "WILL THIS WORK WHO KNOWS", "this is a note", false, 10.0);
-//       student.getModule(0).getAssessmentByIndex(1).getTask(0).addActivity(act);
-//       student.addActivityToFile(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0), act);
-//       student.printSemesterFile();
+       System.out.println("\nADD TASK \n");
+       ArrayList<Activity> taskActivities = new ArrayList<>();
+       Task task = new Task("ADDED TASK","a00200", "this is a task note", taskActivities, student.getModule(0).getAssessmentByIndex(2)
+       ,23.0,false);
+       student.getModule(0).getAssessmentByIndex(2).addTask(task);
+       student.addTaskToFile(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(2),  task);
+       student.printSemesterFile();
        
-         student.printSemesterFile();
-         student.removeTaskFromFile(student.getModule(0), student.getModule(0).getAssessmentByIndex(1).getTask(0));
-         student.getModule(0).getAssessmentByIndex(1).removeTask(student.getModule(0).getAssessmentByIndex(1).getTask(0));
-         student.printSemesterFile();
 
-            
-         
-            student.removeActivityFromFile(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0),
-                    student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
-            student.getModule(0).getAssessmentByIndex(1).getTask(0).removeActivity(student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
-            
-           
+       System.out.println("ADD ACTIVITY \n");
+       Activity act = new Activity("a0020001", "ADDED ACTIVITY", "this is a note", false, 10.0);
+       student.getModule(0).getAssessmentByIndex(2).getTask(0).addActivity(act);
+       student.addActivityToFile(student.getModule(0) ,task, act);
+       student.printSemesterFile();
+//       
+//         student.printSemesterFile();
+//         student.removeTaskFromFile(student.getModule(0), student.getModule(0).getAssessmentByIndex(1).getTask(0));
+//         student.getModule(0).getAssessmentByIndex(1).removeTask(student.getModule(0).getAssessmentByIndex(1).getTask(0));
+//         student.printSemesterFile();
+//
+//            
+//         
+//            student.removeActivityFromFile(student.getModule(0) ,student.getModule(0).getAssessmentByIndex(1).getTask(0),
+//                    student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
+//            student.getModule(0).getAssessmentByIndex(1).getTask(0).removeActivity(student.getModule(0).getAssessmentByIndex(1).getTask(0).getActivityByIndex(0));
+//            
+//           
 
         }
     }

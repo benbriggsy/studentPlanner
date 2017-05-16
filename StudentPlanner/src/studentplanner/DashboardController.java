@@ -661,7 +661,7 @@ public class DashboardController {
             
     }
      
-    public void removeTaskFromFile(Module mod, Task task) throws FileNotFoundException, IOException{
+    public void removeTaskFromFile(Module mod, Assessment assessment, Task task) throws FileNotFoundException, IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
         String updatedModuleString ="";
         boolean found = false;
@@ -680,7 +680,9 @@ public class DashboardController {
                     updatedModule[6] = mod.getNotes();
                     for(int i=7; i<module.length;){
                         if(module[i].charAt(0) == 'A' && task.getTaskID().charAt(0) == 'a'){
+                            if(module[i].equals(assessment.getAssessmentCode())){
                             String [] tasks = module[i+8].split("#");
+                            
                             for(int j=0; j<tasks.length; j+=6){
                                 if(tasks[j].equals(task.getTaskID())){
                                     taskPosition = j;
@@ -705,9 +707,11 @@ public class DashboardController {
                                     updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
                                 }
                             updatedModule[i+8] = updatedTasks;
+                            }
                             i+=10; 
                         }
                         else if(module[i].charAt(0) == 'E' && task.getTaskID().charAt(0) == 'e'){
+                            if(module[i].equals(assessment.getAssessmentCode())){
                             String [] tasks = module[i+8].split("#");
                             for(int j=0; j<tasks.length; j+=6){
                                 if(tasks[j].equals(task.getTaskID())){
@@ -733,6 +737,7 @@ public class DashboardController {
                             updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
                                 }
                             updatedModule[i+7] = updatedTasks;
+                            }
                             i+=9; 
                         }
                         else if(module[i].charAt(0) == 'A'){
@@ -771,8 +776,8 @@ public class DashboardController {
                     student.setFile(file);
     }
     
-    public void updateFileForActivity(Module mod, Activity activity) throws IOException{
-        Scanner fileScan = new Scanner(student.getSemesterFile() );
+    public void updateFileForActivity(Module mod, Task task, Activity activity) throws IOException{
+        Scanner fileScan = new Scanner( student.getSemesterFile() );
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");
@@ -801,65 +806,72 @@ public class DashboardController {
                     updatedModule[5] = Boolean.toString(mod.getModuleCompleted());
                     updatedModule[6] = mod.getNotes();      
                     for(int i=7; i<module.length;){
-                        if(module[i].charAt(0) == 'A' && activity.getActivityID().charAt(0) == 'a' && activity.getActivityID().charAt(1) == 'a'){
+                        if(module[i].charAt(0) == 'A'){
                             String [] tasks = module[i+8].split("#");
-                            
-                            for(int j=4; j<tasks.length; j+=6){
-                                String [] activities =tasks[j].split("~");
-                                for(int k=0; k<activities.length; k+=5){
-                                    if(activities[k].equals(activity.getActivityID())){
-                                        activities[k] = activity.getActivityID();
-                                        activities[k+1] = activity.getActivityName();
-                                        activities[k+2] = Double.toString(activity.getWeighting());
-                                        activities[k+3] = String.valueOf(activity.isCompleted());
-                                        activities[k+4] = activity.getNotes();
+                                for(int j=4; j<tasks.length; j+=6){
+                                    
+                                        String [] activities =tasks[j].split("~");
+                                        if(tasks[j-4].equals(task.getTaskID())){
+                                        for(int k=0; k<activities.length; k+=5){
+                                            if(activities[k].equals(activity.getActivityID())){
+                                                activities[k] = activity.getActivityID();
+                                                activities[k+1] = activity.getActivityName();
+                                                activities[k+2] = Double.toString(activity.getWeighting());
+                                                activities[k+3] = String.valueOf(activity.isCompleted());
+                                                activities[k+4] = activity.getNotes();
+                                            }
+                                        }
                                     }
-                               }
-                                String updatedActivities = "";
-                                for(int k=0; k<activities.length; k++){
-                                    updatedActivities += activities[k] + "~";
-                                }
-                                updatedActivities = updatedActivities.substring(0,updatedActivities.length()-1);
-                                tasks[j] = updatedActivities;
-                                String updatedTasks = "";
-                                for(int k=0; k<tasks.length; k++){
-                                    updatedTasks += tasks[k] + "#";
-                                }
-                                updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
-                                updatedModule[i+8] = updatedTasks;
-                            }
+                                        String updatedActivities = "";
+                                        for(int k=0; k<activities.length; k++){
+                                            updatedActivities += activities[k] + "~";
+                                        }
+                                        updatedActivities = updatedActivities.substring(0,updatedActivities.length()-1);
+                                        tasks[j] = updatedActivities;
+                                        String updatedTasks = "";
+                                        for(int k=0; k<tasks.length; k++){
+                                        updatedTasks += tasks[k] + "#";
+                                    }
+                                    updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                                    updatedModule[i+8] = updatedTasks;
                                 
+                            }
+                             
                              
                         i+=10;
                         }
-                        else if(module[i].charAt(0) == 'E' && activity.getActivityID().charAt(0) == 'e' && activity.getActivityID().charAt(1) == 'a'){
+                        else if(module[i].charAt(0) == 'E'){
                             
                             String [] tasks = module[i+7].split("#");
-                            
                             for(int j=4; j<tasks.length; j+=6){
-                                String [] activities =tasks[j].split("~");
-                                for(int k=0; k<activities.length; k+=5){
-                                    if(activities[k].equals(activity.getActivityID())){;
-                                        activities[k] = activity.getActivityID();
-                                        activities[k+1] = activity.getActivityName();
-                                        activities[k+2] = Double.toString(activity.getWeighting());
-                                        activities[k+3] = String.valueOf(activity.isCompleted());
-                                        activities[k+4] = activity.getNotes();
+                                
+                                    String [] activities =tasks[j].split("~");
+                                    if(tasks[j-4].equals(task.getTaskID())){
+                                    for(int k=0; k<activities.length; k+=5){
+                                        if(activities[k].equals(activity.getActivityID())){;
+                                            activities[k] = activity.getActivityID();
+                                            activities[k+1] = activity.getActivityName();
+                                            activities[k+2] = Double.toString(activity.getWeighting());
+                                            activities[k+3] = String.valueOf(activity.isCompleted());
+                                            activities[k+4] = activity.getNotes();
+                                        }
                                     }
                                 }
-                                String updatedActivities = "";
-                                for(int k=0; k<activities.length; k++){
-                                    updatedActivities += activities[k] + "~";
-                                }
-                                updatedActivities = updatedActivities.substring(0,updatedActivities.length()-1);
-                                tasks[j] = updatedActivities;
-                                String updatedTasks = "";
-                                for(int k=0; k<tasks.length; k++){
-                                    updatedTasks += tasks[k] + "#";
-                                }
-                                updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
-                                updatedModule[i+7] = updatedTasks;
+                                    String updatedActivities = "";
+                                    for(int k=0; k<activities.length; k++){
+                                        updatedActivities += activities[k] + "~";
+                                    }
+                                    updatedActivities = updatedActivities.substring(0,updatedActivities.length()-1);
+                                    tasks[j] = updatedActivities;
+                                    String updatedTasks = "";
+                                    for(int k=0; k<tasks.length; k++){
+                                        updatedTasks += tasks[k] + "#";
+                                    }
+                                    updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
+                                    updatedModule[i+7] = updatedTasks;
+                                
                             }
+                            
                          i+=9;    
                         }
                         else if(module[i].charAt(0) == 'A'){
@@ -900,7 +912,7 @@ public class DashboardController {
                 
             }
             updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
+            FileOutputStream fileOut = new FileOutputStream("semester.txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
@@ -914,8 +926,9 @@ public class DashboardController {
             String [] module = fileScan.nextLine().split("/");
             if(module[0].equals(mod.getModuleCode())){
                 for(int i=7; i<module.length;){
-                    if(module[i].charAt(0) == 'A' && activity.getActivityID().charAt(0) == 'a' && activity.getActivityID().charAt(1) == 'a'){
+                    if(module[i].charAt(0) == 'A'){
                         String [] tasks = module[i+8].split("#");
+                        
                         for(int j=4; j<tasks.length; j+=6){
                             if(task.getTaskID().equals(tasks[j-4])){
                                 if(!"".equals(tasks[j])){
@@ -986,7 +999,7 @@ public class DashboardController {
                 }
         }
         updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
+            FileOutputStream fileOut = new FileOutputStream("semester.txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
@@ -1010,7 +1023,7 @@ public class DashboardController {
                 updatedModule[5] = Boolean.toString(mod.getModuleCompleted());
                 updatedModule[6] = mod.getNotes();
                 for(int i=7; i<module.length;){
-                    if(module[i].charAt(0) == 'A' && activity.getActivityID().charAt(0) == 'a' && activity.getActivityID().charAt(1) == 'a'){
+                    if(module[i].charAt(0) == 'A'){
                       String [] tasks = module[i+8].split("#");
                         for(int j=4; j<tasks.length; j+=6){
                             if(task.getTaskID().equals(tasks[j-4])){
@@ -1049,7 +1062,7 @@ public class DashboardController {
                         } 
                         i+=10;
                     }
-                    else if(module[i].charAt(0) == 'E' && activity.getActivityID().charAt(0) == 'e' && activity.getActivityID().charAt(1) == 'a'){
+                    else if(module[i].charAt(0) == 'E'){
                         String [] tasks = module[i+7].split("#");
                         for(int j=4; j<tasks.length; j+=6){
                             if(task.getTaskID().equals(tasks[j-4])){
@@ -1116,7 +1129,7 @@ public class DashboardController {
                 }
         }
         updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
+            FileOutputStream fileOut = new FileOutputStream("semester.txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
@@ -1323,10 +1336,12 @@ public class DashboardController {
                             calendar.setTime(date);
                             int year = calendar.get(Calendar.YEAR);
                             int nextYear = year + 1;
+                            int previousYear = year -1;
                             String y = details[i+4].substring(0, Math.min(details[i+4].length(), 4));
-                            if(!y.equals(Integer.toString(year)) && !y.equals(Integer.toString(nextYear))){
+                            if(!y.equals(Integer.toString(year)) && !y.equals(Integer.toString(nextYear))
+                                    && !y.equals(Integer.toString(previousYear))){
                                 System.out.println("Error on line " + line + ": The year for a deadline "
-                                        + "must be this year or next year");
+                                        + "must be this year, the previous year or the next year");
                                 acceptable = false;
                             }
                             int month = Integer.parseInt(details[i+4].substring(5, Math.min(details[i+4].length(), 7)));
@@ -1370,7 +1385,6 @@ public class DashboardController {
                                     if(!"".equals(assignmentTasks[j+4])){
                                         String [] activityTaskActivities = assignmentTasks[j+4].split("~");
                                         for(int k=0; k<activityTaskActivities.length;k+=5){
-                                            
                                             if(!activityTaskActivities[k+3].equals("true") && 
                                                     !activityTaskActivities[k+3].equals("false")){
                                                 System.out.println("Error on line " + line + ": \""
@@ -1378,24 +1392,24 @@ public class DashboardController {
                                                 acceptable = false;
                                             }
                                             
-                                            if(activityTaskActivities[k].length()!= 5){
+                                            if(activityTaskActivities[k].length()!= 8){
                                                 System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " assignment activity must be 5 characters long");
+                                                        + " assignment activity must be 8 characters long");
                                                 acceptable = false;
                                             }
                                                 
-                                            String activityID1 = activityTaskActivities[k].substring(0, Math.min(activityTaskActivities[k].length(), 2));
-                                            if(!activityID1.equals("aa")){
+                                            
+                                            if(activityTaskActivities[k].charAt(0)!='a'){
                                                 System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " assignment activity must start with \"aa\"");
+                                                        + " activity must start with 'a'");
                                                 acceptable = false;
                                             }
                                             
-                                            String activityID2 = activityTaskActivities[k].substring(2, Math.min(activityTaskActivities[k].length(), 25));
+                                            String activityID2 = activityTaskActivities[k].substring(2, Math.min(activityTaskActivities[k].length(), 8));
                                             for(int h=0; h<activityID2.length(); h++){
                                                if(!Character.isDigit(activityID2.charAt(h))){
                                                    System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " assignment activity must end in 3 digits");
+                                                        + " activity must end in 7 digits");
                                                 acceptable = false;
                                                }
                                             }
@@ -1416,9 +1430,9 @@ public class DashboardController {
                                         acceptable = false;
                                     }
                                     
-                                    if(assignmentTasks[j].length()!= 5){
+                                    if(assignmentTasks[j].length()!= 7){
                                                 System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " assignment activity must be 5 characters long");
+                                                        + " assignment task must be 7 characters long");
                                                 acceptable = false;
                                     }
                                                 
@@ -1429,11 +1443,11 @@ public class DashboardController {
                                         acceptable = false;
                                     }
                                             
-                                    String taskID2 = assignmentTasks[j].substring(2, Math.min(assignmentTasks[j].length(), 25));
+                                    String taskID2 = assignmentTasks[j].substring(2, Math.min(assignmentTasks[j].length(), 7));
                                     for(int h=0; h<taskID2.length(); h++){
                                         if(!Character.isDigit(taskID2.charAt(h))){
                                             System.out.println("Error on line " + line + ": The ID for an"
-                                                + " assignment activity must end in 3 digits");
+                                                + " assignment activity must end in 5 digits");
                                                 acceptable = false;
                                         }
                                     }
@@ -1552,10 +1566,12 @@ public class DashboardController {
                             examCalendar.setTime(examDate);
                             int examYear = examCalendar.get(Calendar.YEAR);
                             int nextExamYear = examYear + 1;
+                            int previousExamYear = examYear -1;
                             String examY = details[i+4].substring(0, Math.min(details[i+4].length(), 4));
-                            if(!examY.equals(Integer.toString(examYear)) && !examY.equals(Integer.toString(nextExamYear))){
+                            if(!examY.equals(Integer.toString(examYear)) && !examY.equals(Integer.toString(nextExamYear))
+                                    &&!examY.equals(Integer.toString(previousExamYear))){
                                 System.out.println("Error on line " + line + ": The year for a deadline "
-                                        + "must be this year or next year");
+                                        + "must be this year, the previous year or the next year");
                                 acceptable = false;
                             }
                             int examMonth = Integer.parseInt(details[i+4].substring(5, Math.min(details[i+4].length(), 7)));
@@ -1594,7 +1610,6 @@ public class DashboardController {
                             if(!"".equals(details[i+7])){
                                 String [] examTasks = details[i+7].split("#");
                                 for(int j=0; j<examTasks.length;){
-                                    ArrayList<Activity> examTaskActivityList = new ArrayList<>();
                                     if(!"".equals(examTasks[j+4])){
                                         String [] examTaskActivities = examTasks[j+4].split("~");
                                         for(int k=0; k<examTaskActivities.length;k+=5){
@@ -1605,25 +1620,24 @@ public class DashboardController {
                                                 acceptable = false;
                                             }
                                             
-                                            if(examTaskActivities[k].length()!= 5){
+                                            if(examTaskActivities[k].length()!= 8){
                                                 System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " exam activity must be 5 characters long");
+                                                        + "  activity must be 8 characters long");
                                                 System.out.println(examTaskActivities[k]);
                                                 acceptable = false;
                                             }
                                                 
-                                            String activityID1 = examTaskActivities[k].substring(0, Math.min(examTaskActivities[k].length(), 2));
-                                            if(!activityID1.equals("ea")){
+                                            if(examTaskActivities[k].charAt(0)!='a'){
                                                 System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " exam activity must start with \"ea\"");
+                                                        + " exam activity must start with an 'a'");
                                                 acceptable = false;
                                             }
                                             
-                                            String activityID2 = examTaskActivities[k].substring(2, Math.min(examTaskActivities[k].length(), 25));
+                                            String activityID2 = examTaskActivities[k].substring(2, Math.min(examTaskActivities[k].length(), 8));
                                             for(int h=0; h<activityID2.length(); h++){
                                                if(!Character.isDigit(activityID2.charAt(h))){
                                                    System.out.println("Error on line " + line + ": The ID for an"
-                                                        + "exam activity must end in 3 digits");
+                                                        + " activity must end in 7 digits");
                                                 acceptable = false;
                                                }
                                             }
@@ -1644,9 +1658,9 @@ public class DashboardController {
                                         acceptable = false;
                                     }
                                     
-                                    if(examTasks[j].length()!= 5){
+                                    if(examTasks[j].length()!= 7){
                                                 System.out.println("Error on line " + line + ": The ID for an"
-                                                        + " exam task must be 5 characters long");
+                                                        + " exam task must be 7 characters long");
                                                 System.out.println(examTasks[j]);
                                                 acceptable = false;
                                     }
@@ -1654,16 +1668,16 @@ public class DashboardController {
                                     String taskID1 = examTasks[j].substring(0, Math.min(examTasks[j].length(), 2));
                                     if(!taskID1.equals("eT")){
                                         System.out.println("Error on line " + line + ": The ID for an"
-                                            + " exam activity must start with \"eT\"");
+                                            + " exam task must start with \"eT\"");
                                         System.out.println(examTasks[j]);
                                         acceptable = false;
                                     }
                                             
-                                    String taskID2 = examTasks[j].substring(2, Math.min(examTasks[j].length(), 25));
+                                    String taskID2 = examTasks[j].substring(2, Math.min(examTasks[j].length(), 7));
                                     for(int h=0; h<taskID2.length(); h++){
                                         if(!Character.isDigit(taskID2.charAt(h))){
                                             System.out.println("Error on line " + line + ": The ID for an"
-                                                + " exam activity must end in 3 digits");
+                                                + " activity must end in 5 digits");
                                                 acceptable = false;
                                         }
                                     }
@@ -1734,6 +1748,7 @@ public class DashboardController {
         }
         return acceptable;
      }
+
 
  
 

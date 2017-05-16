@@ -296,7 +296,7 @@ public class DashboardController {
         
         
         Scanner fileScan = new Scanner( student.getSemesterFile() );
-        Format formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");
@@ -390,7 +390,7 @@ public class DashboardController {
     
     public void updateFileForExam(Module mod,  Exam exam) throws IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
-        Format formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");

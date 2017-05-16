@@ -225,9 +225,11 @@ public class DashboardController {
         return (files != null && dir.list(condition).length > 0);
     }
     
-    public static boolean uploadFile(String username, String source) throws IOException{
-        //check file is valid here. method will return false if not valid.
+    public static boolean uploadFile(String username, String source) throws IOException, ParseException{
         String fileName = username + ".txt";
+        File file = new File(fileName);
+        if(!checkFile(file))
+            return false;
         Path FROM = Paths.get(source);
         Path TO = Paths.get(".\\" + fileName);
         CopyOption[] options = new CopyOption[]{
@@ -919,7 +921,7 @@ public class DashboardController {
                 
             }
             updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
@@ -1006,11 +1008,12 @@ public class DashboardController {
                 }
         }
         updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
+                    
     }
     
     public void removeActivityFromFile(Module mod, Task task, Activity activity) throws FileNotFoundException, IOException{
@@ -1136,7 +1139,7 @@ public class DashboardController {
                 }
         }
         updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");

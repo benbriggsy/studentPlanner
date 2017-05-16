@@ -43,12 +43,12 @@ public class DashboardGUI extends javax.swing.JFrame {
 
         GUI = new javax.swing.JPanel();
         LoginGUI = new javax.swing.JPanel();
-        loginPasswordTextField = new javax.swing.JTextField();
         loginPasswordLabel = new javax.swing.JLabel();
         loginUsernameLabel1 = new javax.swing.JLabel();
         loginUsernameTextField = new javax.swing.JTextField();
         loginLoginButton = new javax.swing.JButton();
         loginWrongPasswordLabel = new javax.swing.JLabel();
+        loginPasswordTextField = new javax.swing.JPasswordField();
         ModuleGUI = new javax.swing.JPanel();
         assessmentButton = new javax.swing.JButton();
         moduleLabel = new javax.swing.JLabel();
@@ -161,6 +161,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         uploadProfileFileChooser = new javax.swing.JFileChooser();
         uploadProfileLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        uploadProfileInvalidLabel = new javax.swing.JLabel();
         AddTaskGUI = new javax.swing.JPanel();
         activityButton1 = new javax.swing.JButton();
         addTaskLabel = new javax.swing.JLabel();
@@ -1120,6 +1121,9 @@ public class DashboardGUI extends javax.swing.JFrame {
 
         jLabel3.setText("Upload Semester Profile");
 
+        uploadProfileInvalidLabel.setForeground(new java.awt.Color(255, 0, 0));
+        uploadProfileInvalidLabel.setText("File does not have a valid format or the file was not found. Please correct the format and try again.");
+
         javax.swing.GroupLayout UploadProfileGUILayout = new javax.swing.GroupLayout(UploadProfileGUI);
         UploadProfileGUI.setLayout(UploadProfileGUILayout);
         UploadProfileGUILayout.setHorizontalGroup(
@@ -1128,10 +1132,15 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(uploadProfileFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 120, Short.MAX_VALUE))
             .addGroup(UploadProfileGUILayout.createSequentialGroup()
-                .addGap(133, 133, 133)
                 .addGroup(UploadProfileGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(uploadProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UploadProfileGUILayout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addGroup(UploadProfileGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(uploadProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(UploadProfileGUILayout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(uploadProfileInvalidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         UploadProfileGUILayout.setVerticalGroup(
@@ -1143,8 +1152,12 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(uploadProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(uploadProfileFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(uploadProfileInvalidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(346, Short.MAX_VALUE))
         );
+
+        uploadProfileInvalidLabel.setVisible(false);
 
         GUI.add(UploadProfileGUI, "uploadProfileCard");
 
@@ -1628,29 +1641,41 @@ public class DashboardGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_moduleModuleTableMouseClicked
 
     private void uploadProfileFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadProfileFileChooserActionPerformed
+        System.out.println("Entered Upload File");
+        System.out.println(uploadProfileFileChooser.getSelectedFile().getAbsolutePath());
         try {
             String filePath = uploadProfileFileChooser.getSelectedFile().getAbsolutePath();
-            uploadProfileLabel.setText(filePath);
-            if(DashboardController.uploadFile(loginUsernameTextField.getText(), filePath)){
-                try {
-                    dc = new DashboardController(loginUsernameTextField.getText());
-                    dashboardUsernameLabel.setText(dc.getStudent().getFullName());
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(DashboardGUI.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ParseException ex) {
-                    Logger.getLogger(DashboardGUI.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                if(DashboardController.uploadFile(loginUsernameTextField.getText(), filePath)){
+                    try {
+                        dc = new DashboardController(loginUsernameTextField.getText());
+                        asc = new AssessmentController(dc);
+                        acc = new ActivityController(dc);
+                        mc = new ModuleController(dc);
+                        tc = new TaskController(dc);
+                        dashboardUpcomingCompleteDeadlinesTable.setModel(dc.viewUpComingCompleteAssessments());
+                        dashboardUpcomingIncompleteDeadlinesTable.setModel(dc.viewUpComingIncompleteAssessments());
+                        dashboardMissedDeadlinesTable.setModel(dc.viewMissedAssessments());
+                        dashboardUsernameLabel.setText(dc.getStudent().getFullName());
+                    } catch (FileNotFoundException ex) {
+                        uploadProfileInvalidLabel.setVisible(true);
+                    } catch (ParseException ex) {
+                        uploadProfileInvalidLabel.setVisible(true);
+                    }
+                    CardLayout card = (CardLayout)GUI.getLayout();
+                    card.show(GUI, "dashboardCard");
+                    backList.add("dashboardCard");
+                    backIndex++;
                 }
-                CardLayout card = (CardLayout)GUI.getLayout();
-                card.show(GUI, "dashboardCard");        
-                backList.add("dashboardCard");
-                backIndex++;
-            }
-            else{
-                uploadProfileLabel.setText("File does not fit the valid format");
+                else{
+                    uploadProfileInvalidLabel.setVisible(true);
+                }
+            } catch (ParseException ex) {
+                uploadProfileInvalidLabel.setVisible(true);
             }
             
         } catch (IOException ex) {
-            uploadProfileLabel.setText("File not found");
+            uploadProfileInvalidLabel.setVisible(true);
         }
     }//GEN-LAST:event_uploadProfileFileChooserActionPerformed
 
@@ -1787,6 +1812,8 @@ public class DashboardGUI extends javax.swing.JFrame {
                     addActivityAssessmentList.setModel(lm);
                     addActivityTaskList.setModel(lm);
                 }catch (NumberFormatException nex){
+                    addActivityInvalidLabel.setVisible(true);
+                } catch (IOException ex){
                     addActivityInvalidLabel.setVisible(true);
                 }                 
             }           
@@ -2062,7 +2089,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JButton loginLoginButton;
     private javax.swing.JLabel loginPasswordLabel;
-    private javax.swing.JTextField loginPasswordTextField;
+    private javax.swing.JPasswordField loginPasswordTextField;
     private javax.swing.JLabel loginUsernameLabel1;
     private javax.swing.JTextField loginUsernameTextField;
     private javax.swing.JLabel loginWrongPasswordLabel;
@@ -2108,6 +2135,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel titleLabel1;
     private javax.swing.JLabel titleLabel2;
     private javax.swing.JFileChooser uploadProfileFileChooser;
+    private javax.swing.JLabel uploadProfileInvalidLabel;
     private javax.swing.JLabel uploadProfileLabel;
     private javax.swing.JButton viewDashboardButton;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;

@@ -98,10 +98,9 @@ public class AssessmentController {
         else if(assessmentCode.charAt(0)=='E'){
             taskID+="eT";
         }
-        taskID += assessmentCode.substring(1, Math.min(assessmentCode.length(), 3));
+        taskID += assessmentCode.substring(1, Math.min(assessmentCode.length(), 4));
         dashboard.getStudent().incrementNumberOfTasks();
         taskID += dashboard.getStudent().getNumberOfTasks();
-        
         
         Task t = new Task(taskName, taskID, notes, assessment, weighting, false);
         assessment.addTask(t);

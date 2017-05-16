@@ -5,6 +5,7 @@
  */
 package studentplanner;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,13 +44,13 @@ public class TaskController {
         return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTask(taskIndex).getAssessment();
     }
     
-    public void updateTask(String moduleCode, String assessmentCode, int i, String name, String notes){
+    public void updateTask(String moduleCode, String assessmentCode, int i, String name, String notes) throws IOException{
         Task t = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTask(i);
         t.setTaskName(name);
         t.setTaskNotes(notes);
         Module m = dashboard.getStudent().getModuleByCode(moduleCode);
         Assessment a = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);       
-        //dashboard.updateFileForTask(m, a, t);
+        dashboard.updateFileForTask(m, t);
     }
     
     public DefaultTableModel viewTaskActivities(String moduleCode, String assessmentCode, String taskID, int i){

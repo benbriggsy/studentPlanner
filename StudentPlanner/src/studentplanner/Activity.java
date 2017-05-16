@@ -6,6 +6,8 @@
 package studentplanner;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 /**
  *
  * @author natha
@@ -18,14 +20,35 @@ public class Activity {
     //private ArrayList<Task> taskList;
     private boolean completed;
     private double weighting;
+    private Date startDate;
+    private Date finishDate;
+    private long timeSpent;
     
     public Activity(String activityID, String activityName, String notes,
-            boolean completed, double weighting){
+            boolean completed, double weighting/*, Date startDate, Date finishDate*/){
         this.activityID = activityID;
         this.activityName = activityName;
         this.notes = notes;
         this.completed = completed;
         this.weighting = weighting;
+        if(startDate == null){
+            Date date = new Date();
+            this.startDate = date;
+        }
+        else{
+            this.startDate = startDate;
+        }
+//        if(finishDate==null){
+//            this.finishDate = new Date();
+//            this.timeSpent = this.finishDate.getTime() - this.startDate.getTime();
+//            TimeUnit.HOURS.convert(this.timeSpent,TimeUnit.MILLISECONDS);
+//        }
+//        else{
+//            this.finishDate = finishDate;
+//            this.timeSpent = this.finishDate.getTime() - this.startDate.getTime();
+//            TimeUnit.HOURS.convert(this.timeSpent,TimeUnit.MILLISECONDS);
+//        }
+        
     }
     
     public String getActivityID(){
@@ -50,6 +73,10 @@ public class Activity {
     
     public double getWeighting(){
         return weighting;
+    }
+    
+    public long getTimeSpent(){
+        return timeSpent;
     }
     
 //    public void addTask(Task task){

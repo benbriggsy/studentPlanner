@@ -1552,52 +1552,60 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="addTaskLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="activityButton1" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                              <Component id="titleLabel2" min="-2" pref="128" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="addTaskNotesLabel" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="addTaskAssessmentLabel" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="addTaskModuleLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addTaskLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="activityButton1" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                                      <Component id="titleLabel2" min="-2" pref="128" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Component id="addTaskNotesLabel" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="addTaskAssessmentLabel" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="addTaskModuleLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+                                                      <Component id="addTaskNameLabel" min="-2" pref="66" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
+                                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                                              <Component id="addTaskNameLabel" min="-2" pref="66" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="addTaskWeightingLabel" min="-2" pref="86" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="addTaskButton" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addTaskNameTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                                          <Component id="addTaskAssessmentTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                                          <Component id="addTaskNotesTextField" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
+                                          <Component id="addTaskWeightingTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                                          <Component id="addTaskModuleTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="addTaskWeightingLabel" min="-2" pref="86" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="addTaskButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="addTaskNameTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
-                                  <Component id="addTaskAssessmentTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
-                                  <Component id="addTaskNotesTextField" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
-                                  <Component id="addTaskWeightingTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
-                                  <Component id="addTaskModuleTextField" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
+                              <Component id="jLabel8" min="-2" pref="467" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="66" max="32767" attributes="0"/>
+                      <EmptySpace pref="108" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1613,7 +1621,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              <Component id="titleLabel2" pref="52" max="32767" attributes="0"/>
+                              <Component id="titleLabel2" pref="352" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1648,7 +1656,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="addTaskButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="360" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="jLabel8" min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1723,6 +1733,14 @@
             <Component class="javax.swing.JLabel" name="addTaskAssessmentLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Parent Assessment:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel8">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Invalid data was input. Weighting is numerical and name and notes can not contain #, / and ~"/>
               </Properties>
             </Component>
           </SubComponents>

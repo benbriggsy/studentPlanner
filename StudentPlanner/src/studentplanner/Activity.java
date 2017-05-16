@@ -56,8 +56,16 @@ public class Activity {
 //        taskList.add(task);
 //    }
     
-    public void setAsCompleted(){
-        completed = true;
+    public void setName(String name){
+        activityName = name;
+    }
+    
+    public void setNotes(String notes){
+        this.notes = notes;
+    }
+    
+    public void setCompleted(boolean b){
+        completed = b;
     }
     
     public String activityToFile(){

@@ -12,13 +12,10 @@ import java.util.ArrayList;
  * @author natha
  */
 public class ActivityController {
-    private Activity activity;
-    private TaskController task;
+    
     private DashboardController dashboard;  
     
     public ActivityController(DashboardController dashboard){
-        //this.assessment = assessment;
-        //this.task = task;
         this.dashboard = dashboard;
     }
     
@@ -38,8 +35,33 @@ public class ActivityController {
         return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskID).getActivityByIndex(activityIndex).isCompleted();
     }
     
-    public TaskController getTaskController(){
-        return task;
+    public void updateActivity(String moduleCode, String assessmentCode, String taskCode, int i, String name, String notes, boolean completed){
+        Activity a = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskCode).getActivityByIndex(i);
+        a.setName(name);
+        a.setNotes(notes);
+        a.setCompleted(completed);
+        Task t = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskCode);
+        boolean taskCompleted = true;
+        for (int j = 0; j < t.getActivities().size(); j++){
+            if (t.getActivityByIndex(j).isCompleted() == false){
+                taskCompleted = false;
+                break;
+            }
+        }
+        if (taskCompleted)
+            t.setAsCompleted();
+        
+        Assessment assessment = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
+        boolean assessmentCompleted = true;
+        for (int k = 0; k < assessment.getTasks().size(); k++){
+            if (assessment.getTask(k).isCompleted() == false){
+                assessmentCompleted = false;
+                break;
+            }
+        }
+        if (assessmentCompleted)
+            assessment.setAsCompleted();
+        //dc.updateFileForActivity(a);
     }
     
     public void setAsCompleted(String moduleCode, String assessmentCode, int taskID, String activityID){

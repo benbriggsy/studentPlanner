@@ -772,7 +772,7 @@ public class DashboardController {
     }
     
     public void updateFileForActivity(Module mod, Activity activity) throws IOException{
-        Scanner fileScan = new Scanner( student.getSemesterFile() );
+        Scanner fileScan = new Scanner(student.getSemesterFile() );
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");

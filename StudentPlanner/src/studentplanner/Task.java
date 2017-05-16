@@ -49,11 +49,7 @@ public class Task {
     
     public String getTaskName(){
         return taskName;
-    }
-    
-    public void changeTaskName(String name){
-        taskName = name;
-    }
+    }   
     
     public Assessment getAssessment(){
         return assessment;
@@ -91,9 +87,19 @@ public class Task {
         return completed;
     }
     
+    public void setTaskName(String name){
+        taskName = name;
+    }
+    
+    public void setTaskNotes(String notes){
+        this.notes = notes;
+    }
+    
+    
     public void setAsCompleted(){
         completed = true;
     }
+    
     public void setAssessment(Assessment assessment){
         this.assessment = assessment;
     }

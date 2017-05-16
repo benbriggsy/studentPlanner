@@ -5,6 +5,7 @@
  */
 package studentplanner;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultListModel;
@@ -15,8 +16,6 @@ import javax.swing.table.DefaultTableModel;
  * @author natha
  */
 public class AssessmentController {
-    private ModuleController module;
-    private Assessment assessment;
     private DashboardController dashboard;  
     
     public AssessmentController(DashboardController dashboard){
@@ -57,10 +56,6 @@ public class AssessmentController {
         return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByIndex(i).getProgress();
     }
     
-    public ModuleController getModuleController(){
-        return module;
-    }
-    
     public DefaultTableModel viewAssessmentTasks(String moduleCode, int i) {
         String[] cols = {"Task Name", "Task Weighting", "Completed"};
         DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
@@ -94,24 +89,26 @@ public class AssessmentController {
     }
     
     public void addTask(String moduleCode, String assessmentCode, String taskName,
-            String notes, double weighting){
+            String notes, double weighting) throws IOException{
         String taskID = "";
-        
+        Assessment assessment = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
         if(assessmentCode.charAt(0)=='A'){
             taskID+="aT";
         }
         else if(assessmentCode.charAt(0)=='E'){
             taskID+="eT";
         }
-        taskID+=assessment.getAssessmentCode().charAt(1);
+        taskID+=assessmentCode.charAt(1);
         if(assessment.getTasks().size() < 10){
             taskID += "0";
         }
         taskID+=assessment.getTasks().size();
         
-        Assessment assessment = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
+        
         Task t = new Task(taskName, taskID, notes, assessment, weighting, false);
         assessment.addTask(t);
+        Module mod = dashboard.getStudent().getModuleByCode(moduleCode);
+        dashboard.addTaskToFile(mod, assessment, t);
         //NEED TO ADD TO FILE
         //dashboard.getStudent().getModuleByCode(moduleCode)..getAssessmentByCode(assessmentCode).addTask(t);
     }

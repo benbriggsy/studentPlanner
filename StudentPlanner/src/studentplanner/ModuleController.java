@@ -79,16 +79,14 @@ public class ModuleController {
         return tableModel;
     }
     
-    public DefaultTableModel viewModulesTitles() {
-        String[] cols = {"Module Title"};
-        DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
+    public DefaultListModel viewModulesTitles() {
+        DefaultListModel listModel = new DefaultListModel();
 
         for (int i = 0; i < dashboard.getStudent().getModules().size(); i++) {
             String moduleName = dashboard.getStudent().getModules().get(i).getModuleName();
-            Object[] data = {moduleName};
-            tableModel.addRow(data);
+            listModel.addElement(moduleName);
         }
-        return tableModel;
+        return listModel;
     }
     
     public DefaultListModel viewModuleAssessmentsTitles(int i) {

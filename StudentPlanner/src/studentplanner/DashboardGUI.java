@@ -105,6 +105,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         taskUpdateTaskButton = new javax.swing.JButton();
         jScrollPane11 = new javax.swing.JScrollPane();
         taskDescriptionTextArea = new javax.swing.JTextArea();
+        taskInvalidLabel = new javax.swing.JLabel();
         ActivityGUI = new javax.swing.JPanel();
         activityLabel = new javax.swing.JLabel();
         activityNameTextField = new javax.swing.JTextField();
@@ -118,6 +119,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         activityNotesTextArea = new javax.swing.JTextArea();
         activityUpdateActivityButton = new javax.swing.JButton();
+        activityInvalidLabel = new javax.swing.JLabel();
         DashboardGUI = new javax.swing.JPanel();
         dashboardLabel = new javax.swing.JLabel();
         moduleButton = new javax.swing.JButton();
@@ -174,7 +176,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         addTaskButton = new javax.swing.JButton();
         addTaskModuleTextField = new javax.swing.JTextField();
         addTaskAssessmentLabel = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        addTaskInvalidLabel = new javax.swing.JLabel();
         AddActivityGUI = new javax.swing.JPanel();
         addActivityLabel1 = new javax.swing.JLabel();
         addActivityWeightingTextField = new javax.swing.JTextField();
@@ -194,6 +196,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         addActivityModuleList = new javax.swing.JList<>();
         tasksAddedLabel = new javax.swing.JLabel();
         addActivityAddTaskButton = new javax.swing.JButton();
+        addActivityInvalidLabel = new javax.swing.JLabel();
         viewDashboardButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
 
@@ -234,7 +237,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addGroup(LoginGUILayout.createSequentialGroup()
                         .addGap(216, 216, 216)
                         .addComponent(loginWrongPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
         LoginGUILayout.setVerticalGroup(
             LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +254,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(loginWrongPasswordLabel)
                 .addGap(12, 12, 12)
                 .addComponent(loginLoginButton)
-                .addContainerGap(784, Short.MAX_VALUE))
+                .addContainerGap(709, Short.MAX_VALUE))
         );
 
         loginWrongPasswordLabel.setVisible(false);
@@ -298,7 +301,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addGroup(ModuleGUILayout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(332, Short.MAX_VALUE))
         );
         ModuleGUILayout.setVerticalGroup(
             ModuleGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,7 +316,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(gradePlannerButton1)
                 .addGap(64, 64, 64)
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(457, Short.MAX_VALUE))
+                .addContainerGap(675, Short.MAX_VALUE))
         );
 
         GUI.add(ModuleGUI, "moduleCard");
@@ -327,14 +330,14 @@ public class DashboardGUI extends javax.swing.JFrame {
             .addGroup(MilestoneGUILayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(milestoneLabel)
-                .addContainerGap(547, Short.MAX_VALUE))
+                .addContainerGap(647, Short.MAX_VALUE))
         );
         MilestoneGUILayout.setVerticalGroup(
             MilestoneGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MilestoneGUILayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(milestoneLabel)
-                .addContainerGap(710, Short.MAX_VALUE))
+                .addContainerGap(922, Short.MAX_VALUE))
         );
 
         GUI.add(MilestoneGUI, "milestoneCard");
@@ -348,14 +351,14 @@ public class DashboardGUI extends javax.swing.JFrame {
             .addGroup(GradePlannerGUILayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(gradePlannerLabel)
-                .addContainerGap(524, Short.MAX_VALUE))
+                .addContainerGap(624, Short.MAX_VALUE))
         );
         GradePlannerGUILayout.setVerticalGroup(
             GradePlannerGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GradePlannerGUILayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(gradePlannerLabel)
-                .addContainerGap(710, Short.MAX_VALUE))
+                .addContainerGap(922, Short.MAX_VALUE))
         );
 
         GUI.add(GradePlannerGUI, "gradePlannerCard");
@@ -441,7 +444,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addComponent(assessmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AssessmentGUILayout.createSequentialGroup()
-                        .addGap(0, 190, Short.MAX_VALUE)
+                        .addGap(0, 290, Short.MAX_VALUE)
                         .addGroup(AssessmentGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(assessmentNameLabel)
                             .addComponent(assessmentCodeLabel)
@@ -521,7 +524,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(assessmentTasksLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 110, Short.MAX_VALUE))
+                .addGap(0, 338, Short.MAX_VALUE))
         );
 
         GUI.add(AssessmentGUI, "assessmentCard");
@@ -536,10 +539,10 @@ public class DashboardGUI extends javax.swing.JFrame {
         taskLabel.setText("Task");
 
         taskNameTextField.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 taskNameTextFieldInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
 
@@ -551,10 +554,10 @@ public class DashboardGUI extends javax.swing.JFrame {
         });
 
         taskWeightTextField.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 taskWeightTextFieldInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
 
@@ -608,46 +611,58 @@ public class DashboardGUI extends javax.swing.JFrame {
         taskDescriptionTextArea.setRows(5);
         jScrollPane11.setViewportView(taskDescriptionTextArea);
 
+        taskInvalidLabel.setForeground(new java.awt.Color(255, 0, 51));
+        taskInvalidLabel.setText("Invalid data was input. Weighting is numerical and name and notes can not contain #, / and ~");
+
         javax.swing.GroupLayout TaskGUILayout = new javax.swing.GroupLayout(TaskGUI);
         TaskGUI.setLayout(TaskGUILayout);
         TaskGUILayout.setHorizontalGroup(
             TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TaskGUILayout.createSequentialGroup()
-                .addGap(199, 199, 199)
                 .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(taskProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskWeightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskAssessmentLabel)
-                    .addComponent(taskDescriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(taskNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(287, Short.MAX_VALUE))
+                    .addGroup(TaskGUILayout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(taskProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(taskWeightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(taskAssessmentLabel)
+                            .addComponent(taskDescriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(taskNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(TaskGUILayout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addComponent(taskTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(TaskGUILayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(taskTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TaskGUILayout.createSequentialGroup()
                         .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(taskLabel)
                             .addComponent(activityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(92, 92, 92)
-                        .addComponent(titleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(taskAddActivityButton)
-                .addGap(65, 65, 65))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TaskGUILayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(taskUpdateTaskButton)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskWeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(taskIDTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(taskNameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))
-                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(166, 166, 166))
+                        .addComponent(titleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                        .addComponent(taskAddActivityButton)
+                        .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TaskGUILayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TaskGUILayout.createSequentialGroup()
+                                .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(taskUpdateTaskButton)
+                                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taskWeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(taskIDTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(taskNameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(166, 166, 166))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TaskGUILayout.createSequentialGroup()
+                                .addComponent(taskInvalidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22))))))
         );
         TaskGUILayout.setVerticalGroup(
             TaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -692,12 +707,16 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(taskUpdateTaskButton)
-                .addGap(10, 10, 10)
+                .addGap(2, 2, 2)
+                .addComponent(taskInvalidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(taskTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(170, 170, 170))
+                .addGap(125, 125, 125))
         );
+
+        addActivityInvalidLabel.setVisible(false);
 
         GUI.add(TaskGUI, "taskCard");
 
@@ -738,6 +757,9 @@ public class DashboardGUI extends javax.swing.JFrame {
             }
         });
 
+        activityInvalidLabel.setForeground(new java.awt.Color(255, 0, 51));
+        activityInvalidLabel.setText("Invalid data was input. Weighting is numerical and name and notes can not contain #, / and ~");
+
         javax.swing.GroupLayout ActivityGUILayout = new javax.swing.GroupLayout(ActivityGUI);
         ActivityGUI.setLayout(ActivityGUILayout);
         ActivityGUILayout.setHorizontalGroup(
@@ -752,20 +774,25 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActivityGUILayout.createSequentialGroup()
-                .addContainerGap(208, Short.MAX_VALUE)
+                .addContainerGap(162, Short.MAX_VALUE)
                 .addGroup(ActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(activityNameLabel)
-                    .addComponent(activityNotesLabel)
-                    .addComponent(activityCompletedLabel)
-                    .addComponent(activityWeightingLabel))
-                .addGap(44, 44, 44)
-                .addGroup(ActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(activityUpdateActivityButton)
-                    .addComponent(activityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(activityWeightingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(activityCompletedCheckBox))
-                .addGap(104, 104, 104))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActivityGUILayout.createSequentialGroup()
+                        .addGroup(ActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(activityNameLabel)
+                            .addComponent(activityNotesLabel)
+                            .addComponent(activityCompletedLabel)
+                            .addComponent(activityWeightingLabel))
+                        .addGap(44, 44, 44)
+                        .addGroup(ActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(activityUpdateActivityButton)
+                            .addComponent(activityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(activityWeightingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(activityCompletedCheckBox))
+                        .addGap(104, 104, 104))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActivityGUILayout.createSequentialGroup()
+                        .addComponent(activityInvalidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))))
         );
         ActivityGUILayout.setVerticalGroup(
             ActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -790,10 +817,14 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addGroup(ActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(activityWeightingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(activityWeightingLabel))
-                .addGap(41, 41, 41)
+                .addGap(26, 26, 26)
                 .addComponent(activityUpdateActivityButton)
-                .addContainerGap(658, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(activityInvalidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(543, Short.MAX_VALUE))
         );
+
+        addActivityInvalidLabel.setVisible(false);
 
         GUI.add(ActivityGUI, "activityCard");
 
@@ -833,7 +864,7 @@ public class DashboardGUI extends javax.swing.JFrame {
             deadlinesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(deadlinesPanelLayout.createSequentialGroup()
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 28, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(deadlinesPanelLayout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addComponent(jLabel6)
@@ -950,7 +981,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(DashboardGUILayout.createSequentialGroup()
                         .addComponent(deadlinesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(544, Short.MAX_VALUE))))
+                        .addContainerGap(462, Short.MAX_VALUE))))
         );
 
         GUI.add(DashboardGUI, "dashboardCard");
@@ -1034,7 +1065,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                             .addComponent(moduleAssessmentsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(99, 99, 99))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ChosenModuleGUILayout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
+                .addContainerGap(198, Short.MAX_VALUE)
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(121, 121, 121))
         );
@@ -1074,7 +1105,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(moduleAssessmentsLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 117, Short.MAX_VALUE))
+                .addGap(0, 341, Short.MAX_VALUE))
         );
 
         GUI.add(ChosenModuleGUI, "chosenModuleCard");
@@ -1095,7 +1126,7 @@ public class DashboardGUI extends javax.swing.JFrame {
             UploadProfileGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UploadProfileGUILayout.createSequentialGroup()
                 .addComponent(uploadProfileFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 120, Short.MAX_VALUE))
             .addGroup(UploadProfileGUILayout.createSequentialGroup()
                 .addGap(133, 133, 133)
                 .addGroup(UploadProfileGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1112,7 +1143,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(uploadProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(uploadProfileFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(397, Short.MAX_VALUE))
         );
 
         GUI.add(UploadProfileGUI, "uploadProfileCard");
@@ -1159,52 +1190,51 @@ public class DashboardGUI extends javax.swing.JFrame {
 
         addTaskAssessmentLabel.setText("Parent Assessment:");
 
-        jLabel8.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel8.setText("Invalid data was input. Weighting is numerical and name and notes can not contain #, / and ~");
+        addTaskInvalidLabel.setForeground(new java.awt.Color(255, 0, 51));
+        addTaskInvalidLabel.setText("Invalid data was input. Weighting is numerical and name and notes can not contain #, / and ~");
 
         javax.swing.GroupLayout AddTaskGUILayout = new javax.swing.GroupLayout(AddTaskGUI);
         AddTaskGUI.setLayout(AddTaskGUILayout);
         AddTaskGUILayout.setHorizontalGroup(
             AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddTaskGUILayout.createSequentialGroup()
+                .addGap(49, 49, 49)
                 .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddTaskGUILayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
+                        .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addTaskLabel)
+                            .addComponent(activityButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(92, 92, 92)
+                        .addComponent(titleLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(AddTaskGUILayout.createSequentialGroup()
                         .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(AddTaskGUILayout.createSequentialGroup()
                                 .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(addTaskLabel)
-                                    .addComponent(activityButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(92, 92, 92)
-                                .addComponent(titleLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(AddTaskGUILayout.createSequentialGroup()
-                                .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(AddTaskGUILayout.createSequentialGroup()
-                                        .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(AddTaskGUILayout.createSequentialGroup()
-                                                .addGap(98, 98, 98)
-                                                .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(addTaskNotesLabel)
-                                                    .addComponent(addTaskAssessmentLabel)
-                                                    .addComponent(addTaskModuleLabel)))
-                                            .addGroup(AddTaskGUILayout.createSequentialGroup()
-                                                .addGap(128, 128, 128)
-                                                .addComponent(addTaskNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(52, 52, 52))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddTaskGUILayout.createSequentialGroup()
-                                        .addComponent(addTaskWeightingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(addTaskButton)
-                                    .addComponent(addTaskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addTaskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addTaskNotesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addTaskWeightingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addTaskModuleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(AddTaskGUILayout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(108, Short.MAX_VALUE))
+                                        .addGap(98, 98, 98)
+                                        .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(addTaskNotesLabel)
+                                            .addComponent(addTaskAssessmentLabel)
+                                            .addComponent(addTaskModuleLabel)))
+                                    .addGroup(AddTaskGUILayout.createSequentialGroup()
+                                        .addGap(128, 128, 128)
+                                        .addComponent(addTaskNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(52, 52, 52))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddTaskGUILayout.createSequentialGroup()
+                                .addComponent(addTaskWeightingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addTaskButton)
+                            .addComponent(addTaskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addTaskAssessmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addTaskNotesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addTaskWeightingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addTaskModuleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddTaskGUILayout.createSequentialGroup()
+                .addContainerGap(113, Short.MAX_VALUE)
+                .addComponent(addTaskInvalidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78))
         );
         AddTaskGUILayout.setVerticalGroup(
             AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1217,7 +1247,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addComponent(activityButton1))
                     .addGroup(AddTaskGUILayout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(titleLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)))
+                        .addComponent(titleLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AddTaskGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addTaskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1243,10 +1273,12 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addComponent(addTaskWeightingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(addTaskButton)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(311, 311, 311))
+                .addGap(18, 18, 18)
+                .addComponent(addTaskInvalidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(319, 319, 319))
         );
+
+        addTaskInvalidLabel.setVisible(false);
 
         GUI.add(AddTaskGUI, "addTaskCard");
 
@@ -1307,40 +1339,45 @@ public class DashboardGUI extends javax.swing.JFrame {
             }
         });
 
+        addActivityInvalidLabel.setForeground(new java.awt.Color(255, 0, 51));
+        addActivityInvalidLabel.setText("Invalid data was input. You must add Tasks. Weighting is numerical and name and notes can not contain #, / and ~");
+
         javax.swing.GroupLayout AddActivityGUILayout = new javax.swing.GroupLayout(AddActivityGUI);
         AddActivityGUI.setLayout(AddActivityGUILayout);
         AddActivityGUILayout.setHorizontalGroup(
             AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddActivityGUILayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(66, Short.MAX_VALUE)
                 .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddActivityGUILayout.createSequentialGroup()
-                        .addComponent(addActivityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(167, 167, 167))
+                        .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tasksAddedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(AddActivityGUILayout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(addActivityAddTaskButton))))
+                        .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddActivityGUILayout.createSequentialGroup()
-                        .addComponent(tasksAddedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103))
+                        .addComponent(addActivityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddActivityGUILayout.createSequentialGroup()
-                        .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addActivityAddTaskButton))
-                        .addGap(62, 62, 62))))
+                        .addComponent(addActivityInvalidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))))
             .addGroup(AddActivityGUILayout.createSequentialGroup()
                 .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddActivityGUILayout.createSequentialGroup()
-                        .addGap(212, 212, 212)
-                        .addComponent(activityWeightingLabel2))
-                    .addGroup(AddActivityGUILayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(AddActivityGUILayout.createSequentialGroup()
                         .addGap(326, 326, 326)
                         .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addActivityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addActivityNotesTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(240, Short.MAX_VALUE))
+                            .addComponent(addActivityNotesTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addActivityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(AddActivityGUILayout.createSequentialGroup()
+                        .addGap(195, 195, 195)
+                        .addComponent(activityWeightingLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(AddActivityGUILayout.createSequentialGroup()
                     .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1358,35 +1395,31 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addGroup(AddActivityGUILayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(addActivityLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(240, Short.MAX_VALUE)))
+                    .addContainerGap(212, Short.MAX_VALUE)))
         );
         AddActivityGUILayout.setVerticalGroup(
             AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddActivityGUILayout.createSequentialGroup()
-                .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(AddActivityGUILayout.createSequentialGroup()
-                            .addGap(344, 344, 344)
-                            .addComponent(activityWeightingLabel2))
-                        .addGroup(AddActivityGUILayout.createSequentialGroup()
-                            .addGap(401, 401, 401)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(AddActivityGUILayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(addActivityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(addActivityNotesTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(19, 19, 19)
+                .addGap(89, 89, 89)
+                .addComponent(addActivityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addActivityNotesTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(84, 84, 84)
+                .addComponent(activityWeightingLabel2)
+                .addGap(1, 1, 1)
+                .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addActivityAddTaskButton)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tasksAddedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(addActivityButton)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addComponent(addActivityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addActivityInvalidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(209, Short.MAX_VALUE))
             .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(AddActivityGUILayout.createSequentialGroup()
                     .addContainerGap()
@@ -1403,6 +1436,8 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addComponent(activityWeightingLabel1))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
+
+        addActivityInvalidLabel.setVisible(false);
 
         GUI.add(AddActivityGUI, "addActivityCard");
 
@@ -1642,6 +1677,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         Double progress = tc.getProgress(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), i);
         jProgressBar1.setValue(progress.intValue());
         taskActivitiesTable.setModel(tc.viewTaskActivities(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), taskIDTextField.getText(), i));
+        taskInvalidLabel.setVisible(false);
     }//GEN-LAST:event_assessmentTasksTableMouseClicked
 
     private void moduleAssessmentsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moduleAssessmentsTableMouseClicked
@@ -1671,6 +1707,13 @@ public class DashboardGUI extends javax.swing.JFrame {
         activityCompletedCheckBox.setSelected(acc.getIsCompleted(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), i, taskIDTextField.getText()));
         Double newDouble = acc.getWeighting(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), i, taskIDTextField.getText());
         activityWeightingTextField.setText(newDouble.toString());
+        activityInvalidLabel.setVisible(false); 
+        tasksAddedLabel.setText("");
+        addActivityNameTextField.setText("");
+        addActivityNotesTextArea.setText("");
+        addActivityWeightingTextField.setText("");
+        DefaultListModel<String> lm = new DefaultListModel();
+        addActivityAssessmentList.setModel(lm);
     }//GEN-LAST:event_taskActivitiesTableMouseClicked
 
     private void assessmentNotesTextAreaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assessmentNotesTextAreaMouseClicked
@@ -1682,27 +1725,29 @@ public class DashboardGUI extends javax.swing.JFrame {
         if (addTaskNameTextField.getText().contains("/") || addTaskNameTextField.getText().contains("#") ||
                 addTaskNameTextField.getText().contains("~") || addTaskNotesTextField.getText().contains("/") || 
                 addTaskNotesTextField.getText().contains("#") ||
-                addTaskNotesTextField.getText().contains("~"))
-        {
-            
+                addTaskNotesTextField.getText().contains("~")){
+            addTaskInvalidLabel.setVisible(true);
         }
-        try {
+        else{
+            try {
             asc.addTask(addTaskModuleTextField.getText(), addTaskAssessmentTextField.getText(), addTaskNameTextField.getText(),
                     addTaskNotesTextField.getText(), Double.parseDouble(addTaskWeightingTextField.getText()));
-        } catch (IOException ex) {
-            Logger.getLogger(DashboardGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int i = moduleAssessmentsTable.getSelectedRow();
-        assessmentTasksTable.setModel(asc.viewAssessmentTasks(moduleCodeTextField.getText(), i));
-        CardLayout card = (CardLayout)GUI.getLayout();
-        card.show(GUI, "assessmentCard");        
-        backList.add("chosenModuleCard");
-        backIndex++;
-        addTaskNameTextField.setText("");
-        addTaskNotesTextField.setText("");
-        addTaskWeightingTextField.setText("");
-
-        
+            int i = moduleAssessmentsTable.getSelectedRow();
+            assessmentTasksTable.setModel(asc.viewAssessmentTasks(moduleCodeTextField.getText(), i));
+            CardLayout card = (CardLayout)GUI.getLayout();
+            card.show(GUI, "assessmentCard");        
+            backList.add("chosenModuleCard");
+            backIndex++;
+            addTaskNameTextField.setText("");
+            addTaskNotesTextField.setText("");
+            addTaskWeightingTextField.setText("");
+            addTaskInvalidLabel.setVisible(false);
+            } catch (IOException ex) {
+                addTaskInvalidLabel.setVisible(true);
+            } catch (NumberFormatException nex){
+                addTaskInvalidLabel.setVisible(true);
+            }            
+        }       
     }//GEN-LAST:event_addTaskButtonActionPerformed
 
     private void addTaskModuleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTaskModuleTextFieldActionPerformed
@@ -1711,20 +1756,44 @@ public class DashboardGUI extends javax.swing.JFrame {
     private void addActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActivityButtonActionPerformed
        
         if (!tasksAddedLabel.getText().equals("")){
-            tc.addActivity(addActivityModuleIndex, addActivityAssessmentIndex, addActivityTaskIndex, 
-                    addActivityNameTextField.getText(), addActivityNotesTextArea.getText(), Double.parseDouble(addActivityWeightingTextField.getText()));
-            addActivityModuleIndex.clear(); 
-            addActivityAssessmentIndex.clear();
-            addActivityTaskIndex.clear();
+            if (addActivityNameTextField.getText().contains("/") || addActivityNameTextField.getText().contains("#") ||
+                addActivityNameTextField.getText().contains("~") || addActivityNotesTextArea.getText().contains("/") || 
+                addActivityNotesTextArea.getText().contains("#") ||
+                addActivityNotesTextArea.getText().contains("~")){
+                addActivityInvalidLabel.setVisible(true);
+            }
+            else{
+                try{
+                    tc.addActivity(addActivityModuleIndex, addActivityAssessmentIndex, addActivityTaskIndex, 
+                        addActivityNameTextField.getText(), addActivityNotesTextArea.getText(), Double.parseDouble(addActivityWeightingTextField.getText()));
+                    addActivityModuleIndex.clear(); 
+                    addActivityAssessmentIndex.clear();
+                    addActivityTaskIndex.clear();
+                    CardLayout card = (CardLayout)GUI.getLayout();
+                    int i = moduleAssessmentsTable.getSelectedRow();
+                    assessmentTasksTable.setModel(asc.viewAssessmentTasks(moduleCodeTextField.getText(), i));
+                    card.show(GUI, "taskCard");        
+                    backList.add("assessmentCard");
+                    backIndex++;
+                    int j = assessmentTasksTable.getSelectedRow();
+                    taskActivitiesTable.setModel(tc.viewTaskActivities(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), taskIDTextField.getText(), j));
+                    addActivityInvalidLabel.setVisible(false);
+                    tasksAddedLabel.setText("");
+                    addActivityNameTextField.setText("");
+                    addActivityNotesTextArea.setText("");
+                    addActivityWeightingTextField.setText("");
+                    DefaultListModel<String> lm = new DefaultListModel();
+                    addActivityModuleList.setModel(lm);
+                    addActivityAssessmentList.setModel(lm);
+                    addActivityTaskList.setModel(lm);
+                }catch (NumberFormatException nex){
+                    addActivityInvalidLabel.setVisible(true);
+                }                 
+            }           
         }
-        CardLayout card = (CardLayout)GUI.getLayout();
-        int i = moduleAssessmentsTable.getSelectedRow();
-        assessmentTasksTable.setModel(asc.viewAssessmentTasks(moduleCodeTextField.getText(), i));
-        card.show(GUI, "taskCard");        
-        backList.add("assessmentCard");
-        backIndex++;
-        int j = assessmentTasksTable.getSelectedRow();
-        taskActivitiesTable.setModel(tc.viewTaskActivities(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), taskIDTextField.getText(), j));
+        else{
+            addActivityInvalidLabel.setVisible(true);
+        }
     }//GEN-LAST:event_addActivityButtonActionPerformed
 
     private void addActivityAssessmentListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_addActivityAssessmentListValueChanged
@@ -1738,16 +1807,27 @@ public class DashboardGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addActivityAssessmentListValueChanged
 
     private void activityUpdateActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activityUpdateActivityButtonActionPerformed
-        int i = taskActivitiesTable.getSelectedRow();
-        try {
-            acc.updateActivity(moduleCodeTextField.getText(), taskAssessmentTextField.getText(),
-                    taskIDTextField.getText(), i, activityNameTextField.getText(),
-                    activityNotesTextArea.getText(), activityCompletedCheckBox.isSelected());
-        } catch (IOException ex) {
-            Logger.getLogger(DashboardGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int j = assessmentTasksTable.getSelectedRow();
-        taskActivitiesTable.setModel(tc.viewTaskActivities(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), taskIDTextField.getText(), j));
+        if (activityNameTextField.getText().contains("/") || activityNameTextField.getText().contains("#") ||
+                activityNameTextField.getText().contains("~") || activityNotesTextArea.getText().contains("/") || 
+                activityNotesTextArea.getText().contains("#") ||
+                activityNotesTextArea.getText().contains("~")){
+                activityInvalidLabel.setVisible(true);
+            }
+        else{
+            int i = taskActivitiesTable.getSelectedRow();
+            try {
+                acc.updateActivity(moduleCodeTextField.getText(), taskAssessmentTextField.getText(),
+                        taskIDTextField.getText(), i, activityNameTextField.getText(),
+                        activityNotesTextArea.getText(), activityCompletedCheckBox.isSelected());
+                int j = assessmentTasksTable.getSelectedRow();
+                taskActivitiesTable.setModel(tc.viewTaskActivities(moduleCodeTextField.getText(), assessmentCodeTextField.getText(), taskIDTextField.getText(), j));
+                activityInvalidLabel.setVisible(false);
+            } catch (IOException ex) {
+                activityInvalidLabel.setVisible(true);
+            } catch (NumberFormatException nex){
+                activityInvalidLabel.setVisible(true);
+            }   
+        }        
     }//GEN-LAST:event_activityUpdateActivityButtonActionPerformed
 
     private void assessmentAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assessmentAddTaskButtonActionPerformed
@@ -1755,6 +1835,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         card.show(GUI, "addTaskCard");        
         backList.add("assessmentCard");
         backIndex++;
+        addTaskInvalidLabel.setVisible(false);
         addTaskAssessmentTextField.setText(assessmentCodeTextField.getText());
         addTaskModuleTextField.setText(moduleCodeTextField.getText());
         
@@ -1765,8 +1846,10 @@ public class DashboardGUI extends javax.swing.JFrame {
         card.show(GUI, "addActivityCard");        
         backList.add("taskCard");
         backIndex++;
+        addActivityInvalidLabel.setVisible(false);
         DefaultListModel model = mc.viewModulesTitles();
         addActivityModuleList.setModel(model);
+        tasksAddedLabel.setText("");
     }//GEN-LAST:event_taskAddActivityButtonActionPerformed
 
     private void addActivityModuleListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_addActivityModuleListValueChanged
@@ -1810,15 +1893,27 @@ public class DashboardGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_taskWeightTextFieldInputMethodTextChanged
 
     private void taskUpdateTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskUpdateTaskButtonActionPerformed
-        int i = assessmentTasksTable.getSelectedRow();
-        try {
-            tc.updateTask(moduleCodeTextField.getText(), taskAssessmentTextField.getText(),
-                    i, taskNameTextField.getText(), taskDescriptionTextArea.getText());
-        } catch (IOException ex) {
-            Logger.getLogger(DashboardGUI.class.getName()).log(Level.SEVERE, null, ex);
+        if (taskNameTextField.getText().contains("/") || taskNameTextField.getText().contains("#") ||
+                taskNameTextField.getText().contains("~") || taskDescriptionTextArea.getText().contains("/") || 
+                taskDescriptionTextArea.getText().contains("#") ||
+                taskDescriptionTextArea.getText().contains("~")){
+            taskInvalidLabel.setVisible(true);
         }
-        int j = moduleAssessmentsTable.getSelectedRow();
-        assessmentTasksTable.setModel(asc.viewAssessmentTasks(moduleCodeTextField.getText(), j));
+        else{
+            int i = assessmentTasksTable.getSelectedRow();
+            try {
+                tc.updateTask(moduleCodeTextField.getText(), taskAssessmentTextField.getText(),
+                        i, taskNameTextField.getText(), taskDescriptionTextArea.getText());
+                taskInvalidLabel.setVisible(false);
+            } catch (IOException ex) {
+                taskInvalidLabel.setVisible(true);
+            } catch(NumberFormatException nex){
+                taskInvalidLabel.setVisible(true);
+            }
+            int j = moduleAssessmentsTable.getSelectedRow();
+            assessmentTasksTable.setModel(asc.viewAssessmentTasks(moduleCodeTextField.getText(), j));
+        }
+        
     }//GEN-LAST:event_taskUpdateTaskButtonActionPerformed
 
     /**
@@ -1875,6 +1970,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JButton activityButton1;
     private javax.swing.JCheckBox activityCompletedCheckBox;
     private javax.swing.JLabel activityCompletedLabel;
+    private javax.swing.JLabel activityInvalidLabel;
     private javax.swing.JLabel activityLabel;
     private javax.swing.JLabel activityNameLabel;
     private javax.swing.JLabel activityNameLabel1;
@@ -1890,6 +1986,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JButton addActivityAddTaskButton;
     private javax.swing.JList<String> addActivityAssessmentList;
     private javax.swing.JButton addActivityButton;
+    private javax.swing.JLabel addActivityInvalidLabel;
     private javax.swing.JLabel addActivityLabel;
     private javax.swing.JLabel addActivityLabel1;
     private javax.swing.JList<String> addActivityModuleList;
@@ -1900,6 +1997,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel addTaskAssessmentLabel;
     private javax.swing.JTextField addTaskAssessmentTextField;
     private javax.swing.JButton addTaskButton;
+    private javax.swing.JLabel addTaskInvalidLabel;
     private javax.swing.JLabel addTaskLabel;
     private javax.swing.JLabel addTaskModuleLabel;
     private javax.swing.JTextField addTaskModuleTextField;
@@ -1947,7 +2045,6 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -1998,6 +2095,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel taskDescriptionLabel;
     private javax.swing.JTextArea taskDescriptionTextArea;
     private javax.swing.JTextField taskIDTextField;
+    private javax.swing.JLabel taskInvalidLabel;
     private javax.swing.JLabel taskLabel;
     private javax.swing.JLabel taskNameLabel;
     private javax.swing.JTextField taskNameTextField;

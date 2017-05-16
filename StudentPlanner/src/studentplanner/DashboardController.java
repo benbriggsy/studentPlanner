@@ -661,7 +661,7 @@ public class DashboardController {
             
     }
      
-    public void removeTaskFromFile(Module mod, Task task) throws FileNotFoundException, IOException{
+    public void removeTaskFromFile(Module mod, Assessment assessment, Task task) throws FileNotFoundException, IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
         String updatedModuleString ="";
         boolean found = false;
@@ -680,7 +680,9 @@ public class DashboardController {
                     updatedModule[6] = mod.getNotes();
                     for(int i=7; i<module.length;){
                         if(module[i].charAt(0) == 'A' && task.getTaskID().charAt(0) == 'a'){
+                            if(module[i].equals(assessment.getAssessmentCode())){
                             String [] tasks = module[i+8].split("#");
+                            
                             for(int j=0; j<tasks.length; j+=6){
                                 if(tasks[j].equals(task.getTaskID())){
                                     taskPosition = j;
@@ -705,9 +707,11 @@ public class DashboardController {
                                     updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
                                 }
                             updatedModule[i+8] = updatedTasks;
+                            }
                             i+=10; 
                         }
                         else if(module[i].charAt(0) == 'E' && task.getTaskID().charAt(0) == 'e'){
+                            if(module[i].equals(assessment.getAssessmentCode())){
                             String [] tasks = module[i+8].split("#");
                             for(int j=0; j<tasks.length; j+=6){
                                 if(tasks[j].equals(task.getTaskID())){
@@ -733,6 +737,7 @@ public class DashboardController {
                             updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
                                 }
                             updatedModule[i+7] = updatedTasks;
+                            }
                             i+=9; 
                         }
                         else if(module[i].charAt(0) == 'A'){
@@ -771,7 +776,7 @@ public class DashboardController {
                     student.setFile(file);
     }
     
-        public void updateFileForActivity(Module mod, Task task, Activity activity) throws IOException{
+    public void updateFileForActivity(Module mod, Task task, Activity activity) throws IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
@@ -1131,7 +1136,7 @@ public class DashboardController {
                     student.setFile(file);
     }
     
-     public static boolean checkFile(File semesterFile) throws FileNotFoundException, ParseException{
+    public static boolean checkFile(File semesterFile) throws FileNotFoundException, ParseException{
         boolean acceptable = true;
         String regExp = "[\\x00-\\x20]*[+-]?(((((\\p{Digit}+)(\\.)?((\\p{Digit}+)?)([eE][+-]?"
         + "(\\p{Digit}+))?)|(\\.((\\p{Digit}+))([eE][+-]?(\\p{Digit}+))?)|(((0[xX](\\p"

@@ -12,16 +12,19 @@ import java.util.*;
 public class GradePlanner {
     private ArrayList<Assessment> moduleAssessments;
     
-    public GradePlanner(ArrayList<Assessment> assessments){
-        this.moduleAssessments=assessments;
+    public GradePlanner(Module module){
+        this.moduleAssessments=module.getAssessments();
     }
     
-    public double calculateGrade(){
-        double currentGrade = 0.0;
-        for(Assessment assessment : moduleAssessments){
-            currentGrade += assessment.getGrade()*assessment.getWeighting();
+    public double predictedAssessmentGrade(double predicitedGrade, Assessment assessment){
+        return predicitedGrade*assessment.getWeighting();
+    }
+    
+    public double predicitedModuleGrade(ArrayList<Double>predictedAssessmentGrades){
+        double predicitedModuleGrade = 0.0;
+        for(Double predicitedGrade:predictedAssessmentGrades){
+            predicitedModuleGrade+=predicitedGrade;
         }
-        
-        return currentGrade;
+        return predicitedModuleGrade;
     }
 }

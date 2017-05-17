@@ -225,8 +225,13 @@ public class DashboardController {
         return (files != null && dir.list(condition).length > 0);
     }
     
-    public static boolean uploadFile(String username, String source) throws IOException{
-        //check file is valid here. method will return false if not valid.
+    public static boolean uploadFile(String username, String source) throws IOException, ParseException{
+        
+        File file = new File(source);
+        System.out.println("going to check");
+        if(!checkFile(file))
+            return false;
+        System.out.println("succesfully checked");
         String fileName = username + ".txt";
         Path FROM = Paths.get(source);
         Path TO = Paths.get(".\\" + fileName);
@@ -296,7 +301,7 @@ public class DashboardController {
         
         
         Scanner fileScan = new Scanner( student.getSemesterFile() );
-        Format formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");
@@ -387,10 +392,56 @@ public class DashboardController {
             
     }
   
+    public void updateDeadlinesFromFile(File deadlineFile) throws FileNotFoundException, IOException{
+        Scanner semesterFileScan = new Scanner( student.getSemesterFile() );
+        Scanner deadlineFileScan = new Scanner( deadlineFile );
+       
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String updatedModuleString ="";
+        String [] semesterFileStu = semesterFileScan.nextLine().split("/");
+        String [] deadlineFileStu = deadlineFileScan.nextLine().split("/");
+        
+        for(int i=0; i<semesterFileStu.length; i++){
+                updatedModuleString += semesterFileStu[i]+ "/";
+        }
+        updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+        updatedModuleString += "\n";
+        
+        while(semesterFileScan.hasNextLine() && deadlineFileScan.hasNextLine()){
+            String [] semesterFileModule = semesterFileScan.nextLine().split("/");
+            String [] deadlineFileModule = deadlineFileScan.nextLine().split("/");
+            
+            for(int i=7; i<semesterFileModule.length;){
+                if(semesterFileModule[i].charAt(0) == 'A'){
+                    semesterFileModule[i+4] = deadlineFileModule[i+4];
+                    i+=10;
+                }
+                else if(semesterFileModule[i].charAt(0) == 'E'){
+                    semesterFileModule[i+4] = deadlineFileModule[i+4];
+                    i+=9;
+                }
+                
+            }
+            
+            for(int i=0; i<semesterFileModule.length; i++){
+                updatedModuleString += semesterFileModule[i]+ "/";
+            }
+            updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            updatedModuleString += "\n";
+            
+            
+        }
+        updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
+            fileOut.write(updatedModuleString.getBytes());
+            fileOut.close();
+            File file = new File(student.getUserName() + ".txt");
+            student.setFile(file);
+    }
     
     public void updateFileForExam(Module mod,  Exam exam) throws IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
-        Format formatter = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");
@@ -778,6 +829,7 @@ public class DashboardController {
     
     public void updateFileForActivity(Activity activity) throws IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String updatedModuleString ="";
         String [] stu = fileScan.nextLine().split("/");
         for(int i=0; i<stu.length; i++){
@@ -819,13 +871,15 @@ public class DashboardController {
                                     
                                         String [] activities =tasks[j].split("~");
                                         //if(tasks[j-4].equals(task.getTaskID())){
-                                        for(int k=0; k<activities.length; k+=5){
+                                        for(int k=0; k<activities.length; k+=7){
                                             if(activities[k].equals(activity.getActivityID())){
                                                 activities[k] = activity.getActivityID();
                                                 activities[k+1] = activity.getActivityName();
                                                 activities[k+2] = Double.toString(activity.getWeighting());
                                                 activities[k+3] = String.valueOf(activity.isCompleted());
-                                                activities[k+4] = activity.getNotes();
+                                                activities[k+4] = formatter.format(activity.getStartDate().getTime());
+                                                activities[k+5] = formatter.format(activity.getEndDate().getTime());
+                                                activities[k+6] = activity.getNotes();
                                             }
                                         }
                                     //}
@@ -854,13 +908,15 @@ public class DashboardController {
                                 
                                     String [] activities =tasks[j].split("~");
                                     //if(tasks[j-4].equals(task.getTaskID())){
-                                    for(int k=0; k<activities.length; k+=5){
+                                    for(int k=0; k<activities.length; k+=7){
                                         if(activities[k].equals(activity.getActivityID())){;
                                             activities[k] = activity.getActivityID();
                                             activities[k+1] = activity.getActivityName();
                                             activities[k+2] = Double.toString(activity.getWeighting());
                                             activities[k+3] = String.valueOf(activity.isCompleted());
-                                            activities[k+4] = activity.getNotes();
+                                            activities[k+4] = formatter.format(activity.getStartDate().getTime());
+                                            activities[k+5] = formatter.format(activity.getEndDate().getTime());
+                                            activities[k+6] = activity.getNotes();
                                         }
                                     }
                                 //}
@@ -919,7 +975,7 @@ public class DashboardController {
                 
             }
             updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
@@ -928,6 +984,7 @@ public class DashboardController {
     
     public void addActivityToFile(Module mod, Task task, Activity activity) throws FileNotFoundException, IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String updatedModuleString ="";
         while(fileScan.hasNextLine()){
             String [] module = fileScan.nextLine().split("/");
@@ -946,6 +1003,8 @@ public class DashboardController {
                                 tasks[j] += activity.getActivityName() + "~";
                                 tasks[j] += Double.toString(activity.getWeighting()) + "~";
                                 tasks[j] += String.valueOf(activity.isCompleted()) + "~";
+                                tasks[j] += formatter.format(activity.getStartDate()) + "~";
+                                tasks[j] += formatter.format(activity.getEndDate()) + "~";
                                 tasks[j] += activity.getNotes();
                              } 
                         }
@@ -958,7 +1017,7 @@ public class DashboardController {
                         //System.out.println(updatedTasks);
                         i+=10;
                     }
-                    else if(module[i].charAt(0) == 'E' && activity.getActivityID().charAt(0) == 'e' && activity.getActivityID().charAt(1) == 'a'){
+                    else if(module[i].charAt(0) == 'E'){
                         String [] tasks = module[i+7].split("#");
                         for(int j=4; j<tasks.length; j+=6){
                             if(task.getTaskID().equals(tasks[j-4])){
@@ -970,6 +1029,8 @@ public class DashboardController {
                                 tasks[j] += activity.getActivityName() + "~";
                                 tasks[j] += Double.toString(activity.getWeighting()) + "~";
                                 tasks[j] += String.valueOf(activity.isCompleted()) + "~";
+                                tasks[j] += formatter.format(activity.getStartDate()) + "~";
+                                tasks[j] += formatter.format(activity.getEndDate()) + "~";
                                 tasks[j] += activity.getNotes();
                              } 
                         }
@@ -1006,11 +1067,12 @@ public class DashboardController {
                 }
         }
         updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
+                    
     }
     
     public void removeActivityFromFile(Module mod, Task task, Activity activity) throws FileNotFoundException, IOException{
@@ -1035,23 +1097,25 @@ public class DashboardController {
                         for(int j=4; j<tasks.length; j+=6){
                             if(task.getTaskID().equals(tasks[j-4])){
                                 String [] act = tasks[j].split("~");
-                                for(int k=0; k<act.length; k+=5){
+                                for(int k=0; k<act.length; k+=7){
                                     if(act[k].equals(activity.getActivityID())){
                                        found = true;
                                        activityPosition = k;
                                     }
                                 }
                                 if(found){
-                                    for(int k=activityPosition; k<act.length-5; k+=5){
-                                        act[k]=act[k+5];
-                                        act[k+1]=act[k+5];
-                                        act[k+2]=act[k+7];
-                                        act[k+3]=act[k+8];
-                                        act[k+4]=act[k+9];
+                                    for(int k=activityPosition; k<act.length-7; k+=7){
+                                        act[k]=act[k+7];
+                                        act[k+1]=act[k+8];
+                                        act[k+2]=act[k+9];
+                                        act[k+3]=act[k+10];
+                                        act[k+4]=act[k+11];
+                                        act[k+5]=act[k+12];
+                                        act[k+6]=act[k+13];
                                     }
                                 }
                                 String updatedActivities = "";
-                                for(int k=0; k<act.length-5; k++){
+                                for(int k=0; k<act.length-7; k++){
                                     updatedActivities += act[k] + "~";
                                 }
                             if(!updatedActivities.equals("")){
@@ -1074,23 +1138,25 @@ public class DashboardController {
                         for(int j=4; j<tasks.length; j+=6){
                             if(task.getTaskID().equals(tasks[j-4])){
                                 String [] act = tasks[j].split("~");
-                                for(int k=0; k<act.length; k+=5){
+                                for(int k=0; k<act.length; k+=7){
                                     if(act[k].equals(activity.getActivityID())){
                                        found = true;
                                        activityPosition = k;
                                     }
                                 }
                                 if(found){
-                                    for(int k=activityPosition; k<act.length-5; k+=5){
-                                        act[k]=act[k+5];
-                                        act[k+1]=act[k+5];
-                                        act[k+2]=act[k+7];
-                                        act[k+3]=act[k+8];
-                                        act[k+4]=act[k+9];
+                                    for(int k=activityPosition; k<act.length-7; k+=7){
+                                        act[k]=act[k+7];
+                                        act[k+1]=act[k+8];
+                                        act[k+2]=act[k+9];
+                                        act[k+3]=act[k+10];
+                                        act[k+4]=act[k+11];
+                                        act[k+5]=act[k+12];
+                                        act[k+6]=act[k+13];
                                     }
                                 }
                                 String updatedActivities = "";
-                                for(int k=0; k<act.length-5; k++){
+                                for(int k=0; k<act.length-7; k++){
                                     updatedActivities += act[k] + "~";
                                 }
                             if(!updatedActivities.equals("")){
@@ -1136,14 +1202,17 @@ public class DashboardController {
                 }
         }
         updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-            FileOutputStream fileOut = new FileOutputStream("semester.txt");
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
                     fileOut.write(updatedModuleString.getBytes());
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
     }
     
-    public static boolean checkFile(File semesterFile) throws FileNotFoundException, ParseException{
+    
+     public static boolean checkFile(File semesterFile) throws FileNotFoundException, ParseException{
+         try{
+         System.out.println("check file");
         boolean acceptable = true;
         String regExp = "[\\x00-\\x20]*[+-]?(((((\\p{Digit}+)(\\.)?((\\p{Digit}+)?)([eE][+-]?"
         + "(\\p{Digit}+))?)|(\\.((\\p{Digit}+))([eE][+-]?(\\p{Digit}+))?)|(((0[xX](\\p"
@@ -1391,7 +1460,9 @@ public class DashboardController {
                                 for(int j=0; j<assignmentTasks.length;){
                                     if(!"".equals(assignmentTasks[j+4])){
                                         String [] activityTaskActivities = assignmentTasks[j+4].split("~");
-                                        for(int k=0; k<activityTaskActivities.length;k+=5){
+                                        for(int k=0; k<activityTaskActivities.length;k+=7){
+                                            System.out.println(activityTaskActivities[k]);
+                                            System.out.println(activityTaskActivities[k+1]);
                                             if(!activityTaskActivities[k+3].equals("true") && 
                                                     !activityTaskActivities[k+3].equals("false")){
                                                 System.out.println("Error on line " + line + ": \""
@@ -1506,13 +1577,13 @@ public class DashboardController {
                                         acceptable = false;
                                 }
                             }
-                            
+                            System.out.println(details[i+1]);
                             for(int j=0; j<details[i+1].length(); j++){
                                 if(!Character.isLetter(details[i+1].charAt(j)) &&
                                         details[i+1].charAt(j) != ' ' && !Character.isDigit(details[i+1].charAt(j))
-                                        && details[i+1].charAt(j) != '-'){
+                                        && details[i+1].charAt(j) != '-' && details[i+1].charAt(j) != '+'){
                                     System.out.println("Error on line " + line + ": The assignment name "
-                                            + "can only contain letters, spaces, numbers and dashes");
+                                            + "can only contain letters, spaces, numbers, pluses and dashes");
                                         acceptable = false;
                                 }
                             }
@@ -1619,7 +1690,7 @@ public class DashboardController {
                                 for(int j=0; j<examTasks.length;){
                                     if(!"".equals(examTasks[j+4])){
                                         String [] examTaskActivities = examTasks[j+4].split("~");
-                                        for(int k=0; k<examTaskActivities.length;k+=5){
+                                        for(int k=0; k<examTaskActivities.length;k+=7){
                                             if(!examTaskActivities[k+3].equals("true") && 
                                                     !examTaskActivities[k+3].equals("false")){
                                                 System.out.println("Error on line " + line + ": \""
@@ -1754,9 +1825,16 @@ public class DashboardController {
             line++;
         }
         return acceptable;
+         }
+         catch(ArrayIndexOutOfBoundsException  aoe){
+             return false;
+         }catch (NoSuchElementException noe){
+             return false;
+         }
+        
      }
 
-
+    
  
 
 //    public ArrayList<Assessment> viewUpComingIncompleteAssessments(){

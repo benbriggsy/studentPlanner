@@ -88,45 +88,35 @@ public class AssessmentController {
         
     }
     
-    public void addTask(String moduleCode, String assessmentCode, String taskName,
+    public boolean addTask(String moduleCode, String assessmentCode, String taskName,
             String notes, double weighting) throws IOException{
         String taskID = "";
         Assessment assessment = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
+        double summativeWeight = 0;
+        for (int j = 0; j < assessment.getTasks().size(); j++){
+            summativeWeight += assessment.getTask(j).getWeighting();
+        }
+        summativeWeight += weighting;
+        if (summativeWeight > 100)
+            return false;
         if(assessmentCode.charAt(0)=='A'){
             taskID+="aT";
         }
         else if(assessmentCode.charAt(0)=='E'){
             taskID+="eT";
         }
-        taskID += assessmentCode.substring(1, Math.min(assessmentCode.length(), 3));
+        taskID += assessmentCode.substring(1, Math.min(assessmentCode.length(), 4));
         dashboard.getStudent().incrementNumberOfTasks();
+        if(dashboard.getStudent().getNumberOfTasks()<10){
+           taskID +='0'; 
+        }
         taskID += dashboard.getStudent().getNumberOfTasks();
-        
         
         Task t = new Task(taskName, taskID, notes, assessment, weighting, false);
         assessment.addTask(t);
         Module mod = dashboard.getStudent().getModuleByCode(moduleCode);
         dashboard.addTaskToFile(mod, assessment, t);
-        //NEED TO ADD TO FILE
+        return true;
     }
     
-    public void CreateActivity(){
-        
-    }
-    
-    public void AddActivity(){
-        
-    }  
-    
-    public void displayGanttChart(){
-        
-    }
-    
-    public void updateProgress(){
-        
-    }
-    
-    public void setGrade(double grade){
-        
-    }
 }

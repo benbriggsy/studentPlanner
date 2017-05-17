@@ -5,6 +5,8 @@
  */
 package studentplanner;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -25,7 +27,7 @@ public class Activity {
     private long timeSpent;
     
     public Activity(String activityID, String activityName, String notes,
-            boolean completed, double weighting/*, Date startDate, Date finishDate*/){
+            boolean completed, double weighting, Date startDate, Date finishDate){
         this.activityID = activityID;
         this.activityName = activityName;
         this.notes = notes;
@@ -38,18 +40,29 @@ public class Activity {
         else{
             this.startDate = startDate;
         }
-//        if(finishDate==null){
-//            this.finishDate = new Date();
-//            this.timeSpent = this.finishDate.getTime() - this.startDate.getTime();
-//            TimeUnit.HOURS.convert(this.timeSpent,TimeUnit.MILLISECONDS);
-//        }
-//        else{
-//            this.finishDate = finishDate;
-//            this.timeSpent = this.finishDate.getTime() - this.startDate.getTime();
-//            TimeUnit.HOURS.convert(this.timeSpent,TimeUnit.MILLISECONDS);
-//        }
+        if(finishDate==null){
+            this.finishDate = new Date();
+            long secs = (this.finishDate.getTime() - this.startDate.getTime())/1000;
+            this.timeSpent = secs / 3600;
+        }
+        else{
+            this.finishDate = finishDate;
+            long secs = (this.finishDate.getTime() - this.startDate.getTime())/1000;
+            this.timeSpent = secs / 3600;
+        }
         
     }
+    
+    public Date getStartDate(){
+        return startDate;
+    }
+    public Date getEndDate(){
+        return finishDate;
+    }
+    public long getTimeSpent(){
+        return timeSpent;
+    }
+    
     
     public String getActivityID(){
         return activityID;
@@ -75,10 +88,6 @@ public class Activity {
         return weighting;
     }
     
-    public long getTimeSpent(){
-        return timeSpent;
-    }
-    
 //    public void addTask(Task task){
 //        taskList.add(task);
 //    }
@@ -91,11 +100,16 @@ public class Activity {
         this.notes = notes;
     }
     
+    public void setWeighting(double weighting){
+        this.weighting = weighting;
+    }
+    
     public void setCompleted(boolean b){
         completed = b;
     }
     
     public String activityToFile(){
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String activity = "";
         activity+=activityID;
         activity+="~";
@@ -104,6 +118,10 @@ public class Activity {
         activity+=weighting;
         activity+="~";
         activity+=completed;
+        activity+="~";
+        activity+=formatter.format(startDate);
+        activity+="~";
+        activity+=formatter.format(finishDate);
         activity+="~";
         activity+=notes;
         

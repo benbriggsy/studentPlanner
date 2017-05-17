@@ -112,6 +112,10 @@ public class Activity {
         activity+="~";
         activity+=completed;
         activity+="~";
+        activity+=startDate;
+        activity+="~";
+        activity+=finishDate;
+        activity+="~";
         activity+=notes;
         
         return activity;

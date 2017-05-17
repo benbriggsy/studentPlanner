@@ -57,7 +57,9 @@ public class Student {
     }
     
     public Student(File semesterFile) throws FileNotFoundException, IOException, ParseException{
+        
         Scanner fileScan = new Scanner( semesterFile );
+        
         ArrayList<Activity>activitiesList = new ArrayList<>();
         ArrayList<Module> modulesFromFile = new ArrayList<>();
         String [] stu = fileScan.nextLine().split("/");
@@ -74,10 +76,12 @@ public class Student {
                 Admin admin = new Admin(details[2], details[3]);
                 boolean moduleCompleted = Boolean.parseBoolean(details[5]);
                 Module module = new Module(details[0],details[1], admin,Double.parseDouble(details[4]),moduleCompleted,details[6] );
+                
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
+                
                 for(int i = 7; i<details.length;){
                     switch(details[i].charAt(0)){
+                        
                         case 'A':
                             boolean summative = Boolean.parseBoolean(details[i+7]);
                             Date assessmentDate = formatter.parse(details[i+4]);
@@ -1471,7 +1475,7 @@ public class Student {
                                 for(int j=0; j<assignmentTasks.length;){
                                     if(!"".equals(assignmentTasks[j+4])){
                                         String [] activityTaskActivities = assignmentTasks[j+4].split("~");
-                                        for(int k=0; k<activityTaskActivities.length;k+=5){
+                                        for(int k=0; k<activityTaskActivities.length;k+=7){
                                             System.out.println(activityTaskActivities[k]);
                                             System.out.println(activityTaskActivities[k+1]);
                                             if(!activityTaskActivities[k+3].equals("true") && 
@@ -1701,7 +1705,7 @@ public class Student {
                                 for(int j=0; j<examTasks.length;){
                                     if(!"".equals(examTasks[j+4])){
                                         String [] examTaskActivities = examTasks[j+4].split("~");
-                                        for(int k=0; k<examTaskActivities.length;k+=5){
+                                        for(int k=0; k<examTaskActivities.length;k+=7){
                                             if(!examTaskActivities[k+3].equals("true") && 
                                                     !examTaskActivities[k+3].equals("false")){
                                                 System.out.println("Error on line " + line + ": \""

@@ -228,8 +228,8 @@ public class DashboardController {
     public static boolean uploadFile(String username, String source) throws IOException, ParseException{
         String fileName = username + ".txt";
         File file = new File(fileName);
-        if(!checkFile(file))
-            return false;
+//        if(!checkFile(file))
+//            return false;
         Path FROM = Paths.get(source);
         Path TO = Paths.get(".\\" + fileName);
         CopyOption[] options = new CopyOption[]{
@@ -953,6 +953,8 @@ public class DashboardController {
                                 tasks[j] += activity.getActivityName() + "~";
                                 tasks[j] += Double.toString(activity.getWeighting()) + "~";
                                 tasks[j] += String.valueOf(activity.isCompleted()) + "~";
+                                tasks[j] += activity.getStartDate() + "~";
+                                tasks[j] += activity.getEndDate() + "~";
                                 tasks[j] += activity.getNotes();
                              } 
                         }
@@ -977,6 +979,8 @@ public class DashboardController {
                                 tasks[j] += activity.getActivityName() + "~";
                                 tasks[j] += Double.toString(activity.getWeighting()) + "~";
                                 tasks[j] += String.valueOf(activity.isCompleted()) + "~";
+                                tasks[j] += activity.getStartDate() + "~";
+                                tasks[j] += activity.getEndDate() + "~";
                                 tasks[j] += activity.getNotes();
                              } 
                         }

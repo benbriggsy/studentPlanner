@@ -111,12 +111,16 @@ public class Student {
                                             else{
                                                 Date startDate;
                                                 if(activityTaskActivities[k+4].equals("")){
+                                                    System.out.println("if1");
                                                     startDate = null;
+                                                    System.out.println("if2");
                                                 }
                                                 else{
+                                                    System.out.println("else1");
                                                     startDate = formatter.parse(activityTaskActivities[k+4]);
+                                                    System.out.println("else2");
+                                                    
                                                 }
-                                                
                                                 Date endDate;
                                                 if(activityTaskActivities[k+5].equals("")){
                                                     endDate = null;

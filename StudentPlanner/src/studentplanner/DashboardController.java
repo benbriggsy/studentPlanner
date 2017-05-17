@@ -1211,6 +1211,7 @@ public class DashboardController {
     
     
      public static boolean checkFile(File semesterFile) throws FileNotFoundException, ParseException{
+         try{
          System.out.println("check file");
         boolean acceptable = true;
         String regExp = "[\\x00-\\x20]*[+-]?(((((\\p{Digit}+)(\\.)?((\\p{Digit}+)?)([eE][+-]?"
@@ -1824,6 +1825,11 @@ public class DashboardController {
             line++;
         }
         return acceptable;
+         }
+         catch(ArrayIndexOutOfBoundsException e){
+             return false;
+         }
+        
      }
 
     

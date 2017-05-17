@@ -225,6 +225,7 @@ public class Student {
                     }
             
             }
+                module.calculateCurrentGrade();
             modulesFromFile.add(module);
         }
         this.modules = modulesFromFile;

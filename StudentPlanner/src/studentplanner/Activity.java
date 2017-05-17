@@ -5,6 +5,8 @@
  */
 package studentplanner;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -107,6 +109,7 @@ public class Activity {
     }
     
     public String activityToFile(){
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String activity = "";
         activity+=activityID;
         activity+="~";
@@ -116,9 +119,9 @@ public class Activity {
         activity+="~";
         activity+=completed;
         activity+="~";
-        activity+=startDate;
+        activity+=formatter.format(startDate);
         activity+="~";
-        activity+=finishDate;
+        activity+=formatter.format(finishDate);
         activity+="~";
         activity+=notes;
         

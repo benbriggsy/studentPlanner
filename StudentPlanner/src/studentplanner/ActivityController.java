@@ -89,8 +89,10 @@ public class ActivityController {
                                         break;
                                     }
                                 }
-                                if (taskCompleted)
+                                if (taskCompleted){
                                     task.setAsCompleted();
+                                    dashboard.updateFileForTask(module, task);
+                                }
                                 boolean assessmentCompleted = true;
                                 for (Task tsk : assessment.getTasks()){
                                     if (tsk.isCompleted() == false){
@@ -98,8 +100,18 @@ public class ActivityController {
                                         break;
                                     }
                                 }
-                                if (assessmentCompleted)
+                                if (assessmentCompleted){
                                     assessment.setAsCompleted();
+                                    if(assessment instanceof Assignment){
+                                        Assignment assignment = (Assignment)assessment;
+                                        dashboard.updateFileForAssignment(module, assignment);
+                                    }
+                                    else if(assessment instanceof Exam){
+                                        Exam exam = (Exam)assessment;
+                                        dashboard.updateFileForExam(module, exam);
+                                        
+                                    }
+                                }
                             }
                         }
                     }

@@ -31,7 +31,7 @@ public class Module {
     public void calculateCurrentGrade(){
         double grade = 0;
         for(Assessment assessment: assessments){
-            grade += (assessment.getGrade()*assessment.getWeighting());
+            grade += (assessment.getGrade()*(assessment.getWeighting()/100));
         }
         this.currentGrade = grade;
     }
@@ -59,6 +59,22 @@ public class Module {
             }
         }
         return null;
+    }
+    
+    public double getProgress(){
+        double percentage = 0;
+        if(assessments.size()!= 0){
+            for(Assessment assessment : assessments){
+                if(assessment.isCompleted()){
+                    percentage += assessment.getWeighting();
+                }
+            }
+            System.out.println(percentage);
+        return percentage;
+        }
+        else{
+            return 0;
+        }
     }
     
 //    public ArrayList<Double> getAssessmentGrades(){

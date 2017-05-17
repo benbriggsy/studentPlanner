@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 
 public class DashboardGUI extends javax.swing.JFrame {
 
@@ -1666,7 +1667,8 @@ public class DashboardGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_moduleModuleTableMouseClicked
 
     private void uploadProfileFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadProfileFileChooserActionPerformed
-        try {           
+        if (evt.getActionCommand().equals(JFileChooser.APPROVE_OPTION)){
+            try {           
             String filePath = uploadProfileFileChooser.getSelectedFile().getAbsolutePath();
             try {
                 if(DashboardController.uploadFile(loginUsernameTextField.getText(), filePath)){
@@ -1701,6 +1703,8 @@ public class DashboardGUI extends javax.swing.JFrame {
         } catch (IOException ex) {
             uploadProfileInvalidLabel.setVisible(true);
         }
+        }
+        
     }//GEN-LAST:event_uploadProfileFileChooserActionPerformed
 
     private void addActivityNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActivityNameTextFieldActionPerformed
@@ -2003,7 +2007,8 @@ public class DashboardGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_taskUpdateTaskButtonActionPerformed
 
     private void uploadDeadlinesFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadDeadlinesFileChooserActionPerformed
-        try {           
+        if (evt.getActionCommand().equals(JFileChooser.APPROVE_OPTION)){
+            try {           
             String filePath = uploadDeadlinesFileChooser.getSelectedFile().getAbsolutePath();
                 File file = new File(filePath);
                 if(DashboardController.checkFile(file)){
@@ -2019,6 +2024,8 @@ public class DashboardGUI extends javax.swing.JFrame {
         }catch (ParseException ex) {
                 uploadDeadlineInvalidLabel.setVisible(true);
         }
+        }
+        
     }//GEN-LAST:event_uploadDeadlinesFileChooserActionPerformed
 
     private void dashboardUpdateDeadlinesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardUpdateDeadlinesButtonActionPerformed

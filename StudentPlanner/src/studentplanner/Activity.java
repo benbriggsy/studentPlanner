@@ -98,6 +98,10 @@ public class Activity {
         this.notes = notes;
     }
     
+    public void setWeighting(double weighting){
+        this.weighting = weighting;
+    }
+    
     public void setCompleted(boolean b){
         completed = b;
     }

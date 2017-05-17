@@ -609,27 +609,6 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="taskProgressLabel" min="-2" pref="86" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane4" min="-2" pref="238" max="-2" attributes="0"/>
-                                  <Component id="taskWeightLabel" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                                  <Component id="taskAssessmentLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="taskDescriptionLabel" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="taskNameLabel" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
-                              <Component id="taskTitleLabel" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -644,7 +623,7 @@
                               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="261" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -667,6 +646,32 @@
                               </Group>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="taskProgressLabel" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane4" min="-2" pref="238" max="-2" attributes="0"/>
+                                  <Component id="taskWeightLabel" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <Component id="taskAssessmentLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="taskDescriptionLabel" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="taskNameLabel" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="287" max="-2" attributes="0"/>
+                              <Component id="taskTitleLabel" min="-2" pref="80" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="taskInvalidWeightLabel" min="-2" pref="257" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -726,9 +731,11 @@
                       <Component id="taskUpdateTaskButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Component id="taskInvalidLabel" min="-2" pref="23" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="taskInvalidWeightLabel" min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Component id="taskTitleLabel" min="-2" pref="29" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="125" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                   </Group>
@@ -889,6 +896,17 @@
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="addActivityInvalidLabel.setVisible(false);"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JLabel" name="taskInvalidWeightLabel">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Overrall weightig can not add up to more than 100"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="taskInvalidWeightLabel.setVisible(false);"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="ActivityGUI">
@@ -915,7 +933,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="260" max="32767" attributes="0"/>
+                      <EmptySpace pref="161" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -946,7 +964,7 @@
                               <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="activityInvalidLabel" min="-2" pref="510" max="-2" attributes="0"/>
+                              <Component id="activityInvalidLabel" min="-2" pref="609" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1026,9 +1044,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="activityWeightingTextField">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="activityWeightingLabel">
               <Properties>
@@ -1068,7 +1083,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="0" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Invalid data was input. Weighting is numerical and name and notes can not contain #, / and ~"/>
+                <Property name="text" type="java.lang.String" value="Invalid data: Weighting is numerical and cannot add up to more than 100.  Name and notes can not contain #, / and ~"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="addActivityInvalidLabel.setVisible(false);"/>
@@ -1666,7 +1681,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -1714,9 +1729,9 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="113" max="32767" attributes="0"/>
-                      <Component id="addTaskInvalidLabel" min="-2" pref="511" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
+                      <Component id="addTaskInvalidLabel" min="-2" pref="607" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1767,9 +1782,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="addTaskButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="addTaskInvalidLabel" min="-2" pref="23" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="319" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="addTaskInvalidLabel" min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="314" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1851,7 +1866,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="0" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Invalid data was input. Weighting is numerical and name and notes can not contain #, / and ~"/>
+                <Property name="text" type="java.lang.String" value="Invalid data: Weighting is numerical and can not add up to more than 100. Name and notes can not contain #, / and ~"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="addTaskInvalidLabel.setVisible(false);"/>

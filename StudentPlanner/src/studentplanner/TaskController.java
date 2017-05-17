@@ -44,13 +44,24 @@ public class TaskController {
         return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTask(taskIndex).getAssessment();
     }
     
-    public void updateTask(String moduleCode, String assessmentCode, int i, String name, String notes) throws IOException{
-        Task t = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTask(i);
-        t.setTaskName(name);
-        t.setTaskNotes(notes);
+    public boolean updateTask(String moduleCode, String assessmentCode, int i, String name, String notes, double weighting) throws IOException{
         Module m = dashboard.getStudent().getModuleByCode(moduleCode);
-        Assessment a = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);       
+        Assessment a = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
+        Task t = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTask(i);
+        double originalWeight = t.getWeighting();
+        t.setWeighting(weighting);
+        double summativeWeight = 0;
+        for (int j = 0; j < a.getTasks().size(); j++){
+            summativeWeight += a.getTask(j).getWeighting();
+        }
+        if (summativeWeight > 100){
+            t.setWeighting(originalWeight);
+            return false;
+        }    
+        t.setTaskName(name);
+        t.setTaskNotes(notes);  
         dashboard.updateFileForTask(m, t);
+        return true;
     }
     
     public DefaultTableModel viewTaskActivities(String moduleCode, String assessmentCode, String taskID, int i){
@@ -68,7 +79,7 @@ public class TaskController {
         return tableModel;
     }
     
-    public void addActivity(ArrayList<Integer> moduleIndexes, ArrayList<Integer> assessmentIndexes, ArrayList<Integer> taskIndexes, String activityName,
+    public boolean addActivity(ArrayList<Integer> moduleIndexes, ArrayList<Integer> assessmentIndexes, ArrayList<Integer> taskIndexes, String activityName,
             String notes, double weighting) throws IOException{
         String activityID = "a";
         Task task = dashboard.getStudent().getModule(moduleIndexes.get(0)).getAssessmentByIndex(assessmentIndexes.get(0)).getTask(taskIndexes.get(0));
@@ -79,13 +90,25 @@ public class TaskController {
         
         Activity a = new Activity(activityID, activityName, notes,
             false, weighting,null,null);
+        //check if any of the tasks will have weights over 100
+        for (int i = 0; i < taskIndexes.size(); i++){
+            Task t = dashboard.getStudent().getModule(moduleIndexes.get(i)).getAssessmentByIndex(assessmentIndexes.get(i)).getTask(taskIndexes.get(i));
+            double summativeWeight = 0;
+            for (int j = 0; j < t.getActivities().size(); j++){
+                summativeWeight += t.getActivityByIndex(j).getWeighting();
+                if (summativeWeight > 100)
+                    return false;
+            }
+            t.addActivity(a);
+            dashboard.addActivityToFile(dashboard.getStudent().getModule(moduleIndexes.get(i)), t, a);
+        }  
+        //none of the tasks have weights above 100 so add the activity to the tasks
         for (int i = 0; i < taskIndexes.size(); i++){
             Task t = dashboard.getStudent().getModule(moduleIndexes.get(i)).getAssessmentByIndex(assessmentIndexes.get(i)).getTask(taskIndexes.get(i));
             t.addActivity(a);
             dashboard.addActivityToFile(dashboard.getStudent().getModule(moduleIndexes.get(i)), t, a);
-        }            
-        
-        //NEED TO ADD TO FILE
+        }    
+        return true;
     }
     
     public void viewAllTasks(){

@@ -88,10 +88,17 @@ public class AssessmentController {
         
     }
     
-    public void addTask(String moduleCode, String assessmentCode, String taskName,
+    public boolean addTask(String moduleCode, String assessmentCode, String taskName,
             String notes, double weighting) throws IOException{
         String taskID = "";
         Assessment assessment = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
+        double summativeWeight = 0;
+        for (int j = 0; j < assessment.getTasks().size(); j++){
+            summativeWeight += assessment.getTask(j).getWeighting();
+        }
+        summativeWeight += weighting;
+        if (summativeWeight > 100)
+            return false;
         if(assessmentCode.charAt(0)=='A'){
             taskID+="aT";
         }
@@ -106,7 +113,7 @@ public class AssessmentController {
         assessment.addTask(t);
         Module mod = dashboard.getStudent().getModuleByCode(moduleCode);
         dashboard.addTaskToFile(mod, assessment, t);
-        //NEED TO ADD TO FILE
+        return true;
     }
     
     public void CreateActivity(){

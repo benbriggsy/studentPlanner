@@ -226,10 +226,13 @@ public class DashboardController {
     }
     
     public static boolean uploadFile(String username, String source) throws IOException, ParseException{
+        
+        File file = new File(source);
+        System.out.println("going to check");
+        if(!checkFile(file))
+            return false;
+        System.out.println("succesfully checked");
         String fileName = username + ".txt";
-        File file = new File(fileName);
-//        if(!checkFile(file))
-//            return false;
         Path FROM = Paths.get(source);
         Path TO = Paths.get(".\\" + fileName);
         CopyOption[] options = new CopyOption[]{
@@ -1159,7 +1162,9 @@ public class DashboardController {
                     student.setFile(file);
     }
     
-    public static boolean checkFile(File semesterFile) throws FileNotFoundException, ParseException{
+    
+     public static boolean checkFile(File semesterFile) throws FileNotFoundException, ParseException{
+         System.out.println("check file");
         boolean acceptable = true;
         String regExp = "[\\x00-\\x20]*[+-]?(((((\\p{Digit}+)(\\.)?((\\p{Digit}+)?)([eE][+-]?"
         + "(\\p{Digit}+))?)|(\\.((\\p{Digit}+))([eE][+-]?(\\p{Digit}+))?)|(((0[xX](\\p"
@@ -1408,6 +1413,8 @@ public class DashboardController {
                                     if(!"".equals(assignmentTasks[j+4])){
                                         String [] activityTaskActivities = assignmentTasks[j+4].split("~");
                                         for(int k=0; k<activityTaskActivities.length;k+=7){
+                                            System.out.println(activityTaskActivities[k]);
+                                            System.out.println(activityTaskActivities[k+1]);
                                             if(!activityTaskActivities[k+3].equals("true") && 
                                                     !activityTaskActivities[k+3].equals("false")){
                                                 System.out.println("Error on line " + line + ": \""
@@ -1522,13 +1529,13 @@ public class DashboardController {
                                         acceptable = false;
                                 }
                             }
-                            
+                            System.out.println(details[i+1]);
                             for(int j=0; j<details[i+1].length(); j++){
                                 if(!Character.isLetter(details[i+1].charAt(j)) &&
                                         details[i+1].charAt(j) != ' ' && !Character.isDigit(details[i+1].charAt(j))
-                                        && details[i+1].charAt(j) != '-'){
+                                        && details[i+1].charAt(j) != '-' && details[i+1].charAt(j) != '+'){
                                     System.out.println("Error on line " + line + ": The assignment name "
-                                            + "can only contain letters, spaces, numbers and dashes");
+                                            + "can only contain letters, spaces, numbers, pluses and dashes");
                                         acceptable = false;
                                 }
                             }
@@ -1772,8 +1779,7 @@ public class DashboardController {
         return acceptable;
      }
 
-
- 
+    
 
 //    public ArrayList<Assessment> viewUpComingIncompleteAssessments(){
 //        ArrayList<Assessment> upComingAssessments = new ArrayList<>();

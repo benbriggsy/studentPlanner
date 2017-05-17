@@ -102,8 +102,6 @@ public class TaskController {
                 if (summativeWeight > 100)
                     return false;
             }
-            t.addActivity(a);
-            dashboard.addActivityToFile(dashboard.getStudent().getModule(moduleIndexes.get(i)), t, a);
         }  
         //none of the tasks have weights above 100 so add the activity to the tasks
         for (int i = 0; i < taskIndexes.size(); i++){

@@ -31,7 +31,7 @@ public class Module {
     public void calculateCurrentGrade(){
         double grade = 0;
         for(Assessment assessment: assessments){
-            grade += (assessment.getGrade()*assessment.getWeighting());
+            grade += (assessment.getGrade()*(assessment.getWeighting()/100));
         }
         this.currentGrade = grade;
     }

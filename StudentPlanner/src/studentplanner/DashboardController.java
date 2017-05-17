@@ -1072,7 +1072,6 @@ public class DashboardController {
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
-                    System.out.println(updatedModuleString);
                     
     }
     

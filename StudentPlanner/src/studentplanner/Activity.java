@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package studentplanner;
 
 import java.text.Format;
@@ -19,7 +14,6 @@ public class Activity {
     private String activityName;
     private String activityID;
     private String notes;
-    //private ArrayList<Task> taskList;
     private boolean completed;
     private double weighting;
     private Date startDate;
@@ -50,7 +44,6 @@ public class Activity {
             long secs = (this.finishDate.getTime() - this.startDate.getTime())/1000;
             this.timeSpent = secs / 3600;
         }
-        
     }
     
     public Date getStartDate(){
@@ -72,10 +65,6 @@ public class Activity {
         return activityName;
     }
     
-//    public ArrayList<Task> getTasks(){
-//        return taskList;
-//    }
-    
     public String getNotes(){
         return notes;
     }
@@ -87,10 +76,6 @@ public class Activity {
     public double getWeighting(){
         return weighting;
     }
-    
-//    public void addTask(Task task){
-//        taskList.add(task);
-//    }
     
     public void setName(String name){
         activityName = name;

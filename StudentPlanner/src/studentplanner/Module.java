@@ -77,10 +77,6 @@ public class Module {
         }
     }
     
-//    public ArrayList<Double> getAssessmentGrades(){
-//        return assessmentGrades;
-//    }
-    
     public double getCurrentGrade(){
         return currentGrade;
     }
@@ -109,11 +105,7 @@ public class Module {
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder();
-//        for(int i=0; i<assessments.size(); i++){
-//        str.append(assessments.get(i)).append("\n");
-//        
-//        }
-str.append(moduleName).append("\n");
+        str.append(moduleName).append("\n");
         return str.toString();
     }
 }

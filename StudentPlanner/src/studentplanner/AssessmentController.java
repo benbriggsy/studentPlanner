@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package studentplanner;
 
 import java.io.IOException;
@@ -19,8 +14,6 @@ public class AssessmentController {
     private DashboardController dashboard;  
     
     public AssessmentController(DashboardController dashboard){
-        //this.assessment = assessment;
-        //this.task = task;
         this.dashboard = dashboard;
     }
         
@@ -78,14 +71,6 @@ public class AssessmentController {
             listModel.addElement(taskName);
         }
         return listModel;
-    }
-    
-    public void ViewTask(Task task){
-        //NOT SURE WHAT TO DO HEREz
-    }
-    
-    public void createTask(){
-        
     }
     
     public boolean addTask(String moduleCode, String assessmentCode, String taskName,

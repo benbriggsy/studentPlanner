@@ -109,7 +109,6 @@ public class Activity {
         activity+=formatter.format(finishDate);
         activity+="~";
         activity+=notes;
-        
         return activity;
     }
     

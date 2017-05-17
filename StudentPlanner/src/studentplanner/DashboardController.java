@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package studentplanner;
 
 import java.io.File;
@@ -30,8 +25,6 @@ public class DashboardController {
 
     private Student student;
     private ModuleController moduleController;
-    //private Student student;
-    //private MilestoneController milestoneController;
 
     public DashboardController(String fileName) throws FileNotFoundException, IOException, ParseException {
         File semesterFile = new File(
@@ -83,9 +76,6 @@ public class DashboardController {
         return moduleController;
     }
     
-//    public ArrayList<Module> viewModules(){
-//        return dashboard.getModules();
-//    }
 
     public ArrayList<Milestone> viewMilestones() {
         return student.getMilestones();
@@ -109,26 +99,6 @@ public class DashboardController {
         return upComingMilestones;
     }
 
-//    public void uploadSemesterFile() throws FileNotFoundException, ParseException{
-//        File semesterFile = new File("semester.txt");
-//        try{
-//            dashboard.setSemesterFile(semesterFile);
-//        }
-//        catch(IOException ioEx){
-//            
-//        }
-//        catch(ParseException peEx){
-//            
-//        }
-//        
-//    }
-//    public Module viewModule(String moduleName){
-//       for(int i=0; i<dashboard.getModules().size(); i++){
-//           if(dashboard.getModule(i).getModuleName().equals(moduleName)){
-//               return dashboard.getModule(i);
-//           }
-//       }
-//    }
     public DefaultTableModel viewUpComingCompleteAssessments() {
         String[] cols = {"Assessment", "Deadline"};
         DefaultTableModel tableModel = new DefaultTableModel(cols, 0);
@@ -298,8 +268,6 @@ public class DashboardController {
     }
     
     public void updateFileForAssignment(Module mod,  Assignment assignment) throws IOException{
-        
-        
         Scanner fileScan = new Scanner( student.getSemesterFile() );
         Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String updatedModuleString ="";
@@ -350,14 +318,9 @@ public class DashboardController {
                                 }
                                 updatedModule[i+8] = updatedModule[i+8].substring(0,updatedModule[i+8].length()-1);
                                 updatedModule[i+9] = assignment.getNotes();
-                              
-                                
                          i+=10;    
                         }
-                        
                     }
-                    
-                    
                     updatedModuleString += updatedModule[0] + "/";
                     updatedModuleString += updatedModule[1] + "/";
                     updatedModuleString += updatedModule[2] + "/";
@@ -370,9 +333,6 @@ public class DashboardController {
                     }
                     updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
                     updatedModuleString += "\n";
-//                    System.out.println(moduleString);
-//                       System.out.println(updatedModuleString);
-//                       System.out.println("\n\n\n");
                 }
                 else{
                     for(int i=0; i<module.length; i++){
@@ -420,16 +380,12 @@ public class DashboardController {
                     semesterFileModule[i+4] = deadlineFileModule[i+4];
                     i+=9;
                 }
-                
             }
-            
             for(int i=0; i<semesterFileModule.length; i++){
                 updatedModuleString += semesterFileModule[i]+ "/";
             }
             updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
             updatedModuleString += "\n";
-            
-            
         }
         updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
             FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
@@ -445,9 +401,7 @@ public class DashboardController {
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");
-                
                 if(module[0].equals(mod.getModuleCode())){
-                    
                     String moduleString ="";
                     moduleString += module[0] + "/";
                     moduleString += module[1] + "/";
@@ -460,7 +414,6 @@ public class DashboardController {
                         moduleString += module[i] + "/";
                     }
                     moduleString = moduleString.substring(0,moduleString.length()-1);
-                    
                     String [] updatedModule = module;
                     updatedModule[0] = mod.getModuleCode();
                     updatedModule[1] = mod.getModuleName();
@@ -492,7 +445,6 @@ public class DashboardController {
                          i+=9;    
                         }
                     }
-                    
                     updatedModuleString += updatedModule[0] + "/";
                     updatedModuleString += updatedModule[1] + "/";
                     updatedModuleString += updatedModule[2] + "/";
@@ -505,9 +457,6 @@ public class DashboardController {
                     }
                     updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
                     updatedModuleString += "\n";
-//                    System.out.println(moduleString);
-//                       System.out.println(updatedModuleString);
-//                       System.out.println("\n\n\n");
                 }
                 else{
                     for(int i=0; i<module.length; i++){
@@ -524,7 +473,6 @@ public class DashboardController {
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
-                
             }
      
     public void updateFileForTask(Module mod, Task task) throws IOException{
@@ -532,9 +480,7 @@ public class DashboardController {
         String updatedModuleString ="";
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");
-                
                 if(module[0].equals(mod.getModuleCode())){
-                    
                     String moduleString ="";
                     moduleString += module[0] + "/";
                     moduleString += module[1] + "/";
@@ -632,9 +578,6 @@ public class DashboardController {
                     }
                     updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
                     updatedModuleString += "\n";
-//                    System.out.println(moduleString);
-//                       System.out.println(updatedModuleString);
-//                       System.out.println("\n\n\n");
                 }
                 else{
                     for(int i=0; i<module.length; i++){
@@ -840,9 +783,7 @@ public class DashboardController {
         
             while(fileScan.hasNextLine()){
                 String [] module = fileScan.nextLine().split("/");
-                
-                //if(module[0].equals(mod.getModuleCode())){
-                    
+                                    
                     String moduleString ="";
                     moduleString += module[0] + "/";
                     moduleString += module[1] + "/";
@@ -870,7 +811,6 @@ public class DashboardController {
                                 for(int j=4; j<tasks.length; j+=6){
                                     
                                         String [] activities =tasks[j].split("~");
-                                        //if(tasks[j-4].equals(task.getTaskID())){
                                         for(int k=0; k<activities.length; k+=7){
                                             if(activities[k].equals(activity.getActivityID())){
                                                 activities[k] = activity.getActivityID();
@@ -882,7 +822,6 @@ public class DashboardController {
                                                 activities[k+6] = activity.getNotes();
                                             }
                                         }
-                                    //}
                                         String updatedActivities = "";
                                         for(int k=0; k<activities.length; k++){
                                             updatedActivities += activities[k] + "~";
@@ -907,7 +846,6 @@ public class DashboardController {
                             for(int j=4; j<tasks.length; j+=6){
                                 
                                     String [] activities =tasks[j].split("~");
-                                    //if(tasks[j-4].equals(task.getTaskID())){
                                     for(int k=0; k<activities.length; k+=7){
                                         if(activities[k].equals(activity.getActivityID())){;
                                             activities[k] = activity.getActivityID();
@@ -919,7 +857,6 @@ public class DashboardController {
                                             activities[k+6] = activity.getNotes();
                                         }
                                     }
-                                //}
                                     String updatedActivities = "";
                                     for(int k=0; k<activities.length; k++){
                                         updatedActivities += activities[k] + "~";
@@ -932,21 +869,16 @@ public class DashboardController {
                                     }
                                     updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
                                     updatedModule[i+7] = updatedTasks;
-                                
                             }
-                            
                          i+=9;    
                         }
                         else if(module[i].charAt(0) == 'A'){
-                            //System.out.println("Assignment and Exam activity" + module[i]);
                             i+=10;
                         }
                         else if(module[i].charAt(0) == 'E'){
-                            //System.out.println("Exam and assignment activity" + module[i]);
                             i+=9;
                         }
                     }
-                    
                     updatedModuleString += updatedModule[0] + "/";
                     updatedModuleString += updatedModule[1] + "/";
                     updatedModuleString += updatedModule[2] + "/";
@@ -959,20 +891,7 @@ public class DashboardController {
                     }
                     updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
                     updatedModuleString +="\n";
-//                    System.out.println(moduleString);
-//                       System.out.println(updatedModuleString);
-//                       System.out.println("\n\n\n");
-                    
-//                }
-//                else{
-//                    for(int i=0; i<module.length; i++){
-//                        updatedModuleString += module[i]+ "/";
-//                    }
-//                    updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
-//                    updatedModuleString += "\n";
-//                }
-                
-                
+                               
             }
             updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
             FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
@@ -1014,7 +933,6 @@ public class DashboardController {
                         }
                         updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
                         module[i+8] = updatedTasks;
-                        //System.out.println(updatedTasks);
                         i+=10;
                     }
                     else if(module[i].charAt(0) == 'E'){
@@ -1040,7 +958,6 @@ public class DashboardController {
                         }
                         updatedTasks = updatedTasks.substring(0,updatedTasks.length()-1);
                         module[i+7] = updatedTasks;
-                        //System.out.println(updatedTasks);
                         i+=9;
                     }
                     else if(module[i].charAt(0) == 'A'){
@@ -1049,7 +966,6 @@ public class DashboardController {
                     else if(module[i].charAt(0) == 'E'){
                         i+=9;
                     }
-                    
                 }
                 for(int i=0; i<module.length; i++){
                     updatedModuleString += module[i] + "/";
@@ -1277,9 +1193,6 @@ public class DashboardController {
                                 + " \"@uea.ac.uk\"");
                      acceptable = false;
                 }
-                
-//                this.schoolOfStudy = stu[4];
-//                this.yearOfStudy = Integer.parseInt(stu[5]);
         int line = 2;
         while(fileScan.hasNextLine()){
                 String [] details = fileScan.nextLine().split("/");
@@ -1455,7 +1368,6 @@ public class DashboardController {
                             }
 
                             if(!"".equals(details[i+8])){
-                                //System.out.println(details[i+8]);
                                 String [] assignmentTasks = details[i+8].split("#");
                                 for(int j=0; j<assignmentTasks.length;){
                                     if(!"".equals(assignmentTasks[j+4])){
@@ -1820,7 +1732,6 @@ public class DashboardController {
                             i+=9;
                             break;
                     }
-            
             }
             line++;
         }
@@ -1833,31 +1744,4 @@ public class DashboardController {
          }
         
      }
-
-    
- 
-
-//    public ArrayList<Assessment> viewUpComingIncompleteAssessments(){
-//        ArrayList<Assessment> upComingAssessments = new ArrayList<>();
-//        
-//        Date today = new Date();
-//        
-//        for(int i=0; i<dashboard.getModules().size(); i++){
-//           for(int j=0; j<dashboard.getModule(i).getAssessments().size(); j++){
-//               if(!dashboard.getModule(i).getAssessmentByIndex(j).isCompleted()){
-//                   Calendar calendar = Calendar.getInstance();
-//                    calendar.setTime(dashboard.getModule(i).getAssessmentByIndex(j).getDeadline().getTime());            
-//                    calendar.add(Calendar.DAY_OF_YEAR, -7);
-//                    Date previousWeek = calendar.getTime();
-//                   if(!(today.before(previousWeek) 
-//                           || today.after(dashboard.getModule(i).getAssessmentByIndex(j).getDeadline().getTime()))){
-//                       upComingAssessments.add(dashboard.getModule(i).getAssessmentByIndex(j));
-//                    }
-//                   
-//               }
-//           }
-//       }
-//        
-//       return upComingAssessments;
-//    }
 }

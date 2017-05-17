@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package studentplanner;
 
 import java.io.IOException;
@@ -74,6 +69,7 @@ public class ActivityController {
         a.setNotes(notes);
         a.setCompleted(completed);
         
+        //check if any of the assessments and tasks should now be set as completed
         if (completed == true){
             for (Module module : dashboard.getStudent().getModules()) {
                 for (Assessment assessment : module.getAssessments()) {
@@ -107,7 +103,6 @@ public class ActivityController {
                                     else if(assessment instanceof Exam){
                                         Exam exam = (Exam)assessment;
                                         dashboard.updateFileForExam(module, exam);
-                                        
                                     }
                                 }
                             }
@@ -118,6 +113,5 @@ public class ActivityController {
         }
         dashboard.updateFileForActivity(a);
         return true;
-    }
-    
+    }   
 }

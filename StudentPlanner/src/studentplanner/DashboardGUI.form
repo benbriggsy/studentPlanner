@@ -652,12 +652,9 @@
                                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                               <Component id="taskDescriptionLabel" min="-2" pref="86" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="taskProgressLabel" min="-2" pref="68" max="-2" attributes="0"/>
-                                                  <Component id="taskWeightLabel" min="-2" pref="72" max="-2" attributes="0"/>
-                                              </Group>
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Component id="taskProgressLabel" min="-2" pref="68" max="-2" attributes="0"/>
+                                              <Component id="taskWeightLabel" min="-2" pref="72" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1008,9 +1005,9 @@
                           <Component id="activityCompletedLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="activityWeightingTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="activityWeightingLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="activityWeightingTextField" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1392,10 +1389,14 @@
                                           <Group type="102" attributes="0">
                                               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="moduleCodeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="moduleGradeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="moduleProgressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="moduleNotesLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="moduleCodeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="moduleGradeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -1407,7 +1408,6 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jScrollPane13" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="moduleProgressBar" alignment="0" max="32767" attributes="0"/>
                                               <Component id="moduleGradeTextField" alignment="0" max="32767" attributes="0"/>
                                               <Component id="moduleCodeTextField" alignment="0" max="32767" attributes="0"/>
                                               <Component id="moduleNameTextField" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
@@ -1430,34 +1430,27 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="moduleNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="ModuleNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="moduleCodeTextField" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="moduleCodeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="moduleGradeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="moduleGradeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="moduleProgressLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="moduleProgressBar" min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="moduleNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ModuleNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="moduleCodeTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="moduleCodeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="moduleGradeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="moduleGradeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                                       <Component id="jScrollPane13" min="-2" pref="120" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                                       <Component id="moduleNotesLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1484,11 +1477,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moduleNameTextFieldActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="moduleProgressLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Module Progress:"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="ModuleNameLabel">
               <Properties>
@@ -1535,8 +1523,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Module Grade:"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JProgressBar" name="moduleProgressBar">
             </Component>
             <Component class="javax.swing.JLabel" name="moduleTitleLabel">
               <Properties>

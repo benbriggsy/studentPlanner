@@ -40,13 +40,13 @@ public class Activity {
         }
         if(finishDate==null){
             this.finishDate = new Date();
-            this.timeSpent = this.finishDate.getTime() - this.startDate.getTime();
-            TimeUnit.HOURS.convert(this.timeSpent,TimeUnit.MILLISECONDS);
+            long secs = (this.finishDate.getTime() - this.startDate.getTime())/1000;
+            this.timeSpent = secs / 3600;
         }
         else{
             this.finishDate = finishDate;
-            this.timeSpent = this.finishDate.getTime() - this.startDate.getTime();
-            TimeUnit.HOURS.convert(this.timeSpent,TimeUnit.MILLISECONDS);
+            long secs = (this.finishDate.getTime() - this.startDate.getTime())/1000;
+            this.timeSpent = secs / 3600;
         }
         
     }

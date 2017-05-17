@@ -389,6 +389,52 @@ public class DashboardController {
             
     }
   
+    public void updateDeadlinesFromFile(File deadlineFile) throws FileNotFoundException, IOException{
+        Scanner semesterFileScan = new Scanner( student.getSemesterFile() );
+        Scanner deadlineFileScan = new Scanner( deadlineFile );
+       
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String updatedModuleString ="";
+        String [] semesterFileStu = semesterFileScan.nextLine().split("/");
+        String [] deadlineFileStu = deadlineFileScan.nextLine().split("/");
+        
+        for(int i=0; i<semesterFileStu.length; i++){
+                updatedModuleString += semesterFileStu[i]+ "/";
+        }
+        updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+        updatedModuleString += "\n";
+        
+        while(semesterFileScan.hasNextLine() && deadlineFileScan.hasNextLine()){
+            String [] semesterFileModule = semesterFileScan.nextLine().split("/");
+            String [] deadlineFileModule = deadlineFileScan.nextLine().split("/");
+            
+            for(int i=7; i<semesterFileModule.length;){
+                if(semesterFileModule[i].charAt(0) == 'A'){
+                    semesterFileModule[i+4] = deadlineFileModule[i+4];
+                    i+=10;
+                }
+                else if(semesterFileModule[i].charAt(0) == 'E'){
+                    semesterFileModule[i+4] = deadlineFileModule[i+4];
+                    i+=9;
+                }
+                
+            }
+            
+            for(int i=0; i<semesterFileModule.length; i++){
+                updatedModuleString += semesterFileModule[i]+ "/";
+            }
+            updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            updatedModuleString += "\n";
+            
+            
+        }
+        updatedModuleString = updatedModuleString.substring(0,updatedModuleString.length()-1);
+            FileOutputStream fileOut = new FileOutputStream(student.getUserName() + ".txt");
+            fileOut.write(updatedModuleString.getBytes());
+            fileOut.close();
+            File file = new File(student.getUserName() + ".txt");
+            student.setFile(file);
+    }
     
     public void updateFileForExam(Module mod,  Exam exam) throws IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
@@ -1773,7 +1819,7 @@ public class DashboardController {
         return acceptable;
      }
 
-
+    
  
 
 //    public ArrayList<Assessment> viewUpComingIncompleteAssessments(){

@@ -75,6 +75,9 @@ public class TaskController {
         
         activityID += task.getTaskID().substring(2, Math.min(task.getTaskID().length(), 7));
         dashboard.getStudent().incrementNumberOfActivities();
+        if(dashboard.getStudent().getNumberOfActivities()<10){
+           activityID +='0'; 
+        }
         activityID += dashboard.getStudent().getNumberOfActivities();
         
         Activity a = new Activity(activityID, activityName, notes,

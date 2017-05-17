@@ -28,6 +28,14 @@ public class Module {
         return moduleCode;
     }
     
+    public void calculateCurrentGrade(){
+        double grade = 0;
+        for(Assessment assessment: assessments){
+            grade += (assessment.getGrade()*assessment.getWeighting());
+        }
+        this.currentGrade = grade;
+    }
+    
     public String getModuleName(){
         return moduleName;
     }

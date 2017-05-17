@@ -1017,7 +1017,7 @@ public class DashboardController {
                         //System.out.println(updatedTasks);
                         i+=10;
                     }
-                    else if(module[i].charAt(0) == 'E' && activity.getActivityID().charAt(0) == 'e' && activity.getActivityID().charAt(1) == 'a'){
+                    else if(module[i].charAt(0) == 'E'){
                         String [] tasks = module[i+7].split("#");
                         for(int j=4; j<tasks.length; j+=6){
                             if(task.getTaskID().equals(tasks[j-4])){
@@ -1072,6 +1072,7 @@ public class DashboardController {
                     fileOut.close();
                     File file = new File(student.getUserName() + ".txt");
                     student.setFile(file);
+                    System.out.println(updatedModuleString);
                     
     }
     

@@ -46,33 +46,68 @@ public class ActivityController {
         
     }
     
-    public void updateActivity(String moduleCode, String assessmentCode, String taskCode, int i, String name, String notes, boolean completed) throws IOException{
+    public boolean updateActivity(String moduleCode, String assessmentCode, String taskCode, int i, String name, String notes, boolean completed, double weighting) throws IOException{
         Activity a = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskCode).getActivityByIndex(i);
+        double originalWeight = a.getWeighting();
+        a.setWeighting(weighting);
+        //check none of the tasks will have a weighting of over 100
+        for (Module module : dashboard.getStudent().getModules()) {
+            for (Assessment assessment : module.getAssessments()) {
+                
+                for (Task task : assessment.getTasks()) {
+                    for (Activity activity : task.getActivities()){
+                        if (activity.getActivityID().equals(a.getActivityID())){
+                            double summativeWeight = 0;
+                            for (Activity activitie : task.getActivities()) {
+                                summativeWeight += activitie.getWeighting();
+                                if (summativeWeight > 100){
+                                    a.setWeighting(originalWeight);
+                                    return false;
+                                }
+                                    
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         a.setName(name);
         a.setNotes(notes);
         a.setCompleted(completed);
-        Task t = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskCode);
-        boolean taskCompleted = true;
-        for (int j = 0; j < t.getActivities().size(); j++){
-            if (t.getActivityByIndex(j).isCompleted() == false){
-                taskCompleted = false;
-                break;
-            }
-        }
-        if (taskCompleted)
-            t.setAsCompleted();
         
-        Assessment assessment = dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode);
-        boolean assessmentCompleted = true;
-        for (int k = 0; k < assessment.getTasks().size(); k++){
-            if (assessment.getTask(k).isCompleted() == false){
-                assessmentCompleted = false;
-                break;
+        if (completed == true){
+            for (Module module : dashboard.getStudent().getModules()) {
+                for (Assessment assessment : module.getAssessments()) {
+                    for (Task task : assessment.getTasks()) {
+                        for (Activity activity : task.getActivities()){
+                            if (activity.getActivityID().equals(a.getActivityID())){
+                                boolean taskCompleted = true;
+                                for (Activity activitie : task.getActivities()) {
+                                    if (activitie.isCompleted() == false){
+                                        taskCompleted = false;
+                                        break;
+                                    }
+                                }
+                                if (taskCompleted)
+                                    task.setAsCompleted();
+                                boolean assessmentCompleted = true;
+                                for (Task tsk : assessment.getTasks()){
+                                    if (tsk.isCompleted() == false){
+                                        assessmentCompleted = false;
+                                        break;
+                                    }
+                                }
+                                if (assessmentCompleted)
+                                    assessment.setAsCompleted();
+                            }
+                        }
+                    }
+                }
             }
         }
-        if (assessmentCompleted)
-            assessment.setAsCompleted();
         dashboard.updateFileForActivity(a);
+        return true;
     }
     
     public void addActivity(String moduleCode, String assessmentCode, ArrayList<String> taskIDs, String activityName,

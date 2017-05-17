@@ -90,14 +90,14 @@ public abstract class Assessment {
     }
     
     public double getProgress(){
-        int numberCompleted = 0;
+        double percentage = 0;
         if(tasks.size()!= 0){
             for(Task task : tasks){
                 if(task.isCompleted()){
-                    numberCompleted += 1;
+                    percentage += task.getWeighting();
                 }
             }
-        return (numberCompleted/tasks.size())*100;
+        return percentage;
         }
         else{
             return 0;

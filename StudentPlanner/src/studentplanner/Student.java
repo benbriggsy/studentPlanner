@@ -1227,6 +1227,7 @@ public class Student {
                     this.semesterFile = file;
     }
     */
+    
      public static boolean checkFile(File semesterFile) throws FileNotFoundException, ParseException{
         boolean acceptable = true;
         String errors = "";

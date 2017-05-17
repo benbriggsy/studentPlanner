@@ -75,16 +75,17 @@ public class Task {
     }
     
     public double getProgress(){
-        int numberCompleted = 0;
+        double percentage = 0;
         if(activities.size()!=0){
-        for(Activity activity : activities){
-            if(activity.isCompleted()){
-                numberCompleted += 1;
+            for(Activity activity : activities){
+                if(activity.isCompleted()){
+                    percentage += activity.getWeighting();
+                }
             }
+        return percentage;
         }
-        return (numberCompleted/activities.size())*100;
-        }
-        else return 0;
+        else 
+            return 0;
     }
     
     public boolean isCompleted(){
@@ -101,6 +102,10 @@ public class Task {
      
     public void setAsCompleted(){
         completed = true;
+    }
+    
+    public void setWeighting(double weighting){
+        this.weighting = weighting;
     }
     
     public void setAssessment(Assessment assessment){

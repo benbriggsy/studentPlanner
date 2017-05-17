@@ -47,6 +47,10 @@ public class ModuleController {
     public ArrayList<Assessment> getModuleAssessments(int i){
         return dashboard.getStudent().getModule(i).getAssessments();
     }
+    
+    public double getModuleProgress(int i){
+        return dashboard.getStudent().getModule(i).getProgress();
+    }
 
     public DefaultTableModel viewModules() {
         String[] cols = {"Module Code", "Module Title", "Module Organiser"};

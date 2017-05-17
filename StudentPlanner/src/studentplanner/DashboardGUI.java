@@ -415,6 +415,11 @@ public class DashboardGUI extends javax.swing.JFrame {
         assessmentWeightingLabel.setText("Assessment Weighting:");
 
         assessmentGradeTextField.setEditable(false);
+        assessmentGradeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assessmentGradeTextFieldActionPerformed(evt);
+            }
+        });
 
         assessmentGradeLabel.setText("Assessment Grade:");
 
@@ -553,10 +558,10 @@ public class DashboardGUI extends javax.swing.JFrame {
         taskLabel.setText("Task");
 
         taskNameTextField.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 taskNameTextFieldInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
 
@@ -568,10 +573,10 @@ public class DashboardGUI extends javax.swing.JFrame {
         });
 
         taskWeightTextField.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 taskWeightTextFieldInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
 
@@ -644,7 +649,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                             .addComponent(activityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(92, 92, 92)
                         .addComponent(titleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
                         .addComponent(taskAddActivityButton)
                         .addGap(65, 65, 65))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TaskGUILayout.createSequentialGroup()
@@ -1396,7 +1401,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         AddActivityGUILayout.setHorizontalGroup(
             AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddActivityGUILayout.createSequentialGroup()
-                .addContainerGap(66, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddActivityGUILayout.createSequentialGroup()
                         .addGroup(AddActivityGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1675,6 +1680,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         moduleGradeTextField.setText(String.valueOf(mc.getModuleGrade(i)));
         moduleNotesTextArea.setText(mc.getModuleNotes(i));
         moduleAssessmentsTable.setModel(mc.viewModuleAssessments(i));
+        moduleProgressBar.setValue((int)mc.getModuleProgress(i));
     }//GEN-LAST:event_moduleModuleTableMouseClicked
 
     private void uploadProfileFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadProfileFileChooserActionPerformed
@@ -1766,7 +1772,8 @@ public class DashboardGUI extends javax.swing.JFrame {
         assessmentWeightingTextField.setText(asc.getAssessmentTitle(moduleCodeTextField.getText(), i));
         assessmentProgressBar.setValue((int)asc.getAssessmentProgress(moduleCodeTextField.getText(), i));
         assessmentNotesTextArea.setText(asc.getAssessmentTitle(moduleCodeTextField.getText(), i));
-        assessmentTasksTable.setModel(asc.viewAssessmentTasks(moduleCodeTextField.getText(), i));        
+        assessmentTasksTable.setModel(asc.viewAssessmentTasks(moduleCodeTextField.getText(), i));  
+        assessmentGradeTextField.setText(Double.toString(asc.getGrade(moduleCodeTextField.getText(), i)));
     }//GEN-LAST:event_moduleAssessmentsTableMouseClicked
 
     private void taskActivitiesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taskActivitiesTableMouseClicked
@@ -1844,9 +1851,9 @@ public class DashboardGUI extends javax.swing.JFrame {
             }
             else{
                 try{
-                    tc.addActivity(addActivityModuleIndex, addActivityAssessmentIndex, addActivityTaskIndex, 
-                        addActivityNameTextField.getText(), addActivityNotesTextArea.getText(), Double.parseDouble(addActivityWeightingTextField.getText()));
-                    addActivityModuleIndex.clear(); 
+                    if(tc.addActivity(addActivityModuleIndex, addActivityAssessmentIndex, addActivityTaskIndex, 
+                        addActivityNameTextField.getText(), addActivityNotesTextArea.getText(), Double.parseDouble(addActivityWeightingTextField.getText()))){
+                        addActivityModuleIndex.clear(); 
                     addActivityAssessmentIndex.clear();
                     addActivityTaskIndex.clear();
                     CardLayout card = (CardLayout)GUI.getLayout();
@@ -1866,6 +1873,12 @@ public class DashboardGUI extends javax.swing.JFrame {
                     addActivityModuleList.setModel(lm);
                     addActivityAssessmentList.setModel(lm);
                     addActivityTaskList.setModel(lm);
+                    addActivityInvalidLabel.setVisible(false);
+                    }
+                    else{
+                       addActivityInvalidLabel.setVisible(true); 
+                    }
+                    
                 }catch (NumberFormatException nex){
                     addActivityInvalidLabel.setVisible(true);
                 } catch (IOException ex){
@@ -1939,6 +1952,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         DefaultListModel model = mc.viewModulesTitles();
         addActivityModuleList.setModel(model);
         tasksAddedLabel.setText("");
+        addActivityInvalidLabel.setVisible(false);
     }//GEN-LAST:event_taskAddActivityButtonActionPerformed
 
     private void addActivityModuleListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_addActivityModuleListValueChanged
@@ -2018,6 +2032,10 @@ public class DashboardGUI extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_taskUpdateTaskButtonActionPerformed
+
+    private void assessmentGradeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assessmentGradeTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_assessmentGradeTextFieldActionPerformed
 
     /**
      * @param args the command line arguments

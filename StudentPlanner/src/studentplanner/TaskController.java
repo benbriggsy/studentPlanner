@@ -96,12 +96,13 @@ public class TaskController {
         //check if any of the tasks will have weights over 100
         for (int i = 0; i < taskIndexes.size(); i++){
             Task t = dashboard.getStudent().getModule(moduleIndexes.get(i)).getAssessmentByIndex(assessmentIndexes.get(i)).getTask(taskIndexes.get(i));
-            double summativeWeight = 0;
+            double summativeWeight = weighting;
             for (int j = 0; j < t.getActivities().size(); j++){
                 summativeWeight += t.getActivityByIndex(j).getWeighting();
                 if (summativeWeight > 100)
                     return false;
             }
+            
         }  
         //none of the tasks have weights above 100 so add the activity to the tasks
         for (int i = 0; i < taskIndexes.size(); i++){

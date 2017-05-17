@@ -37,6 +37,10 @@ public class ActivityController {
         return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskID).getActivityByIndex(activityIndex).isCompleted();
     }
     
+    public long getTimeSpent(String moduleCode, String assessmentCode, int activityIndex, String taskID){
+        
+    return dashboard.getStudent().getModuleByCode(moduleCode).getAssessmentByCode(assessmentCode).getTaskByID(taskID).getActivityByIndex(activityIndex).getTimeSpent();
+    }    
     
     public void setAsCompleted(String moduleCode, String assessmentCode, int taskID, String activityID){
         

@@ -49,6 +49,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         loginLoginButton = new javax.swing.JButton();
         loginWrongPasswordLabel = new javax.swing.JLabel();
         loginPasswordTextField = new javax.swing.JPasswordField();
+        loginInvalidFileLabel = new javax.swing.JLabel();
         ModuleGUI = new javax.swing.JPanel();
         assessmentButton = new javax.swing.JButton();
         moduleLabel = new javax.swing.JLabel();
@@ -219,6 +220,9 @@ public class DashboardGUI extends javax.swing.JFrame {
         loginWrongPasswordLabel.setForeground(new java.awt.Color(255, 0, 0));
         loginWrongPasswordLabel.setText("Wrong password, please try again.");
 
+        loginInvalidFileLabel.setForeground(new java.awt.Color(255, 0, 0));
+        loginInvalidFileLabel.setText("Your semester file could not be uploaded.");
+
         javax.swing.GroupLayout LoginGUILayout = new javax.swing.GroupLayout(LoginGUI);
         LoginGUI.setLayout(LoginGUILayout);
         LoginGUILayout.setHorizontalGroup(
@@ -226,18 +230,21 @@ public class DashboardGUI extends javax.swing.JFrame {
             .addGroup(LoginGUILayout.createSequentialGroup()
                 .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LoginGUILayout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(loginPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(loginUsernameLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(loginLoginButton)
-                            .addComponent(loginUsernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(loginPasswordTextField)))
-                    .addGroup(LoginGUILayout.createSequentialGroup()
                         .addGap(216, 216, 216)
-                        .addComponent(loginWrongPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(loginWrongPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(LoginGUILayout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(loginInvalidFileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(LoginGUILayout.createSequentialGroup()
+                                .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(loginPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(loginUsernameLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(LoginGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(loginLoginButton)
+                                    .addComponent(loginUsernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                                    .addComponent(loginPasswordTextField))))))
                 .addContainerGap(256, Short.MAX_VALUE))
         );
         LoginGUILayout.setVerticalGroup(
@@ -255,10 +262,13 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addComponent(loginWrongPasswordLabel)
                 .addGap(12, 12, 12)
                 .addComponent(loginLoginButton)
-                .addContainerGap(709, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(loginInvalidFileLabel)
+                .addContainerGap(684, Short.MAX_VALUE))
         );
 
         loginWrongPasswordLabel.setVisible(false);
+        loginInvalidFileLabel.setVisible(false);
 
         GUI.add(LoginGUI, "loginCard");
 
@@ -1582,10 +1592,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private void loginLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginLoginButtonActionPerformed
         if (LoginController.checkCredentials(loginUsernameTextField.getText(), loginPasswordTextField.getText())){
             if (DashboardController.findSemesterFile(loginUsernameTextField.getText())){
-                CardLayout card = (CardLayout)GUI.getLayout();
-                card.show(GUI, "dashboardCard");        
-                backList.add("dashboardCard");
-                backIndex++;
+                
                 try {
                 dc = new DashboardController(loginUsernameTextField.getText());
                 asc = new AssessmentController(dc);
@@ -1595,13 +1602,17 @@ public class DashboardGUI extends javax.swing.JFrame {
                 dashboardUpcomingCompleteDeadlinesTable.setModel(dc.viewUpComingCompleteAssessments());
                 dashboardUpcomingIncompleteDeadlinesTable.setModel(dc.viewUpComingIncompleteAssessments());
                 dashboardMissedDeadlinesTable.setModel(dc.viewMissedAssessments());
+                CardLayout card = (CardLayout)GUI.getLayout();
+                card.show(GUI, "dashboardCard");        
+                backList.add("dashboardCard");
+                backIndex++;
                 dashboardUsernameLabel.setText(dc.getStudent().getFullName());
                 } catch (FileNotFoundException ex) {
-                    dashboardUsernameLabel.setText("FileNotFoundException");
+                    loginInvalidFileLabel.setVisible(true);
                 } catch (ParseException ex) {
-                    dashboardUsernameLabel.setText("ParseException");
+                    loginInvalidFileLabel.setVisible(true);
                 } catch (IOException ex) {
-                    dashboardUsernameLabel.setText("IOException");
+                    loginInvalidFileLabel.setVisible(true);
                 }
             }
             else{
@@ -1897,18 +1908,27 @@ public class DashboardGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addActivityTaskListValueChanged
 
     private void addActivityAddTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActivityAddTaskButtonActionPerformed
-        if (tasksAddedLabel.getText().equals("")){
-            tasksAddedLabel.setText(addActivityTaskList.getSelectedValue());
-        }
-        else{
-            tasksAddedLabel.setText(tasksAddedLabel.getText() + ", "  +addActivityTaskList.getSelectedValue());
-        }
         int i = addActivityModuleList.getSelectedIndex();
         int j = addActivityAssessmentList.getSelectedIndex();
         int k = addActivityTaskList.getSelectedIndex();
-        addActivityModuleIndex.add(i); 
-        addActivityAssessmentIndex.add(j);
-        addActivityTaskIndex.add(k);        
+        boolean taskAlreadyAdded = false;
+        for (int l = 0; l < addActivityModuleIndex.size(); l++){
+            if (addActivityModuleIndex.get(l) == i && addActivityAssessmentIndex.get(l) == j
+                    && addActivityTaskIndex.get(l) == k)
+                taskAlreadyAdded = true;
+        }
+        if (!taskAlreadyAdded){
+            if (tasksAddedLabel.getText().equals("")){
+                tasksAddedLabel.setText(addActivityTaskList.getSelectedValue());
+            }
+            else{
+                tasksAddedLabel.setText(tasksAddedLabel.getText() + ", "  +addActivityTaskList.getSelectedValue());
+            }
+            addActivityModuleIndex.add(i); 
+            addActivityAssessmentIndex.add(j);
+            addActivityTaskIndex.add(k);
+        }
+                
     }//GEN-LAST:event_addActivityAddTaskButtonActionPerformed
 
     private void taskNameTextFieldInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_taskNameTextFieldInputMethodTextChanged
@@ -2087,6 +2107,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JLabel loginInvalidFileLabel;
     private javax.swing.JButton loginLoginButton;
     private javax.swing.JLabel loginPasswordLabel;
     private javax.swing.JPasswordField loginPasswordTextField;

@@ -938,6 +938,7 @@ public class DashboardController {
     
     public void addActivityToFile(Module mod, Task task, Activity activity) throws FileNotFoundException, IOException{
         Scanner fileScan = new Scanner( student.getSemesterFile() );
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String updatedModuleString ="";
         while(fileScan.hasNextLine()){
             String [] module = fileScan.nextLine().split("/");
@@ -956,8 +957,8 @@ public class DashboardController {
                                 tasks[j] += activity.getActivityName() + "~";
                                 tasks[j] += Double.toString(activity.getWeighting()) + "~";
                                 tasks[j] += String.valueOf(activity.isCompleted()) + "~";
-                                tasks[j] += activity.getStartDate() + "~";
-                                tasks[j] += activity.getEndDate() + "~";
+                                tasks[j] += formatter.format(activity.getStartDate()) + "~";
+                                tasks[j] += formatter.format(activity.getEndDate()) + "~";
                                 tasks[j] += activity.getNotes();
                              } 
                         }
@@ -982,8 +983,8 @@ public class DashboardController {
                                 tasks[j] += activity.getActivityName() + "~";
                                 tasks[j] += Double.toString(activity.getWeighting()) + "~";
                                 tasks[j] += String.valueOf(activity.isCompleted()) + "~";
-                                tasks[j] += activity.getStartDate() + "~";
-                                tasks[j] += activity.getEndDate() + "~";
+                                tasks[j] += formatter.format(activity.getStartDate()) + "~";
+                                tasks[j] += formatter.format(activity.getEndDate()) + "~";
                                 tasks[j] += activity.getNotes();
                              } 
                         }

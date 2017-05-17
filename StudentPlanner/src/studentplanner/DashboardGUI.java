@@ -2,6 +2,7 @@ package studentplanner;
 
 
 import java.awt.CardLayout;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
@@ -143,6 +144,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         dashboardUpcomingIncompleteDeadlinesTable = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
+        dashboardUpdateDeadlinesButton = new javax.swing.JButton();
         ChosenModuleGUI = new javax.swing.JPanel();
         moduleNameTextField = new javax.swing.JTextField();
         moduleProgressLabel = new javax.swing.JLabel();
@@ -202,6 +204,12 @@ public class DashboardGUI extends javax.swing.JFrame {
         tasksAddedLabel = new javax.swing.JLabel();
         addActivityAddTaskButton = new javax.swing.JButton();
         addActivityInvalidLabel = new javax.swing.JLabel();
+        UploadDeadlineGUI = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        uploadProfileLabel1 = new javax.swing.JLabel();
+        uploadDeadlinesFileChooser = new javax.swing.JFileChooser();
+        uploadDeadlineSuccessLabel = new javax.swing.JLabel();
+        uploadDeadlineInvalidLabel = new javax.swing.JLabel();
         viewDashboardButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
 
@@ -974,6 +982,13 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        dashboardUpdateDeadlinesButton.setText("Update Deadlines");
+        dashboardUpdateDeadlinesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dashboardUpdateDeadlinesButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout DashboardGUILayout = new javax.swing.GroupLayout(DashboardGUI);
         DashboardGUI.setLayout(DashboardGUILayout);
         DashboardGUILayout.setHorizontalGroup(
@@ -990,10 +1005,12 @@ public class DashboardGUI extends javax.swing.JFrame {
                     .addComponent(milestonesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(DashboardGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deadlinesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(DashboardGUILayout.createSequentialGroup()
-                        .addComponent(dashboardTitleLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(deadlinesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(DashboardGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dashboardTitleLabel)
+                            .addComponent(dashboardUpdateDeadlinesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         DashboardGUILayout.setVerticalGroup(
@@ -1006,7 +1023,11 @@ public class DashboardGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(moduleButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(milestoneButton)
+                .addGroup(DashboardGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(milestoneButton)
+                    .addGroup(DashboardGUILayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(dashboardUpdateDeadlinesButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gradePlannerButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1018,7 +1039,7 @@ public class DashboardGUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(DashboardGUILayout.createSequentialGroup()
                         .addComponent(deadlinesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(462, Short.MAX_VALUE))))
+                        .addContainerGap(456, Short.MAX_VALUE))))
         );
 
         GUI.add(DashboardGUI, "dashboardCard");
@@ -1490,6 +1511,65 @@ public class DashboardGUI extends javax.swing.JFrame {
 
         GUI.add(AddActivityGUI, "addActivityCard");
 
+        jLabel9.setText("Upload Deadlines File");
+
+        uploadProfileLabel1.setText("Please select your deadlines file and then press Open");
+
+        uploadDeadlinesFileChooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadDeadlinesFileChooserActionPerformed(evt);
+            }
+        });
+
+        uploadDeadlineSuccessLabel.setText("Successfully updated deadlines! Please restart the application to see the changes!");
+
+        uploadDeadlineInvalidLabel.setForeground(new java.awt.Color(255, 0, 0));
+        uploadDeadlineInvalidLabel.setText("File does not have a valid format or the file was not found. Please correct the format and try again.");
+
+        javax.swing.GroupLayout UploadDeadlineGUILayout = new javax.swing.GroupLayout(UploadDeadlineGUI);
+        UploadDeadlineGUI.setLayout(UploadDeadlineGUILayout);
+        UploadDeadlineGUILayout.setHorizontalGroup(
+            UploadDeadlineGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UploadDeadlineGUILayout.createSequentialGroup()
+                .addComponent(uploadDeadlinesFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(UploadDeadlineGUILayout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addGroup(UploadDeadlineGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(uploadProfileLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(213, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UploadDeadlineGUILayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(UploadDeadlineGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UploadDeadlineGUILayout.createSequentialGroup()
+                        .addComponent(uploadDeadlineInvalidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UploadDeadlineGUILayout.createSequentialGroup()
+                        .addComponent(uploadDeadlineSuccessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(92, 92, 92))))
+        );
+        UploadDeadlineGUILayout.setVerticalGroup(
+            UploadDeadlineGUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UploadDeadlineGUILayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel9)
+                .addGap(60, 60, 60)
+                .addComponent(uploadProfileLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(uploadDeadlinesFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(uploadDeadlineInvalidLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(uploadDeadlineSuccessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        uploadDeadlineSuccessLabel.setVisible(false);
+        uploadDeadlineInvalidLabel.setVisible(false);
+
+        GUI.add(UploadDeadlineGUI, "uploadDeadlineCard");
+
         viewDashboardButton.setText("Go to Dashboard");
         viewDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1678,18 +1758,11 @@ public class DashboardGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_moduleModuleTableMouseClicked
 
     private void uploadProfileFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadProfileFileChooserActionPerformed
-        System.out.println("Entered Upload File");
-        //String filePath = uploadProfileFileChooser.getSelectedFile().getAbsolutePath();
-        System.out.println(uploadProfileFileChooser.getSelectedFile().getAbsolutePath());
         try {           
             String filePath = uploadProfileFileChooser.getSelectedFile().getAbsolutePath();
-            System.out.println("first try");
             try {
-                System.out.println("first point five try");
                 if(DashboardController.uploadFile(loginUsernameTextField.getText(), filePath)){
-                    System.out.println("second try");
                     try {
-                        System.out.println("third try");
                         dc = new DashboardController(loginUsernameTextField.getText());
                         asc = new AssessmentController(dc);
                         acc = new ActivityController(dc);
@@ -1701,10 +1774,8 @@ public class DashboardGUI extends javax.swing.JFrame {
                         dashboardUsernameLabel.setText(dc.getStudent().getFullName());
                         System.out.println("end");
                     } catch (FileNotFoundException ex) {
-                        System.out.println("file not found inner");
                         uploadProfileInvalidLabel.setVisible(true);
                     } catch (ParseException ex) {
-                        System.out.println("parse inner");
                         uploadProfileInvalidLabel.setVisible(true);
                     }
                     CardLayout card = (CardLayout)GUI.getLayout();
@@ -1717,11 +1788,9 @@ public class DashboardGUI extends javax.swing.JFrame {
                 }
             } catch (ParseException ex) {
                 uploadProfileInvalidLabel.setVisible(true);
-                System.out.println("parse outer");
             }
             
         } catch (IOException ex) {
-            System.out.println("outer");
             uploadProfileInvalidLabel.setVisible(true);
         }
     }//GEN-LAST:event_uploadProfileFileChooserActionPerformed
@@ -2019,6 +2088,32 @@ public class DashboardGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_taskUpdateTaskButtonActionPerformed
 
+    private void uploadDeadlinesFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadDeadlinesFileChooserActionPerformed
+        try {           
+            String filePath = uploadDeadlinesFileChooser.getSelectedFile().getAbsolutePath();
+                File file = new File(filePath);
+                if(DashboardController.checkFile(file)){
+                    dc.updateDeadlinesFromFile(file);
+                uploadProfileInvalidLabel.setVisible(false);
+            
+                }
+                else{
+                    uploadProfileInvalidLabel.setVisible(true);
+                }
+        }catch (IOException ex) {
+            uploadProfileInvalidLabel.setVisible(true);
+        }catch (ParseException ex) {
+                uploadProfileInvalidLabel.setVisible(true);
+        }
+    }//GEN-LAST:event_uploadDeadlinesFileChooserActionPerformed
+
+    private void dashboardUpdateDeadlinesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardUpdateDeadlinesButtonActionPerformed
+        CardLayout card = (CardLayout)GUI.getLayout();
+        card.show(GUI, "uploadDeadlineCard");        
+        backList.add("dashboardCard");
+        backIndex++;
+    }//GEN-LAST:event_dashboardUpdateDeadlinesButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2068,6 +2163,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JPanel ModuleGUI;
     private javax.swing.JLabel ModuleNameLabel;
     private javax.swing.JPanel TaskGUI;
+    private javax.swing.JPanel UploadDeadlineGUI;
     private javax.swing.JPanel UploadProfileGUI;
     private javax.swing.JButton activityButton;
     private javax.swing.JButton activityButton1;
@@ -2137,6 +2233,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel dashboardTitleLabel;
     private javax.swing.JTable dashboardUpcomingCompleteDeadlinesTable;
     private javax.swing.JTable dashboardUpcomingIncompleteDeadlinesTable;
+    private javax.swing.JButton dashboardUpdateDeadlinesButton;
     private javax.swing.JLabel dashboardUsernameLabel;
     private javax.swing.JPanel deadlinesPanel;
     private javax.swing.JButton gradePlannerButton;
@@ -2150,6 +2247,7 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -2214,9 +2312,13 @@ public class DashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel tasksAddedLabel;
     private javax.swing.JLabel titleLabel1;
     private javax.swing.JLabel titleLabel2;
+    private javax.swing.JLabel uploadDeadlineInvalidLabel;
+    private javax.swing.JLabel uploadDeadlineSuccessLabel;
+    private javax.swing.JFileChooser uploadDeadlinesFileChooser;
     private javax.swing.JFileChooser uploadProfileFileChooser;
     private javax.swing.JLabel uploadProfileInvalidLabel;
     private javax.swing.JLabel uploadProfileLabel;
+    private javax.swing.JLabel uploadProfileLabel1;
     private javax.swing.JButton viewDashboardButton;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables

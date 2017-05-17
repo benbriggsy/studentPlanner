@@ -549,6 +549,7 @@ public class DashboardGUI extends javax.swing.JFrame {
             }
         });
 
+        taskAssessmentTextField.setEditable(false);
         taskAssessmentTextField.setEnabled(false);
         taskAssessmentTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -599,6 +600,7 @@ public class DashboardGUI extends javax.swing.JFrame {
 
         jLabel4.setText("Task ID:");
 
+        taskIDTextField.setEditable(false);
         taskIDTextField.setEnabled(false);
 
         taskAddActivityButton.setText("Add an Activity");
@@ -625,6 +627,7 @@ public class DashboardGUI extends javax.swing.JFrame {
         taskInvalidWeightLabel.setForeground(new java.awt.Color(255, 0, 51));
         taskInvalidWeightLabel.setText("Overrall weighting can not add up to more than 100");
 
+        taskAssessmentTitleTextField.setEditable(false);
         taskAssessmentTitleTextField.setEnabled(false);
         taskAssessmentTitleTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

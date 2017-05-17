@@ -774,6 +774,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="taskAssessmentTextField">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -861,6 +862,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="taskIDTextField">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -919,6 +921,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="taskAssessmentTitleTextField">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
